@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet Course en Cours | Soumaya RABAH</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#F8D7DB",
+              secondary: "#9B8AC4",
+              accent: "#7CA3C7",
+              dark: "#121212",
+              darker: "#181818",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark min-h-screen">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-darker bg-opacity-90 backdrop-blur-md">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="text-primary text-2xl font-['Pacifico']">SR</a>
+          <div class="flex items-center space-x-6">
+            <a href="index.html" class="text-white hover:text-primary transition-colors">
+              <i class="ri-arrow-left-line mr-2"></i>Retour au portfolio
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-pattern light-gradient">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-flex items-center px-4 py-2 bg-primary bg-opacity-10 rounded-full mb-6">
+            <i class="ri-car-line text-primary mr-2"></i>
+            <span class="text-primary font-medium">Projet Collaboratif</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            Projet <span class="gradient-text">Course en Cours</span>
+          </h1>
+          <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Conception et réalisation d'une mini-voiture de course électrique en équipe avec modélisation 3D et optimisation des performances
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="bg-darker px-4 py-2 rounded-full border border-primary border-opacity-30">
+              <span class="text-primary font-medium">Ingénierie</span>
+            </div>
+            <div class="bg-darker px-4 py-2 rounded-full border border-secondary border-opacity-30">
+              <span class="text-secondary font-medium">CAO 3D</span>
+            </div>
+            <div class="bg-darker px-4 py-2 rounded-full border border-accent border-opacity-30">
+              <span class="text-accent font-medium">Travail d'équipe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenu principal -->
+    <section class="py-20 bg-darker">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <!-- Contenu principal -->
+            <div class="lg:col-span-2">
+              <!-- Présentation du projet -->
+              <div class="bg-dark p-8 rounded-2xl light-border light-glow mb-8">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                  <i class="ri-trophy-line text-primary mr-3"></i>
+                  <span class="gradient-text">Présentation du projet</span>
+                </h2>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                  Course en Cours est un dispositif pédagogique original, centré sur les Sciences et la Technologie. 
+                  Durant une année scolaire, des équipes de 4 à 6 collégiens ou lycéens montent leur écurie de bolide électrique 
+                  en utilisant les mêmes outils et processus que les ingénieurs et en suivant le règlement technique F1.
+                </p>
+                <div class="bg-darker p-6 rounded-lg border-l-4 border-primary">
+                  <h3 class="text-lg font-semibold text-white mb-3">Objectifs pédagogiques</h3>
+                  <p class="text-gray-300">
+                    Développer l'esprit d'équipe, découvrir les métiers de l'ingénierie, maîtriser la démarche technologique 
+                    et s'initier aux outils de conception assistée par ordinateur (CAO).
+                  </p>
+                </div>
+              </div>
+
+              <!-- Étapes de réalisation -->
+              <div class="bg-dark p-8 rounded-2xl light-border light-glow mb-8">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                  <i class="ri-settings-3-line text-secondary mr-3"></i>
+                  <span class="gradient-text">Étapes de réalisation</span>
+                </h2>
+                <div class="space-y-6">
+                  <div class="bg-darker p-6 rounded-lg">
+                    <div class="flex items-start">
+                      <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-4">
+                        <i class="ri-pencil-ruler-line text-white text-xl"></i>
+                      </div>
+                      <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Conception et modélisation 3D</h3>
+                        <p class="text-gray-300 mb-3">
+                          Conception du châssis et de la carrosserie en utilisant des logiciels de CAO professionnels. 
+                          Optimisation de l'aérodynamisme et du poids selon le règlement technique.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                          <span class="bg-blue-500 bg-opacity-10 text-blue-400 px-3 py-1 rounded-full text-sm">SolidWorks</span>
+                          <span class="bg-blue-500 bg-opacity-10 text-blue-400 px-3 py-1 rounded-full text-sm">CAO 3D</span>
+                          <span class="bg-blue-500 bg-opacity-10 text-blue-400 px-3 py-1 rounded-full text-sm">Aérodynamisme</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-darker p-6 rounded-lg">
+                    <div class="flex items-start">
+                      <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mr-4">
+                        <i class="ri-hammer-line text-white text-xl"></i>
+                      </div>
+                      <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Fabrication et assemblage</h3>
+                        <p class="text-gray-300 mb-3">
+                          Usinage des pièces en matériaux composites, assemblage du châssis, 
+                          intégration du système de propulsion électrique et tests de fonctionnement.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                          <span class="bg-green-500 bg-opacity-10 text-green-400 px-3 py-1 rounded-full text-sm">Usinage</span>
+                          <span class="bg-green-500 bg-opacity-10 text-green-400 px-3 py-1 rounded-full text-sm">Assemblage</span>
+                          <span class="bg-green-500 bg-opacity-10 text-green-400 px-3 py-1 rounded-full text-sm">Tests</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-darker p-6 rounded-lg">
+                    <div class="flex items-start">
+                      <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mr-4">
+                        <i class="ri-speed-line text-white text-xl"></i>
+                      </div>
+                      <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Optimisation des performances</h3>
+                        <p class="text-gray-300 mb-3">
+                          Tests de performance, ajustements techniques, optimisation de la vitesse 
+                          et préparation pour les courses régionales et nationales.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                          <span class="bg-purple-500 bg-opacity-10 text-purple-400 px-3 py-1 rounded-full text-sm">Performance</span>
+                          <span class="bg-purple-500 bg-opacity-10 text-purple-400 px-3 py-1 rounded-full text-sm">Optimisation</span>
+                          <span class="bg-purple-500 bg-opacity-10 text-purple-400 px-3 py-1 rounded-full text-sm">Compétition</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Compétences développées -->
+              <div class="bg-dark p-8 rounded-2xl light-border light-glow">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                  <i class="ri-lightbulb-line text-accent mr-3"></i>
+                  <span class="gradient-text">Compétences développées</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white">Techniques</h3>
+                    <ul class="space-y-2">
+                      <li class="flex items-center text-gray-300">
+                        <i class="ri-arrow-right-s-line text-primary mr-2"></i>
+                        Conception assistée par ordinateur
+                      </li>
+                      <li class="flex items-center text-gray-300">
+                        <i class="ri-arrow-right-s-line text-primary mr-2"></i>
+                        Modélisation 3D avancée
+                      </li>
+                      <li class="flex items-center text-gray-300">
+                        <i class="ri-arrow-right-s-line text-primary mr-2"></i>
+                        Fabrication et usinage
+                      </li>
+                      <li class="flex items-center text-gray-300">
+                        <i class="ri-arrow-right-s-line text-primary mr-2"></i>
+                        Tests et optimisation
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white">Transversales</h3>
+                    <ul class="space-y-2">
+                      <li class="flex items-center text-gray-300">
+                        <i class="ri-arrow-right-s-line text-secondary mr-2"></i>
+                        Travail en équipe
+                      </li>
+                      <li class="flex items-center text-gray-300">
+                        <i class="ri-arrow-right-s-line text-secondary mr-2"></i>
+                        Gestion de projet
+                      </li>
+                      <li class="flex items-center text-gray-300">
+                        <i class="ri-arrow-right-s-line text-secondary mr-2"></i>
+                        Résolution de problèmes
+                      </li>
+                      <li class="flex items-center text-gray-300">
+                        <i class="ri-arrow-right-s-line text-secondary mr-2"></i>
+                        Créativité et innovation
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+              <!-- Informations projet -->
+              <div class="bg-dark p-6 rounded-2xl light-border light-glow mb-8 sticky top-24">
+                <h3 class="text-xl font-bold mb-6 text-center">
+                  <span class="gradient-text">Informations projet</span>
+                </h3>
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Type</span>
+                    <span class="text-primary font-medium">Collaboratif</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Durée</span>
+                    <span class="text-white">Année scolaire</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Équipe</span>
+                    <span class="text-white">4-6 personnes</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Statut</span>
+                    <span class="text-green-400">✓ Terminé</span>
+                  </div>
+                </div>
+
+                <hr class="border-gray-700 my-6">
+
+                <!-- Outils utilisés -->
+                <div class="mb-6">
+                  <h4 class="text-lg font-semibold mb-4">Outils utilisés</h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-500 bg-opacity-10 text-blue-400 px-3 py-1 rounded-full text-sm">SolidWorks</span>
+                    <span class="bg-green-500 bg-opacity-10 text-green-400 px-3 py-1 rounded-full text-sm">CAO 3D</span>
+                    <span class="bg-purple-500 bg-opacity-10 text-purple-400 px-3 py-1 rounded-full text-sm">Simulation</span>
+                  </div>
+                </div>
+
+                <!-- Preuves et documents -->
+                <div>
+                  <h4 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="ri-folder-line text-accent mr-2"></i>
+                    Preuves & Documents
+                  </h4>
+                  <div class="space-y-3">
+                    <div class="p-3 bg-darker rounded-lg border border-gray-700 hover:border-primary transition-colors">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                          <i class="ri-image-line text-primary mr-2"></i>
+                          <span class="text-gray-300 text-sm">Photos du projet</span>
+                        </div>
+                        <i class="ri-download-line text-gray-500 hover:text-primary cursor-pointer"></i>
+                      </div>
+                    </div>
+                    <div class="p-3 bg-darker rounded-lg border border-gray-700 hover:border-primary transition-colors">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                          <i class="ri-file-3d-line text-secondary mr-2"></i>
+                          <span class="text-gray-300 text-sm">Modèles 3D</span>
+                        </div>
+                        <i class="ri-download-line text-gray-500 hover:text-primary cursor-pointer"></i>
+                      </div>
+                    </div>
+                    <div class="p-3 bg-darker rounded-lg border border-gray-700 hover:border-primary transition-colors">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                          <i class="ri-play-line text-accent mr-2"></i>
+                          <span class="text-gray-300 text-sm">Vidéos de course</span>
+                        </div>
+                        <i class="ri-download-line text-gray-500 hover:text-primary cursor-pointer"></i>
+                      </div>
+                    </div>
+                    
+                    <!-- Zone d'ajout -->
+                    <div class="p-3 bg-darker rounded-lg border-2 border-dashed border-gray-600 hover:border-primary transition-colors cursor-pointer">
+                      <div class="text-center">
+                        <i class="ri-add-line text-gray-500 text-lg mb-1"></i>
+                        <p class="text-gray-500 text-sm">Ajouter un document</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-dark border-t border-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <a href="index.html" class="text-primary text-2xl font-['Pacifico']">SR</a>
+          </div>
+          <div class="text-center md:text-right">
+            <p class="text-gray-400">
+              &copy; 2025 Soumaya RABAH. Tous droits réservés.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
