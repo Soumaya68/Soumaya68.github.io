@@ -1,0 +1,189 @@
+/* ===== REMIXICON ICONS ===== */
+:where([class^="ri-"])::before { 
+  content: "\f3c2"; 
+}
+
+/* ===== BASE STYLES ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #121212;
+  color: #FFFFFF;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.gradient-text {
+  background: linear-gradient(90deg, #F8D7DB, #9B8AC4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.light-gradient {
+  background: linear-gradient(135deg, rgba(248, 215, 219, 0.1), rgba(155, 138, 196, 0.1));
+}
+
+.light-border {
+  border: 1px solid rgba(248, 215, 219, 0.1);
+}
+
+.light-glow {
+  box-shadow: 0 0 20px rgba(248, 215, 219, 0.05);
+}
+
+.bg-pattern {
+  background-image: radial-gradient(circle at 50% 50%, rgba(155, 138, 196, 0.05) 0%, rgba(0, 0, 0, 0) 50%);
+}
+
+/* ===== SKILL BARS ===== */
+.skill-bar {
+  height: 6px;
+  background: #333333;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #F8D7DB, #9B8AC4);
+  border-radius: 3px;
+  transition: width 1s ease-in-out;
+}
+
+/* ===== PROJECT CARDS ===== */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(248, 215, 219, 0.1);
+}
+
+/* ===== SOCIAL ICONS ===== */
+.social-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  color: #F8D7DB;
+}
+
+/* ===== NAVIGATION ===== */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #F8D7DB;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===== GLOW EFFECT ===== */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(45deg, #F8D7DB, #9B8AC4);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-effect:hover::before {
+  opacity: 1;
+}
+
+/* ===== FORM INPUTS ===== */
+input, textarea {
+  background-color: #181818;
+  border: 1px solid #333333;
+  color: white;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #F8D7DB;
+}
+
+/* ===== TOTEM CARDS ===== */
+.totem-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.totem-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(248, 215, 219, 0.15);
+}
+
+.totem-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #F8D7DB, #9B8AC4, #7CA3C7);
+  border-radius: 16px 16px 0 0;
+}
+
+.totem-icon {
+  transition: transform 0.3s ease;
+}
+
+.totem-card:hover .totem-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* ===== SKILL ITEMS ===== */
+.skill-item {
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-item div {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item:hover div {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(248, 215, 219, 0.3);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
