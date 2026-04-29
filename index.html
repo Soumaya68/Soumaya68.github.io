@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soumaya RABAH — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 <body>
 
@@ -19,6 +22,7 @@
       <a onclick="showPage('accueil')"      class="active" id="nav-accueil">Accueil</a>
       <a onclick="showPage('apropos')"      id="nav-apropos">À propos</a>
       <a onclick="showPage('competences')"  id="nav-competences">Compétences</a>
+      <a onclick="showPage('qualites')"     id="nav-qualites">Qualités</a>
       <a onclick="showPage('projets')"      id="nav-projets">Projets</a>
       <a onclick="showPage('experiences')"  id="nav-experiences">Expériences</a>
       <a onclick="showPage('contact')"      id="nav-contact">Contact</a>
@@ -211,13 +215,83 @@
         </div>
 
       </div>
+
+      <!-- Centres d'intérêt -->
+      <div class="about-interests">
+
+        <div class="ai-header">
+          <h3>Centres d'intérêt</h3>
+        </div>
+
+        <div class="ai-grid">
+
+          <!-- Sport -->
+          <div class="interest-cell sport ai-reveal" data-delay="0" id="ic0">
+            <div class="shapes-wrap">
+              <div class="orb o1"></div>
+              <div class="orb o2"></div>
+              <div class="orb o3"></div>
+              <div class="orb o4"></div>
+              <div class="deco-rect"></div>
+              <div class="main-circle">
+                <img src="image/image_sport.avif" alt="Sport"/>
+              </div>
+            </div>
+            <div class="interest-label">Sport</div>
+            <div class="interest-tags-new">
+              <span class="itag" style="background:#DCE8C4;color:#3D5226;">🏐 Volley</span>
+              <span class="itag" style="background:#DCE8C4;color:#3D5226;">🐴 Équitation</span>
+              <span class="itag" style="background:#DCE8C4;color:#3D5226;">🎿 Ski</span>
+              <span class="itag" style="background:#DCE8C4;color:#3D5226;">🏸 Badminton</span>
+              <span class="itag" style="background:#DCE8C4;color:#3D5226;">🥾 Randonnée</span>
+            </div>
+          </div>
+
+          <!-- Cuisine -->
+          <div class="interest-cell cuisine ai-reveal" data-delay="150" id="ic1">
+            <div class="shapes-wrap">
+              <div class="orb o1"></div>
+              <div class="orb o2"></div>
+              <div class="orb o3"></div>
+              <div class="orb o4"></div>
+              <div class="deco-rect"></div>
+              <div class="main-circle">
+                <img src="image/image_cuisine.jpg" alt="Cuisine"/>
+              </div>
+            </div>
+            <div class="interest-label">Cuisine</div>
+            <div class="interest-tags-new">
+              <span class="itag" style="background:#F9E5DC;color:#C2524A;">🧁 Pâtisserie</span>
+              <span class="itag" style="background:#F9E5DC;color:#C2524A;">🌍 Cuisine du monde</span>
+              <span class="itag" style="background:#F9E5DC;color:#C2524A;">🍰 Création</span>
+            </div>
+          </div>
+
+          <!-- Architecture -->
+          <div class="interest-cell archi ai-reveal" data-delay="300" id="ic2">
+            <div class="shapes-wrap">
+              <div class="orb o1"></div>
+              <div class="orb o2"></div>
+              <div class="orb o3"></div>
+              <div class="orb o4"></div>
+              <div class="deco-rect"></div>
+              <div class="main-circle">
+                <img src="image/image_architecture.jpg" alt="Architecture"/>
+              </div>
+            </div>
+            <div class="interest-label">Architecture & Design</div>
+            <div class="interest-tags-new">
+              <span class="itag" style="background:#D8E4F4;color:#3A5C8C;">🏛️ Architecture</span>
+              <span class="itag" style="background:#D8E4F4;color:#3A5C8C;">🌐 Web design</span>
+              <span class="itag" style="background:#D8E4F4;color:#3A5C8C;">🎨 Canva</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
-
-
-  <!-- ══════════════════════════════════════════
-       PAGE — COMPÉTENCES
-  ══════════════════════════════════════════ -->
   <div id="page-competences" class="page">
     <div class="competences-page">
 
@@ -244,6 +318,62 @@
               <div class="to">[<span class="bar-anim" id="bar3"></span>] Programmer</div>
               <div class="tw">3 modules chargés ✓</div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banderole outils défilante -->
+      <div class="tools-ticker">
+        <div class="tools-ticker-track">
+          <div class="tools-ticker-inner" id="ticker-inner">
+            <span class="tk">Wireshark</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Packet Tracer</span>
+            <span class="tk-dot"></span>
+            <span class="tk">GNS3</span>
+            <span class="tk-dot"></span>
+            <span class="tk">VirtualBox</span>
+            <span class="tk-dot"></span>
+            <span class="tk">VMware</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Kali Linux</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Proxmox</span>
+            <span class="tk-dot"></span>
+            <span class="tk">SolidWorks</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Matlab</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Arduino</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Pack Office</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Linphone</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Wireshark</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Packet Tracer</span>
+            <span class="tk-dot"></span>
+            <span class="tk">GNS3</span>
+            <span class="tk-dot"></span>
+            <span class="tk">VirtualBox</span>
+            <span class="tk-dot"></span>
+            <span class="tk">VMware</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Kali Linux</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Proxmox</span>
+            <span class="tk-dot"></span>
+            <span class="tk">SolidWorks</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Matlab</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Arduino</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Pack Office</span>
+            <span class="tk-dot"></span>
+            <span class="tk">Linphone</span>
+            <span class="tk-dot"></span>
           </div>
         </div>
       </div>
@@ -324,32 +454,157 @@
 
       </div>
 
-      <!-- Bas : soft skills + outils -->
-      <div class="comp-bottom-new">
-        <div class="soft-section-new">
-          <div class="comp-section-label">// soft_skills</div>
-          <div class="soft-bubbles">
-            <div class="bubble b1">💡 Esprit curieux</div>
-            <div class="bubble b2">🔄 Adaptabilité</div>
-            <div class="bubble b3">🤝 Aisance relationnelle</div>
-            <div class="bubble b4">🎯 Rigueur</div>
-            <div class="bubble b5">💬 Communication</div>
-            <div class="bubble b6">🔥 Détermination</div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       PAGE — QUALITÉS
+  ══════════════════════════════════════════ -->
+  <div id="page-qualites" class="page">
+    <div class="qualites-page">
+
+      <!-- Fonds colorés en zones -->
+      <div class="qbg-zone"></div>
+      <div class="qbg-accent1"></div>
+      <div class="qbg-accent2"></div>
+      <div class="qbg-accent3"></div>
+
+
+
+      <!-- Titre -->
+      <div class="qtitle-block" id="qtb">
+        <p class="eyebrow">Côté humain</p>
+        <h2>Mes <span>qualités</span></h2>
+      </div>
+
+      <!-- Camembert bas gauche -->
+      <div class="qdonut-block" id="qdb">
+        <div class="qdonut-inner">
+          <canvas id="qual-pie" width="260" height="260" role="img" aria-label="Répartition des 6 qualités"></canvas>
+          <div class="qdonut-center">
+            <span class="qdonut-num">6</span>
+            <span class="qdonut-lbl">qualités</span>
           </div>
         </div>
-        <div class="tools-section-new">
-          <div class="comp-section-label">// tools.config</div>
-          <div class="tools-flow">
-            <span class="tf">Wireshark</span>
-            <span class="tf">Packet Tracer</span>
-            <span class="tf">GNS3</span>
-            <span class="tf">VirtualBox</span>
-            <span class="tf">VMware</span>
-            <span class="tf">Kali Linux</span>
-            <span class="tf">SolidWorks</span>
-            <span class="tf">Pack Office</span>
-            <span class="tf">Linphone</span>
-          </div>
+        <div class="qlegend">
+          <div class="qleg-row"><span class="qleg-dot" style="background:#5C8A3C;"></span><span class="qleg-txt">Curiosité</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#3A7A8C;"></span><span class="qleg-txt">Adaptabilité</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#8C6A3A;"></span><span class="qleg-txt">Relations</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#7A3A8C;"></span><span class="qleg-txt">Rigueur</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#3A5C8C;"></span><span class="qleg-txt">Communication</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#8C3A5C;"></span><span class="qleg-txt">Détermination</span></div>
+        </div>
+      </div>
+
+      <!-- Chemin en pointillés animé — zone droite uniquement -->
+      <svg id="qpath-svg" style="position:absolute;top:0;left:32%;width:68%;height:100%;z-index:15;pointer-events:none;" viewBox="0 0 680 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Chemin visible en pointillés — belles courbes entre les 6 cercles -->
+        <path id="qpath"
+          d="M 138,116
+             C 180,30  290,25  328,116
+             C 365,200 290,270 236,320
+             C 210,348 215,368 240,372
+             C 270,376 360,345 427,358
+             C 490,372 510,420 490,470
+             C 478,498 460,510 468,535
+             C 482,568 535,575 565,610
+             C 590,640 580,675 555,685
+             C 530,695 505,678 508,655
+             C 511,632 535,622 525,648
+             C 515,668 480,672 440,665
+             C 400,658 360,668 326,678
+             C 285,690 200,685 136,680"
+          fill="none"
+          stroke="#6B8040"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          opacity="0.5"
+        />
+
+        <!-- Petite flèche mignonne qui se déplace -->
+        <g id="qcursor" opacity="0">
+          <polygon points="0,-9 6,5 0,2 -6,5" fill="#3D5226"/>
+          <polygon points="0,-9 6,5 0,2 -6,5" fill="none" stroke="#C8D9A8" stroke-width="1" stroke-linejoin="round"/>
+        </g>
+
+      </svg>
+
+      <!-- LIGNE 1 : 2 cercles en haut -->
+      <!-- Bulles flottantes décoratives -->
+      <div class="q-bubble qb1" style="width:55px;height:55px;background:#DCE8C4;top:6%;left:38%;"></div>
+      <div class="q-bubble qb2" style="width:30px;height:30px;background:#C8D9A8;top:10%;left:75%;"></div>
+      <div class="q-bubble qb3" style="width:45px;height:45px;background:#E8D4C5;top:50%;left:35%;"></div>
+      <div class="q-bubble qb4" style="width:20px;height:20px;background:#D4C5E8;top:55%;left:88%;"></div>
+      <div class="q-bubble qb5" style="width:38px;height:38px;background:#C5D8E8;bottom:7%;left:44%;"></div>
+      <div class="q-bubble qb6" style="width:24px;height:24px;background:#DCE8C4;bottom:12%;left:80%;"></div>
+      <div class="q-bubble qb7" style="width:18px;height:18px;background:#F9E5DC;top:28%;left:90%;"></div>
+      <div class="q-bubble qb8" style="width:40px;height:40px;background:#D8E4F4;top:75%;left:62%;"></div>
+      <div class="q-bubble qb1" style="width:16px;height:16px;background:#C8D9A8;top:20%;left:52%;animation-delay:1s;"></div>
+      <div class="q-bubble qb3" style="width:28px;height:28px;background:#EDF4DC;bottom:25%;left:50%;animation-delay:2s;"></div>
+
+      <div class="qnode qfloat1" id="qn0" data-delay="100" style="top:4%; left:40%;">
+        <div class="qcimg" style="width:168px;height:168px;border-color:#5C8A3C;">
+          <img src="image/image_curieux.avif" alt="Esprit curieux"/>
+        </div>
+        <div class="qclabel">
+          <div class="qclabel-name">Esprit curieux</div>
+          <div class="qclabel-desc">Je cherche à comprendre et approfondir chaque sujet qui se présente à moi.</div>
+        </div>
+      </div>
+
+      <div class="qnode qfloat2" id="qn1" data-delay="160" style="top:4%; left:68%;">
+        <div class="qcimg" style="width:168px;height:168px;border-color:#3A7A8C;">
+          <img src="image/image_adaptabilite.avif" alt="Adaptabilité"/>
+        </div>
+        <div class="qclabel">
+          <div class="qclabel-name">Adaptabilité</div>
+          <div class="qclabel-desc">Je m'intègre rapidement à de nouveaux environnements et équipes.</div>
+        </div>
+      </div>
+
+      <!-- LIGNE 2 : 1 cercle centré -->
+      <div class="qnode qfloat3" id="qn2" data-delay="240" style="top:35%; left:54%;">
+        <div class="qcimg" style="width:175px;height:175px;border-color:#8C6A3A;">
+          <img src="image/image_relation.avif" alt="Aisance relationnelle"/>
+        </div>
+        <div class="qclabel">
+          <div class="qclabel-name">Aisance relationnelle</div>
+          <div class="qclabel-desc">Je crée du lien naturellement et favorise une communication bienveillante.</div>
+        </div>
+      </div>
+
+      <!-- LIGNE 3 : 2 cercles en bas -->
+      <div class="qnode qfloat4" id="qn3" data-delay="320" style="bottom:4%; left:40%;">
+        <div class="qcimg" style="width:165px;height:165px;border-color:#3A5C8C;">
+          <img src="image/image_communication.avif" alt="Communication"/>
+        </div>
+        <div class="qclabel">
+          <div class="qclabel-name">Communication</div>
+          <div class="qclabel-desc">J'adapte mon discours à mon interlocuteur, à l'écrit comme à l'oral.</div>
+        </div>
+      </div>
+
+      <div class="qnode qfloat5" id="qn4" data-delay="380" style="bottom:4%; left:68%;">
+        <div class="qcimg" style="width:165px;height:165px;border-color:#8C3A5C;">
+          <img src="image/image_determination.avif" alt="Détermination"/>
+        </div>
+        <div class="qclabel">
+          <div class="qclabel-name">Détermination</div>
+          <div class="qclabel-desc">Une fois engagée, les obstacles deviennent des défis à relever.</div>
+        </div>
+      </div>
+
+      <!-- Rigueur — grand, milieu droit -->
+      <div class="qnode qfloat6" id="qn5" data-delay="280" style="top:33%; left:82%;">
+        <div class="qcimg" style="width:175px;height:175px;border-color:#7A3A8C;">
+          <img src="image/image_realiste.avif" alt="Rigueur"/>
+        </div>
+        <div class="qclabel">
+          <div class="qclabel-name">Rigueur</div>
+          <div class="qclabel-desc">Chaque tâche est menée avec méthode et précision jusqu'au bout.</div>
         </div>
       </div>
 
@@ -467,82 +722,173 @@
   <div id="page-experiences" class="page">
     <div class="experiences-page">
 
-      <div class="page-header">
-        <p class="eyebrow">Parcours</p>
-        <h2>Expériences</h2>
-      </div>
+      <div class="xp-layout">
 
-      <div class="timeline">
+        <!-- Colonne gauche : timeline -->
+        <div class="xp-left">
 
-        <div class="xp-item">
-          <div class="xp-date">
-            <div class="xp-date-val">2026</div>
-            <div class="xp-date-dur">2 mois &middot; Stage</div>
+          <div class="xp-left-header">
+            <p class="xp-eyebrow">Parcours professionnel</p>
+            <h2 class="xp-hero-title">Mes <span>expériences</span></h2>
           </div>
-          <div class="xp-line">
-            <div class="xp-dot"></div>
-            <div class="xp-connector"></div>
-          </div>
-          <div class="xp-content">
-            <div class="xp-title">Stage Technicien Support</div>
-            <div class="xp-company">ATScom</div>
-            <div class="xp-body">
-              <ul>
-                <li>Support technique de premier niveau</li>
-                <li>Préparation et installation de matériel informatique et réseau</li>
-                <li>Aide au paramétrage d'équipements</li>
-                <li>Assistance sur des interventions techniques</li>
-                <li>Suivi des demandes et sensibilisation aux bonnes pratiques</li>
-              </ul>
+
+          <div class="xp-timeline-list">
+
+            <!-- Stage ATScom -->
+            <div class="xp-card-new xp-reveal" data-delay="0">
+              <div class="xp-meta">
+                <div class="xp-year">2026</div>
+                <div class="xp-duration">2 mois</div>
+                <span class="xp-badge xp-badge-stage">Stage</span>
+              </div>
+              <div class="xp-timeline-col">
+                <div class="xp-tl-dot"></div>
+                <div class="xp-tl-line"></div>
+              </div>
+              <div class="xp-card-body">
+                <div class="xp-card-accent" style="background:linear-gradient(135deg,#5C8A3C,#96B060);"></div>
+                <div class="xp-card-top">
+                  <div class="xp-card-img">
+                    <img src="image/image_stage.jpg" alt="ATScom" />
+                  </div>
+                  <div class="xp-card-text">
+                    <div class="xp-card-company">ATScom</div>
+                    <div class="xp-card-title">Technicien support IT</div>
+                    <div class="xp-card-desc">Support technique N1, installation matériel réseau, paramétrage d'équipements et interventions techniques.</div>
+                  </div>
+                </div>
+                <div class="xp-card-chips">
+                  <span class="xp-chip">Support N1</span>
+                  <span class="xp-chip">Réseau</span>
+                  <span class="xp-chip">Paramétrage</span>
+                </div>
+              </div>
             </div>
+
+            <!-- Airbnb -->
+            <div class="xp-card-new xp-reveal" data-delay="120">
+              <div class="xp-meta">
+                <div class="xp-year">2023</div>
+                <div class="xp-duration">Présent</div>
+                <span class="xp-badge xp-badge-job">Job</span>
+              </div>
+              <div class="xp-timeline-col">
+                <div class="xp-tl-dot"></div>
+                <div class="xp-tl-line"></div>
+              </div>
+              <div class="xp-card-body">
+                <div class="xp-card-accent" style="background:linear-gradient(135deg,#8C3A5C,#C06080);"></div>
+                <div class="xp-card-top">
+                  <div class="xp-card-img" style="background:#fff;">
+                    <img src="image/image_airbnb.jpg" alt="Airbnb" style="object-fit:contain;padding:0.8rem;" />
+                  </div>
+                  <div class="xp-card-text">
+                    <div class="xp-card-company">Service Airbnb</div>
+                    <div class="xp-card-title">Co-hôte</div>
+                    <div class="xp-card-desc">Gestion complète des services d'hébergement pendant les vacances scolaires. Entretien et réapprovisionnement des logements, accueil personnalisé des voyageurs et gestion des réservations avec focus sur la satisfaction client.</div>
+                  </div>
+                </div>
+                <div class="xp-card-chips">
+                  <span class="xp-chip">Gestion client</span>
+                  <span class="xp-chip">Organisation</span>
+                  <span class="xp-chip">Communication</span>
+                  <span class="xp-chip">Accueil</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- UCS -->
+            <div class="xp-card-new xp-reveal" data-delay="240">
+              <div class="xp-meta">
+                <div class="xp-year">2022</div>
+                <div class="xp-duration">Présent</div>
+                <span class="xp-badge xp-badge-asso">Bénévolat</span>
+              </div>
+              <div class="xp-timeline-col">
+                <div class="xp-tl-dot"></div>
+              </div>
+              <div class="xp-card-body">
+                <div class="xp-card-accent" style="background:linear-gradient(135deg,#3A5C8C,#6090C0);"></div>
+                <div class="xp-card-top">
+                  <div class="xp-card-img" style="background:#fff;">
+                    <img src="image/image_association.png" alt="UCS" style="object-fit:contain;padding:0.8rem;" />
+                  </div>
+                  <div class="xp-card-text">
+                    <div class="xp-card-company">Association UCS &mdash; Unis-vert Culture et Sport</div>
+                    <div class="xp-card-title">Bénévole</div>
+                    <div class="xp-card-desc">Engagement associatif dédié à la solidarité et aux événements communautaires. Tri et distribution de denrées alimentaires, encadrement et sécurité d'événements culturels et sportifs, préparation de repas solidaires.</div>
+                  </div>
+                </div>
+                <div class="xp-card-chips">
+                  <span class="xp-chip">Solidarité</span>
+                  <span class="xp-chip">Encadrement</span>
+                  <span class="xp-chip">Travail en équipe</span>
+                  <span class="xp-chip">Logistique événements</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <div class="xp-item">
-          <div class="xp-date">
-            <div class="xp-date-val">2023 &ndash; Présent</div>
-            <div class="xp-date-dur">Vacances scolaires</div>
-          </div>
-          <div class="xp-line">
-            <div class="xp-dot"></div>
-            <div class="xp-connector"></div>
-          </div>
-          <div class="xp-content">
-            <div class="xp-title">Co-hôte</div>
-            <div class="xp-company">Service Airbnb</div>
-            <div class="xp-body">
-              <ul>
-                <li>Entretien et réapprovisionnement des logements</li>
-                <li>Accueil personnalisé et satisfaction client</li>
-                <li>Gestion des réservations et communication voyageurs</li>
-              </ul>
+        <!-- Colonne droite : panneau tech animé -->
+        <div class="xp-right" id="xp-right">
+
+          <!-- Stats en haut -->
+          <div class="xp-right-stats">
+            <div class="xp-right-stat">
+              <div class="xp-right-stat-num">3</div>
+              <div class="xp-right-stat-label">Expériences</div>
+            </div>
+            <div class="xp-right-stat">
+              <div class="xp-right-stat-num">2+</div>
+              <div class="xp-right-stat-label">Ans</div>
+            </div>
+            <div class="xp-right-stat">
+              <div class="xp-right-stat-num">2026</div>
+              <div class="xp-right-stat-label">Stage</div>
             </div>
           </div>
-        </div>
 
-        <div class="xp-item">
-          <div class="xp-date">
-            <div class="xp-date-val">Sept. 2022 &ndash; Présent</div>
-            <div class="xp-date-dur">Bénévolat</div>
-          </div>
-          <div class="xp-line">
-            <div class="xp-dot"></div>
-            <div class="xp-connector"></div>
-          </div>
-          <div class="xp-content">
-            <div class="xp-title">Bénévole</div>
-            <div class="xp-company">Association UCS (Unis-vert Culture et Sport)</div>
-            <div class="xp-body">
-              <ul>
-                <li>Tri et distribution de denrées alimentaires</li>
-                <li>Encadrement et sécurité d'événements culturels et sportifs</li>
-                <li>Préparation de repas solidaires</li>
-                <li>Coordination d'activités communautaires</li>
-              </ul>
+          <!-- Terminal animé -->
+          <div class="xp-terminal">
+            <div class="xp-term-bar">
+              <span class="tdot" style="background:#e06060;"></span>
+              <span class="tdot" style="background:#e0c060;"></span>
+              <span class="tdot" style="background:#60b040;"></span>
+              <span class="xp-term-title">parcours.sh</span>
             </div>
+            <div class="xp-term-body" id="xp-term-body"></div>
           </div>
-        </div>
 
+          <!-- Réseau de noeuds SVG décoratif -->
+          <div class="xp-network">
+            <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.85;">
+              <!-- Liens -->
+              <line x1="60" y1="50" x2="140" y2="90" stroke="#6B8040" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
+              <line x1="140" y1="90" x2="220" y2="50" stroke="#6B8040" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
+              <line x1="140" y1="90" x2="100" y2="150" stroke="#6B8040" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
+              <line x1="140" y1="90" x2="200" y2="150" stroke="#6B8040" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
+              <line x1="60" y1="50" x2="30" y2="110" stroke="#6B8040" stroke-width="1" stroke-dasharray="3 5" opacity="0.35"/>
+              <line x1="220" y1="50" x2="255" y2="115" stroke="#6B8040" stroke-width="1" stroke-dasharray="3 5" opacity="0.35"/>
+              <!-- Noeuds -->
+              <circle cx="140" cy="90" r="12" fill="#3D5226" stroke="#C8D9A8" stroke-width="2"/>
+              <circle cx="60" cy="50" r="8" fill="#5C8A3C" stroke="#DCE8C4" stroke-width="1.5"/>
+              <circle cx="220" cy="50" r="8" fill="#5C8A3C" stroke="#DCE8C4" stroke-width="1.5"/>
+              <circle cx="100" cy="150" r="7" fill="#4A5C2A" stroke="#C8D9A8" stroke-width="1.5"/>
+              <circle cx="200" cy="150" r="7" fill="#4A5C2A" stroke="#C8D9A8" stroke-width="1.5"/>
+              <circle cx="30" cy="110" r="5" fill="#3D5226" stroke="#96B060" stroke-width="1"/>
+              <circle cx="255" cy="115" r="5" fill="#3D5226" stroke="#96B060" stroke-width="1"/>
+              <!-- Labels -->
+              <text x="140" y="94" text-anchor="middle" font-family="monospace" font-size="7" fill="#1E2A10">SR</text>
+              <text x="60" y="68" text-anchor="middle" font-family="monospace" font-size="6" fill="#3D5226">ATScom</text>
+              <text x="220" y="68" text-anchor="middle" font-family="monospace" font-size="6" fill="#3D5226">Airbnb</text>
+              <text x="100" y="168" text-anchor="middle" font-family="monospace" font-size="6" fill="#3D5226">UCS</text>
+              <text x="200" y="168" text-anchor="middle" font-family="monospace" font-size="6" fill="#3D5226">BUT R&T</text>
+            </svg>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -554,48 +900,113 @@
   <div id="page-contact" class="page">
     <div class="contact-page">
 
+      <!-- Colonne gauche : infos + réseaux -->
       <div class="contact-left">
-        <p class="eyebrow">Restons en contact</p>
-        <h2>Me contacter</h2>
-        <p>
-          N'hésitez pas à me contacter pour toute opportunité de stage,
-          alternance ou collaboration. Je réponds dans les plus brefs délais.
-        </p>
 
-        <div class="contact-infos">
-          <div class="contact-info-row">
-            <div class="contact-icon">&#9993;&#65039;</div>
+        <div class="contact-header ct-reveal" data-delay="0">
+          <h2>Me <span>contacter</span></h2>
+          <p>N'hésitez pas à me contacter pour toute opportunité de stage, alternance ou collaboration. Je réponds dans les plus brefs délais.</p>
+        </div>
+
+        <div class="contact-infos ct-reveal" data-delay="80">
+          <div class="ct-info-row">
+            <div class="ct-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
             <div>
-              <div class="contact-info-label">Email</div>
-              <div class="contact-info-val">
-                <a href="mailto:soumaya.rabah68@gmail.com">soumaya.rabah68@gmail.com</a>
+              <div class="ct-info-label">Localisation</div>
+              <div class="ct-info-val">Colmar, Alsace — France</div>
+            </div>
+          </div>
+          <div class="ct-info-row">
+            <div class="ct-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div>
+              <div class="ct-info-label">Formation</div>
+              <div class="ct-info-val">IUT de Colmar — BUT R&amp;T</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Séparateur + réseaux plus bas -->
+        <div class="ct-socials-bottom ct-reveal" data-delay="200">
+          <div class="ct-sep">
+            <span class="ct-sep-label">Retrouvez-moi sur</span>
+          </div>
+
+          <div class="ct-links-list">
+
+            <a class="ct-link-row" href="https://github.com/Soumaya68" target="_blank">
+              <div class="ct-link-icon ct-link-github">
+                <svg width="22" height="22" viewBox="0 0 16 16" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
               </div>
-            </div>
-          </div>
-          <div class="contact-info-row">
-            <div class="contact-icon">&#128205;</div>
-            <div>
-              <div class="contact-info-label">Localisation</div>
-              <div class="contact-info-val">Colmar, France</div>
-            </div>
-          </div>
-          <div class="contact-info-row">
-            <div class="contact-icon">&#127891;</div>
-            <div>
-              <div class="contact-info-label">Formation</div>
-              <div class="contact-info-val">IUT de Colmar &mdash; BUT R&amp;T</div>
-            </div>
+              <div class="ct-link-info">
+                <span class="ct-link-name">GitHub</span>
+                <span class="ct-link-handle">@Soumaya68</span>
+              </div>
+              <svg class="ct-link-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a class="ct-link-row" href="https://www.linkedin.com/in/soumaya-r-651b92276" target="_blank">
+              <div class="ct-link-icon ct-link-linkedin">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              <div class="ct-link-info">
+                <span class="ct-link-name">LinkedIn</span>
+                <span class="ct-link-handle">Soumaya R.</span>
+              </div>
+              <svg class="ct-link-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a class="ct-link-row" href="https://fr.indeed.com" target="_blank">
+              <div class="ct-link-icon ct-link-indeed">
+                <!-- Indeed logo officiel iOS — I bleu sur fond blanc -->
+                <svg width="24" height="24" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                  <text x="50%" y="72%" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#2164F3">i</text>
+                </svg>
+              </div>
+              <div class="ct-link-info">
+                <span class="ct-link-name">Indeed</span>
+                <span class="ct-link-handle">Soumaya RABAH</span>
+              </div>
+              <svg class="ct-link-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a class="ct-link-row" href="mailto:soumaya.rabah68@gmail.com">
+              <div class="ct-link-icon ct-link-gmail">
+                <!-- Gmail logo officiel — M multicolore -->
+                <svg width="24" height="18" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 4.8L24 21.6 48 4.8V33.6C48 34.92 46.92 36 45.6 36H2.4C1.08 36 0 34.92 0 33.6V4.8Z" fill="#EA4335"/>
+                  <path d="M0 2.4C0 1.08 1.08 0 2.4 0H45.6C46.92 0 48 1.08 48 2.4V4.8L24 21.6 0 4.8V2.4Z" fill="#FBBC04"/>
+                  <path d="M0 4.8V33.6C0 34.92 1.08 36 2.4 36H9.6V14.4L0 4.8Z" fill="#4285F4"/>
+                  <path d="M48 4.8L38.4 14.4V36H45.6C46.92 36 48 34.92 48 33.6V4.8Z" fill="#34A853"/>
+                  <path d="M9.6 14.4V36H38.4V14.4L24 21.6L9.6 14.4Z" fill="#C5221F"/>
+                </svg>
+              </div>
+              <div class="ct-link-info">
+                <span class="ct-link-name">Gmail</span>
+                <span class="ct-link-handle">soumaya.rabah68@gmail.com</span>
+              </div>
+              <svg class="ct-link-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
           </div>
         </div>
 
-        <div class="social-row">
-          <a class="social-btn" href="https://www.linkedin.com/in/soumaya-r-651b92276" target="_blank">LinkedIn &#8594;</a>
-          <a class="social-btn" href="https://github.com/Soumaya68" target="_blank">GitHub &#8594;</a>
-          <a class="social-btn" href="https://www.indeed.com" target="_blank">Indeed &#8594;</a>
-        </div>
       </div>
 
-      <div class="contact-right">
+      <!-- Colonne centre : carte Leaflet -->
+      <div class="contact-map ct-reveal" data-delay="150">
+        <div class="ct-map-header">
+          <span class="ct-map-pin">📍</span>
+          <span class="ct-map-title">Colmar, Alsace</span>
+        </div>
+        <div id="ct-leaflet-map" style="width:100%;flex:1;min-height:0;"></div>
+      </div>
+
+      <!-- Colonne droite : formulaire -->
+      <div class="contact-right ct-reveal" data-delay="200">
         <h3>Envoyer un message</h3>
         <div id="form-feedback" class="form-feedback"></div>
         <form id="contact-form">
@@ -662,6 +1073,203 @@
         setTimeout(() => {
           document.querySelectorAll('.totem-card').forEach(c => c.classList.add('visible'));
         }, 200);
+        setTimeout(() => {
+          document.querySelectorAll('.ai-reveal').forEach((el, i) => {
+            const delay = parseInt(el.dataset.delay || 0);
+            setTimeout(() => el.classList.add('vis'), delay);
+          });
+        }, 500);
+      }
+
+      if (id === 'qualites') {
+        document.querySelectorAll('.qual-reveal').forEach(el => el.classList.remove('visible'));
+        setTimeout(() => {
+          document.querySelectorAll('.qual-reveal').forEach(el => {
+            const delay = parseInt(el.dataset.delay || 0);
+            setTimeout(() => el.classList.add('visible'), delay);
+          });
+        }, 80);
+      }
+
+      if (id === 'experiences') {
+        document.querySelectorAll('.xp-reveal').forEach(el => el.classList.remove('vis'));
+        const termBody = document.getElementById('xp-term-body');
+        if (termBody) termBody.innerHTML = '';
+
+        setTimeout(() => {
+          document.querySelectorAll('.xp-reveal').forEach(el => {
+            const delay = parseInt(el.dataset.delay || 0);
+            setTimeout(() => el.classList.add('vis'), delay);
+          });
+
+          // Terminal animé
+          const lines = [
+            {t:'cmd', v:'❯ cat parcours.json'},
+            {t:'out', v:'Loading experiences...'},
+            {t:'key', v:'stage', val:'"ATScom" · 2026 · 2 mois'},
+            {t:'key', v:'job', val:'"Airbnb" · 2023-présent'},
+            {t:'key', v:'benevol', val:'"UCS" · 2022-présent'},
+            {t:'sep', v:''},
+            {t:'cmd', v:'❯ skills --list'},
+            {t:'ok',  v:'✓ Support technique N1'},
+            {t:'ok',  v:'✓ Installation réseau'},
+            {t:'ok',  v:'✓ Gestion client'},
+            {t:'ok',  v:'✓ Travail en équipe'},
+            {t:'sep', v:''},
+            {t:'cmd', v:'❯ status'},
+            {t:'green',v:'Disponible · Ouverte aux opportunités'},
+          ];
+          if (!termBody) return;
+          lines.forEach((line, i) => {
+            setTimeout(() => {
+              const el = document.createElement('div');
+              el.className = 'xp-term-line';
+              if (line.t === 'cmd')   el.innerHTML = `<span class="tc">${line.v}</span>`;
+              else if (line.t === 'key') el.innerHTML = `<span class="to">"${line.key || line.v}"</span><span style="color:#607040"> → </span><span class="ta">${line.val}</span>`;
+              else if (line.t === 'ok')   el.innerHTML = `<span class="tw">${line.v}</span>`;
+              else if (line.t === 'green') el.innerHTML = `<span style="color:#8DC050;font-weight:500;">${line.v}</span>`;
+              else if (line.t === 'sep')  el.innerHTML = '';
+              else el.innerHTML = `<span class="to">${line.v}</span>`;
+              termBody.appendChild(el);
+            }, 400 + i * 110);
+          });
+        }, 80);
+      }
+
+      if (id === 'qualites') {
+        document.getElementById('qtb').classList.remove('vis');
+        document.getElementById('qdb').classList.remove('vis');
+        const pathEl = document.getElementById('qpath');
+        const svgEl = document.getElementById('qpath-svg');
+        const cursorEl = document.getElementById('qcursor');
+        if (pathEl) pathEl.style.strokeDasharray = `0 5000`;
+        if (cursorEl) cursorEl.setAttribute('opacity', '0');
+        if (svgEl) svgEl.classList.remove('vis');
+
+        setTimeout(() => {
+          document.getElementById('qtb').classList.add('vis');
+          document.getElementById('qdb').classList.add('vis');
+
+          const existing = Chart.getChart('qual-pie');
+          if (existing) existing.destroy();
+          new Chart(document.getElementById('qual-pie'), {
+            type: 'doughnut',
+            data: {
+              labels: ['Curiosité','Adaptabilité','Relations','Rigueur','Communication','Détermination'],
+              datasets: [{
+                data: [92,88,85,90,82,95],
+                backgroundColor: ['#5C8A3C','#3A7A8C','#8C6A3A','#7A3A8C','#3A5C8C','#8C3A5C'],
+                borderWidth: 4,
+                borderColor: '#3D5226',
+                hoverBorderWidth: 4
+              }]
+            },
+            options: {
+              responsive: false,
+              cutout: '58%',
+              animation: { animateRotate: true, duration: 1200, easing: 'easeInOutQuart' },
+              plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: c => ' ' + c.label } }
+              }
+            }
+          });
+
+          document.querySelectorAll('.qnode').forEach(el => {
+            const delay = parseInt(el.dataset.delay || 0);
+            setTimeout(() => el.classList.add('vis'), delay);
+          });
+
+          // Pointillés dessinés un par un avec flèche orientée
+          setTimeout(() => {
+            const svg = document.getElementById('qpath-svg');
+            const path = document.getElementById('qpath');
+            const cursor = document.getElementById('qcursor');
+            if (!svg || !path || !cursor) return;
+
+            svg.classList.add('vis');
+            cursor.setAttribute('opacity', '1');
+
+            const totalLen = path.getTotalLength();
+            const dash = 7;   // longueur d'un pointillé
+            const gap = 11;   // espace entre deux pointillés
+            const unit = dash + gap;
+
+            // On démarre avec strokeDasharray = "0 totalLen" — rien de visible
+            // Puis on augmente progressivement la partie visible pointillé par pointillé
+            path.style.strokeDasharray = `0 ${totalLen}`;
+            path.style.strokeDashoffset = '0';
+
+            const duration = 4200;
+            const start = performance.now();
+
+            function step(now) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const drawn = totalLen * progress;
+
+              // Nombre de pointillés complets + fraction en cours
+              const fullDots = Math.floor(drawn / unit);
+              const partial = drawn - fullDots * unit;
+              const visibleDash = Math.min(partial, dash);
+
+              // strokeDasharray alterne dash/gap pour tous les pointillés dessinés
+              // puis ajoute le pointillé partiel en cours
+              let dashArray = '';
+              for (let i = 0; i < fullDots; i++) {
+                dashArray += `${dash} ${gap} `;
+              }
+              dashArray += `${visibleDash} ${totalLen}`;
+              path.style.strokeDasharray = dashArray;
+
+              // Flèche : position + orientation tangentielle
+              const pt0 = path.getPointAtLength(Math.max(drawn - 2, 0));
+              const pt1 = path.getPointAtLength(Math.min(drawn + 2, totalLen));
+              const angle = Math.atan2(pt1.y - pt0.y, pt1.x - pt0.x) * 180 / Math.PI + 90;
+              const pt = path.getPointAtLength(drawn);
+              cursor.setAttribute('transform', `translate(${pt.x},${pt.y}) rotate(${angle})`);
+
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                // Flèche disparaît doucement à la fin
+                let fade = 1;
+                const fadeStep = () => {
+                  fade -= 0.06;
+                  cursor.setAttribute('opacity', Math.max(fade, 0));
+                  if (fade > 0) requestAnimationFrame(fadeStep);
+                };
+                requestAnimationFrame(fadeStep);
+              }
+            }
+
+            requestAnimationFrame(step);
+          }, 700);
+        }, 120);
+      }
+
+      if (id === 'contact') {
+        document.querySelectorAll('.ct-reveal').forEach(el => el.classList.remove('vis'));
+        setTimeout(() => {
+          document.querySelectorAll('.ct-reveal').forEach(el => {
+            const delay = parseInt(el.dataset.delay || 0);
+            setTimeout(() => el.classList.add('vis'), delay);
+          });
+          // Carte Leaflet
+          setTimeout(() => {
+            const mapEl = document.getElementById('ct-leaflet-map');
+            if (!mapEl || mapEl._leaflet_id) return;
+            const map = L.map('ct-leaflet-map', { zoomControl: true, scrollWheelZoom: false }).setView([48.0794, 7.3589], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '© OpenStreetMap'
+            }).addTo(map);
+            const icon = L.divIcon({
+              html: `<div style="background:#4A5C2A;width:14px;height:14px;border-radius:50%;border:3px solid #C8D9A8;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>`,
+              iconSize: [14, 14], iconAnchor: [7, 7], className: ''
+            });
+            L.marker([48.0794, 7.3589], { icon }).addTo(map).bindPopup('<b>Colmar</b><br>Alsace, France').openPopup();
+          }, 300);
+        }, 80);
       }
 
       if (id === 'competences') {
