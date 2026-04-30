@@ -54,7 +54,7 @@
         </div>
 
         <p class="hero-desc">
-          Étudiante en Réseaux &amp; Télécommunications, passionnée par la sécurité
+          Étudiante en Réseaux &amp; Télécommunications, orientée vers la sécurité
           des systèmes. Future analyste ou hackeur éthique.
         </p>
 
@@ -87,30 +87,7 @@
             <span class="tdot" style="background:#60b040;"></span>
             <span class="term-label">soumaya@iut-colmar ~ zsh</span>
           </div>
-          <div class="term-body">
-            <div><span class="tc">❯ whoami</span></div>
-            <div class="to">soumaya.rabah &mdash; étudiante R&amp;T, parcours cybersécurité</div>
-            <br>
-            <div><span class="tc">❯ cat formation.txt</span></div>
-            <div class="to">BUT Réseaux &amp; Télécommunications</div>
-            <div class="to">IUT de Colmar &middot; 2024&mdash;2026</div>
-            <br>
-            <div><span class="tc">❯ ls compétences/</span></div>
-            <div>
-              <span class="ta">administrer/</span>&nbsp;&nbsp;
-              <span class="ta">connecter/</span>&nbsp;&nbsp;
-              <span class="ta">programmer/</span>
-            </div>
-            <br>
-            <div><span class="tc">❯ cat certifications/</span></div>
-            <div class="tw">ccna_packet_tracer.cert &#10003;</div>
-            <br>
-            <div><span class="tc">❯ ping objectif-pro</span></div>
-            <div class="to">analyste-sécurité &middot; hackeur-éthique</div>
-            <div class="to">64 bytes &mdash; connexion établie <span class="tw">&#10003;</span></div>
-            <br>
-            <div class="td">❯ <span class="cursor"></span></div>
-          </div>
+          <div class="term-body" id="hero-term-body"></div>
         </div>
 
         <div class="profile-card">
@@ -500,31 +477,33 @@
       <!-- Chemin en pointillés animé — zone droite uniquement -->
       <svg id="qpath-svg" style="position:absolute;top:0;left:32%;width:68%;height:100%;z-index:15;pointer-events:none;" viewBox="0 0 680 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
 
-        <!-- Chemin visible en pointillés — belles courbes entre les 6 cercles -->
         <path id="qpath"
           d="M 138,116
-             C 180,30  290,25  328,116
-             C 365,200 290,270 236,320
-             C 210,348 215,368 240,372
-             C 270,376 360,345 427,358
-             C 490,372 510,420 490,470
-             C 478,498 460,510 468,535
-             C 482,568 535,575 565,610
-             C 590,640 580,675 555,685
-             C 530,695 505,678 508,655
-             C 511,632 535,622 525,648
-             C 515,668 480,672 440,665
-             C 400,658 360,668 326,678
-             C 285,690 200,685 136,680"
+             C 100,60  60,80  80,140
+             C 100,200 160,180 220,160
+             C 280,140 320,100 328,116
+             C 345,140 360,180 340,220
+             C 315,265 255,270 236,310
+             C 218,348 222,360 236,367
+             C 250,374 310,350 370,340
+             C 420,330 460,335 427,351
+             C 395,368 340,400 320,445
+             C 300,490 310,530 340,555
+             C 370,580 415,575 445,555
+             C 480,533 510,495 500,455
+             C 490,415 455,400 440,430
+             C 425,460 430,500 450,530
+             C 470,560 500,575 480,610
+             C 460,645 400,650 360,660
+             C 320,670 280,665 250,670
+             C 210,678 170,672 136,680"
           fill="none"
           stroke="#6B8040"
           stroke-width="2.5"
           stroke-linecap="round"
-          stroke-linejoin="round"
-          opacity="0.5"
+          opacity="0.45"
         />
 
-        <!-- Petite flèche mignonne qui se déplace -->
         <g id="qcursor" opacity="0">
           <polygon points="0,-9 6,5 0,2 -6,5" fill="#3D5226"/>
           <polygon points="0,-9 6,5 0,2 -6,5" fill="none" stroke="#C8D9A8" stroke-width="1" stroke-linejoin="round"/>
@@ -618,96 +597,169 @@
   <div id="page-projets" class="page">
     <div class="projects-page">
 
-      <div class="page-header">
-        <p class="eyebrow">Réalisations</p>
-        <h2>Projets</h2>
-      </div>
-
-      <div class="period-tabs">
-        <button class="ptab active" onclick="showPeriod('lycee', this)">Lycée</button>
-        <button class="ptab"        onclick="showPeriod('but1',  this)">1ère année BUT</button>
-        <button class="ptab"        onclick="showPeriod('but2',  this)">2ème année BUT</button>
-        <button class="ptab"        onclick="showPeriod('but3',  this)">3ème année BUT</button>
-      </div>
-
-      <div id="per-lycee" class="period-content active">
-        <div class="proj-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
-          <div class="pcard" onclick="window.location='course-en-cours.html'">
-            <div class="pcard-period">Lycée</div>
-            <div class="pcard-num">00</div>
-            <div class="pcard-title">Course en Cours</div>
-            <div class="pcard-desc">Conception d'une mini-voiture de course électrique en équipe. Modélisation 3D, optimisation des performances et présentation.</div>
-            <span class="pcard-link">Voir le projet →</span>
-          </div>
+      <!-- Header + onglets -->
+      <div class="proj-header">
+        <div class="proj-header-left">
+          <p class="eyebrow">Réalisations</p>
+          <h2>Mes <span>projets</span></h2>
+        </div>
+        <div class="period-tabs">
+          <button class="ptab active" onclick="showPeriod('lycee', this)">Lycée</button>
+          <button class="ptab" onclick="showPeriod('but1', this)">1ère année</button>
+          <button class="ptab" onclick="showPeriod('but2', this)">2ème année</button>
+          <button class="ptab" onclick="showPeriod('but3', this)">3ème année</button>
         </div>
       </div>
 
+      <!-- Lycée -->
+      <div id="per-lycee" class="period-content active">
+        <div class="proj-grid">
+
+          <div class="pcard-new proj-reveal" data-delay="0" onclick="window.location='course-en-cours.html'">
+            <div class="pcard-top" style="background:linear-gradient(135deg,#3D5226,#5C8A3C);">
+              <div class="pcard-num-big">01</div>
+              <div class="pcard-badge">Lycée</div>
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-tags">
+                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Mécanique</span>
+                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Modélisation 3D</span>
+                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Équipe</span>
+              </div>
+              <div class="pcard-title-new">Course en Cours</div>
+              <div class="pcard-desc-new">Conception d'une mini-voiture de course électrique en équipe. Modélisation 3D, optimisation des performances et présentation nationale.</div>
+              <div class="pcard-footer">
+                <span class="pcard-link-new">Voir le projet →</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 1ère année BUT -->
       <div id="per-but1" class="period-content">
         <div class="proj-grid">
-          <div class="pcard" onclick="window.location='sae1-01.html'">
-            <div class="pcard-period">1ère année BUT</div>
-            <div class="pcard-num">01</div>
-            <div class="pcard-title">SAE1.01 &mdash; Cybersécurité</div>
-            <div class="pcard-desc">Hygiène informatique, sensibilisation aux menaces et bonnes pratiques.</div>
-            <span class="pcard-link">Voir →</span>
+
+          <div class="pcard-new proj-reveal" data-delay="0" onclick="window.location='sae2-03.html'" style="cursor:pointer;">
+            <div class="pcard-top" style="background:linear-gradient(135deg,#3A5C8C,#6090C0);">
+              <div class="pcard-num-big">SAE</div>
+              <div class="pcard-badge">1ère année</div>
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-tags">
+                <span class="ptag" style="background:#D8E4F4;color:#3A5C8C;">Réseau</span>
+                <span class="ptag" style="background:#D8E4F4;color:#3A5C8C;">Linux</span>
+                <span class="ptag" style="background:#D8E4F4;color:#3A5C8C;">Virtualisation</span>
+              </div>
+              <div class="pcard-title-new">SAE2.03 — Solution informatique pour l'entreprise</div>
+              <div class="pcard-desc-new">Mise en place d'une solution informatique complète pour une entreprise. Configuration serveurs, virtualisation et déploiement d'infrastructure.</div>
+              <div class="pcard-footer">
+                <span class="pcard-link-new">Voir le projet →</span>
+              </div>
+            </div>
           </div>
-          <div class="pcard" onclick="window.location='sae1-02.html'">
-            <div class="pcard-period">1ère année BUT</div>
-            <div class="pcard-num">02</div>
-            <div class="pcard-title">SAE1.02 &mdash; Réseaux</div>
-            <div class="pcard-desc">Configuration LAN, adressage IP, tests de connectivité entre machines.</div>
-            <span class="pcard-link">Voir →</span>
+
+        </div>
+
+        <div class="proj-coming-soon">
+          <div class="pcs-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="pcard" onclick="window.location='sae1-03.html'">
-            <div class="pcard-period">1ère année BUT</div>
-            <div class="pcard-num">03</div>
-            <div class="pcard-title">SAE1.03 &mdash; Transmission</div>
-            <div class="pcard-desc">Étude d'un dispositif de transmission sans fil, mesures et optimisation.</div>
-            <span class="pcard-link">Voir →</span>
-          </div>
-          <div class="pcard" onclick="window.location='sae1-04.html'">
-            <div class="pcard-period">1ère année BUT</div>
-            <div class="pcard-num">04</div>
-            <div class="pcard-title">SAE1.04 &mdash; Web</div>
-            <div class="pcard-desc">Site web personnel HTML/CSS pour présenter mon parcours et compétences.</div>
-            <span class="pcard-link">Voir →</span>
-          </div>
-          <div class="pcard" onclick="window.location='sae1-05.html'">
-            <div class="pcard-period">1ère année BUT</div>
-            <div class="pcard-num">05</div>
-            <div class="pcard-title">SAE1.05 &mdash; Données</div>
-            <div class="pcard-desc">Script Python pour l'analyse et la visualisation de données réseau.</div>
-            <span class="pcard-link">Voir →</span>
-          </div>
-          <div class="pcard" onclick="window.location='sae2-01.html'">
-            <div class="pcard-period">1ère année BUT</div>
-            <div class="pcard-num">06</div>
-            <div class="pcard-title">SAE2.01 &mdash; Admin réseau</div>
-            <div class="pcard-desc">Infrastructure réseau complète en environnement simulé.</div>
-            <span class="pcard-link">Voir →</span>
-          </div>
-          <div class="pcard" onclick="window.location='sae2-03.html'">
-            <div class="pcard-period">1ère année BUT</div>
-            <div class="pcard-num">07</div>
-            <div class="pcard-title">SAE2.03 &mdash; VoIP</div>
-            <div class="pcard-desc">Téléphonie sur IP, configuration des équipements et tests d'appels.</div>
-            <span class="pcard-link">Voir →</span>
+          <div>
+            <div class="pcs-title">D'autres projets à venir</div>
+            <div class="pcs-desc">Les autres SAE de 1ère année seront ajoutées progressivement.</div>
           </div>
         </div>
       </div>
 
+      <!-- 2ème année BUT -->
       <div id="per-but2" class="period-content">
-        <div class="empty-state">
-          <div class="empty-icon">&#9203;</div>
-          <div class="empty-title">Projets en cours</div>
-          <div class="empty-desc">Les projets de 2ème année seront ajoutés prochainement.</div>
+        <div class="proj-grid">
+
+          <div class="pcard-new proj-reveal" data-delay="0">
+            <div class="pcard-top" style="background:linear-gradient(135deg,#5C3A8C,#9060C0);">
+              <div class="pcard-num-big">SAE</div>
+              <div class="pcard-badge">2ème année</div>
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-tags">
+                <span class="ptag" style="background:#EDE0F4;color:#5C3A8C;">Transmission</span>
+                <span class="ptag" style="background:#EDE0F4;color:#5C3A8C;">Signaux</span>
+              </div>
+              <div class="pcard-title-new">SAE3.01 — Système de transmission</div>
+              <div class="pcard-desc-new">Mise en œuvre d'un système de transmission. Étude des signaux, modulation et analyse des performances.</div>
+              <div class="pcard-footer pcard-footer-soon">
+                <span class="pcard-soon-badge">Bientôt disponible</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pcard-new proj-reveal" data-delay="100">
+            <div class="pcard-top" style="background:linear-gradient(135deg,#3A5C8C,#6090C0);">
+              <div class="pcard-num-big">SAE</div>
+              <div class="pcard-badge">2ème année</div>
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-tags">
+                <span class="ptag" style="background:#D8E4F4;color:#3A5C8C;">Python</span>
+                <span class="ptag" style="background:#D8E4F4;color:#3A5C8C;">Sockets</span>
+                <span class="ptag" style="background:#D8E4F4;color:#3A5C8C;">Dev</span>
+              </div>
+              <div class="pcard-title-new">SAE3.02 — Applications communicantes</div>
+              <div class="pcard-desc-new">Développement d'applications réseau communicantes en Python. Protocoles de communication, sockets et architecture client-serveur.</div>
+              <div class="pcard-footer pcard-footer-soon">
+                <span class="pcard-soon-badge">Bientôt disponible</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pcard-new proj-reveal" data-delay="200">
+            <div class="pcard-top" style="background:linear-gradient(135deg,#8C3A3A,#C06060);">
+              <div class="pcard-num-big">SAE</div>
+              <div class="pcard-badge">2ème année</div>
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-tags">
+                <span class="ptag" style="background:#F4D8D8;color:#8C3A3A;">Sécurité</span>
+                <span class="ptag" style="background:#F4D8D8;color:#8C3A3A;">VLAN</span>
+                <span class="ptag" style="background:#F4D8D8;color:#8C3A3A;">Firewall</span>
+              </div>
+              <div class="pcard-title-new">SAE3.Cyber.03 — Réseau sécurisé multi-sites</div>
+              <div class="pcard-desc-new">Conception d'un réseau informatique sécurisé multi-sites. Segmentation VLAN, pare-feu, VPN et politique de sécurité.</div>
+              <div class="pcard-footer pcard-footer-soon">
+                <span class="pcard-soon-badge">Bientôt disponible</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pcard-new proj-reveal" data-delay="300">
+            <div class="pcard-top" style="background:linear-gradient(135deg,#1E2A10,#3D5226);">
+              <div class="pcard-num-big">SAE</div>
+              <div class="pcard-badge">2ème année</div>
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-tags">
+                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Pentesting</span>
+                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Kali Linux</span>
+                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">CTF</span>
+              </div>
+              <div class="pcard-title-new">SAE3.Cyber.04 — Pentesting</div>
+              <div class="pcard-desc-new">Découverte du test d'intrusion. Reconnaissance, exploitation de vulnérabilités et rédaction de rapports de sécurité.</div>
+              <div class="pcard-footer pcard-footer-soon">
+                <span class="pcard-soon-badge">Bientôt disponible</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
+      <!-- 3ème année BUT -->
       <div id="per-but3" class="period-content">
         <div class="empty-state">
-          <div class="empty-icon">&#128197;</div>
-          <div class="empty-title">À venir &mdash; 3ème année</div>
+          <div class="empty-icon">📅</div>
+          <div class="empty-title">À venir — 3ème année</div>
           <div class="empty-desc">Les projets de 3ème année seront ajoutés l'année prochaine.</div>
         </div>
       </div>
@@ -861,30 +913,29 @@
             <div class="xp-term-body" id="xp-term-body"></div>
           </div>
 
-          <!-- Réseau de noeuds SVG décoratif -->
           <div class="xp-network">
-            <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.85;">
+            <svg viewBox="20 25 240 145" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.9;">
               <!-- Liens -->
-              <line x1="60" y1="50" x2="140" y2="90" stroke="#6B8040" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
-              <line x1="140" y1="90" x2="220" y2="50" stroke="#6B8040" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
-              <line x1="140" y1="90" x2="100" y2="150" stroke="#6B8040" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
-              <line x1="140" y1="90" x2="200" y2="150" stroke="#6B8040" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
-              <line x1="60" y1="50" x2="30" y2="110" stroke="#6B8040" stroke-width="1" stroke-dasharray="3 5" opacity="0.35"/>
-              <line x1="220" y1="50" x2="255" y2="115" stroke="#6B8040" stroke-width="1" stroke-dasharray="3 5" opacity="0.35"/>
+              <line x1="60" y1="50" x2="140" y2="90" stroke="#6B8040" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6"/>
+              <line x1="140" y1="90" x2="220" y2="50" stroke="#6B8040" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6"/>
+              <line x1="140" y1="90" x2="100" y2="140" stroke="#6B8040" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6"/>
+              <line x1="140" y1="90" x2="200" y2="140" stroke="#6B8040" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6"/>
+              <line x1="60" y1="50" x2="30" y2="110" stroke="#6B8040" stroke-width="1.2" stroke-dasharray="3 5" opacity="0.4"/>
+              <line x1="220" y1="50" x2="255" y2="110" stroke="#6B8040" stroke-width="1.2" stroke-dasharray="3 5" opacity="0.4"/>
               <!-- Noeuds -->
-              <circle cx="140" cy="90" r="12" fill="#3D5226" stroke="#C8D9A8" stroke-width="2"/>
-              <circle cx="60" cy="50" r="8" fill="#5C8A3C" stroke="#DCE8C4" stroke-width="1.5"/>
-              <circle cx="220" cy="50" r="8" fill="#5C8A3C" stroke="#DCE8C4" stroke-width="1.5"/>
-              <circle cx="100" cy="150" r="7" fill="#4A5C2A" stroke="#C8D9A8" stroke-width="1.5"/>
-              <circle cx="200" cy="150" r="7" fill="#4A5C2A" stroke="#C8D9A8" stroke-width="1.5"/>
-              <circle cx="30" cy="110" r="5" fill="#3D5226" stroke="#96B060" stroke-width="1"/>
-              <circle cx="255" cy="115" r="5" fill="#3D5226" stroke="#96B060" stroke-width="1"/>
+              <circle cx="140" cy="90" r="16" fill="#3D5226" stroke="#C8D9A8" stroke-width="2.5"/>
+              <circle cx="60" cy="50" r="11" fill="#5C8A3C" stroke="#DCE8C4" stroke-width="2"/>
+              <circle cx="220" cy="50" r="11" fill="#5C8A3C" stroke="#DCE8C4" stroke-width="2"/>
+              <circle cx="100" cy="140" r="10" fill="#4A5C2A" stroke="#C8D9A8" stroke-width="2"/>
+              <circle cx="200" cy="140" r="10" fill="#4A5C2A" stroke="#C8D9A8" stroke-width="2"/>
+              <circle cx="30" cy="110" r="7" fill="#3D5226" stroke="#96B060" stroke-width="1.5"/>
+              <circle cx="255" cy="110" r="7" fill="#3D5226" stroke="#96B060" stroke-width="1.5"/>
               <!-- Labels -->
-              <text x="140" y="94" text-anchor="middle" font-family="monospace" font-size="7" fill="#1E2A10">SR</text>
-              <text x="60" y="68" text-anchor="middle" font-family="monospace" font-size="6" fill="#3D5226">ATScom</text>
-              <text x="220" y="68" text-anchor="middle" font-family="monospace" font-size="6" fill="#3D5226">Airbnb</text>
-              <text x="100" y="168" text-anchor="middle" font-family="monospace" font-size="6" fill="#3D5226">UCS</text>
-              <text x="200" y="168" text-anchor="middle" font-family="monospace" font-size="6" fill="#3D5226">BUT R&T</text>
+              <text x="140" y="95" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#C8D9A8">SR</text>
+              <text x="60" y="72" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#1E2A10">ATScom</text>
+              <text x="220" y="72" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#1E2A10">Airbnb</text>
+              <text x="100" y="162" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#1E2A10">UCS</text>
+              <text x="200" y="162" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#1E2A10">BUT R&amp;T</text>
             </svg>
           </div>
 
@@ -911,7 +962,7 @@
         <div class="contact-infos ct-reveal" data-delay="80">
           <div class="ct-info-row">
             <div class="ct-info-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#EA4335" stroke="#EA4335" stroke-width="1" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3" fill="white" stroke="white"/></svg>
             </div>
             <div>
               <div class="ct-info-label">Localisation</div>
@@ -920,7 +971,7 @@
           </div>
           <div class="ct-info-row">
             <div class="ct-info-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1E2A10" stroke="#1E2A10" stroke-width="1" stroke-linecap="round"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="#1E2A10" stroke-width="1.5"/></svg>
             </div>
             <div>
               <div class="ct-info-label">Formation</div>
@@ -961,9 +1012,14 @@
 
             <a class="ct-link-row" href="https://fr.indeed.com" target="_blank">
               <div class="ct-link-icon ct-link-indeed">
-                <!-- Indeed logo officiel iOS — I bleu sur fond blanc -->
-                <svg width="24" height="24" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                  <text x="50%" y="72%" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#2164F3">i</text>
+                <!-- Vrai logo Indeed — i avec arc bleu -->
+                <svg width="22" height="26" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Arc du dessus -->
+                  <path d="M75 18 C75 18 60 2 35 8 C15 13 5 28 5 28" stroke="#0D4DB3" stroke-width="10" stroke-linecap="round" fill="none"/>
+                  <!-- Cercle point -->
+                  <circle cx="50" cy="38" r="13" fill="#0D4DB3"/>
+                  <!-- Barre verticale -->
+                  <rect x="38" y="55" width="24" height="58" rx="10" fill="#0D4DB3"/>
                 </svg>
               </div>
               <div class="ct-link-info">
@@ -975,13 +1031,13 @@
 
             <a class="ct-link-row" href="mailto:soumaya.rabah68@gmail.com">
               <div class="ct-link-icon ct-link-gmail">
-                <!-- Gmail logo officiel — M multicolore -->
-                <svg width="24" height="18" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 4.8L24 21.6 48 4.8V33.6C48 34.92 46.92 36 45.6 36H2.4C1.08 36 0 34.92 0 33.6V4.8Z" fill="#EA4335"/>
-                  <path d="M0 2.4C0 1.08 1.08 0 2.4 0H45.6C46.92 0 48 1.08 48 2.4V4.8L24 21.6 0 4.8V2.4Z" fill="#FBBC04"/>
-                  <path d="M0 4.8V33.6C0 34.92 1.08 36 2.4 36H9.6V14.4L0 4.8Z" fill="#4285F4"/>
-                  <path d="M48 4.8L38.4 14.4V36H45.6C46.92 36 48 34.92 48 33.6V4.8Z" fill="#34A853"/>
-                  <path d="M9.6 14.4V36H38.4V14.4L24 21.6L9.6 14.4Z" fill="#C5221F"/>
+                <!-- Vrai logo Gmail — M blanc sur fond rouge avec coins bleu/jaune/vert -->
+                <svg width="28" height="22" viewBox="0 0 256 193" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M58.182 192.05V93.14L27.507 65.077 0 49.504v125.09c0 9.652 7.825 17.456 17.455 17.456z" fill="#4285F4"/>
+                  <path d="M197.818 192.05h40.363c9.663 0 17.455-7.804 17.455-17.456V49.504l-29.982 16.735-27.836 27.9z" fill="#34A853"/>
+                  <path d="M58.182 93.14l-4.174-38.647 4.174-36.989L128 69.605l69.818-52.1 4.69 34.616-4.69 40.02L128 144.12z" fill="#EA4335"/>
+                  <path d="M197.818 17.505V93.14L256 49.504V26.185C256 4.653 231.815-7.187 214.222 5.765z" fill="#FBBC04"/>
+                  <path d="M0 49.504l26.759 20.07L58.182 93.14V17.505L41.78 5.765C24.185-7.187 0 4.653 0 26.185z" fill="#C5221F"/>
                 </svg>
               </div>
               <div class="ct-link-info">
@@ -996,13 +1052,9 @@
 
       </div>
 
-      <!-- Colonne centre : carte Leaflet -->
+      <!-- Colonne centre : carte Leaflet pleine hauteur -->
       <div class="contact-map ct-reveal" data-delay="150">
-        <div class="ct-map-header">
-          <span class="ct-map-pin">📍</span>
-          <span class="ct-map-title">Colmar, Alsace</span>
-        </div>
-        <div id="ct-leaflet-map" style="width:100%;flex:1;min-height:0;"></div>
+        <div id="ct-leaflet-map" style="width:100%;height:100%;"></div>
       </div>
 
       <!-- Colonne droite : formulaire -->
@@ -1061,6 +1113,81 @@
       if (navEl) navEl.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
+      if (id === 'accueil') {
+        const termBody = document.getElementById('hero-term-body');
+        if (!termBody) return;
+        termBody.innerHTML = '';
+
+        const lines = [
+          { text: '❯ whoami',                                         cls: 'tc', pause: 0 },
+          { text: 'soumaya.rabah — étudiante R&T, parcours cybersécurité', cls: 'to', pause: 120 },
+          { text: '',                                                   cls: '',   pause: 80 },
+          { text: '❯ cat formation.txt',                               cls: 'tc', pause: 80 },
+          { text: 'BUT Réseaux & Télécommunications',                  cls: 'to', pause: 100 },
+          { text: 'IUT de Colmar · 2024—2026',                        cls: 'to', pause: 60 },
+          { text: '',                                                   cls: '',   pause: 80 },
+          { text: '❯ ls compétences/',                                 cls: 'tc', pause: 80 },
+          { text: 'administrer/   connecter/   programmer/',           cls: 'ta', pause: 100 },
+          { text: '',                                                   cls: '',   pause: 80 },
+          { text: '❯ cat certifications/',                             cls: 'tc', pause: 80 },
+          { text: 'ccna_packet_tracer.cert ✓',                         cls: 'tw', pause: 100 },
+          { text: '',                                                   cls: '',   pause: 80 },
+          { text: '❯ ping objectif-pro',                               cls: 'tc', pause: 80 },
+          { text: 'analyste-sécurité · hackeur-éthique',               cls: 'to', pause: 100 },
+          { text: '64 bytes — connexion établie ✓',                    cls: 'to', pause: 80 },
+          { text: '',                                                   cls: '',   pause: 60 },
+        ];
+
+        // Tape par groupes de 3 caractères à 18ms — rapide mais lisible
+        const CHUNK = 3;
+        const SPEED = 18;
+
+        function typeLine(text, cls, container, onDone) {
+          if (text === '') {
+            const br = document.createElement('br');
+            container.appendChild(br);
+            onDone && onDone();
+            return;
+          }
+          const el = document.createElement('div');
+          if (cls) el.className = cls;
+          container.appendChild(el);
+          let i = 0;
+          const timer = setInterval(() => {
+            i = Math.min(i + CHUNK, text.length);
+            el.textContent = text.slice(0, i);
+            if (i >= text.length) { clearInterval(timer); onDone && onDone(); }
+          }, SPEED);
+        }
+
+        let idx = 0;
+        function next() {
+          if (idx >= lines.length) {
+            const cur = document.createElement('div');
+            cur.className = 'td';
+            cur.innerHTML = '❯ <span class="cursor"></span>';
+            termBody.appendChild(cur);
+
+            // Resynchronisation brutale : retirer l'animation sur tous les curseurs
+            // puis la remettre au même instant
+            document.querySelectorAll('.cursor').forEach(c => {
+              c.style.animation = 'none';
+            });
+            // Forcer le reflow pour que le navigateur prenne en compte le changement
+            void document.body.offsetHeight;
+            // Remettre l'animation sur tous en même temps
+            document.querySelectorAll('.cursor').forEach(c => {
+              c.style.animation = '';
+            });
+            return;
+          }
+          const { text, cls, pause } = lines[idx++];
+          setTimeout(() => typeLine(text, cls, termBody, next), pause);
+        }
+
+        setTimeout(next, 200);
+      }
+
       if (id === 'apropos') {
         document.querySelectorAll('.about-intro-left h2, .about-intro-left p, .about-intro-right, .about-quote, .totem-card')
           .forEach(el => el.classList.remove('visible'));
@@ -1102,37 +1229,63 @@
             setTimeout(() => el.classList.add('vis'), delay);
           });
 
-          // Terminal animé
-          const lines = [
-            {t:'cmd', v:'❯ cat parcours.json'},
-            {t:'out', v:'Loading experiences...'},
-            {t:'key', v:'stage', val:'"ATScom" · 2026 · 2 mois'},
-            {t:'key', v:'job', val:'"Airbnb" · 2023-présent'},
-            {t:'key', v:'benevol', val:'"UCS" · 2022-présent'},
-            {t:'sep', v:''},
-            {t:'cmd', v:'❯ skills --list'},
-            {t:'ok',  v:'✓ Support technique N1'},
-            {t:'ok',  v:'✓ Installation réseau'},
-            {t:'ok',  v:'✓ Gestion client'},
-            {t:'ok',  v:'✓ Travail en équipe'},
-            {t:'sep', v:''},
-            {t:'cmd', v:'❯ status'},
-            {t:'green',v:'Disponible · Ouverte aux opportunités'},
-          ];
           if (!termBody) return;
-          lines.forEach((line, i) => {
-            setTimeout(() => {
-              const el = document.createElement('div');
-              el.className = 'xp-term-line';
-              if (line.t === 'cmd')   el.innerHTML = `<span class="tc">${line.v}</span>`;
-              else if (line.t === 'key') el.innerHTML = `<span class="to">"${line.key || line.v}"</span><span style="color:#607040"> → </span><span class="ta">${line.val}</span>`;
-              else if (line.t === 'ok')   el.innerHTML = `<span class="tw">${line.v}</span>`;
-              else if (line.t === 'green') el.innerHTML = `<span style="color:#8DC050;font-weight:500;">${line.v}</span>`;
-              else if (line.t === 'sep')  el.innerHTML = '';
-              else el.innerHTML = `<span class="to">${line.v}</span>`;
-              termBody.appendChild(el);
-            }, 400 + i * 110);
-          });
+
+          const lines = [
+            { text: '❯ cat parcours.json',              cls: 'tc',  pause: 0   },
+            { text: 'Loading experiences...',            cls: 'to',  pause: 80  },
+            { text: '"ATScom" · 2026 · 2 mois',         cls: 'ta',  pause: 100 },
+            { text: '"Airbnb" · 2023-présent',           cls: 'ta',  pause: 80  },
+            { text: '"UCS" · 2022-présent',              cls: 'ta',  pause: 80  },
+            { text: '',                                  cls: '',    pause: 60  },
+            { text: '❯ skills --list',                   cls: 'tc',  pause: 80  },
+            { text: '✓ Support technique N1',            cls: 'tw',  pause: 100 },
+            { text: '✓ Installation réseau',             cls: 'tw',  pause: 80  },
+            { text: '✓ Gestion client',                  cls: 'tw',  pause: 80  },
+            { text: '✓ Travail en équipe',               cls: 'tw',  pause: 80  },
+            { text: '',                                  cls: '',    pause: 60  },
+            { text: '❯ status',                          cls: 'tc',  pause: 80  },
+            { text: 'Disponible · Ouverte aux opportunités', cls: 'to', pause: 100 },
+            { text: '',                                  cls: '',    pause: 40  },
+          ];
+
+          const CHUNK = 3, SPEED = 18;
+
+          function typeLineXp(text, cls, container, onDone) {
+            if (text === '') {
+              container.appendChild(document.createElement('br'));
+              onDone && onDone(); return;
+            }
+            const el = document.createElement('div');
+            el.className = 'xp-term-line';
+            if (cls) el.classList.add(cls);
+            container.appendChild(el);
+            let i = 0;
+            const timer = setInterval(() => {
+              i = Math.min(i + CHUNK, text.length);
+              el.textContent = text.slice(0, i);
+              if (i >= text.length) { clearInterval(timer); onDone && onDone(); }
+            }, SPEED);
+          }
+
+          let idx = 0;
+          function nextXp() {
+            if (idx >= lines.length) {
+              const cur = document.createElement('div');
+              cur.className = 'xp-term-line tc';
+              cur.innerHTML = '❯ <span class="cursor"></span>';
+              termBody.appendChild(cur);
+              // Sync curseurs
+              document.querySelectorAll('.cursor').forEach(c => { c.style.animation = 'none'; });
+              void document.body.offsetHeight;
+              document.querySelectorAll('.cursor').forEach(c => { c.style.animation = ''; });
+              return;
+            }
+            const { text, cls, pause } = lines[idx++];
+            setTimeout(() => typeLineXp(text, cls, termBody, nextXp), pause);
+          }
+
+          setTimeout(nextXp, 200);
         }, 80);
       }
 
@@ -1142,7 +1295,11 @@
         const pathEl = document.getElementById('qpath');
         const svgEl = document.getElementById('qpath-svg');
         const cursorEl = document.getElementById('qcursor');
-        if (pathEl) pathEl.style.strokeDasharray = `0 5000`;
+        if (pathEl) {
+          const len = pathEl.getTotalLength ? pathEl.getTotalLength() : 2000;
+          pathEl.style.strokeDasharray = `${len} ${len}`;
+          pathEl.style.strokeDashoffset = len;
+        }
         if (cursorEl) cursorEl.setAttribute('opacity', '0');
         if (svgEl) svgEl.classList.remove('vis');
 
@@ -1191,12 +1348,7 @@
             cursor.setAttribute('opacity', '1');
 
             const totalLen = path.getTotalLength();
-            const dash = 7;   // longueur d'un pointillé
-            const gap = 11;   // espace entre deux pointillés
-            const unit = dash + gap;
-
-            // On démarre avec strokeDasharray = "0 totalLen" — rien de visible
-            // Puis on augmente progressivement la partie visible pointillé par pointillé
+            const dash = 7, gap = 11, unit = dash + gap;
             path.style.strokeDasharray = `0 ${totalLen}`;
             path.style.strokeDashoffset = '0';
 
@@ -1207,22 +1359,14 @@
               const elapsed = now - start;
               const progress = Math.min(elapsed / duration, 1);
               const drawn = totalLen * progress;
-
-              // Nombre de pointillés complets + fraction en cours
               const fullDots = Math.floor(drawn / unit);
               const partial = drawn - fullDots * unit;
               const visibleDash = Math.min(partial, dash);
-
-              // strokeDasharray alterne dash/gap pour tous les pointillés dessinés
-              // puis ajoute le pointillé partiel en cours
               let dashArray = '';
-              for (let i = 0; i < fullDots; i++) {
-                dashArray += `${dash} ${gap} `;
-              }
+              for (let i = 0; i < fullDots; i++) dashArray += `${dash} ${gap} `;
               dashArray += `${visibleDash} ${totalLen}`;
               path.style.strokeDasharray = dashArray;
 
-              // Flèche : position + orientation tangentielle
               const pt0 = path.getPointAtLength(Math.max(drawn - 2, 0));
               const pt1 = path.getPointAtLength(Math.min(drawn + 2, totalLen));
               const angle = Math.atan2(pt1.y - pt0.y, pt1.x - pt0.x) * 180 / Math.PI + 90;
@@ -1232,7 +1376,6 @@
               if (progress < 1) {
                 requestAnimationFrame(step);
               } else {
-                // Flèche disparaît doucement à la fin
                 let fade = 1;
                 const fadeStep = () => {
                   fade -= 0.06;
@@ -1242,7 +1385,6 @@
                 requestAnimationFrame(fadeStep);
               }
             }
-
             requestAnimationFrame(step);
           }, 700);
         }, 120);
@@ -1255,19 +1397,46 @@
             const delay = parseInt(el.dataset.delay || 0);
             setTimeout(() => el.classList.add('vis'), delay);
           });
-          // Carte Leaflet
+          // Carte Leaflet avec animation zoom vers Colmar — reset à chaque visite
           setTimeout(() => {
+            // Détruire l'instance existante si elle existe
             const mapEl = document.getElementById('ct-leaflet-map');
-            if (!mapEl || mapEl._leaflet_id) return;
-            const map = L.map('ct-leaflet-map', { zoomControl: true, scrollWheelZoom: false }).setView([48.0794, 7.3589], 13);
+            if (!mapEl) return;
+            if (mapEl._leaflet_id) {
+              mapEl._leaflet_map && mapEl._leaflet_map.remove();
+              mapEl.innerHTML = '';
+              delete mapEl._leaflet_id;
+            }
+
+            // Créer la map depuis zéro
+            const map = L.map('ct-leaflet-map', {
+              zoomControl: true,
+              scrollWheelZoom: false,
+              zoomAnimation: true,
+              fadeAnimation: true
+            }).setView([48.0794, 7.3589], 2);
+
+            mapEl._leaflet_map = map;
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
               attribution: '© OpenStreetMap'
             }).addTo(map);
+
             const icon = L.divIcon({
-              html: `<div style="background:#4A5C2A;width:14px;height:14px;border-radius:50%;border:3px solid #C8D9A8;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>`,
+              html: `<div style="background:#EA4335;width:14px;height:14px;border-radius:50%;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.4);"></div>`,
               iconSize: [14, 14], iconAnchor: [7, 7], className: ''
             });
-            L.marker([48.0794, 7.3589], { icon }).addTo(map).bindPopup('<b>Colmar</b><br>Alsace, France').openPopup();
+
+            // Animation progressive zoom vers Colmar
+            setTimeout(() => map.flyTo([48.0794, 7.3589], 5,  { duration: 0.8, easeLinearity: 0.5 }), 300);
+            setTimeout(() => map.flyTo([48.0794, 7.3589], 9,  { duration: 0.9, easeLinearity: 0.4 }), 1200);
+            setTimeout(() => map.flyTo([48.0794, 7.3589], 13, { duration: 1.0, easeLinearity: 0.3 }), 2200);
+            setTimeout(() => {
+              L.marker([48.0794, 7.3589], { icon })
+                .addTo(map)
+                .bindPopup('<b>Colmar</b><br>Alsace, France')
+                .openPopup();
+            }, 3300);
           }, 300);
         }, 80);
       }
@@ -1310,6 +1479,15 @@
       const el = document.getElementById('per-' + id);
       if (el)  el.classList.add('active');
       if (btn) btn.classList.add('active');
+      // Animer les cartes
+      const cards = document.querySelectorAll('#per-' + id + ' .proj-reveal');
+      cards.forEach(c => c.classList.remove('vis'));
+      setTimeout(() => {
+        cards.forEach(c => {
+          const delay = parseInt(c.dataset.delay || 0);
+          setTimeout(() => c.classList.add('vis'), delay);
+        });
+      }, 50);
     }
 
     document.getElementById('mobile-btn').addEventListener('click', function () {
@@ -1350,6 +1528,9 @@
       fb.textContent = "Votre client mail va s'ouvrir pour envoyer le message.";
       fb.className = 'form-feedback success';
     });
+
+    // Déclencher l'animation typewriter au chargement initial
+    showPage('accueil');
   </script>
 
 </body>
