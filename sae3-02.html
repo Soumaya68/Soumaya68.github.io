@@ -2,7 +2,169 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title><!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAE 3.02 — Routage en oignon | Soumaya RABAH</title>
+<link rel="stylesheet" href="projet.css"/>
+<style>:root{--project-color:#7A3A8C;}</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
+  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-meta">
+      <span class="hero-badge">SAE 3.02 · 2ème année</span>
+      <span class="hero-status">Terminé</span>
+    </div>
+    <div class="hero-num">3.02</div>
+    <h1>Application communicante <em>distribuée</em></h1>
+    <p class="hero-desc">Système de messagerie anonyme inspiré du routage en oignon — architecture client/serveur multi-composants avec chiffrement RSA multi-couches et interfaces PyQt6. En binôme.</p>
+    <div class="chips">
+      <span class="chip chip-dark">Python</span>
+      <span class="chip chip-pale">PyQt6</span>
+      <span class="chip chip-dark">TCP Sockets</span>
+      <span class="chip chip-pale">RSA / Onion</span>
+      <span class="chip chip-dark">MariaDB</span>
+      <span class="chip chip-pale">Multi-threading</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T · UE Programmer</div><div class="hib-sub">Semestre 3 · 2024/2025</div></div>
+      <div class="hero-info-block"><div class="hib-label">Encadrants</div><div class="hib-value">ALBERT Arnaud</div><div class="hib-sub">DROUHIN Frédéric</div></div>
+      <div class="hero-info-block"><div class="hib-label">Équipe</div>
+        <div class="team-list">
+          <div class="team-item"><div class="team-av" style="background:rgba(122,58,140,0.3);color:#C080E0;">SR</div><div><div class="team-name">Soumaya RABAH</div><div class="team-role">Interfaces · BDD · Org.</div></div></div>
+          <div class="team-item"><div class="team-av" style="background:rgba(122,58,140,0.2);color:#C080E0;">NH</div><div><div class="team-name">Nolan HOARAU</div><div class="team-role">Réseau · Chiffrement</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats-grid">
+      <div class="hsg-item"><div class="hsg-num">8</div><div class="hsg-label">Phases</div></div>
+      <div class="hsg-item"><div class="hsg-num">RSA</div><div class="hsg-label">Chiffrement</div></div>
+      <div class="hsg-item"><div class="hsg-num">2</div><div class="hsg-label">Équipiers</div></div>
+      <div class="hsg-item"><div class="hsg-num">3</div><div class="hsg-label">Composants</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="page-body">
+  <div>
+    <div class="section">
+      <div class="s-eyebrow">Contexte</div>
+      <h2>Développer une application communicante distribuée</h2>
+      <p>Ce projet consistait à concevoir un système de <strong>messagerie anonyme</strong> inspiré du principe du <strong>routage en oignon</strong> — les messages sont chiffrés en plusieurs couches successives et traversent des routeurs intermédiaires avant d'atteindre leur destinataire.</p>
+      <div class="grid-3">
+        <div class="card"><h4>Application distribuée</h4><p>Système client/serveur multi-composants avec échanges en temps réel</p></div>
+        <div class="card"><h4>Sécurité & anonymisation</h4><p>Routage en oignon, chiffrement RSA multi-couches, masquage d'identité</p></div>
+        <div class="card"><h4>Interface & UX</h4><p>Interfaces graphiques PyQt6 ergonomiques pour monitoring et communication</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Architecture</div>
+      <h2>Système distribué en 3 niveaux</h2>
+      <p>Chaque composant joue un rôle précis dans la chaîne de communication anonymisée.</p>
+      <div class="grid-3">
+        <div class="card-plain"><h4>🖥️ Master (serveur central)</h4><p>Gère les connexions, distribue les clés et maintient la topologie du réseau</p></div>
+        <div class="card-plain"><h4>🔀 Routeurs intermédiaires</h4><p>Transfèrent les messages en supprimant une couche de chiffrement à chaque étape</p></div>
+        <div class="card-plain"><h4>👤 Clients</h4><p>Permettent l'envoi et la réception de messages anonymes</p></div>
+      </div>
+      <p style="margin-top:1rem;">Technologies clés : sockets <strong>TCP</strong>, chiffrement <strong>RSA simplifié</strong>, <strong>multi-threading</strong> pour les communications simultanées, persistance <strong>MariaDB</strong>, interfaces <strong>PyQt6</strong>.</p>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Mon rôle</div>
+      <h2>Interfaces, base de données & organisation</h2>
+      <p>J'ai pris en charge toute la partie <strong>interface utilisateur, gestion des données et organisation du projet</strong>, en binôme avec Nolan qui gérait la logique réseau et le chiffrement.</p>
+      <div class="grid-2">
+        <div class="card-plain"><h4>🎨 Interfaces PyQt6</h4><p>Conception et développement des GUI pour le Master et le Client</p></div>
+        <div class="card-plain"><h4>🗃️ Base de données MariaDB</h4><p>Mise en place et gestion de la persistance des données</p></div>
+        <div class="card-plain"><h4>🔗 Intégration interface ↔ backend</h4><p>Connexion via signaux Qt entre interface et threads réseau</p></div>
+        <div class="card-plain"><h4>📋 Organisation & documentation</h4><p>Git, structure du projet, planning, documentation technique</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Chronologie</div>
+      <h2>8 étapes du projet</h2>
+      <div class="timeline">
+        <div class="tl"><div class="tl-dot">1</div><div class="tl-body"><h4>Analyse du cahier des charges</h4><p>Définition de l'architecture et des contraintes</p></div></div>
+        <div class="tl"><div class="tl-dot">2</div><div class="tl-body"><h4>Conception de l'architecture</h4><p>Modélisation du système distribué en 3 niveaux</p></div></div>
+        <div class="tl"><div class="tl-dot">3</div><div class="tl-body"><h4>Développement des modules</h4><p>Master, Routeur, Client — développement parallèle</p></div></div>
+        <div class="tl"><div class="tl-dot">4</div><div class="tl-body"><h4>Base de données</h4><p>Création et intégration MariaDB</p></div></div>
+        <div class="tl"><div class="tl-dot">5</div><div class="tl-body"><h4>Interfaces graphiques</h4><p>Développement des GUI PyQt6</p></div></div>
+        <div class="tl"><div class="tl-dot">6</div><div class="tl-body"><h4>Intégration</h4><p>Connexion de tous les composants</p></div></div>
+        <div class="tl"><div class="tl-dot">7</div><div class="tl-body"><h4>Tests multi-machines / VM</h4><p>Validation en conditions réelles</p></div></div>
+        <div class="tl"><div class="tl-dot">8</div><div class="tl-body"><h4>Documentation & finalisation</h4><p>Rédaction de la documentation technique et utilisateur</p></div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Ressenti</div>
+      <h2>Ce que j'en retiens</h2>
+      <div class="ressenti">
+        <p>Ce projet a été <strong>particulièrement enrichissant</strong> car il combinait développement, réseau et cybersécurité. J'ai découvert PyQt6 et appris à concevoir des interfaces complètes et interactives. La principale difficulté : l'intégration entre l'interface et les threads réseau — qui m'a permis de développer une vraie méthodologie de résolution de problèmes. Ce projet a renforcé mon intérêt pour les systèmes complexes et la cybersécurité.</p>
+      </div>
+      <div class="skills-wrap" style="margin-top:1rem;">
+        <span class="skill-badge sb-g">Python avancé</span><span class="skill-badge sb-g">PyQt6</span><span class="skill-badge sb-g">Sockets TCP</span><span class="skill-badge sb-d">RSA / Chiffrement</span><span class="skill-badge sb-d">Routage en oignon</span><span class="skill-badge sb-g">MariaDB</span><span class="skill-badge sb-d">Multi-threading</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="en-box">
+        <span class="en-flag">🇬🇧 English Summary</span>
+        <div class="en-title">Distributed Communication System — Onion Routing</div>
+        <p class="en-body">This project involved designing a <em>distributed messaging application</em> based on onion routing principles. The architecture includes a central server (Master), intermediate routers, and clients. Messages are <em>encrypted in multiple RSA layers</em> and transmitted through several nodes to ensure anonymity. I was responsible for the <em>graphical interfaces (PyQt6)</em>, database management (MariaDB), and project organization. This project strengthened my skills in networking, Python development, and system integration.</p>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sb">
+      <div class="sb-title">Informations</div>
+      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 3 · 2024/2025</span></div>
+      <div class="sb-line"><span class="sb-tick">👥</span><span>Binôme</span></div>
+      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
+      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Administrer · UE Programmer</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Technologies</div>
+      <span class="sb-tag">Python</span><span class="sb-tag">PyQt6</span><span class="sb-tag">TCP Sockets</span><span class="sb-tag">RSA</span><span class="sb-tag">MariaDB</span><span class="sb-tag">Multi-threading</span><span class="sb-tag">Git</span>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Compétences développées</div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Application client/serveur</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Chiffrement asymétrique (RSA)</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Interfaces graphiques PyQt6</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Architecture distribuée</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Routage en oignon</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">GitHub</div>
+      <a href="https://github.com/NolanHoarau/SAE_3.02" target="_blank" class="sb-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        NolanHoarau/SAE_3.02
+      </a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span class="foot-l">SAE 3.02 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
+  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
+</script>
+</body></html></title>
 </head>
 <body>
 

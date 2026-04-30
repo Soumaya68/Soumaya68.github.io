@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAE 2.03 — Trafic Aérien | Soumaya RABAH</title>
+<link rel="stylesheet" href="projet.css"/>
+<style>:root{--project-color:#4A5C2A;}</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
+  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-meta">
+      <span class="hero-badge">SAE 2.03 · 1ère année</span>
+      <span class="hero-status">Terminé</span>
+    </div>
+    <div class="hero-num">2.03</div>
+    <h1>Gestion du <em>Trafic Aérien</em></h1>
+    <p class="hero-desc">Application web complète de supervision aéroportuaire — vols, pistes, avions, compagnies. Django + MariaDB déployé sur VM Linux en équipe de 3.</p>
+    <div class="chips">
+      <span class="chip chip-dark">Django 5.2</span>
+      <span class="chip chip-pale">MariaDB</span>
+      <span class="chip chip-dark">Nginx · Gunicorn</span>
+      <span class="chip chip-pale">VM Linux</span>
+      <span class="chip chip-dark">CRUD complet</span>
+      <span class="chip chip-pale">Python</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T</div><div class="hib-sub">IUT de Colmar · Promo 2025</div></div>
+      <div class="hero-info-block"><div class="hib-label">Équipe</div>
+        <div class="team-list">
+          <div class="team-item"><div class="team-av" style="background:rgba(141,192,80,0.2);color:#8DC050;">SR</div><div><div class="team-name">Soumaya RABAH</div><div class="team-role">Frontend · UX-UI</div></div></div>
+          <div class="team-item"><div class="team-av" style="background:rgba(155,138,196,0.2);color:#9B8AC4;">KL</div><div><div class="team-name">Kenzy LABOYRIE</div><div class="team-role">Architecte système</div></div></div>
+          <div class="team-item"><div class="team-av" style="background:rgba(124,163,199,0.2);color:#7CA3C7;">YM</div><div><div class="team-name">Yoann MULLER</div><div class="team-role">Backend · BDD</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats-grid">
+      <div class="hsg-item"><div class="hsg-num">6</div><div class="hsg-label">Phases</div></div>
+      <div class="hsg-item"><div class="hsg-num">2 VM</div><div class="hsg-label">Infrastructure</div></div>
+      <div class="hsg-item"><div class="hsg-num">CRUD</div><div class="hsg-label">Complet</div></div>
+      <div class="hsg-item"><div class="hsg-num">3</div><div class="hsg-label">Équipiers</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="page-body">
+  <div>
+    <div class="section">
+      <div class="s-eyebrow">Contexte</div>
+      <h2>Mettre en place une solution informatique pour l'entreprise</h2>
+      <p>La SAE 2.03 nous a demandé de concevoir une <strong>application web complète de gestion du trafic aérien</strong> entre aéroports. Notre équipe a développé un système permettant aux gestionnaires de superviser vols, pistes, avions et compagnies, avec des vérifications métier intelligentes.</p>
+      <div class="grid-2">
+        <div class="card"><h4>Interface complète</h4><p>Gestion efficace des opérations aéroportuaires via une interface intuitive</p></div>
+        <div class="card"><h4>CRUD intégral</h4><p>Création, lecture, modification et suppression sur toutes les entités</p></div>
+        <div class="card"><h4>Vérifications métier</h4><p>Compatibilité piste/avion, disponibilité, contraintes temporelles</p></div>
+        <div class="card"><h4>Import/Export CSV</h4><p>Gestion de fichiers pour l'intégration de vols en masse</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Chronologie</div>
+      <h2>6 phases du projet</h2>
+      <div class="timeline">
+        <div class="tl"><div class="tl-dot">1</div><div class="tl-body"><h4>Base de données</h4><p>Structure MariaDB et insertion des données de test</p></div></div>
+        <div class="tl"><div class="tl-dot">2</div><div class="tl-body"><h4>Intégration Django</h4><p>Génération automatique via <code>python manage.py inspectdb</code></p></div></div>
+        <div class="tl"><div class="tl-dot">3</div><div class="tl-body"><h4>Interface de consultation</h4><p>Pages d'affichage optimisées avec <code>select_related()</code></p></div></div>
+        <div class="tl"><div class="tl-dot">4</div><div class="tl-body"><h4>CRUD complet</h4><p>Modification, suppression et création pour toutes les entités</p></div></div>
+        <div class="tl"><div class="tl-dot">5</div><div class="tl-body"><h4>Fonctionnalités avancées</h4><p>Import CSV, vérifications techniques automatiques</p></div></div>
+        <div class="tl"><div class="tl-dot">6</div><div class="tl-body"><h4>Déploiement</h4><p>Configuration VM Linux, Nginx et Gunicorn en production</p></div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Architecture</div>
+      <h2>Stack technique & infrastructure</h2>
+      <p>Deux VM Linux séparées : serveur web (Gunicorn + Nginx) et base de données MariaDB distante — architecture proche d'un environnement professionnel réel.</p>
+      <div class="grid-4">
+        <div class="card-plain"><h4>Django 5.2</h4><p>Backend MVT</p></div>
+        <div class="card-plain"><h4>MariaDB</h4><p>Base de données</p></div>
+        <div class="card-plain"><h4>Nginx</h4><p>Reverse proxy</p></div>
+        <div class="card-plain"><h4>Gunicorn</h4><p>Serveur WSGI</p></div>
+        <div class="card-plain"><h4>Python</h4><p>Logique métier</p></div>
+        <div class="card-plain"><h4>HTML5/CSS3</h4><p>Frontend</p></div>
+        <div class="card-plain"><h4>VM Linux</h4><p>Infrastructure</p></div>
+        <div class="card-plain"><h4>ORM Django</h4><p>Accès données</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Mon rôle</div>
+      <h2>Développeuse Frontend & UX-UI</h2>
+      <p>J'ai pris en charge la conception et le développement de l'intégralité des interfaces utilisateur — maquettes, HTML/CSS, templates Django et formulaires CRUD.</p>
+      <div class="grid-2">
+        <div class="card-plain"><h4>🎨 Design des interfaces</h4><p>Maquettes, charte graphique et développement HTML5/CSS3</p></div>
+        <div class="card-plain"><h4>⚙️ Templates Django</h4><p>Intégration dans le moteur de templates avec logique dynamique</p></div>
+        <div class="card-plain"><h4>📝 Formulaires CRUD</h4><p>Saisie avec validation côté client</p></div>
+        <div class="card-plain"><h4>🧭 Expérience utilisateur</h4><p>Navigation intuitive, gestion des erreurs, accessibilité</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Bilan</div>
+      <h2>Acquis & compétences</h2>
+      <p>Ce projet m'a permis de comprendre le cycle complet de développement web métier : de la modélisation BDD au déploiement serveur, en passant par la logique Django et les relations complexes entre entités.</p>
+      <div class="skills-wrap">
+        <span class="skill-badge sb-g">Django</span><span class="skill-badge sb-g">Python</span><span class="skill-badge sb-g">SQL</span><span class="skill-badge sb-d">MariaDB</span><span class="skill-badge sb-d">Nginx</span><span class="skill-badge sb-d">VM Linux</span><span class="skill-badge sb-g">UX-UI</span><span class="skill-badge sb-d">Architecture MVT</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="en-box">
+        <span class="en-flag">🇬🇧 English Summary</span>
+        <div class="en-title">Air Traffic Management Web Application</div>
+        <p class="en-body">This project involved building a <em>complete web application</em> for managing airport operations using <em>Django 5.2</em> and <em>MariaDB</em>, deployed on two Linux VMs (Nginx + Gunicorn). As Frontend Developer & UX-UI Expert, I designed all interfaces, CRUD forms and Django templates. The system manages airports, runways, aircraft and flights with intelligent business logic including compatibility checks and temporal constraints.</p>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sb">
+      <div class="sb-title">Informations</div>
+      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 2 · 2024/2025</span></div>
+      <div class="sb-line"><span class="sb-tick">👥</span><span>Équipe de 3</span></div>
+      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
+      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Programmer</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Technologies</div>
+      <span class="sb-tag">Django</span><span class="sb-tag">Python</span><span class="sb-tag">MariaDB</span><span class="sb-tag">HTML5</span><span class="sb-tag">CSS3</span><span class="sb-tag">Nginx</span><span class="sb-tag">Gunicorn</span><span class="sb-tag">Linux</span><span class="sb-tag">SQL</span><span class="sb-tag">ORM</span><span class="sb-tag">Git</span>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Compétences BUT R&T</div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Administrer — déploiement VM</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Programmer — Django, Python, SQL</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Architecture client/serveur</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Travail en équipe</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Entités gérées</div>
+      <div class="sb-line"><span>✈️</span><span>Vols & planification</span></div>
+      <div class="sb-line"><span>🛫</span><span>Aéroports & pistes</span></div>
+      <div class="sb-line"><span>🛩️</span><span>Avions & types</span></div>
+      <div class="sb-line"><span>🏢</span><span>Compagnies aériennes</span></div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span class="foot-l">SAE 2.03 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
+  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
+</script>
+</body></html>

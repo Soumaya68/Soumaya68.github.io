@@ -1,10 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAE 3.01 — Prise connectée IoT | Soumaya RABAH</title>
+<link rel="stylesheet" href="projet.css"/>
+<style>:root{--project-color:#3A7A8C;}</style>
 </head>
 <body>
+<nav>
+  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
+  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+</nav>
 
-</body>
-</html>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-meta">
+      <span class="hero-badge">SAE 3.01 · 2ème année</span>
+      <span class="hero-status">Terminé</span>
+    </div>
+    <div class="hero-num">3.01</div>
+    <h1>Prise connectée <em>intelligente</em> en Wi-Fi</h1>
+    <p class="hero-desc">Système IoT complet : prise Wi-Fi ESP8266, serveur Raspberry Pi, interface web, application Android et broker MQTT. Contrôle à distance, programmation horaire et supervision.</p>
+    <div class="chips">
+      <span class="chip chip-dark">ESP8266</span>
+      <span class="chip chip-pale">Raspberry Pi</span>
+      <span class="chip chip-dark">MQTT</span>
+      <span class="chip chip-pale">Android</span>
+      <span class="chip chip-dark">Wi-Fi IoT</span>
+      <span class="chip chip-pale">Sécurisation</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T · UE Connecter</div><div class="hib-sub">Semestre 3 · 2024/2025</div></div>
+      <div class="hero-info-block"><div class="hib-label">Encadrant</div><div class="hib-value">MURA Laurent</div></div>
+      <div class="hero-info-block"><div class="hib-label">Équipe</div>
+        <div class="team-list">
+          <div class="team-item"><div class="team-av" style="background:rgba(58,122,140,0.3);color:#7CC4D8;">SR</div><div><div class="team-name">Soumaya RABAH</div><div class="team-role">Architecture & dev</div></div></div>
+          <div class="team-item"><div class="team-av" style="background:rgba(58,122,140,0.2);color:#7CC4D8;">NH</div><div><div class="team-name">Nolan HOARAU</div><div class="team-role">Électronique & réseau</div></div></div>
+          <div class="team-item"><div class="team-av" style="background:rgba(58,122,140,0.2);color:#7CC4D8;">CF</div><div><div class="team-name">Chahinez FAHMI</div><div class="team-role">Développement</div></div></div>
+          <div class="team-item"><div class="team-av" style="background:rgba(58,122,140,0.2);color:#7CC4D8;">EZ</div><div><div class="team-name">+ 2 équipiers</div><div class="team-role">5 personnes au total</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats-grid">
+      <div class="hsg-item"><div class="hsg-num">8</div><div class="hsg-label">Phases</div></div>
+      <div class="hsg-item"><div class="hsg-num">IoT</div><div class="hsg-label">Architecture</div></div>
+      <div class="hsg-item"><div class="hsg-num">5</div><div class="hsg-label">Équipiers</div></div>
+      <div class="hsg-item"><div class="hsg-num">MQTT</div><div class="hsg-label">Protocole</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="page-body">
+  <div>
+    <div class="section">
+      <div class="s-eyebrow">Contexte</div>
+      <h2>Concevoir et déployer une prise connectée intelligente</h2>
+      <p>Ce projet avait pour objectif de concevoir un système IoT complet permettant de <strong>contrôler à distance des équipements électriques</strong> via une interface web et une application mobile. L'architecture combine électronique, réseaux et développement logiciel.</p>
+      <div class="grid-3">
+        <div class="card"><h4>Système de transmission</h4><p>Communication sans fil Wi-Fi entre équipements</p></div>
+        <div class="card"><h4>Application communicante</h4><p>Interfaces web et mobile pour piloter le système</p></div>
+        <div class="card"><h4>Sécurité & supervision</h4><p>Mécanismes de sécurisation et de notification</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Architecture</div>
+      <h2>Système IoT distribué</h2>
+      <p>L'architecture repose sur trois couches interconnectées : les objets connectés, le serveur central et les interfaces utilisateur.</p>
+      <div class="grid-2">
+        <div class="card-plain"><h4>🔌 Prise Wi-Fi (ESP8266)</h4><p>Carte électronique avec module Wi-Fi intégré pour le contrôle local</p></div>
+        <div class="card-plain"><h4>🖥️ Serveur Raspberry Pi</h4><p>Hébergement du serveur web et du broker MQTT central</p></div>
+        <div class="card-plain"><h4>🌐 Interface web</h4><p>Contrôle à distance, programmation horaire, supervision</p></div>
+        <div class="card-plain"><h4>📱 Application Android</h4><p>Reprend les fonctionnalités principales sur mobile</p></div>
+      </div>
+      <p style="margin-top:1rem;">Fonctionnalités avancées : <strong>programmation horaire</strong>, mesure de température via capteur, <strong>notifications</strong> (changement d'état, seuil dépassé) et sécurisation des accès.</p>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Chronologie</div>
+      <h2>8 étapes de développement</h2>
+      <div class="timeline">
+        <div class="tl"><div class="tl-dot">1</div><div class="tl-body"><h4>Analyse du cahier des charges</h4><p>Définition des besoins et des contraintes techniques</p></div></div>
+        <div class="tl"><div class="tl-dot">2</div><div class="tl-body"><h4>Conception de la carte électronique</h4><p>Intégration du module ESP8266 et des composants</p></div></div>
+        <div class="tl"><div class="tl-dot">3</div><div class="tl-body"><h4>Serveur web (Raspberry Pi)</h4><p>Configuration et déploiement du serveur central</p></div></div>
+        <div class="tl"><div class="tl-dot">4</div><div class="tl-body"><h4>Interface web</h4><p>Développement du panneau de contrôle</p></div></div>
+        <div class="tl"><div class="tl-dot">5</div><div class="tl-body"><h4>Application Android</h4><p>Développement de l'app mobile</p></div></div>
+        <div class="tl"><div class="tl-dot">6</div><div class="tl-body"><h4>Broker MQTT</h4><p>Mise en place de la communication entre composants</p></div></div>
+        <div class="tl"><div class="tl-dot">7</div><div class="tl-body"><h4>Fonctionnalités avancées</h4><p>Capteur température, notifications, plages horaires</p></div></div>
+        <div class="tl"><div class="tl-dot">8</div><div class="tl-body"><h4>Sécurisation & tests</h4><p>Validation complète du système</p></div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Mon rôle</div>
+      <h2>Conception globale & développement</h2>
+      <p>J'ai participé à la conception et à la mise en œuvre globale du système, en contribuant à plusieurs aspects du projet de manière transversale.</p>
+      <div class="grid-2">
+        <div class="card-plain"><h4>📋 Analyse & conception</h4><p>Analyse du cahier des charges et participation à la conception de l'architecture</p></div>
+        <div class="card-plain"><h4>💻 Développement interfaces</h4><p>Contribution au développement des interfaces web et mobile</p></div>
+        <div class="card-plain"><h4>🔒 Réseau & sécurité</h4><p>Participation à la sécurisation et à la communication réseau</p></div>
+        <div class="card-plain"><h4>🧪 Tests & validation</h4><p>Tests du système complet et validation des fonctionnalités</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Ressenti</div>
+      <h2>Ce que j'en retiens</h2>
+      <div class="ressenti">
+        <p>Ce projet m'a permis de découvrir le fonctionnement d'un <strong>système IoT complet</strong>, en combinant électronique, réseau et développement. J'ai particulièrement apprécié la diversité des compétences mobilisées et la complexité de la communication entre composants. Il a renforcé ma capacité à analyser un cahier des charges et à proposer des solutions techniques adaptées.</p>
+      </div>
+      <div class="skills-wrap" style="margin-top:1rem;">
+        <span class="skill-badge sb-g">Communication Wi-Fi</span><span class="skill-badge sb-g">Protocole MQTT</span><span class="skill-badge sb-g">Architecture IoT</span><span class="skill-badge sb-d">ESP8266</span><span class="skill-badge sb-d">Raspberry Pi</span><span class="skill-badge sb-g">Sécurisation réseau</span><span class="skill-badge sb-d">Android</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="en-box">
+        <span class="en-flag">🇬🇧 English Summary</span>
+        <div class="en-title">Smart Wi-Fi Connected Power Outlet — IoT System</div>
+        <p class="en-body">This project involved designing and implementing a <em>complete IoT system</em> including a hardware device (ESP8266), a web server (Raspberry Pi), a web interface, and an Android application. The system allows users to <em>control devices remotely</em>, schedule operations, monitor temperature, and receive notifications. This project helped me understand how connected systems work, from hardware design to network communication and application development.</p>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sb">
+      <div class="sb-title">Informations</div>
+      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 3 · 2024/2025</span></div>
+      <div class="sb-line"><span class="sb-tick">👥</span><span>Équipe de 5</span></div>
+      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
+      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Connecter</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Technologies</div>
+      <span class="sb-tag">ESP8266</span><span class="sb-tag">Raspberry Pi</span><span class="sb-tag">MQTT</span><span class="sb-tag">Android</span><span class="sb-tag">Wi-Fi</span><span class="sb-tag">HTTP</span><span class="sb-tag">Python</span><span class="sb-tag">HTML/CSS</span>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Apprentissages critiques</div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Déployer des systèmes de transmission complexes</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Connexion multi-site via réseau opérateur</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Questionner un cahier des charges RT</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">GitHub</div>
+      <a href="https://github.com/NolanHoarau/SAE_3.01" target="_blank" class="sb-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        NolanHoarau/SAE_3.01
+      </a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span class="foot-l">SAE 3.01 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
+  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
+</script>
+</body></html>

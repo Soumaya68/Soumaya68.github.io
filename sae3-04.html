@@ -1,10 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAE 3.Cyber.04 — Pentesting | Soumaya RABAH</title>
+<link rel="stylesheet" href="projet.css"/>
+<style>:root{--project-color:#2A4A1E;}</style>
 </head>
 <body>
+<nav>
+  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
+  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+</nav>
 
-</body>
-</html>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-meta">
+      <span class="hero-badge">SAE 3.Cyber.04 · 2ème année</span>
+      <span class="hero-status">Terminé</span>
+    </div>
+    <div class="hero-num">C.04</div>
+    <h1>Découvrir le <em>pentesting</em></h1>
+    <p class="hero-desc">Initiation aux techniques de test d'intrusion via des challenges cybersécurité — vulnérabilités web, analyse réseau, Linux, OSINT. 92% du parcours Root-Me complété en autonomie.</p>
+    <div class="chips">
+      <span class="chip chip-dark">Root-Me</span>
+      <span class="chip chip-pale">SQL Injection</span>
+      <span class="chip chip-dark">Analyse PCAP</span>
+      <span class="chip chip-pale">Linux / Bash</span>
+      <span class="chip chip-dark">OSINT</span>
+      <span class="chip chip-pale">TCP Sockets</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T · UE Sécuriser</div><div class="hib-sub">Semestre 3 · 2024/2025</div></div>
+      <div class="hero-info-block"><div class="hib-label">Encadrant</div><div class="hib-value">GILG Marc</div></div>
+      <div class="hero-info-block"><div class="hib-label">Type</div><div class="hib-value">Projet individuel</div><div class="hib-sub">Autonomie complète</div></div>
+    </div>
+    <div class="hero-stats-grid">
+      <div class="hsg-item"><div class="hsg-num">92%</div><div class="hsg-label">Parcours</div></div>
+      <div class="hsg-item"><div class="hsg-num">69/75</div><div class="hsg-label">Challenges</div></div>
+      <div class="hsg-item"><div class="hsg-num">8240</div><div class="hsg-label">Points</div></div>
+      <div class="hsg-item"><div class="hsg-num">15/18</div><div class="hsg-label">Modules</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="page-body">
+  <div>
+    <div class="section">
+      <div class="s-eyebrow">Contexte</div>
+      <h2>Initiation au test d'intrusion par la pratique</h2>
+      <p>Ce projet individuel avait pour objectif de <strong>comprendre les méthodes utilisées par un attaquant</strong> afin de mieux sécuriser un système d'information. Il s'articule autour des différentes phases d'un test d'intrusion : reconnaissance, identification des vulnérabilités et exploitation.</p>
+      <div class="grid-2">
+        <div class="card"><h4>Objectifs</h4><p>Comprendre les phases d'un pentest, identifier et exploiter des vulnérabilités, adopter une démarche méthodologique et éthique</p></div>
+        <div class="card"><h4>Plateforme</h4><p>Challenges sur Root-Me — parcours EDU | BUT Tronc commun</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Thématiques</div>
+      <h2>Domaines explorés</h2>
+      <div class="grid-2">
+        <div class="card-plain"><h4>🌐 Vulnérabilités web</h4><p>SQL injection, failles applicatives, contournement de protections</p></div>
+        <div class="card-plain"><h4>📡 Analyse réseau</h4><p>Captures PCAP, identification de protocoles, analyse de trafic</p></div>
+        <div class="card-plain"><h4>🐧 Systèmes Linux</h4><p>Bash, élévation de privilèges, exploration système</p></div>
+        <div class="card-plain"><h4>🔍 OSINT</h4><p>Recherche d'informations, analyse DNS, scan de services</p></div>
+        <div class="card-plain"><h4>💻 Scripting</h4><p>Développement de scripts Python avec sockets TCP</p></div>
+        <div class="card-plain"><h4>📋 Méthodologie</h4><p>Démarche d'investigation, documentation, éthique</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Méthodologie</div>
+      <h2>Approche inspirée du pentest réel</h2>
+      <div class="grid-3">
+        <div class="card"><h4>🔍 Reconnaissance</h4><p>OSINT, analyse DNS et services, scan de ports</p></div>
+        <div class="card"><h4>🔬 Analyse</h4><p>Identification des vulnérabilités, étude du comportement des applications</p></div>
+        <div class="card"><h4>⚡ Exploitation</h4><p>Mise en œuvre d'attaques contrôlées, validation des failles</p></div>
+      </div>
+      <p style="margin-top:1rem;">L'évaluation finale consistait à <strong>expliquer en détail la résolution d'un challenge</strong> : démarche, outils utilisés, raisonnement — sans se limiter à la réponse finale.</p>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Progression</div>
+      <h2>Résultats sur Root-Me</h2>
+      <div class="grid-2">
+        <div class="card-plain" style="text-align:center;padding:1.5rem;">
+          <div style="font-family:var(--f-display);font-size:2.5rem;font-weight:800;color:var(--project-color);">92%</div>
+          <div style="font-family:var(--f-mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Parcours complété</div>
+        </div>
+        <div class="card-plain" style="text-align:center;padding:1.5rem;">
+          <div style="font-family:var(--f-display);font-size:2.5rem;font-weight:800;color:var(--project-color);">8 240</div>
+          <div style="font-family:var(--f-mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Points sur 9 590</div>
+        </div>
+        <div class="card-plain" style="text-align:center;padding:1.5rem;">
+          <div style="font-family:var(--f-display);font-size:2.5rem;font-weight:800;color:var(--project-color);">69/75</div>
+          <div style="font-family:var(--f-mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Challenges réussis</div>
+        </div>
+        <div class="card-plain" style="text-align:center;padding:1.5rem;">
+          <div style="font-family:var(--f-display);font-size:2.5rem;font-weight:800;color:var(--project-color);">15/18</div>
+          <div style="font-family:var(--f-mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Modules validés</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Ressenti</div>
+      <h2>Ce que j'en retiens</h2>
+      <div class="ressenti">
+        <p>Ce projet m'a permis de <strong>découvrir concrètement le domaine du pentesting</strong>. J'ai particulièrement apprécié le format sous forme de challenges, qui pousse à réfléchir, tester et comprendre en profondeur les mécanismes de sécurité et leurs failles. Certaines épreuves étaient complexes et m'ont demandé de la persévérance — elles m'ont permis de développer une <strong>véritable logique d'analyse et de recherche</strong>. Cette SAE a renforcé mon intérêt pour la cybersécurité.</p>
+      </div>
+      <div class="skills-wrap" style="margin-top:1rem;">
+        <span class="skill-badge sb-g">Identification de vulnérabilités</span><span class="skill-badge sb-g">SQL Injection</span><span class="skill-badge sb-g">Analyse réseau</span><span class="skill-badge sb-d">Linux</span><span class="skill-badge sb-d">OSINT</span><span class="skill-badge sb-g">Méthodologie pentest</span><span class="skill-badge sb-d">Autonomie</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="en-box">
+        <span class="en-flag">🇬🇧 English Summary</span>
+        <div class="en-title">Introduction to Penetration Testing — Root-Me Challenges</div>
+        <p class="en-body">This individual project introduced <em>penetration testing</em> through hands-on cybersecurity challenges on the Root-Me platform. I completed <em>69 out of 75 challenges</em> (92% of the learning path), covering web vulnerabilities, network analysis, Linux systems, and OSINT. The goal was to understand how attackers identify and exploit vulnerabilities in order to better secure systems. The final assessment required a detailed explanation of a challenge including the methodology, tools used, and reasoning process.</p>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sb">
+      <div class="sb-title">Informations</div>
+      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 3 · 2024/2025</span></div>
+      <div class="sb-line"><span class="sb-tick">👤</span><span>Projet individuel</span></div>
+      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
+      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Sécuriser · UE Surveiller</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Outils & techniques</div>
+      <span class="sb-tag">Root-Me</span><span class="sb-tag">SQL Injection</span><span class="sb-tag">Wireshark</span><span class="sb-tag">Linux</span><span class="sb-tag">Bash</span><span class="sb-tag">Python</span><span class="sb-tag">OSINT</span><span class="sb-tag">TCP</span><span class="sb-tag">DNS</span>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Compétences développées</div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Identification de vulnérabilités</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Analyse de trafic réseau</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Outils spécialisés pentest</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Manipulation de Linux</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Démarche d'investigation</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Profil Root-Me</div>
+      <a href="https://root-me.pro/profiles" target="_blank" class="sb-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Voir mon profil Root-Me
+      </a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span class="foot-l">SAE 3.Cyber.04 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
+  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
+</script>
+</body></html>

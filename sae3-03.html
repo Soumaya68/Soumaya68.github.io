@@ -1,10 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAE 3.Cyber.03 — Réseau sécurisé multi-sites | Soumaya RABAH</title>
+<link rel="stylesheet" href="projet.css"/>
+<style>:root{--project-color:#8C3A3A;}</style>
 </head>
 <body>
+<nav>
+  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
+  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+</nav>
 
-</body>
-</html>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-meta">
+      <span class="hero-badge">SAE 3.Cyber.03 · 2ème année</span>
+      <span class="hero-status">Terminé</span>
+    </div>
+    <div class="hero-num">C.03</div>
+    <h1>Réseau sécurisé <em>multi-sites</em></h1>
+    <p class="hero-desc">Infrastructure réseau multi-sites sécurisée pour deux entreprises — MPLS, BGP, VRF, OSPF/RIP et redondance. J'ai pris en charge la partie FAI complète : cœur réseau opérateur.</p>
+    <div class="chips">
+      <span class="chip chip-dark">MPLS</span>
+      <span class="chip chip-pale">BGP / MP-BGP</span>
+      <span class="chip chip-dark">VRF</span>
+      <span class="chip chip-pale">OSPF / RIP</span>
+      <span class="chip chip-dark">GNS3</span>
+      <span class="chip chip-pale">Sécurité réseau</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T · UE Sécuriser</div><div class="hib-sub">Semestre 3 · 2024/2025</div></div>
+      <div class="hero-info-block"><div class="hib-label">Équipe</div>
+        <div class="team-list">
+          <div class="team-item"><div class="team-av" style="background:rgba(140,58,58,0.3);color:#E08080;">SR</div><div><div class="team-name">Soumaya RABAH</div><div class="team-role">Partie FAI complète</div></div></div>
+          <div class="team-item"><div class="team-av" style="background:rgba(140,58,58,0.2);color:#E08080;">CF</div><div><div class="team-name">Chahinez FAHMI</div><div class="team-role">Partie LAN</div></div></div>
+          <div class="team-item"><div class="team-av" style="background:rgba(140,58,58,0.2);color:#E08080;">MW</div><div><div class="team-name">Matéo WINLING</div><div class="team-role">Services réseaux</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats-grid">
+      <div class="hsg-item"><div class="hsg-num">3 AS</div><div class="hsg-label">Autonomes</div></div>
+      <div class="hsg-item"><div class="hsg-num">2 VRF</div><div class="hsg-label">Isolation</div></div>
+      <div class="hsg-item"><div class="hsg-num">MPLS</div><div class="hsg-label">Transport</div></div>
+      <div class="hsg-item"><div class="hsg-num">BGP</div><div class="hsg-label">Routage</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="page-body">
+  <div>
+    <div class="section">
+      <div class="s-eyebrow">Contexte</div>
+      <h2>Infrastructure réseau sécurisée pour deux entreprises</h2>
+      <p>Ce projet couvre l'ensemble d'un système d'information réparti sur plusieurs sites : LAN, services réseaux et interconnexion via réseau opérateur. Le tout pour deux entreprises fictives (<strong>UC Exchange</strong> et <strong>ABC Conseil</strong>).</p>
+      <div class="grid-2">
+        <div class="card"><h4>Architecture multi-sites</h4><p>Interconnexion de plusieurs sites distants avec continuité de service garantie</p></div>
+        <div class="card"><h4>Sécurité & isolation</h4><p>Séparation des flux entre clients avec VRF, VPN et isolation totale</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Mon rôle — Partie FAI</div>
+      <h2>Conception du cœur réseau opérateur</h2>
+      <p>J'ai pris en charge la conception et la configuration <strong>complète de la partie FAI</strong> — le cœur réseau permettant une connectivité sécurisée, performante et isolée entre les sites des deux entreprises.</p>
+      <p>L'infrastructure est basée sur <strong>trois systèmes autonomes</strong> (AS10, AS20, AS30), simulant un réseau opérateur réel avec routeurs P (cœur), PE (accès client) et ASBR (interconnexion inter-AS).</p>
+      <div class="grid-2">
+        <div class="card-plain"><h4>🛣️ Routage interne</h4><p><strong>RIP</strong> sur AS10 et AS20 / <strong>OSPF</strong> sur AS30 — connectivité dynamique et stable</p></div>
+        <div class="card-plain"><h4>📦 MPLS & LDP</h4><p>Transport par labels, isolation des clients, performance optimisée</p></div>
+        <div class="card-plain"><h4>🌐 BGP & MP-BGP</h4><p>iBGP avec Route Reflector, eBGP inter-AS, MP-BGP pour VPNv4</p></div>
+        <div class="card-plain"><h4>🔒 VRF</h4><p>Deux VRF (ABC_Conseil et UC_Exchange) — isolation totale des flux</p></div>
+        <div class="card-plain"><h4>🌍 NAT</h4><p>Exposition publique d'un serveur web via translation d'adresse statique</p></div>
+        <div class="card-plain"><h4>♻️ Redondance</h4><p>Tests de coupure, bascule automatique, maintien de la connectivité</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Chronologie</div>
+      <h2>8 étapes — partie FAI</h2>
+      <div class="timeline">
+        <div class="tl"><div class="tl-dot">1</div><div class="tl-body"><h4>Conception de l'architecture globale</h4><p>Modélisation des AS et de la topologie opérateur</p></div></div>
+        <div class="tl"><div class="tl-dot">2</div><div class="tl-body"><h4>Configuration des interfaces & adressage</h4><p>Loopbacks, interfaces physiques et plan d'adressage IP</p></div></div>
+        <div class="tl"><div class="tl-dot">3</div><div class="tl-body"><h4>Routage interne</h4><p>RIP sur AS10/AS20, OSPF sur AS30</p></div></div>
+        <div class="tl"><div class="tl-dot">4</div><div class="tl-body"><h4>Activation MPLS</h4><p>Distribution des labels (LDP) et transport des données</p></div></div>
+        <div class="tl"><div class="tl-dot">5</div><div class="tl-body"><h4>Déploiement BGP / MP-BGP</h4><p>iBGP avec Route Reflector, eBGP inter-AS, VPNv4</p></div></div>
+        <div class="tl"><div class="tl-dot">6</div><div class="tl-body"><h4>Configuration VRF</h4><p>Isolation des flux ABC_Conseil et UC_Exchange</p></div></div>
+        <div class="tl"><div class="tl-dot">7</div><div class="tl-body"><h4>Tests de connectivité</h4><p>Validation de la communication inter-sites</p></div></div>
+        <div class="tl"><div class="tl-dot">8</div><div class="tl-body"><h4>Tests de redondance</h4><p>Coupures simulées et bascule automatique</p></div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="s-eyebrow">Ressenti</div>
+      <h2>Ce que j'en retiens</h2>
+      <div class="ressenti">
+        <p>Ce projet a été <strong>l'un des plus techniques</strong> que j'ai réalisés. La partie FAI m'a demandé une grande rigueur, notamment dans la configuration de BGP et la compréhension du fonctionnement MPLS. J'ai dû reprendre plusieurs configurations, ce qui m'a permis de développer une <strong>méthodologie efficace de diagnostic réseau</strong>. Ce projet m'a apporté une vision concrète des architectures opérateurs et a renforcé mon intérêt pour les réseaux avancés et la cybersécurité.</p>
+      </div>
+      <div class="skills-wrap" style="margin-top:1rem;">
+        <span class="skill-badge sb-g">MPLS</span><span class="skill-badge sb-g">BGP / MP-BGP</span><span class="skill-badge sb-g">VRF</span><span class="skill-badge sb-d">OSPF / RIP</span><span class="skill-badge sb-d">Isolation réseau</span><span class="skill-badge sb-g">NAT</span><span class="skill-badge sb-d">GNS3</span><span class="skill-badge sb-g">Diagnostic réseau</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="en-box">
+        <span class="en-flag">🇬🇧 English Summary</span>
+        <div class="en-title">Secure Multi-Site Network Infrastructure</div>
+        <p class="en-body">This project focused on designing a <em>secure multi-site network infrastructure</em> for two companies. I was responsible for the <em>ISP (FAI) part</em>, which involved building a core network using <em>MPLS, BGP, and VRF</em> technologies to ensure secure and isolated communication between sites. I configured routing protocols (RIP, OSPF), deployed MPLS, implemented MP-BGP, and validated redundancy mechanisms. This project strengthened my skills in advanced networking and gave me practical insight into real-world ISP infrastructures.</p>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sb">
+      <div class="sb-title">Informations</div>
+      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 3 · 2024/2025</span></div>
+      <div class="sb-line"><span class="sb-tick">👥</span><span>Équipe de 3</span></div>
+      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
+      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Sécuriser · UE Connecter</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Technologies FAI</div>
+      <span class="sb-tag">MPLS</span><span class="sb-tag">BGP</span><span class="sb-tag">MP-BGP</span><span class="sb-tag">VRF</span><span class="sb-tag">OSPF</span><span class="sb-tag">RIP</span><span class="sb-tag">LDP</span><span class="sb-tag">NAT</span><span class="sb-tag">GNS3</span>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Compétences développées</div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Routage dynamique avancé</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Architecture MPLS-VPN</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Isolation des flux (VRF)</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Diagnostic réseau complexe</span></div>
+      <div class="sb-line"><span class="sb-tick">✓</span><span>Documentation technique</span></div>
+    </div>
+    <div class="sb">
+      <div class="sb-title">Encadrants</div>
+      <div class="sb-line"><span>👨‍🏫</span><span>ABOUAISSA Abdelhafid</span></div>
+      <div class="sb-line"><span>👨‍🏫</span><span>BENNIS Ismail</span></div>
+      <div class="sb-line"><span>👨‍🏫</span><span>BINDEL Sébastien</span></div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span class="foot-l">SAE 3.Cyber.03 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
+  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
+</script>
+</body></html>
