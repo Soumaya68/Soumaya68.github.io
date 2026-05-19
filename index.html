@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soumaya RABAH — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 <body>
@@ -675,7 +677,7 @@
       <div id="per-but2" class="period-content">
         <div class="proj-grid">
 
-          <div class="pcard-new proj-reveal" data-delay="0">
+          <div class="pcard-new proj-reveal" data-delay="0" onclick="window.location='sae3-01.html'" style="cursor:pointer;">
             <div class="pcard-top" style="background:linear-gradient(135deg,#5C3A8C,#9060C0);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">2ème année</div>
@@ -686,14 +688,14 @@
                 <span class="ptag" style="background:#EDE0F4;color:#5C3A8C;">Signaux</span>
               </div>
               <div class="pcard-title-new">SAE3.01 — Système de transmission</div>
-              <div class="pcard-desc-new">Mise en œuvre d'un système de transmission. Étude des signaux, modulation et analyse des performances.</div>
-              <div class="pcard-footer pcard-footer-soon">
-                <span class="pcard-soon-badge">Bientôt disponible</span>
+              <div class="pcard-desc-new">Prise connectée intelligente Wi-Fi — ESP8266, Raspberry Pi, MQTT, app Android et sécurisation des échanges.</div>
+              <div class="pcard-footer">
+                <span class="pcard-link-new">Voir le projet →</span>
               </div>
             </div>
           </div>
 
-          <div class="pcard-new proj-reveal" data-delay="100">
+          <div class="pcard-new proj-reveal" data-delay="100" onclick="window.location='sae3-02.html'" style="cursor:pointer;">
             <div class="pcard-top" style="background:linear-gradient(135deg,#3A5C8C,#6090C0);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">2ème année</div>
@@ -705,14 +707,14 @@
                 <span class="ptag" style="background:#D8E4F4;color:#3A5C8C;">Dev</span>
               </div>
               <div class="pcard-title-new">SAE3.02 — Applications communicantes</div>
-              <div class="pcard-desc-new">Développement d'applications réseau communicantes en Python. Protocoles de communication, sockets et architecture client-serveur.</div>
-              <div class="pcard-footer pcard-footer-soon">
-                <span class="pcard-soon-badge">Bientôt disponible</span>
+              <div class="pcard-desc-new">Application distribuée de messagerie anonyme — routage en oignon, chiffrement RSA, interfaces PyQt6 et MariaDB.</div>
+              <div class="pcard-footer">
+                <span class="pcard-link-new">Voir le projet →</span>
               </div>
             </div>
           </div>
 
-          <div class="pcard-new proj-reveal" data-delay="200">
+          <div class="pcard-new proj-reveal" data-delay="200" onclick="window.location='sae3-03.html'" style="cursor:pointer;">
             <div class="pcard-top" style="background:linear-gradient(135deg,#8C3A3A,#C06060);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">2ème année</div>
@@ -724,14 +726,14 @@
                 <span class="ptag" style="background:#F4D8D8;color:#8C3A3A;">Firewall</span>
               </div>
               <div class="pcard-title-new">SAE3.Cyber.03 — Réseau sécurisé multi-sites</div>
-              <div class="pcard-desc-new">Conception d'un réseau informatique sécurisé multi-sites. Segmentation VLAN, pare-feu, VPN et politique de sécurité.</div>
-              <div class="pcard-footer pcard-footer-soon">
-                <span class="pcard-soon-badge">Bientôt disponible</span>
+              <div class="pcard-desc-new">Infrastructure multi-sites avec MPLS, BGP, VRF — j'ai conçu la partie FAI complète du cœur réseau opérateur.</div>
+              <div class="pcard-footer">
+                <span class="pcard-link-new">Voir le projet →</span>
               </div>
             </div>
           </div>
 
-          <div class="pcard-new proj-reveal" data-delay="300">
+          <div class="pcard-new proj-reveal" data-delay="300" onclick="window.location='sae3-04.html'" style="cursor:pointer;">
             <div class="pcard-top" style="background:linear-gradient(135deg,#1E2A10,#3D5226);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">2ème année</div>
@@ -743,9 +745,9 @@
                 <span class="ptag" style="background:#DCE8C4;color:#3D5226;">CTF</span>
               </div>
               <div class="pcard-title-new">SAE3.Cyber.04 — Pentesting</div>
-              <div class="pcard-desc-new">Découverte du test d'intrusion. Reconnaissance, exploitation de vulnérabilités et rédaction de rapports de sécurité.</div>
-              <div class="pcard-footer pcard-footer-soon">
-                <span class="pcard-soon-badge">Bientôt disponible</span>
+              <div class="pcard-desc-new">Initiation au test d'intrusion via Root-Me — 92% du parcours complété, 69/75 challenges réussis, 8 240 points.</div>
+              <div class="pcard-footer">
+                <span class="pcard-link-new">Voir le projet →</span>
               </div>
             </div>
           </div>
@@ -1052,93 +1054,7 @@
 
       <!-- Colonne centre : carte Leaflet pleine hauteur -->
       <div class="contact-map ct-reveal" data-delay="150">
-        <div id="ct-map-svg" style="width:100%;height:100%;overflow:hidden;position:relative;background:#E8E4DA;">
-          <svg id="map-anim-svg" width="100%" height="100%" viewBox="0 0 500 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
-            <defs>
-              <style>
-                #map-world { transition: none; }
-                .map-country { fill:#D8D4C8; stroke:#C4C0B4; stroke-width:0.5; }
-                .map-country-fr { fill:#C8D9A8; stroke:#9AB870; stroke-width:0.8; }
-                .map-water { fill:#E0EEF8; }
-              </style>
-            </defs>
-            <!-- Océan fond -->
-            <rect width="500" height="600" fill="#D4E8F4"/>
-            <!-- Groupe principal animé -->
-            <g id="map-world">
-              <!-- Europe simplifiée -->
-              <!-- Mer Méditerranée / fond mer -->
-              <ellipse cx="290" cy="520" rx="180" ry="60" fill="#C8E0F0" opacity="0.6"/>
-              <!-- Espagne -->
-              <path class="map-country" d="M130,380 L200,360 L240,370 L250,400 L230,430 L180,440 L140,420 Z"/>
-              <!-- Portugal -->
-              <path class="map-country" d="M110,375 L130,380 L140,420 L120,425 L105,400 Z"/>
-              <!-- France -->
-              <path class="map-country-fr" d="M160,280 L230,260 L280,270 L295,300 L290,340 L260,360 L230,365 L200,360 L170,340 L155,310 Z"/>
-              <!-- Corse -->
-              <path class="map-country-fr" d="M278,378 L285,370 L290,378 L287,390 L280,388 Z"/>
-              <!-- Alsace highlight -->
-              <path id="alsace-region" d="M272,278 L282,274 L286,282 L283,294 L274,296 L269,288 Z" fill="#96B060" stroke="#4A5C2A" stroke-width="1" opacity="0"/>
-              <!-- UK -->
-              <path class="map-country" d="M155,215 L175,210 L185,230 L178,250 L160,255 L148,240 Z"/>
-              <!-- Irlande -->
-              <path class="map-country" d="M128,220 L148,215 L150,235 L135,242 L122,232 Z"/>
-              <!-- Belgique/Pays-Bas -->
-              <path class="map-country" d="M210,240 L235,232 L245,248 L230,258 L210,255 Z"/>
-              <!-- Allemagne -->
-              <path class="map-country" d="M240,230 L300,225 L315,250 L310,285 L290,295 L272,285 L260,265 L245,248 Z"/>
-              <!-- Suisse -->
-              <path class="map-country" d="M255,295 L285,290 L290,305 L268,312 L252,306 Z"/>
-              <!-- Italie -->
-              <path class="map-country" d="M265,310 L310,290 L325,320 L310,380 L295,410 L275,400 L268,370 L260,340 L265,310 Z"/>
-              <!-- Scandinavie simplifiée -->
-              <path class="map-country" d="M230,140 L280,120 L310,150 L295,190 L265,200 L240,185 L225,165 Z"/>
-              <!-- Danemark -->
-              <path class="map-country" d="M248,188 L262,182 L265,200 L252,205 Z"/>
-              <!-- Pologne -->
-              <path class="map-country" d="M310,220 L370,215 L375,250 L355,268 L315,265 L305,245 Z"/>
-              <!-- Autriche -->
-              <path class="map-country" d="M290,290 L335,282 L340,300 L310,312 L288,308 Z"/>
-              <!-- République Tchèque -->
-              <path class="map-country" d="M295,260 L335,252 L340,270 L310,278 L292,272 Z"/>
-              <!-- Slovaquie/Hongrie -->
-              <path class="map-country" d="M335,268 L385,262 L390,285 L355,295 L330,290 Z"/>
-              <!-- Croatie/Slovénie -->
-              <path class="map-country" d="M305,308 L340,298 L348,318 L325,330 L308,322 Z"/>
-              <!-- Serbie/Balkans simplifié -->
-              <path class="map-country" d="M330,318 L375,305 L390,340 L370,370 L340,368 L320,348 Z"/>
-              <!-- Grèce -->
-              <path class="map-country" d="M348,390 L385,375 L390,405 L370,425 L345,415 Z"/>
-              <!-- Roumanie -->
-              <path class="map-country" d="M375,270 L420,262 L428,298 L400,318 L368,308 Z"/>
-              <!-- Ukraine simplifié -->
-              <path class="map-country" d="M390,240 L460,230 L470,270 L440,295 L405,288 L392,265 Z"/>
-              <!-- Russie ouest simplifié -->
-              <path class="map-country" d="M360,170 L470,150 L490,220 L450,235 L390,235 L355,210 Z"/>
-              <!-- Pays Baltes -->
-              <path class="map-country" d="M330,175 L370,168 L375,198 L340,205 L325,192 Z"/>
-              <!-- Biélorussie -->
-              <path class="map-country" d="M355,205 L405,198 L410,230 L370,240 L348,228 Z"/>
-              <!-- Moldavie/Roumanie est -->
-              <path class="map-country" d="M418,290 L440,282 L445,310 L422,318 Z"/>
-              <!-- Portugal côte atlantique -->
-              <rect x="0" y="280" width="108" height="200" fill="#D4E8F4"/>
-              <!-- Manche -->
-              <ellipse cx="170" cy="255" rx="30" ry="15" fill="#D4E8F4"/>
-
-              <!-- Point Colmar -->
-              <g id="colmar-pin" opacity="0">
-                <circle cx="279" cy="282" r="12" fill="rgba(234,67,53,0.2)" >
-                  <animate attributeName="r" values="8;16;8" dur="2s" repeatCount="indefinite"/>
-                  <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
-                </circle>
-                <circle cx="279" cy="282" r="5" fill="#EA4335" stroke="white" stroke-width="2"/>
-                <text x="289" y="278" font-family="DM Mono, monospace" font-size="10" fill="#1E2318" font-weight="bold">Colmar</text>
-                <text x="289" y="290" font-family="DM Mono, monospace" font-size="8" fill="#7A7A6A">Alsace, France</text>
-              </g>
-            </g>
-          </svg>
-        </div>
+        <div id="ct-leaflet-map" style="width:100%;height:100%;"></div>
       </div>
 
       <!-- Colonne droite : formulaire -->
@@ -1481,45 +1397,47 @@
             const delay = parseInt(el.dataset.delay || 0);
             setTimeout(() => el.classList.add('vis'), delay);
           });
-          // Animation carte SVG — zoom fluide sans réseau
+          // Carte Leaflet avec animation zoom vers Colmar — reset à chaque visite
           setTimeout(() => {
-            const world  = document.getElementById('map-world');
-            const pin    = document.getElementById('colmar-pin');
-            const alsace = document.getElementById('alsace-region');
-            if (!world || !pin) return;
-
-            // Reset pour rejouer à chaque visite
-            world.setAttribute('transform', 'translate(0,0) scale(1)');
-            pin.setAttribute('opacity', '0');
-            if (alsace) alsace.setAttribute('opacity', '0');
-
-            const COLMAR_X = 279, COLMAR_Y = 282;
-            const END_SCALE = 6;
-            const DURATION  = 3200;
-            let startTime   = null;
-
-            function easeInOutCubic(t) {
-              return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+            // Détruire l'instance existante si elle existe
+            const mapEl = document.getElementById('ct-leaflet-map');
+            if (!mapEl) return;
+            if (mapEl._leaflet_id) {
+              mapEl._leaflet_map && mapEl._leaflet_map.remove();
+              mapEl.innerHTML = '';
+              delete mapEl._leaflet_id;
             }
 
-            function animate(ts) {
-              if (!startTime) startTime = ts;
-              const t = Math.min((ts - startTime) / DURATION, 1);
-              const e = easeInOutCubic(t);
-              const scale = 1 + (END_SCALE - 1) * e;
-              const tx = 250 - COLMAR_X * scale;
-              const ty = 300 - COLMAR_Y * scale;
-              world.setAttribute('transform', `translate(${tx},${ty}) scale(${scale})`);
-              if (alsace && t > 0.5) alsace.setAttribute('opacity', ((t-0.5)*2).toFixed(2));
-              if (t < 1) {
-                requestAnimationFrame(animate);
-              } else {
-                pin.setAttribute('opacity', '1');
-              }
-            }
+            // Créer la map depuis zéro
+            const map = L.map('ct-leaflet-map', {
+              zoomControl: true,
+              scrollWheelZoom: false,
+              zoomAnimation: true,
+              fadeAnimation: true
+            }).setView([48.0794, 7.3589], 2);
 
-            requestAnimationFrame(animate);
-          }, 400);
+            mapEl._leaflet_map = map;
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            const icon = L.divIcon({
+              html: `<div style="background:#EA4335;width:14px;height:14px;border-radius:50%;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.4);"></div>`,
+              iconSize: [14, 14], iconAnchor: [7, 7], className: ''
+            });
+
+            // Animation progressive zoom vers Colmar
+            setTimeout(() => map.flyTo([48.0794, 7.3589], 5,  { duration: 0.8, easeLinearity: 0.5 }), 300);
+            setTimeout(() => map.flyTo([48.0794, 7.3589], 9,  { duration: 0.9, easeLinearity: 0.4 }), 1200);
+            setTimeout(() => map.flyTo([48.0794, 7.3589], 13, { duration: 1.0, easeLinearity: 0.3 }), 2200);
+            setTimeout(() => {
+              L.marker([48.0794, 7.3589], { icon })
+                .addTo(map)
+                .bindPopup('<b>Colmar</b><br>Alsace, France')
+                .openPopup();
+            }, 3300);
+          }, 300);
         }, 80);
       }
 
@@ -1611,7 +1529,7 @@
       fb.className = 'form-feedback success';
     });
 
-    // Déclencher l'animation typewriter au chargement initial
+    // Déclencher l'animation typewriter au chargement initial initial i
     showPage('accueil');
   </script>
 
