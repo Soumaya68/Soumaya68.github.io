@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -71,6 +67,7 @@
       <div class="s-eyebrow">Architecture</div>
       <h2>Système distribué en 3 niveaux</h2>
       <p>Chaque composant joue un rôle précis dans la chaîne de communication anonymisée.</p>
+      <img src="image_routageoignon.webp" alt="Routage en oignon" style="width:100%;border-radius:10px;border:1px solid #D8D4C8;margin-bottom:1rem;display:block;"/>
       <div class="grid-3">
         <div class="card-plain"><h4>🖥️ Master (serveur central)</h4><p>Gère les connexions, distribue les clés et maintient la topologie du réseau</p></div>
         <div class="card-plain"><h4>🔀 Routeurs intermédiaires</h4><p>Transfèrent les messages en supprimant une couche de chiffrement à chaque étape</p></div>
@@ -164,9 +161,4 @@
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
 document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
 </script>
-</body></html></title>
-</head>
-<body>
-
-</body>
-</html>
+</body></html>
