@@ -1,165 +1,411 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>SAE 3.Cyber.04 — Pentesting | Soumaya RABAH</title>
-<link rel="stylesheet" href="projet.css"/>
-<style>:root{--project-color:#2A4A1E;}</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAE3.Cyber.04 — Pentesting · Soumaya RABAH</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap"/>
+  <style>
+    :root {
+      --bg:#F2EFE7; --bg2:#E8E4DA; --bg3:#D8D4C8;
+      --dark:#1E2318; --mid:#4A5240; --muted:#7A7A6A;
+      --olive:#4A5C2A; --olive-mid:#6B8040; --olive-light:#96B060; --olive-pale:#DCE8C4;
+      --terminal:#1E2A10; --term-green:#8DC050;
+      --accent:#16A34A; --accent-light:#86EFAC; --accent-pale:#DCFCE7;
+      --font-display:'Syne',sans-serif; --font-body:'Instrument Sans',sans-serif; --font-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
+    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:5px}
+    .nav-logo-dot{width:6px;height:6px;background:#C8D9A8;border-radius:50%}
+    .nav-center{font-family:var(--font-mono);font-size:.72rem;color:#5a7030;letter-spacing:.04em}
+    .nav-center span{color:var(--term-green)}
+    .nav-back{display:flex;align-items:center;gap:.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:.35rem .9rem;border-radius:4px}
+    .nav-back:hover{color:#fff;border-color:var(--term-green)}
+    .nav-back svg{transition:transform .2s}
+    .nav-back:hover svg{transform:translateX(-3px)}
+
+    /* HERO vert terminal */
+    .hero{background:linear-gradient(135deg,#040e04 0%,#0d2e0d 50%,#1a3a1a 100%);padding:4.5rem 3rem 3.5rem;position:relative;overflow:hidden}
+    /* ASCII art decoration */
+    .hero-ascii{position:absolute;right:3rem;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:.7rem;line-height:1.6;color:rgba(141,192,80,.12);pointer-events:none;white-space:pre;letter-spacing:.05em}
+    .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:.3rem .9rem;border-radius:20px;font-family:var(--font-mono);font-size:.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:.06em}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--term-green);animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.6rem}
+    .hero-title em{font-style:normal;color:#86EFAC}
+    .hero-sub{color:rgba(255,255,255,.48);font-size:1rem;line-height:1.65;max-width:600px;margin-top:.8rem}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+    .chip{padding:.28rem .8rem;border-radius:20px;font-family:var(--font-mono);font-size:.68rem;font-weight:500}
+    .chip-gr{background:rgba(22,163,74,.12);border:1px solid rgba(134,239,172,.3);color:#86EFAC}
+    .chip-g{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);color:var(--term-green)}
+    .chip-w{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.55)}
+
+    /* SCORE BANNER */
+    .score-banner{background:#fff;border:1px solid var(--bg3);border-radius:14px;padding:1.5rem 2rem;margin:1.5rem 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .score-item{text-align:center}
+    .score-val{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--accent);line-height:1}
+    .score-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
+    /* progress bar */
+    .progress-wrap{margin-top:1.2rem;padding:0 .5rem}
+    .progress-label{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);margin-bottom:.4rem}
+    .progress-bar{height:8px;background:var(--bg2);border-radius:20px;overflow:hidden}
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--term-green));border-radius:20px;width:92%;animation:grow 1.2s ease-out forwards;transform-origin:left}
+    @keyframes grow{from{width:0}to{width:92%}}
+
+    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}
+    .main-content{min-width:0}
+    .sidebar{position:sticky;top:68px;display:flex;flex-direction:column;gap:1rem}
+    .scard{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .scard-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.5rem}
+    .scard-icon{color:var(--term-green);flex-shrink:0}
+    .scard-title{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.08em;text-transform:uppercase}
+    .scard-body{padding:1.1rem}
+    .srow{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
+    .srow:last-child{border-bottom:none}
+    .slabel{color:var(--muted);font-size:.75rem}
+    .sval{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--dark)}
+    .sval.ok{color:#5C8A3C}
+    .plink{display:flex;align-items:center;gap:.55rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px;text-decoration:none;color:var(--dark);font-size:.8rem;margin-bottom:.5rem;transition:all .2s}
+    .plink:last-child{margin-bottom:0}
+    .plink:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(4px)}
+    .plink svg{color:var(--olive-mid);flex-shrink:0}
+    .plink span{font-family:var(--font-mono);font-size:.72rem}
+
+    .s{margin-bottom:3rem;opacity:0;transform:translateY(22px);animation:up .55s forwards}
+    .s:nth-child(1){animation-delay:.08s}.s:nth-child(2){animation-delay:.16s}.s:nth-child(3){animation-delay:.24s}
+    .s:nth-child(4){animation-delay:.32s}.s:nth-child(5){animation-delay:.40s}.s:nth-child(6){animation-delay:.48s}
+    .s:nth-child(7){animation-delay:.56s}.s:nth-child(8){animation-delay:.64s}.s:nth-child(9){animation-delay:.72s}
+    .s:nth-child(10){animation-delay:.80s}
+    @keyframes up{to{opacity:1;transform:translateY(0)}}
+    .eye{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+    .stitle{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+    .stitle span{color:var(--accent)}
+    .prose{font-size:.93rem;line-height:1.78;color:var(--mid)}
+    .prose p{margin-bottom:.85rem}
+    .prose p:last-child{margin-bottom:0}
+
+    /* PHASE DIAGRAM */
+    .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.4rem 0}
+    .phase{padding:1.2rem;border-radius:10px;background:#fff;border:1px solid var(--bg3);border-top:3px solid;transition:transform .2s,box-shadow .2s}
+    .phase:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.07)}
+    .phase-1{border-top-color:#F59E0B}
+    .phase-2{border-top-color:#3B82F6}
+    .phase-3{border-top-color:var(--accent)}
+    .phase-num{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-bottom:.4rem}
+    .phase-name{font-weight:700;font-size:.9rem;margin-bottom:.6rem}
+    .phase-1 .phase-name{color:#B45309}
+    .phase-2 .phase-name{color:#1D4ED8}
+    .phase-3 .phase-name{color:var(--accent)}
+    .phase-items{display:flex;flex-direction:column;gap:.25rem}
+    .phase-item{font-size:.76rem;color:var(--mid);display:flex;gap:.35rem}
+    .phase-item::before{content:'·';font-weight:700;flex-shrink:0}
+    .phase-1 .phase-item::before{color:#F59E0B}
+    .phase-2 .phase-item::before{color:#3B82F6}
+    .phase-3 .phase-item::before{color:var(--accent)}
+
+    /* THEMATIQUES */
+    .themes{display:flex;flex-direction:column;gap:.6rem;margin:1.4rem 0}
+    .theme{display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;background:#fff;border:1px solid var(--bg3);border-radius:9px;transition:border-color .2s,transform .2s}
+    .theme:hover{border-color:var(--accent);transform:translateX(4px)}
+    .theme-icon{width:36px;height:36px;border-radius:8px;background:var(--accent-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)}
+    .theme-name{font-weight:600;font-size:.86rem}
+    .theme-desc{font-size:.74rem;color:var(--muted);margin-top:.05rem}
+
+    /* TERMINAL SCORE */
+    .term-score{background:var(--terminal);border-radius:12px;padding:1.5rem;margin:1.4rem 0;font-family:var(--font-mono);font-size:.78rem;line-height:1.8}
+    .t-line{display:flex;gap:.6rem}
+    .t-prompt{color:var(--term-green)}
+    .t-cmd{color:rgba(255,255,255,.7)}
+    .t-out{color:rgba(255,255,255,.45);padding-left:1rem}
+    .t-val{color:#86EFAC;font-weight:600}
+    .t-warn{color:#FCD34D}
+
+    .skill-groups{display:flex;flex-direction:column;gap:1rem;margin-top:.8rem}
+    .sg-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+    .tag{padding:.25rem .7rem;border-radius:5px;font-size:.73rem;font-weight:500}
+    .tg{background:var(--olive-pale);color:#3D5226}
+    .tgr{background:#DCFCE7;color:#14532D}
+    .tb{background:#DBEAFE;color:#1E3A8A}
+
+    .ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.9rem}
+    @media(max-width:600px){.ac-grid{grid-template-columns:1fr}}
+    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px}
+    .ac-code{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);font-weight:700;flex-shrink:0;white-space:nowrap;padding-top:.05rem}
+    .ac-txt{font-size:.78rem;color:var(--mid);line-height:1.4}
+    .res-list{margin-top:.8rem;display:flex;flex-direction:column}
+    .res{display:flex;gap:.55rem;align-items:baseline;padding:.38rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem;color:var(--mid)}
+    .res:last-child{border-bottom:none}
+    .res-code{font-family:var(--font-mono);font-size:.65rem;color:var(--olive-mid);font-weight:700;flex-shrink:0}
+
+    .quote{border-left:3px solid #86EFAC;padding:.9rem 1.3rem;background:rgba(22,163,74,.04);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
+    .en-box{background:var(--terminal);border-radius:12px;padding:1.4rem;margin:1.4rem 0}
+    .en-label{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.1em;margin-bottom:.65rem}
+    .en-txt{color:rgba(255,255,255,.6);font-size:.86rem;line-height:1.72}
+    .sep{height:1px;background:linear-gradient(90deg,transparent,var(--bg3),transparent);margin:2rem 0}
+
+    .proj-img{border-radius:12px;overflow:hidden;border:1px solid var(--bg3);margin:1.4rem 0;background:var(--terminal);display:flex;align-items:center;justify-content:center;padding:1.5rem}
+    .proj-img img{max-width:180px;height:auto;object-fit:contain;filter:drop-shadow(0 4px 20px rgba(140,192,80,.3))}
+
+    @media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{position:static}.top-nav{padding:.9rem 1.5rem}.hero{padding:3rem 1.5rem}.phases{grid-template-columns:1fr}.score-banner{grid-template-columns:1fr 1fr}}
+  </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
-  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">soumaya<div class="nav-logo-dot"></div></a>
+  <span class="nav-center">Projets / <span>SAE3.Cyber.04</span></span>
+  <a href="index.html" class="nav-back">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </a>
 </nav>
 
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-meta">
-      <span class="hero-badge">SAE 3.Cyber.04 · 2ème année</span>
-      <span class="hero-status">Terminé</span>
-    </div>
-    <div class="hero-num">C.04</div>
-    <h1>Découvrir le <em>pentesting</em></h1>
-    <p class="hero-desc">Initiation aux techniques de test d'intrusion via des challenges cybersécurité — vulnérabilités web, analyse réseau, Linux, OSINT. 92% du parcours Root-Me complété en autonomie.</p>
-    <div class="chips">
-      <span class="chip chip-dark">Root-Me</span>
-      <span class="chip chip-pale">SQL Injection</span>
-      <span class="chip chip-dark">Analyse PCAP</span>
-      <span class="chip chip-pale">Linux / Bash</span>
-      <span class="chip chip-dark">OSINT</span>
-      <span class="chip chip-pale">TCP Sockets</span>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div>
-      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T · UE Sécuriser</div><div class="hib-sub">Semestre 3 · 2024/2025</div></div>
-      <div class="hero-info-block"><div class="hib-label">Encadrant</div><div class="hib-value">GILG Marc</div></div>
-      <div class="hero-info-block"><div class="hib-label">Type</div><div class="hib-value">Projet individuel</div><div class="hib-sub">Autonomie complète</div></div>
-    </div>
-    <div class="hero-stats-grid">
-      <div class="hsg-item"><div class="hsg-num">92%</div><div class="hsg-label">Parcours</div></div>
-      <div class="hsg-item"><div class="hsg-num">69/75</div><div class="hsg-label">Challenges</div></div>
-      <div class="hsg-item"><div class="hsg-num">8240</div><div class="hsg-label">Points</div></div>
-      <div class="hsg-item"><div class="hsg-num">15/18</div><div class="hsg-label">Modules</div></div>
+<div class="hero">
+  <div class="hero-ascii">  ____  ____  _   _ _____
+ |  _ \|  _ \| \ | |_   _|
+ | |_) | |_) |  \| | | |
+ |  __/|  _ <| |\  | | |
+ |_|   |_| \_\_| \_| |_|
+
+ root@kali:~#_</div>
+  <div class="hero-inner">
+    <div class="hero-badge">SAE3.Cyber.04 — Semestre 3 · BUT R&T · IUT Colmar</div>
+    <h1 class="hero-title">Découvrir<br>le <em>pentesting</em></h1>
+    <p class="hero-sub">Initiation aux techniques d'intrusion via la plateforme Root-Me — 69 challenges réussis, 92% du parcours complété, en couvrant web, réseau, Linux et OSINT.</p>
+    <div class="hero-chips">
+      <span class="chip chip-w">Root-Me</span>
+      <span class="chip chip-w">Kali Linux</span>
+      <span class="chip chip-w">SQL Injection</span>
+      <span class="chip chip-w">Analyse PCAP</span>
+      <span class="chip chip-gr">CTF · Challenges</span>
+      <span class="chip chip-g">Cybersécurité offensive</span>
     </div>
   </div>
-</section>
+</div>
 
 <div class="page-body">
-  <div>
-    <div class="section">
-      <div class="s-eyebrow">Contexte</div>
-      <h2>Initiation au test d'intrusion par la pratique</h2>
-      <p>Ce projet individuel avait pour objectif de <strong>comprendre les méthodes utilisées par un attaquant</strong> afin de mieux sécuriser un système d'information. Il s'articule autour des différentes phases d'un test d'intrusion : reconnaissance, identification des vulnérabilités et exploitation.</p>
-      <div class="grid-2">
-        <div class="card"><h4>Objectifs</h4><p>Comprendre les phases d'un pentest, identifier et exploiter des vulnérabilités, adopter une démarche méthodologique et éthique</p></div>
-        <div class="card"><h4>Plateforme</h4><p>Challenges sur Root-Me — parcours EDU | BUT Tronc commun</p></div>
-      </div>
-    </div>
+  <div class="main-content">
 
-    <div class="section">
-      <div class="s-eyebrow">Thématiques</div>
-      <h2>Domaines explorés</h2>
-      <div class="grid-2">
-        <div class="card-plain"><h4>🌐 Vulnérabilités web</h4><p>SQL injection, failles applicatives, contournement de protections</p></div>
-        <div class="card-plain"><h4>📡 Analyse réseau</h4><p>Captures PCAP, identification de protocoles, analyse de trafic</p></div>
-        <div class="card-plain"><h4>🐧 Systèmes Linux</h4><p>Bash, élévation de privilèges, exploration système</p></div>
-        <div class="card-plain"><h4>🔍 OSINT</h4><p>Recherche d'informations, analyse DNS, scan de services</p></div>
-        <div class="card-plain"><h4>💻 Scripting</h4><p>Développement de scripts Python avec sockets TCP</p></div>
-        <div class="card-plain"><h4>📋 Méthodologie</h4><p>Démarche d'investigation, documentation, éthique</p></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="s-eyebrow">Méthodologie</div>
-      <h2>Approche inspirée du pentest réel</h2>
-      <div class="grid-3">
-        <div class="card"><h4>🔍 Reconnaissance</h4><p>OSINT, analyse DNS et services, scan de ports</p></div>
-        <div class="card"><h4>🔬 Analyse</h4><p>Identification des vulnérabilités, étude du comportement des applications</p></div>
-        <div class="card"><h4>⚡ Exploitation</h4><p>Mise en œuvre d'attaques contrôlées, validation des failles</p></div>
-      </div>
-      <p style="margin-top:1rem;">L'évaluation finale consistait à <strong>expliquer en détail la résolution d'un challenge</strong> : démarche, outils utilisés, raisonnement — sans se limiter à la réponse finale.</p>
-    </div>
-
-    <div class="section">
-      <div class="s-eyebrow">Progression</div>
-      <h2>Résultats sur Root-Me</h2>
-      <div class="grid-2">
-        <div class="card-plain" style="text-align:center;padding:1.5rem;">
-          <div style="font-family:var(--f-display);font-size:2.5rem;font-weight:800;color:var(--project-color);">92%</div>
-          <div style="font-family:var(--f-mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Parcours complété</div>
+    <div class="s">
+      <div class="score-banner">
+        <div class="score-item">
+          <div class="score-val">92%</div>
+          <div class="score-label">Parcours complété</div>
         </div>
-        <div class="card-plain" style="text-align:center;padding:1.5rem;">
-          <div style="font-family:var(--f-display);font-size:2.5rem;font-weight:800;color:var(--project-color);">8 240</div>
-          <div style="font-family:var(--f-mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Points sur 9 590</div>
+        <div class="score-item">
+          <div class="score-val">69</div>
+          <div class="score-label">Challenges réussis</div>
         </div>
-        <div class="card-plain" style="text-align:center;padding:1.5rem;">
-          <div style="font-family:var(--f-display);font-size:2.5rem;font-weight:800;color:var(--project-color);">69/75</div>
-          <div style="font-family:var(--f-mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Challenges réussis</div>
+        <div class="score-item">
+          <div class="score-val">15</div>
+          <div class="score-label">Modules validés</div>
         </div>
-        <div class="card-plain" style="text-align:center;padding:1.5rem;">
-          <div style="font-family:var(--f-display);font-size:2.5rem;font-weight:800;color:var(--project-color);">15/18</div>
-          <div style="font-family:var(--f-mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Modules validés</div>
+        <div class="score-item">
+          <div class="score-val">8240</div>
+          <div class="score-label">Points obtenus</div>
         </div>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="s-eyebrow">Ressenti</div>
-      <h2>Ce que j'en retiens</h2>
-      <div class="ressenti">
-        <p>Ce projet m'a permis de <strong>découvrir concrètement le domaine du pentesting</strong>. J'ai particulièrement apprécié le format sous forme de challenges, qui pousse à réfléchir, tester et comprendre en profondeur les mécanismes de sécurité et leurs failles. Certaines épreuves étaient complexes et m'ont demandé de la persévérance — elles m'ont permis de développer une <strong>véritable logique d'analyse et de recherche</strong>. Cette SAE a renforcé mon intérêt pour la cybersécurité.</p>
-      </div>
-      <div class="skills-wrap" style="margin-top:1rem;">
-        <span class="skill-badge sb-g">Identification de vulnérabilités</span><span class="skill-badge sb-g">SQL Injection</span><span class="skill-badge sb-g">Analyse réseau</span><span class="skill-badge sb-d">Linux</span><span class="skill-badge sb-d">OSINT</span><span class="skill-badge sb-g">Méthodologie pentest</span><span class="skill-badge sb-d">Autonomie</span>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Progression parcours EDU | BUT - Tronc commun</span><span>69 / 75 challenges</span></div>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
       </div>
     </div>
 
-    <div class="section">
+    <div class="s">
+      <div class="proj-img">
+        <img src="image/image_rootmepro.png" alt="Root-Me Pro" onerror="this.parentElement.style.padding='3rem';this.style.display='none'"/>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Vue d'ensemble</div>
+      <h2 class="stitle">Comprendre pour <span>mieux défendre</span></h2>
+      <div class="prose">
+        <p>Ce projet individuel a pour objectif de comprendre les méthodes utilisées par un attaquant afin de mieux sécuriser un système d'information. Il s'articule autour des phases classiques d'un test d'intrusion : reconnaissance, identification des vulnérabilités et exploitation.</p>
+        <p>La plateforme Root-Me propose des environnements réels et isolés où l'on manipule des outils et des techniques concrets. L'évaluation finale consistait à expliquer en détail la résolution d'un challenge — démarche, outils, raisonnement — sans se limiter à la réponse finale.</p>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Méthodologie</div>
+      <h2 class="stitle">Les phases <span>d'un pentest</span></h2>
+      <div class="phases">
+        <div class="phase phase-1">
+          <div class="phase-num">Phase 01</div>
+          <div class="phase-name">Reconnaissance</div>
+          <div class="phase-items">
+            <div class="phase-item">Recherche d'informations (OSINT)</div>
+            <div class="phase-item">Analyse DNS et services</div>
+            <div class="phase-item">Scan de ports</div>
+          </div>
+        </div>
+        <div class="phase phase-2">
+          <div class="phase-num">Phase 02</div>
+          <div class="phase-name">Analyse</div>
+          <div class="phase-items">
+            <div class="phase-item">Identification des vulnérabilités</div>
+            <div class="phase-item">Étude des applications</div>
+            <div class="phase-item">Analyse du trafic réseau</div>
+          </div>
+        </div>
+        <div class="phase phase-3">
+          <div class="phase-num">Phase 03</div>
+          <div class="phase-name">Exploitation</div>
+          <div class="phase-items">
+            <div class="phase-item">Mise en œuvre d'attaques</div>
+            <div class="phase-item">Validation des failles</div>
+            <div class="phase-item">Rédaction d'analyse</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Thématiques</div>
+      <h2 class="stitle">Ce que j'ai <span>exploré</span></h2>
+      <div class="themes">
+        <div class="theme">
+          <div class="theme-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <div><div class="theme-name">Vulnérabilités web</div><div class="theme-desc">SQL injection, failles d'authentification, XSS</div></div>
+        </div>
+        <div class="theme">
+          <div class="theme-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+          <div><div class="theme-name">Analyse réseau</div><div class="theme-desc">Captures PCAP, protocoles, trafic réseau</div></div>
+        </div>
+        <div class="theme">
+          <div class="theme-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div><div class="theme-name">Système Linux</div><div class="theme-desc">Bash, escalade de privilèges, commandes système</div></div>
+        </div>
+        <div class="theme">
+          <div class="theme-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div><div class="theme-name">Programmation & Scripting</div><div class="theme-desc">Sockets TCP, scripts d'exploitation</div></div>
+        </div>
+        <div class="theme">
+          <div class="theme-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div><div class="theme-name">OSINT</div><div class="theme-desc">Recherche d'informations en sources ouvertes</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERMINAL SCORE -->
+    <div class="s">
+      <div class="eye">Résultats</div>
+      <h2 class="stitle">Mon score <span>Root-Me</span></h2>
+      <div class="term-score">
+        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">rootme --stats --user soumaya_rabah</span></div>
+        <div class="t-line"><span class="t-out">Parcours   : <span class="t-val">EDU | BUT - Tronc commun</span></span></div>
+        <div class="t-line"><span class="t-out">Modules    : <span class="t-val">15 / 18 validés</span></span></div>
+        <div class="t-line"><span class="t-out">Challenges : <span class="t-val">69 / 75 réussis</span></span></div>
+        <div class="t-line"><span class="t-out">Score      : <span class="t-val">8 240 / 9 590 pts</span></span></div>
+        <div class="t-line"><span class="t-out">Progression: <span class="t-val">92%</span> <span class="t-warn">██████████████████░░</span></span></div>
+        <div class="t-line"><span class="t-out">Évaluation : <span class="t-val">Analyse détaillée d'un challenge soumise</span></span></div>
+        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd" style="opacity:.4">_</span></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Retour d'expérience</div>
+      <h2 class="stitle">Ce que j'en <span>retiens</span></h2>
+      <div class="quote">Ce projet m'a permis de découvrir concrètement le domaine du pentesting. J'ai particulièrement apprécié le format challenges, qui pousse à réfléchir, tester et comprendre en profondeur les mécanismes de sécurité. Certaines épreuves m'ont demandé de la persévérance, mais elles ont développé une vraie logique d'analyse et de recherche. Cette SAE a renforcé mon intérêt pour la cybersécurité offensive.</div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Compétences</div>
+      <h2 class="stitle">Ce que j'ai <span>développé</span></h2>
+      <div class="skill-groups">
+        <div><div class="sg-label">Cybersécurité</div><div class="tags"><span class="tag tgr">Identification de vulnérabilités</span><span class="tag tgr">SQL injection</span><span class="tag tgr">Initiation au pentesting</span></div></div>
+        <div><div class="sg-label">Technique</div><div class="tags"><span class="tag tb">Analyse de trafic réseau</span><span class="tag tb">Outils spécialisés</span><span class="tag tb">Manipulation Linux</span></div></div>
+        <div><div class="sg-label">Méthode</div><div class="tags"><span class="tag tg">Démarche d'investigation</span><span class="tag tg">Résolution de problèmes</span><span class="tag tg">Autonomie</span></div></div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="s">
+      <div class="eye">Référentiel</div>
+      <h2 class="stitle">Apprentissages <span>critiques</span></h2>
+      <div class="ac-grid">
+        <div class="ac"><span class="ac-code">AC24.01Cyber</span><span class="ac-txt">Bonnes pratiques de cybersécurité</span></div>
+        <div class="ac"><span class="ac-code">AC24.05Cyber</span><span class="ac-txt">Types d'attaques informatiques</span></div>
+        <div class="ac"><span class="ac-code">AC24.06Cyber</span><span class="ac-txt">Compréhension de documentation technique</span></div>
+        <div class="ac"><span class="ac-code">AC25.01Cyber</span><span class="ac-txt">Protection contre les malwares</span></div>
+        <div class="ac"><span class="ac-code">AC25.02Cyber</span><span class="ac-txt">Utilisation d'outils de pentesting</span></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Formation</div>
+      <h2 class="stitle">Ressources <span>mobilisées</span></h2>
+      <div class="res-list">
+        <div class="res"><span class="res-code">R3.11</span>Anglais professionnel</div>
+        <div class="res"><span class="res-code">R3.12</span>Communication professionnelle</div>
+        <div class="res"><span class="res-code">R3.13</span>Projet personnel et professionnel</div>
+        <div class="res"><span class="res-code">R3.15</span>Gestion de projet</div>
+        <div class="res"><span class="res-code">R3.Cyber.16</span>Méthodologie du pentesting</div>
+      </div>
+    </div>
+
+    <div class="s">
       <div class="en-box">
-        <span class="en-flag">🇬🇧 English Summary</span>
-        <div class="en-title">Introduction to Penetration Testing — Root-Me Challenges</div>
-        <p class="en-body">This individual project introduced <em>penetration testing</em> through hands-on cybersecurity challenges on the Root-Me platform. I completed <em>69 out of 75 challenges</em> (92% of the learning path), covering web vulnerabilities, network analysis, Linux systems, and OSINT. The goal was to understand how attackers identify and exploit vulnerabilities in order to better secure systems. The final assessment required a detailed explanation of a challenge including the methodology, tools used, and reasoning process.</p>
+        <div class="en-label">// ENGLISH SUMMARY</div>
+        <div class="en-txt">This project introduced penetration testing through hands-on cybersecurity challenges on the Root-Me platform. I completed 69 out of 75 challenges, covering web vulnerabilities, network analysis, and Linux systems. The goal was to understand how attackers identify and exploit vulnerabilities in order to better secure systems. The final assessment required a detailed write-up of a challenge, including methodology, tools used, and reasoning process.</div>
       </div>
     </div>
+
   </div>
 
   <aside class="sidebar">
-    <div class="sb">
-      <div class="sb-title">Informations</div>
-      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 3 · 2024/2025</span></div>
-      <div class="sb-line"><span class="sb-tick">👤</span><span>Projet individuel</span></div>
-      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
-      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Sécuriser · UE Surveiller</span></div>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="scard-title">Informations</span>
+      </div>
+      <div class="scard-body">
+        <div class="srow"><span class="slabel">Compétences</span><span class="sval" style="font-size:.68rem">Cyber.4 · Cyber.5</span></div>
+        <div class="srow"><span class="slabel">Semestre</span><span class="sval">S3</span></div>
+        <div class="srow"><span class="slabel">Type</span><span class="sval">Individuel</span></div>
+        <div class="srow"><span class="slabel">Encadrant</span><span class="sval">GILG Marc</span></div>
+        <div class="srow"><span class="slabel">Statut</span><span class="sval ok">✓ Terminé</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Outils & techniques</div>
-      <span class="sb-tag">Root-Me</span><span class="sb-tag">SQL Injection</span><span class="sb-tag">Wireshark</span><span class="sb-tag">Linux</span><span class="sb-tag">Bash</span><span class="sb-tag">Python</span><span class="sb-tag">OSINT</span><span class="sb-tag">TCP</span><span class="sb-tag">DNS</span>
+
+    <!-- Score mini -->
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span class="scard-title">Progression Root-Me</span>
+      </div>
+      <div class="scard-body">
+        <div class="srow"><span class="slabel">Parcours</span><span class="sval" style="font-size:.68rem">EDU · BUT Tronc</span></div>
+        <div class="srow"><span class="slabel">Challenges</span><span class="sval ok">69 / 75</span></div>
+        <div class="srow"><span class="slabel">Modules</span><span class="sval ok">15 / 18</span></div>
+        <div class="srow"><span class="slabel">Points</span><span class="sval ok">8 240 pts</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Compétences développées</div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Identification de vulnérabilités</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Analyse de trafic réseau</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Outils spécialisés pentest</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Manipulation de Linux</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Démarche d'investigation</span></div>
-    </div>
-    <div class="sb">
-      <div class="sb-title">Profil Root-Me</div>
-      <a href="https://root-me.pro/profiles" target="_blank" class="sb-link">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        Voir mon profil Root-Me
-      </a>
+
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        <span class="scard-title">Preuves & Documents</span>
+      </div>
+      <div class="scard-body">
+        <a href="https://root-me.pro/profiles" target="_blank" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>
+          <span>Profil Root-Me</span>
+        </a>
+        <a href="preuves/sae3-04-captures.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Captures des challenges</span>
+        </a>
+      </div>
     </div>
   </aside>
 </div>
-
-<footer>
-  <span class="foot-l">SAE 3.Cyber.04 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
-  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
-</footer>
-<script>
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
-document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
-</script>
-</body></html>
+</body>
+</html>

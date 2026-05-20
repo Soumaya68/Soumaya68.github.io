@@ -1,173 +1,420 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>SAE 3.02 — Routage en oignon | Soumaya RABAH</title>
-<link rel="stylesheet" href="projet.css"/>
-<style>:root{--project-color:#7A3A8C;}</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAE3.02 — Application communicante · Soumaya RABAH</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap"/>
+  <style>
+    :root {
+      --bg:#F2EFE7; --bg2:#E8E4DA; --bg3:#D8D4C8;
+      --dark:#1E2318; --mid:#4A5240; --muted:#7A7A6A;
+      --olive:#4A5C2A; --olive-mid:#6B8040; --olive-light:#96B060; --olive-pale:#DCE8C4;
+      --terminal:#1E2A10; --term-green:#8DC050;
+      --accent:#0EA5E9; --accent-dark:#0369A1; --accent-pale:#E0F2FE;
+      --font-display:'Syne',sans-serif; --font-body:'Instrument Sans',sans-serif; --font-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
+    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:5px}
+    .nav-logo-dot{width:6px;height:6px;background:#C8D9A8;border-radius:50%}
+    .nav-center{font-family:var(--font-mono);font-size:.72rem;color:#5a7030;letter-spacing:.04em}
+    .nav-center span{color:var(--term-green)}
+    .nav-back{display:flex;align-items:center;gap:.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:.35rem .9rem;border-radius:4px}
+    .nav-back:hover{color:#fff;border-color:var(--term-green)}
+    .nav-back svg{transition:transform .2s}
+    .nav-back:hover svg{transform:translateX(-3px)}
+
+    /* HERO bleu nuit */
+    .hero{background:linear-gradient(135deg,#060d1a 0%,#0c2040 50%,#1E2A10 100%);padding:4.5rem 3rem 3.5rem;position:relative;overflow:hidden}
+    /* ONION RINGS animation */
+    .rings{position:absolute;right:80px;top:50%;transform:translateY(-50%);pointer-events:none}
+    .ring{position:absolute;border-radius:50%;border:1px solid rgba(14,165,233,.18);transform:translate(-50%,-50%);animation:ringPulse 3.5s ease-in-out infinite}
+    .ring:nth-child(1){width:120px;height:120px}
+    .ring:nth-child(2){width:200px;height:200px;animation-delay:.6s;border-color:rgba(14,165,233,.12)}
+    .ring:nth-child(3){width:300px;height:300px;animation-delay:1.2s;border-color:rgba(14,165,233,.07)}
+    .ring:nth-child(4){width:420px;height:420px;animation-delay:1.8s;border-color:rgba(14,165,233,.04)}
+    @keyframes ringPulse{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.02)}}
+    .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:.3rem .9rem;border-radius:20px;font-family:var(--font-mono);font-size:.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:.06em}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--term-green);animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.6rem}
+    .hero-title em{font-style:normal;color:#7DD3FC}
+    .hero-sub{color:rgba(255,255,255,.48);font-size:1rem;line-height:1.65;max-width:600px;margin-top:.8rem}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+    .chip{padding:.28rem .8rem;border-radius:20px;font-family:var(--font-mono);font-size:.68rem;font-weight:500}
+    .chip-g{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);color:var(--term-green)}
+    .chip-b{background:rgba(14,165,233,.12);border:1px solid rgba(125,211,252,.3);color:#7DD3FC}
+    .chip-w{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.55)}
+
+    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}
+    .main-content{min-width:0}
+    .sidebar{position:sticky;top:68px;display:flex;flex-direction:column;gap:1rem}
+    .scard{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .scard-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.5rem}
+    .scard-icon{color:var(--term-green);flex-shrink:0}
+    .scard-title{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.08em;text-transform:uppercase}
+    .scard-body{padding:1.1rem}
+    .srow{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
+    .srow:last-child{border-bottom:none}
+    .slabel{color:var(--muted);font-size:.75rem}
+    .sval{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--dark)}
+    .sval.ok{color:#5C8A3C}
+    .member{display:flex;align-items:center;gap:.65rem;padding:.4rem 0;border-bottom:1px solid var(--bg2)}
+    .member:last-child{border-bottom:none}
+    .av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
+    .av-me{background:linear-gradient(135deg,#4A5C2A,#6B8040)}
+    .av-b{background:linear-gradient(135deg,#0369A1,#0EA5E9)}
+    .mname{font-size:.8rem;font-weight:500;flex:1}
+    .mme{font-family:var(--font-mono);font-size:.62rem;color:var(--olive-mid);margin-left:auto;font-weight:600}
+    .mrole{font-family:var(--font-mono);font-size:.62rem;color:#0369A1;margin-left:auto}
+    .plink{display:flex;align-items:center;gap:.55rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px;text-decoration:none;color:var(--dark);font-size:.8rem;margin-bottom:.5rem;transition:all .2s}
+    .plink:last-child{margin-bottom:0}
+    .plink:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(4px)}
+    .plink svg{color:var(--olive-mid);flex-shrink:0}
+    .plink span{font-family:var(--font-mono);font-size:.72rem}
+
+    .s{margin-bottom:3rem;opacity:0;transform:translateY(22px);animation:up .55s forwards}
+    .s:nth-child(1){animation-delay:.08s}.s:nth-child(2){animation-delay:.16s}.s:nth-child(3){animation-delay:.24s}
+    .s:nth-child(4){animation-delay:.32s}.s:nth-child(5){animation-delay:.40s}.s:nth-child(6){animation-delay:.48s}
+    .s:nth-child(7){animation-delay:.56s}.s:nth-child(8){animation-delay:.64s}.s:nth-child(9){animation-delay:.72s}
+    .s:nth-child(10){animation-delay:.80s}
+    @keyframes up{to{opacity:1;transform:translateY(0)}}
+    .eye{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+    .stitle{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+    .stitle span{color:var(--accent)}
+    .prose{font-size:.93rem;line-height:1.78;color:var(--mid)}
+    .prose p{margin-bottom:.85rem}
+    .prose p:last-child{margin-bottom:0}
+
+    /* ONION DIAGRAM */
+    .onion-diag{background:#040d1c;border-radius:14px;padding:2rem;margin:1.5rem 0;position:relative;overflow:hidden}
+    .onion-diag::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(14,165,233,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,.03) 1px,transparent 1px);background-size:26px 26px}
+    .od-wrap{display:flex;align-items:center;justify-content:center;gap:.3rem;flex-wrap:wrap;position:relative;z-index:2}
+    .od-node{display:flex;flex-direction:column;align-items:center;gap:.35rem}
+    .od-box{padding:.65rem .9rem;border-radius:9px;text-align:center;min-width:88px;transition:transform .2s}
+    .od-box:hover{transform:translateY(-3px)}
+    .od-client{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)}
+    .od-router{background:rgba(14,165,233,.1);border:1px solid rgba(125,211,252,.28)}
+    .od-master{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.28)}
+    .od-name{font-family:var(--font-mono);font-size:.62rem;display:block;font-weight:600}
+    .od-client .od-name{color:rgba(255,255,255,.55)}
+    .od-router .od-name{color:#7DD3FC}
+    .od-master .od-name{color:var(--term-green)}
+    .od-sub{font-size:.52rem;color:rgba(255,255,255,.28);font-family:var(--font-mono);display:block;margin-top:.15rem}
+    .od-arr{color:rgba(125,211,252,.3);font-family:var(--font-mono);font-size:.9rem;align-self:center;padding:0 .1rem}
+    /* layer labels */
+    .od-layers{display:flex;justify-content:center;gap:1.5rem;margin-top:1.2rem;position:relative;z-index:2}
+    .od-layer{display:flex;align-items:center;gap:.35rem;font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,.28)}
+    .od-dot{width:7px;height:7px;border-radius:50%}
+
+    /* SPLIT ROLES */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0}
+    .split-card{padding:1.2rem;border-radius:10px}
+    .split-other{background:var(--bg2);border:1px solid var(--bg3)}
+    .split-me{background:linear-gradient(135deg,rgba(74,92,42,.07),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid)}
+    .split-name{font-weight:700;font-size:.88rem;margin-bottom:.2rem}
+    .split-role{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);margin-bottom:.8rem}
+    .split-items{display:flex;flex-direction:column;gap:.3rem}
+    .split-item{font-size:.78rem;color:var(--mid);display:flex;gap:.4rem}
+    .split-item::before{content:'→';color:var(--olive-mid);font-family:var(--font-mono);flex-shrink:0}
+
+    /* TECH STACK */
+    .tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.8rem;margin:1.4rem 0}
+    .tech{padding:1rem;background:#fff;border:1px solid var(--bg3);border-radius:9px;display:flex;flex-direction:column;gap:.35rem;transition:transform .2s,box-shadow .2s}
+    .tech:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.07)}
+    .tech-top{display:flex;align-items:center;gap:.4rem}
+    .tech-dot{width:7px;height:7px;border-radius:50%}
+    .td-blue{background:#0EA5E9}.td-green{background:var(--olive-mid)}.td-purple{background:#7C3AED}.td-orange{background:#EA580C}
+    .tech-name{font-weight:600;font-size:.82rem}
+    .tech-desc{font-size:.72rem;color:var(--muted);line-height:1.45}
+
+    .tl{display:flex;flex-direction:column}
+    .tl-item{display:grid;grid-template-columns:36px 1fr;gap:0 .9rem;padding-bottom:1.4rem}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-l{display:flex;flex-direction:column;align-items:center}
+    .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent);margin-top:2px;flex-shrink:0}
+    .tl-line{flex:1;width:2px;background:linear-gradient(var(--accent-pale),transparent);margin-top:3px}
+    .tl-n{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-bottom:.15rem}
+    .tl-c{font-size:.86rem;color:var(--mid);line-height:1.5}
+
+    .skill-groups{display:flex;flex-direction:column;gap:1rem;margin-top:.8rem}
+    .sg-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+    .tag{padding:.25rem .7rem;border-radius:5px;font-size:.73rem;font-weight:500}
+    .tg{background:var(--olive-pale);color:#3D5226}
+    .tb{background:var(--accent-pale);color:#0369A1}
+    .tp{background:#EDE9FE;color:#4C1D95}
+
+    .ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.9rem}
+    @media(max-width:600px){.ac-grid{grid-template-columns:1fr}}
+    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px}
+    .ac-code{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);font-weight:700;flex-shrink:0;white-space:nowrap;padding-top:.05rem}
+    .ac-txt{font-size:.78rem;color:var(--mid);line-height:1.4}
+    .res-list{margin-top:.8rem;display:flex;flex-direction:column}
+    .res{display:flex;gap:.55rem;align-items:baseline;padding:.38rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem;color:var(--mid)}
+    .res:last-child{border-bottom:none}
+    .res-code{font-family:var(--font-mono);font-size:.65rem;color:var(--olive-mid);font-weight:700;flex-shrink:0}
+
+    .quote{border-left:3px solid #7DD3FC;padding:.9rem 1.3rem;background:rgba(14,165,233,.04);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
+    .en-box{background:var(--terminal);border-radius:12px;padding:1.4rem;margin:1.4rem 0}
+    .en-label{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.1em;margin-bottom:.65rem}
+    .en-txt{color:rgba(255,255,255,.6);font-size:.86rem;line-height:1.72}
+
+    .proj-img{border-radius:12px;overflow:hidden;border:1px solid var(--bg3);margin:1.4rem 0;aspect-ratio:16/7;background:linear-gradient(135deg,#040d1c,#0c2040);display:flex;align-items:center;justify-content:center}
+    .proj-img img{width:100%;height:100%;object-fit:cover}
+    .sep{height:1px;background:linear-gradient(90deg,transparent,var(--bg3),transparent);margin:2rem 0}
+
+    @media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{position:static}.top-nav{padding:.9rem 1.5rem}.hero{padding:3rem 1.5rem}.split{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
-  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">soumaya<div class="nav-logo-dot"></div></a>
+  <span class="nav-center">Projets / <span>SAE3.02</span></span>
+  <a href="index.html" class="nav-back">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </a>
 </nav>
 
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-meta">
-      <span class="hero-badge">SAE 3.02 · 2ème année</span>
-      <span class="hero-status">Terminé</span>
-    </div>
-    <div class="hero-num">3.02</div>
-    <h1>Application communicante <em>distribuée</em></h1>
-    <p class="hero-desc">Système de messagerie anonyme inspiré du routage en oignon — architecture client/serveur multi-composants avec chiffrement RSA multi-couches et interfaces PyQt6. En binôme.</p>
-    <div class="chips">
-      <span class="chip chip-dark">Python</span>
-      <span class="chip chip-pale">PyQt6</span>
-      <span class="chip chip-dark">TCP Sockets</span>
-      <span class="chip chip-pale">RSA / Onion</span>
-      <span class="chip chip-dark">MariaDB</span>
-      <span class="chip chip-pale">Multi-threading</span>
+<div class="hero">
+  <div class="rings">
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">SAE3.02 — Semestre 3 · BUT R&T · IUT Colmar</div>
+    <h1 class="hero-title">Application<br>communicante <em>distribuée</em></h1>
+    <p class="hero-sub">Messagerie anonyme par routage en oignon — chiffrement RSA multi-couches, architecture distribuée Master / Routeurs / Clients, interfaces PyQt6 et persistance MariaDB.</p>
+    <div class="hero-chips">
+      <span class="chip chip-w">Python</span>
+      <span class="chip chip-w">PyQt6</span>
+      <span class="chip chip-w">Sockets TCP</span>
+      <span class="chip chip-w">MariaDB</span>
+      <span class="chip chip-b">Onion Routing</span>
+      <span class="chip chip-g">RSA · Anonymisation</span>
     </div>
   </div>
-  <div class="hero-right">
-    <div>
-      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T · UE Programmer</div><div class="hib-sub">Semestre 3 · 2024/2025</div></div>
-      <div class="hero-info-block"><div class="hib-label">Encadrants</div><div class="hib-value">ALBERT Arnaud</div><div class="hib-sub">DROUHIN Frédéric</div></div>
-      <div class="hero-info-block"><div class="hib-label">Équipe</div>
-        <div class="team-list">
-          <div class="team-item"><div class="team-av" style="background:rgba(122,58,140,0.3);color:#C080E0;">SR</div><div><div class="team-name">Soumaya RABAH</div><div class="team-role">Interfaces · BDD · Org.</div></div></div>
-          <div class="team-item"><div class="team-av" style="background:rgba(122,58,140,0.2);color:#C080E0;">NH</div><div><div class="team-name">Nolan HOARAU</div><div class="team-role">Réseau · Chiffrement</div></div></div>
+</div>
+
+<div class="page-body">
+  <div class="main-content">
+
+    <div class="s">
+      <div class="proj-img"><img src="image/image_routageoignon.webp" alt="Routage en oignon" onerror="this.parentElement.style.minHeight='200px'"/></div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Vue d'ensemble</div>
+      <h2 class="stitle">Messagerie anonyme par <span>routage en oignon</span></h2>
+      <div class="prose">
+        <p>Ce projet reproduit les principes du réseau Tor : les messages sont chiffrés en plusieurs couches successives, traversent des routeurs qui décryptent chacun une couche, masquant ainsi l'origine et la destination des échanges. L'objectif est de permettre des communications anonymes et sécurisées dans une architecture distribuée.</p>
+        <p>Au-delà d'une simple messagerie, le système intègre une gestion concurrente des connexions, une base de données pour la persistance, et des interfaces graphiques complètes pour le monitoring côté Master et la communication côté Client.</p>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Architecture</div>
+      <h2 class="stitle">Le principe de l'<span>oignon</span></h2>
+      <div class="onion-diag">
+        <div class="od-wrap">
+          <div class="od-node">
+            <div class="od-box od-client">
+              <span class="od-name">Client A</span>
+              <span class="od-sub">Expéditeur</span>
+            </div>
+          </div>
+          <span class="od-arr">⟶</span>
+          <div class="od-node">
+            <div class="od-box od-router">
+              <span class="od-name">Routeur 1</span>
+              <span class="od-sub">Couche 3 → 2</span>
+            </div>
+          </div>
+          <span class="od-arr">⟶</span>
+          <div class="od-node">
+            <div class="od-box od-router">
+              <span class="od-name">Routeur 2</span>
+              <span class="od-sub">Couche 2 → 1</span>
+            </div>
+          </div>
+          <span class="od-arr">⟶</span>
+          <div class="od-node">
+            <div class="od-box od-client">
+              <span class="od-name">Client B</span>
+              <span class="od-sub">Destinataire</span>
+            </div>
+          </div>
+        </div>
+        <div class="od-layers">
+          <div class="od-layer"><div class="od-dot" style="background:#8DC050"></div>Master — gestion des clés & topologie</div>
+          <div class="od-layer"><div class="od-dot" style="background:#7DD3FC"></div>Transport TCP — sockets</div>
+          <div class="od-layer"><div class="od-dot" style="background:rgba(255,255,255,.3)"></div>RSA asymétrique — 3 couches</div>
+        </div>
+      </div>
+      <div class="tech-grid">
+        <div class="tech"><div class="tech-top"><div class="tech-dot td-blue"></div><span class="tech-name">Sockets TCP</span></div><div class="tech-desc">Communication réseau en temps réel entre tous les composants.</div></div>
+        <div class="tech"><div class="tech-top"><div class="tech-dot td-green"></div><span class="tech-name">RSA simplifié</span></div><div class="tech-desc">Chiffrement asymétrique multi-couches pour l'anonymat.</div></div>
+        <div class="tech"><div class="tech-top"><div class="tech-dot td-purple"></div><span class="tech-name">Multi-threading</span></div><div class="tech-desc">Gestion simultanée de plusieurs connexions clientes.</div></div>
+        <div class="tech"><div class="tech-top"><div class="tech-dot td-orange"></div><span class="tech-name">MariaDB</span></div><div class="tech-desc">Persistance des messages et des sessions utilisateurs.</div></div>
+        <div class="tech"><div class="tech-top"><div class="tech-dot td-blue"></div><span class="tech-name">PyQt6</span></div><div class="tech-desc">Interfaces graphiques modernes pour Master et Client.</div></div>
+        <div class="tech"><div class="tech-top"><div class="tech-dot td-green"></div><span class="tech-name">Signaux Qt</span></div><div class="tech-desc">Intégration interface ↔ backend réseau en temps réel.</div></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Collaboration</div>
+      <h2 class="stitle">Répartition <span>du travail</span></h2>
+      <div class="split">
+        <div class="split-card split-other">
+          <div class="split-name">Nolan HOARAU</div>
+          <div class="split-role">// Logique réseau & sécurité</div>
+          <div class="split-items">
+            <div class="split-item">Logique réseau et sockets</div>
+            <div class="split-item">Algorithme de chiffrement RSA</div>
+            <div class="split-item">Protocole de routage multi-sauts</div>
+          </div>
+        </div>
+        <div class="split-card split-me">
+          <div class="split-name">Soumaya RABAH <span style="font-size:.62rem;color:var(--olive-mid);font-family:var(--font-mono);font-weight:400"> — moi</span></div>
+          <div class="split-role">// Interfaces & données</div>
+          <div class="split-items">
+            <div class="split-item">Interfaces PyQt6 Master & Client</div>
+            <div class="split-item">Base de données MariaDB</div>
+            <div class="split-item">Intégration interface ↔ backend</div>
+            <div class="split-item">Organisation Git, structure & planning</div>
+            <div class="split-item">Documentation technique</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="hero-stats-grid">
-      <div class="hsg-item"><div class="hsg-num">8</div><div class="hsg-label">Phases</div></div>
-      <div class="hsg-item"><div class="hsg-num">RSA</div><div class="hsg-label">Chiffrement</div></div>
-      <div class="hsg-item"><div class="hsg-num">2</div><div class="hsg-label">Équipiers</div></div>
-      <div class="hsg-item"><div class="hsg-num">3</div><div class="hsg-label">Composants</div></div>
-    </div>
-  </div>
-</section>
 
-<div class="page-body">
-  <div>
-    <div class="section">
-      <div class="s-eyebrow">Contexte</div>
-      <h2>Développer une application communicante distribuée</h2>
-      <p>Ce projet consistait à concevoir un système de <strong>messagerie anonyme</strong> inspiré du principe du <strong>routage en oignon</strong> — les messages sont chiffrés en plusieurs couches successives et traversent des routeurs intermédiaires avant d'atteindre leur destinataire.</p>
-      <div class="grid-3">
-        <div class="card"><h4>Application distribuée</h4><p>Système client/serveur multi-composants avec échanges en temps réel</p></div>
-        <div class="card"><h4>Sécurité & anonymisation</h4><p>Routage en oignon, chiffrement RSA multi-couches, masquage d'identité</p></div>
-        <div class="card"><h4>Interface & UX</h4><p>Interfaces graphiques PyQt6 ergonomiques pour monitoring et communication</p></div>
+    <div class="s">
+      <div class="eye">Déroulement</div>
+      <h2 class="stitle">Chronologie <span>du projet</span></h2>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">01</div><div class="tl-c">Analyse du cahier des charges et conception de l'architecture</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">02</div><div class="tl-c">Développement des modules Master / Routeur / Client</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">03</div><div class="tl-c">Création et intégration de la base de données MariaDB</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">04</div><div class="tl-c">Développement des interfaces graphiques PyQt6</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">05</div><div class="tl-c">Intégration des composants — synchronisation interface / threads réseau</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">06</div><div class="tl-c">Tests multi-machines et sur VM</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-n">07</div><div class="tl-c">Documentation technique et utilisateur, finalisation</div></div></div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Architecture</div>
-      <h2>Système distribué en 3 niveaux</h2>
-      <p>Chaque composant joue un rôle précis dans la chaîne de communication anonymisée.</p>
-      <img src="image_routageoignon.webp" alt="Routage en oignon" style="width:100%;border-radius:10px;border:1px solid #D8D4C8;margin-bottom:1rem;display:block;"/>
-      <div class="grid-3">
-        <div class="card-plain"><h4>🖥️ Master (serveur central)</h4><p>Gère les connexions, distribue les clés et maintient la topologie du réseau</p></div>
-        <div class="card-plain"><h4>🔀 Routeurs intermédiaires</h4><p>Transfèrent les messages en supprimant une couche de chiffrement à chaque étape</p></div>
-        <div class="card-plain"><h4>👤 Clients</h4><p>Permettent l'envoi et la réception de messages anonymes</p></div>
-      </div>
-      <p style="margin-top:1rem;">Technologies clés : sockets <strong>TCP</strong>, chiffrement <strong>RSA simplifié</strong>, <strong>multi-threading</strong> pour les communications simultanées, persistance <strong>MariaDB</strong>, interfaces <strong>PyQt6</strong>.</p>
+    <div class="s">
+      <div class="eye">Retour d'expérience</div>
+      <h2 class="stitle">Ce que j'en <span>retiens</span></h2>
+      <div class="quote">Ce projet a été particulièrement enrichissant car il combinait développement, réseau et cybersécurité. J'ai découvert PyQt6 et appris à concevoir des interfaces complètes et interactives. Les difficultés liées à l'intégration entre l'interface et les threads réseau m'ont permis de développer une vraie méthodologie de résolution de problèmes. Ce projet a renforcé mon intérêt pour les systèmes complexes et la cybersécurité.</div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Mon rôle</div>
-      <h2>Interfaces, base de données & organisation</h2>
-      <p>J'ai pris en charge toute la partie <strong>interface utilisateur, gestion des données et organisation du projet</strong>, en binôme avec Nolan qui gérait la logique réseau et le chiffrement.</p>
-      <div class="grid-2">
-        <div class="card-plain"><h4>🎨 Interfaces PyQt6</h4><p>Conception et développement des GUI pour le Master et le Client</p></div>
-        <div class="card-plain"><h4>🗃️ Base de données MariaDB</h4><p>Mise en place et gestion de la persistance des données</p></div>
-        <div class="card-plain"><h4>🔗 Intégration interface ↔ backend</h4><p>Connexion via signaux Qt entre interface et threads réseau</p></div>
-        <div class="card-plain"><h4>📋 Organisation & documentation</h4><p>Git, structure du projet, planning, documentation technique</p></div>
+    <div class="s">
+      <div class="eye">Compétences</div>
+      <h2 class="stitle">Ce que j'ai <span>développé</span></h2>
+      <div class="skill-groups">
+        <div><div class="sg-label">Développement</div><div class="tags"><span class="tag tg">Application client/serveur</span><span class="tag tg">Interfaces PyQt6</span><span class="tag tg">Python avancé</span></div></div>
+        <div><div class="sg-label">Réseaux</div><div class="tags"><span class="tag tb">Protocoles TCP</span><span class="tag tb">Sockets</span><span class="tag tb">Architecture distribuée</span></div></div>
+        <div><div class="sg-label">Cybersécurité</div><div class="tags"><span class="tag tp">Chiffrement asymétrique RSA</span><span class="tag tp">Routage en oignon</span><span class="tag tp">Anonymisation</span></div></div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Chronologie</div>
-      <h2>8 étapes du projet</h2>
-      <div class="timeline">
-        <div class="tl"><div class="tl-dot">1</div><div class="tl-body"><h4>Analyse du cahier des charges</h4><p>Définition de l'architecture et des contraintes</p></div></div>
-        <div class="tl"><div class="tl-dot">2</div><div class="tl-body"><h4>Conception de l'architecture</h4><p>Modélisation du système distribué en 3 niveaux</p></div></div>
-        <div class="tl"><div class="tl-dot">3</div><div class="tl-body"><h4>Développement des modules</h4><p>Master, Routeur, Client — développement parallèle</p></div></div>
-        <div class="tl"><div class="tl-dot">4</div><div class="tl-body"><h4>Base de données</h4><p>Création et intégration MariaDB</p></div></div>
-        <div class="tl"><div class="tl-dot">5</div><div class="tl-body"><h4>Interfaces graphiques</h4><p>Développement des GUI PyQt6</p></div></div>
-        <div class="tl"><div class="tl-dot">6</div><div class="tl-body"><h4>Intégration</h4><p>Connexion de tous les composants</p></div></div>
-        <div class="tl"><div class="tl-dot">7</div><div class="tl-body"><h4>Tests multi-machines / VM</h4><p>Validation en conditions réelles</p></div></div>
-        <div class="tl"><div class="tl-dot">8</div><div class="tl-body"><h4>Documentation & finalisation</h4><p>Rédaction de la documentation technique et utilisateur</p></div></div>
+    <div class="sep"></div>
+
+    <div class="s">
+      <div class="eye">Référentiel</div>
+      <h2 class="stitle">Apprentissages <span>critiques</span></h2>
+      <div class="ac-grid">
+        <div class="ac"><span class="ac-code">AC21.06</span><span class="ac-txt">Travailler en équipe pour développer ses compétences professionnelles</span></div>
+        <div class="ac"><span class="ac-code">AC22.05</span><span class="ac-txt">Capacité à questionner un cahier des charges RT</span></div>
+        <div class="ac"><span class="ac-code">AC23.02</span><span class="ac-txt">Développer une application à partir d'un cahier des charges donné, Web ou mobile</span></div>
+        <div class="ac"><span class="ac-code">AC23.03</span><span class="ac-txt">Utiliser un protocole réseau pour programmer une application client/serveur</span></div>
+        <div class="ac"><span class="ac-code">AC23.04</span><span class="ac-txt">Installer et administrer un système de gestion de données</span></div>
+        <div class="ac"><span class="ac-code">AC23.05</span><span class="ac-txt">Accéder à un ensemble de données depuis une application ou un site web</span></div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Ressenti</div>
-      <h2>Ce que j'en retiens</h2>
-      <div class="ressenti">
-        <p>Ce projet a été <strong>particulièrement enrichissant</strong> car il combinait développement, réseau et cybersécurité. J'ai découvert PyQt6 et appris à concevoir des interfaces complètes et interactives. La principale difficulté : l'intégration entre l'interface et les threads réseau — qui m'a permis de développer une vraie méthodologie de résolution de problèmes. Ce projet a renforcé mon intérêt pour les systèmes complexes et la cybersécurité.</p>
-      </div>
-      <div class="skills-wrap" style="margin-top:1rem;">
-        <span class="skill-badge sb-g">Python avancé</span><span class="skill-badge sb-g">PyQt6</span><span class="skill-badge sb-g">Sockets TCP</span><span class="skill-badge sb-d">RSA / Chiffrement</span><span class="skill-badge sb-d">Routage en oignon</span><span class="skill-badge sb-g">MariaDB</span><span class="skill-badge sb-d">Multi-threading</span>
+    <div class="s">
+      <div class="eye">Formation</div>
+      <h2 class="stitle">Ressources <span>mobilisées</span></h2>
+      <div class="res-list">
+        <div class="res"><span class="res-code">R3.08</span>Consolidation de la programmation</div>
+        <div class="res"><span class="res-code">R3.09</span>Programmation événementielle</div>
+        <div class="res"><span class="res-code">R3.10</span>Gestion d'un système de bases de données</div>
+        <div class="res"><span class="res-code">R3.11</span>Anglais professionnel 1</div>
+        <div class="res"><span class="res-code">R3.12</span>Expression-Culture-Communication professionnelles : Savoir collaborer</div>
+        <div class="res"><span class="res-code">R3.13</span>Projet Personnel et Professionnel</div>
+        <div class="res"><span class="res-code">R3.15</span>Gestion de projet 2 : Utiliser les méthodes de gestion de projet</div>
       </div>
     </div>
 
-    <div class="section">
+    <div class="s">
       <div class="en-box">
-        <span class="en-flag">🇬🇧 English Summary</span>
-        <div class="en-title">Distributed Communication System — Onion Routing</div>
-        <p class="en-body">This project involved designing a <em>distributed messaging application</em> based on onion routing principles. The architecture includes a central server (Master), intermediate routers, and clients. Messages are <em>encrypted in multiple RSA layers</em> and transmitted through several nodes to ensure anonymity. I was responsible for the <em>graphical interfaces (PyQt6)</em>, database management (MariaDB), and project organization. This project strengthened my skills in networking, Python development, and system integration.</p>
+        <div class="en-label">// ENGLISH SUMMARY</div>
+        <div class="en-txt">This project involved designing and developing a distributed communication system based on onion routing principles. We built a complete architecture including a central server (Master), intermediate routers, and clients. Messages were encrypted in multiple layers using RSA and transmitted through several nodes to ensure anonymity. I was responsible for the graphical interfaces (PyQt6), database management (MariaDB), and project organization.</div>
       </div>
     </div>
+
   </div>
 
   <aside class="sidebar">
-    <div class="sb">
-      <div class="sb-title">Informations</div>
-      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 3 · 2024/2025</span></div>
-      <div class="sb-line"><span class="sb-tick">👥</span><span>Binôme</span></div>
-      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
-      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Administrer · UE Programmer</span></div>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="scard-title">Informations</span>
+      </div>
+      <div class="scard-body">
+        <div class="srow"><span class="slabel">Compétences</span><span class="sval">UE3.1 + UE3.3</span></div>
+        <div class="srow"><span class="slabel">Semestre</span><span class="sval">S3</span></div>
+        <div class="srow"><span class="slabel">Équipe</span><span class="sval">2 personnes</span></div>
+        <div class="srow"><span class="slabel">Encadrants</span><span class="sval">ALBERT · DROUHIN</span></div>
+        <div class="srow"><span class="slabel">Statut</span><span class="sval ok">✓ Terminé</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Technologies</div>
-      <span class="sb-tag">Python</span><span class="sb-tag">PyQt6</span><span class="sb-tag">TCP Sockets</span><span class="sb-tag">RSA</span><span class="sb-tag">MariaDB</span><span class="sb-tag">Multi-threading</span><span class="sb-tag">Git</span>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span class="scard-title">Équipe projet</span>
+      </div>
+      <div class="scard-body">
+        <div class="member"><div class="av av-me">SR</div><span class="mname">Soumaya RABAH</span><span class="mme">moi</span></div>
+        <div class="member"><div class="av av-b">NH</div><span class="mname">Nolan HOARAU</span><span class="mrole">réseau</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Compétences développées</div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Application client/serveur</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Chiffrement asymétrique (RSA)</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Interfaces graphiques PyQt6</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Architecture distribuée</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Routage en oignon</span></div>
-    </div>
-    <div class="sb">
-      <div class="sb-title">GitHub</div>
-      <a href="https://github.com/NolanHoarau/SAE_3.02" target="_blank" class="sb-link">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        NolanHoarau/SAE_3.02
-      </a>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        <span class="scard-title">Preuves & Documents</span>
+      </div>
+      <div class="scard-body">
+        <a href="https://github.com/NolanHoarau/SAE_3.02" target="_blank" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          <span>GitHub — SAE_3.02</span>
+        </a>
+        <a href="preuves/sae3-02-taches.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Liste des tâches</span>
+        </a>
+        <a href="preuves/sae3-02-doc-cdc.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Documentation CDC</span>
+        </a>
+        <a href="preuves/sae3-02-planning.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Planning de projet</span>
+        </a>
+        <a href="preuves/sae3-02-fiche-contribution.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Fiche individuelle</span>
+        </a>
+      </div>
     </div>
   </aside>
 </div>
-
-<footer>
-  <span class="foot-l">SAE 3.02 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
-  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
-</footer>
-<script>
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
-document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
-</script>
-</body></html></title>
-</head>
-<body>
-
 </body>
 </html>

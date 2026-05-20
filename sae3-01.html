@@ -6,238 +6,431 @@
   <title>SAE3.01 — Prise connectée Wi-Fi · Soumaya RABAH</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap"/>
   <style>
-    :root{--bg:#F2EFE7;--bg2:#E8E4DA;--bg3:#D8D4C8;--dark:#1E2318;--mid:#4A5240;--muted:#7A7A6A;--olive:#4A5C2A;--olive-mid:#6B8040;--olive-light:#96B060;--olive-pale:#DCE8C4;--terminal:#1E2A10;--term-green:#8DC050;--acc:#5B8CFF;--acc2:#A8C4FF;--acc-pale:#EAF0FF;--font-display:'Syne',sans-serif;--font-body:'Instrument Sans',sans-serif;--font-mono:'DM Mono',monospace}
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+    :root {
+      --bg:#F2EFE7; --bg2:#E8E4DA; --bg3:#D8D4C8;
+      --dark:#1E2318; --mid:#4A5240; --muted:#7A7A6A;
+      --olive:#4A5C2A; --olive-mid:#6B8040; --olive-light:#96B060; --olive-pale:#DCE8C4;
+      --terminal:#1E2A10; --term-green:#8DC050;
+      --accent:#7C3AED; --accent-light:#A78BFA; --accent-pale:#EDE9FE;
+      --font-display:'Syne',sans-serif; --font-body:'Instrument Sans',sans-serif; --font-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{font-family:var(--font-body);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
-    .top-nav{position:sticky;top:0;z-index:300;background:var(--terminal);display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;border-bottom:1px solid rgba(141,192,80,.12)}
-    .nav-logo{font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:#fff;text-decoration:none;letter-spacing:-.02em}
-    .nav-logo span{color:var(--term-green)}
-    .nav-back{display:flex;align-items:center;gap:.45rem;color:var(--olive-light);font-family:var(--font-mono);font-size:.78rem;text-decoration:none;border:1px solid rgba(141,192,80,.25);padding:.35rem .85rem;border-radius:20px;transition:all .2s}
-    .nav-back:hover{background:rgba(141,192,80,.1);color:#fff}
-    .nav-crumb{font-family:var(--font-mono);font-size:.72rem;color:#4a6030}
-    .nav-crumb span{color:var(--olive-light)}
-    .hero{background:linear-gradient(135deg,#0d1f3c 0%,#162d5e 45%,#1E2A10 100%);padding:5.5rem 2.5rem 4rem;position:relative;overflow:hidden}
-    .hero-glow{position:absolute;right:-80px;top:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(91,140,255,.15) 0%,transparent 65%);pointer-events:none}
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(91,140,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(91,140,255,.05) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+
+    /* NAV */
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
+    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-0.02em;display:flex;align-items:center;gap:5px}
+    .nav-logo-dot{width:6px;height:6px;background:#C8D9A8;border-radius:50%}
+    .nav-center{font-family:var(--font-mono);font-size:0.72rem;color:#5a7030;letter-spacing:0.04em}
+    .nav-center span{color:var(--term-green)}
+    .nav-back{display:flex;align-items:center;gap:0.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:0.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:0.35rem 0.9rem;border-radius:4px}
+    .nav-back:hover{color:#fff;border-color:var(--term-green)}
+    .nav-back svg{transition:transform .2s}
+    .nav-back:hover svg{transform:translateX(-3px)}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#1a0a3a 0%,#2d1060 40%,#1E2A10 100%);padding:4.5rem 3rem 3.5rem;position:relative;overflow:hidden}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.05) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+    .hero-glow{position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.18) 0%,transparent 65%);pointer-events:none}
     .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
-    .hero-eye{font-family:var(--font-mono);font-size:.72rem;color:var(--term-green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
-    .hero-eye::before{content:'';width:24px;height:1px;background:var(--term-green)}
-    .hero-h1{font-family:var(--font-display);font-size:clamp(2.1rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.7rem}
-    .hero-h1 em{font-style:normal;color:var(--acc2)}
-    .hero-sub{font-size:1rem;color:rgba(255,255,255,.5);max-width:580px;line-height:1.7;margin-top:.6rem}
-    .hero-pills{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.8rem}
-    .pill{padding:.3rem .85rem;border-radius:20px;font-family:var(--font-mono);font-size:.68rem;border:1px solid rgba(141,192,80,.3);color:var(--olive-light);background:rgba(141,192,80,.05)}
-    .pill.blue{border-color:rgba(91,140,255,.4);color:var(--acc2);background:rgba(91,140,255,.08)}
-    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.8rem;padding:.38rem 1rem;border-radius:20px;background:rgba(141,192,80,.1);border:1px solid rgba(141,192,80,.22);font-family:var(--font-mono);font-size:.7rem;color:var(--term-green)}
-    .hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--term-green);box-shadow:0 0 7px var(--term-green);animation:blink 2s infinite}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:0.3rem 0.9rem;border-radius:20px;font-family:var(--font-mono);font-size:0.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:0.06em}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--term-green);animation:blink 2s infinite}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-    .wrap{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 310px;gap:3rem;align-items:start}
-    .main{min-width:0}
-    .section{margin-bottom:3.2rem}
-    .s-eye{font-family:var(--font-mono);font-size:.68rem;color:var(--acc);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
-    .s-title{font-family:var(--font-display);font-size:1.55rem;font-weight:700;margin-bottom:1.1rem}
-    .s-title span{color:var(--acc)}
+    .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.6rem}
+    .hero-title em{font-style:normal;color:#C4B5FD}
+    .hero-sub{color:rgba(255,255,255,.5);font-size:1rem;line-height:1.65;max-width:580px;margin-top:.8rem}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+    .chip{padding:.28rem .8rem;border-radius:20px;font-family:var(--font-mono);font-size:.68rem;font-weight:500}
+    .chip-green{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);color:var(--term-green)}
+    .chip-purple{background:rgba(124,58,237,.15);border:1px solid rgba(196,181,253,.3);color:#C4B5FD}
+    .chip-white{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
+
+    /* LAYOUT */
+    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}
+    .main-content{min-width:0}
+
+    /* STICKY SIDEBAR */
+    .sidebar{position:sticky;top:68px;display:flex;flex-direction:column;gap:1rem}
+    .scard{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .scard-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.5rem}
+    .scard-head-icon{color:var(--term-green);flex-shrink:0}
+    .scard-head-title{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.08em;text-transform:uppercase}
+    .scard-body{padding:1.1rem}
+    .scard-row{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
+    .scard-row:last-child{border-bottom:none}
+    .scard-label{color:var(--muted);font-size:.75rem}
+    .scard-val{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--dark)}
+    .scard-val.ok{color:#5C8A3C}
+    .member{display:flex;align-items:center;gap:.65rem;padding:.4rem 0;border-bottom:1px solid var(--bg2)}
+    .member:last-child{border-bottom:none}
+    .avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
+    .av-me{background:linear-gradient(135deg,#4A5C2A,#6B8040)}
+    .av-blue{background:linear-gradient(135deg,#1a4080,#3060B0)}
+    .av-teal{background:linear-gradient(135deg,#1a6050,#309080)}
+    .av-rose{background:linear-gradient(135deg,#801a40,#C06080)}
+    .av-amber{background:linear-gradient(135deg,#604010,#A06020)}
+    .member-name{font-size:.8rem;font-weight:500;flex:1}
+    .member-tag{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-left:auto}
+    .member-me{font-family:var(--font-mono);font-size:.62rem;color:var(--olive-mid);margin-left:auto;font-weight:600}
+    .proof-link{display:flex;align-items:center;gap:.55rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px;text-decoration:none;color:var(--dark);font-size:.8rem;margin-bottom:.5rem;transition:all .2s}
+    .proof-link:last-child{margin-bottom:0}
+    .proof-link:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(4px)}
+    .proof-link svg{color:var(--olive-mid);flex-shrink:0}
+    .proof-link span{font-family:var(--font-mono);font-size:.72rem}
+
+    /* SECTIONS */
+    .s{margin-bottom:3rem;opacity:0;transform:translateY(22px);animation:up .55s forwards}
+    .s:nth-child(1){animation-delay:.08s}.s:nth-child(2){animation-delay:.16s}.s:nth-child(3){animation-delay:.24s}
+    .s:nth-child(4){animation-delay:.32s}.s:nth-child(5){animation-delay:.40s}.s:nth-child(6){animation-delay:.48s}
+    .s:nth-child(7){animation-delay:.56s}.s:nth-child(8){animation-delay:.64s}.s:nth-child(9){animation-delay:.72s}
+    @keyframes up{to{opacity:1;transform:translateY(0)}}
+    .s-eye{font-family:var(--font-mono);font-size:.68rem;color:var(--olive-mid);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+    .s-title{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+    .s-title span{color:var(--accent)}
     .prose{font-size:.93rem;line-height:1.78;color:var(--mid)}
-    .prose p{margin-bottom:.85rem}.prose p:last-child{margin-bottom:0}
-    .hero-img{border-radius:14px;overflow:hidden;border:1px solid rgba(91,140,255,.15);margin-bottom:3.2rem;aspect-ratio:16/7;background:linear-gradient(135deg,#0d1f3c,#162d5e);position:relative}
-    .hero-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
-    .hero-img-label{position:absolute;bottom:.8rem;left:.9rem;font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.4);background:rgba(0,0,0,.4);padding:.2rem .5rem;border-radius:4px}
-    .diag{background:#0d1f3c;border-radius:14px;padding:2rem 1.5rem;margin:1.4rem 0;position:relative;overflow:hidden}
-    .diag::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(91,140,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(91,140,255,.04) 1px,transparent 1px);background-size:32px 32px}
-    .diag-nodes{display:flex;align-items:center;justify-content:center;gap:.4rem;flex-wrap:wrap;position:relative;z-index:2}
-    .diag-node{display:flex;flex-direction:column;align-items:center;gap:.4rem}
-    .diag-box{padding:.65rem .9rem;border-radius:10px;text-align:center;min-width:90px;transition:border-color .2s}
-    .diag-box.app{background:rgba(91,140,255,.12);border:1px solid rgba(91,140,255,.35)}
-    .diag-box.srv{background:rgba(141,192,80,.08);border:1px solid rgba(141,192,80,.25)}
-    .diag-box.hw{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)}
-    .diag-box:hover{border-color:rgba(168,196,255,.6)}
-    .diag-icon{font-size:1.3rem;display:block;margin-bottom:.2rem}
-    .diag-name{font-family:var(--font-mono);font-size:.65rem;display:block}
-    .diag-box.app .diag-name{color:var(--acc2)}.diag-box.srv .diag-name{color:var(--term-green)}.diag-box.hw .diag-name{color:rgba(255,255,255,.55)}
-    .diag-sub{font-size:.56rem;color:rgba(255,255,255,.3);font-family:var(--font-mono);display:block;margin-top:.15rem}
-    .diag-arrow{color:rgba(91,140,255,.45);font-family:var(--font-mono);align-self:center;font-size:1rem;margin:0 .1rem}
-    .diag-footer{text-align:center;margin-top:1.2rem;position:relative;z-index:2;font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.2)}
-    .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:.9rem;margin:1.3rem 0}
-    .feat-card{background:#fff;border:1px solid var(--bg3);border-radius:10px;padding:1.1rem;border-left:3px solid var(--acc);transition:transform .2s,box-shadow .2s}
-    .feat-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.07)}
-    .feat-ic{width:34px;height:34px;border-radius:8px;background:var(--acc-pale);display:flex;align-items:center;justify-content:center;margin-bottom:.7rem}
-    .feat-ic svg{stroke:var(--acc)}
-    .feat-t{font-weight:600;font-size:.84rem;margin-bottom:.28rem}
-    .feat-d{font-size:.75rem;color:var(--muted);line-height:1.5}
-    .role-card{background:linear-gradient(135deg,rgba(74,92,42,.08),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid);border-radius:10px;padding:1.4rem;margin:1.4rem 0}
-    .role-head{font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--olive);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
-    .role-items{display:flex;flex-direction:column;gap:.45rem}
-    .role-item{display:flex;align-items:baseline;gap:.55rem;font-size:.84rem;color:var(--mid)}
-    .role-item::before{content:'→';color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0}
+    .prose p{margin-bottom:.85rem}
+    .prose p:last-child{margin-bottom:0}
+
+    /* IOT DIAGRAM */
+    .iot-diagram{background:#12082a;border-radius:14px;padding:2rem;margin:1.5rem 0;position:relative;overflow:hidden}
+    .iot-diagram::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.04) 1px,transparent 1px);background-size:28px 28px}
+    .iot-flow{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;position:relative;z-index:2}
+    .iot-node{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+    .iot-box{padding:.75rem 1rem;border-radius:10px;text-align:center;min-width:95px;transition:transform .2s}
+    .iot-box:hover{transform:translateY(-3px)}
+    .iot-box.hw{background:rgba(196,181,253,.1);border:1px solid rgba(196,181,253,.25)}
+    .iot-box.srv{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25)}
+    .iot-box.app{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25)}
+    .iot-box.sec{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2)}
+    .iot-icon{font-size:1.2rem;display:block;margin-bottom:.25rem}
+    .iot-name{font-family:var(--font-mono);font-size:.62rem;display:block;font-weight:600}
+    .iot-box.hw .iot-name{color:#C4B5FD}
+    .iot-box.srv .iot-name{color:var(--term-green)}
+    .iot-box.app .iot-name{color:#FCD34D}
+    .iot-box.sec .iot-name{color:#FCA5A5}
+    .iot-sub{font-size:.54rem;display:block;opacity:.4;color:#fff;font-family:var(--font-mono);margin-top:.15rem}
+    .iot-arrow{color:rgba(196,181,253,.35);font-family:var(--font-mono);font-size:1rem;padding:0 .25rem;align-self:center}
+    .iot-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;justify-content:center;position:relative;z-index:2}
+    .iot-leg{font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,.28)}
+    .iot-leg b{color:rgba(255,255,255,.5)}
+
+    /* FEATURE GRID */
+    .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:.9rem;margin:1.4rem 0}
+    .feat{padding:1.1rem;background:#fff;border:1px solid var(--bg3);border-radius:10px;border-left:3px solid var(--accent);transition:transform .2s,box-shadow .2s}
+    .feat:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.07)}
+    .feat-icon{width:34px;height:34px;border-radius:8px;background:var(--accent-pale);display:flex;align-items:center;justify-content:center;margin-bottom:.7rem;color:var(--accent)}
+    .feat-name{font-weight:600;font-size:.84rem;margin-bottom:.2rem}
+    .feat-desc{font-size:.75rem;color:var(--muted);line-height:1.5}
+
+    /* TIMELINE */
     .tl{display:flex;flex-direction:column}
-    .tl-row{display:grid;grid-template-columns:32px 1fr;gap:0 .9rem;padding-bottom:1.3rem}
-    .tl-row:last-child{padding-bottom:0}
-    .tl-col{display:flex;flex-direction:column;align-items:center}
-    .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--acc);flex-shrink:0;border:2px solid var(--bg);box-shadow:0 0 0 2px var(--acc);margin-top:2px}
-    .tl-line{flex:1;width:2px;background:linear-gradient(#c7d9ff,transparent);margin-top:3px}
+    .tl-item{display:grid;grid-template-columns:36px 1fr;gap:0 .9rem;padding-bottom:1.4rem}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-l{display:flex;flex-direction:column;align-items:center}
+    .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent);margin-top:2px;flex-shrink:0}
+    .tl-line{flex:1;width:2px;background:linear-gradient(var(--accent-pale),transparent);margin-top:3px}
     .tl-n{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-bottom:.15rem}
-    .tl-c{font-size:.86rem;color:var(--mid);padding-top:1px}
-    .quote{border-left:3px solid var(--acc2);padding:1rem 1.4rem;background:rgba(91,140,255,.04);border-radius:0 8px 8px 0;margin:1.4rem 0;font-size:.9rem;color:var(--mid);line-height:1.75;font-style:italic}
-    .sk-group{margin-bottom:1.1rem}
-    .sk-label{font-family:var(--font-mono);font-size:.67rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.45rem}
-    .sk-wrap{display:flex;flex-wrap:wrap;gap:.38rem}
-    .sk{padding:.28rem .72rem;border-radius:6px;font-size:.73rem;font-weight:500}
-    .sk.g{background:#DCE8C4;color:#3D5226}.sk.b{background:#e0eaff;color:#2446a0}.sk.p{background:#ede9fe;color:#4c1d95}.sk.o{background:#fde8dc;color:#8c3a1a}
-    .ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:.9rem}
-    @media(max-width:580px){.ac-grid{grid-template-columns:1fr}}
-    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:var(--bg);border:1px solid var(--bg3);border-radius:8px;font-size:.78rem}
-    .ac-code{font-family:var(--font-mono);font-size:.66rem;color:var(--acc);font-weight:600;flex-shrink:0;white-space:nowrap}
-    .ac-txt{color:var(--mid);line-height:1.4}
-    .res-list{display:flex;flex-direction:column;margin-top:.7rem}
-    .res-row{display:flex;gap:.55rem;align-items:baseline;font-size:.82rem;color:var(--mid);padding:.38rem 0;border-bottom:1px solid var(--bg2)}
-    .res-row:last-child{border-bottom:none}
-    .res-code{font-family:var(--font-mono);font-size:.66rem;color:#3a5cb0;font-weight:600;flex-shrink:0}
+    .tl-c{font-size:.86rem;color:var(--mid);line-height:1.5}
+
+    /* ROLE CARD */
+    .role-card{background:linear-gradient(135deg,rgba(74,92,42,.07),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid);border-radius:10px;padding:1.4rem;margin:1.4rem 0}
+    .role-title{font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--olive);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+    .contribs{display:flex;flex-direction:column;gap:.4rem}
+    .contrib{display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)}
+    .contrib::before{content:'→';color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0;margin-top:.1rem}
+
+    /* SKILLS */
+    .skill-groups{display:flex;flex-direction:column;gap:1rem;margin-top:.8rem}
+    .sg-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+    .tag{padding:.25rem .7rem;border-radius:5px;font-size:.73rem;font-weight:500}
+    .tag-g{background:var(--olive-pale);color:#3D5226}
+    .tag-p{background:var(--accent-pale);color:#4C1D95}
+    .tag-b{background:#DBEAFE;color:#1E3A8A}
+
+    /* AC */
+    .ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.9rem}
+    @media(max-width:600px){.ac-grid{grid-template-columns:1fr}}
+    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px}
+    .ac-code{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);font-weight:700;flex-shrink:0;white-space:nowrap;padding-top:.05rem}
+    .ac-txt{font-size:.78rem;color:var(--mid);line-height:1.4}
+
+    /* RES */
+    .res-list{margin-top:.8rem;display:flex;flex-direction:column}
+    .res{display:flex;gap:.55rem;align-items:baseline;padding:.38rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem;color:var(--mid)}
+    .res:last-child{border-bottom:none}
+    .res-code{font-family:var(--font-mono);font-size:.65rem;color:var(--olive-mid);font-weight:700;flex-shrink:0}
+
+    /* QUOTE */
+    .quote{border-left:3px solid var(--accent-light);padding:.9rem 1.3rem;background:rgba(124,58,237,.04);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
+
+    /* EN BOX */
     .en-box{background:var(--terminal);border-radius:12px;padding:1.4rem;margin:1.4rem 0}
-    .en-flag{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);margin-bottom:.65rem;letter-spacing:.1em}
+    .en-label{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.1em;margin-bottom:.65rem}
     .en-txt{color:rgba(255,255,255,.6);font-size:.86rem;line-height:1.72}
-    .sidebar{position:sticky;top:72px;display:flex;flex-direction:column;gap:1.1rem}
-    .sc{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04)}
-    .sc-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.55rem}
-    .sc-head svg{color:var(--term-green);flex-shrink:0}
-    .sc-title{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.08em;text-transform:uppercase}
-    .sc-body{padding:1.1rem}
-    .inf-row{display:flex;justify-content:space-between;align-items:baseline;padding:.5rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
-    .inf-row:last-child{border-bottom:none}
-    .inf-lbl{color:var(--muted);font-size:.75rem}
-    .inf-val{font-weight:600;font-family:var(--font-mono);font-size:.78rem;color:var(--dark)}
-    .tm-list{display:flex;flex-direction:column}
-    .tm{display:flex;align-items:center;gap:.65rem;padding:.45rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
-    .tm:last-child{border-bottom:none}
-    .av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0;font-family:var(--font-mono)}
-    .av.me{background:linear-gradient(135deg,var(--olive),var(--olive-mid))}.av.peer{background:linear-gradient(135deg,#2d4a8c,#5b8cff)}
-    .tm-name{font-weight:500;font-size:.8rem}
-    .tm-me{font-size:.65rem;color:var(--olive-mid);font-family:var(--font-mono);margin-left:auto}
-    .proof-list{display:flex;flex-direction:column;gap:.55rem}
-    .proof-a{display:flex;align-items:center;gap:.55rem;padding:.6rem .85rem;background:var(--bg);border:1px solid var(--bg3);border-radius:8px;text-decoration:none;color:var(--dark);font-size:.8rem;transition:all .2s}
-    .proof-a:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(3px)}
-    .proof-a svg{color:var(--olive-mid);flex-shrink:0}
-    .proof-a span{font-family:var(--font-mono);font-size:.71rem}
-    .reveal{opacity:0;transform:translateY(22px);animation:up .55s forwards}
-    @keyframes up{to{opacity:1;transform:none}}
-    .reveal:nth-child(1){animation-delay:.08s}.reveal:nth-child(2){animation-delay:.16s}.reveal:nth-child(3){animation-delay:.24s}.reveal:nth-child(4){animation-delay:.32s}
-    @media(max-width:900px){.wrap{grid-template-columns:1fr}.sidebar{position:static}.top-nav,.hero{padding-left:1.3rem;padding-right:1.3rem}}
+
+    /* IMG */
+    .proj-img{border-radius:12px;overflow:hidden;border:1px solid var(--bg3);margin:1.4rem 0;aspect-ratio:16/7;background:linear-gradient(135deg,#1a0a3a,#2d1060);display:flex;align-items:center;justify-content:center}
+    .proj-img img{width:100%;height:100%;object-fit:cover}
+
+    /* SEPARATOR */
+    .sep{height:1px;background:linear-gradient(90deg,transparent,var(--bg3),transparent);margin:2rem 0}
+
+    @media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{position:static}.top-nav{padding:.9rem 1.5rem}.hero{padding:3rem 1.5rem}}
   </style>
 </head>
 <body>
+
 <nav class="top-nav">
-  <a href="index.html" class="nav-logo">soumaya<span>.</span></a>
-  <span class="nav-crumb">Projets / <span>SAE3.01</span></span>
+  <a href="index.html" class="nav-logo">soumaya<div class="nav-logo-dot"></div></a>
+  <span class="nav-center">Projets / <span>SAE3.01</span></span>
   <a href="index.html" class="nav-back">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>Retour
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
   </a>
 </nav>
-<header class="hero">
-  <div class="hero-glow"></div><div class="hero-grid"></div>
+
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-eye">SAE3.01 · Semestre 3 · IUT Colmar BUT R&T</div>
-    <h1 class="hero-h1">Prise connectée<br><em>intelligente Wi-Fi</em></h1>
-    <p class="hero-sub">Un système IoT complet — de la carte ESP8266 au broker MQTT, contrôlé depuis une app Android et une interface web hébergées sur Raspberry Pi.</p>
-    <div class="hero-pills"><span class="pill">ESP8266</span><span class="pill">Raspberry Pi</span><span class="pill">MQTT</span><span class="pill">Android</span><span class="pill blue">IoT</span><span class="pill blue">Cybersécurité</span></div>
-    <div class="hero-badge">Projet terminé · Semestre 3</div>
+    <div class="hero-badge">SAE3.01 — Semestre 3 · BUT R&T · IUT Colmar</div>
+    <h1 class="hero-title">Prise connectée<br><em>intelligente Wi-Fi</em></h1>
+    <p class="hero-sub">Conception et déploiement d'un système IoT complet — de l'ESP8266 jusqu'à l'application Android, via un broker MQTT sécurisé hébergé sur Raspberry Pi.</p>
+    <div class="hero-chips">
+      <span class="chip chip-white">ESP8266</span>
+      <span class="chip chip-white">Raspberry Pi</span>
+      <span class="chip chip-white">MQTT</span>
+      <span class="chip chip-white">Android</span>
+      <span class="chip chip-green">Wi-Fi · IoT</span>
+      <span class="chip chip-purple">Cybersécurité</span>
+    </div>
   </div>
-</header>
-<div class="wrap">
-<main class="main">
-  <div class="hero-img reveal"><img src="image/image_transmission.jpg" alt="Système IoT" onerror="this.style.opacity='0'"/><span class="hero-img-label">Système de transmission Wi-Fi — ESP8266 + Raspberry Pi</span></div>
-  <section class="section reveal">
-    <div class="s-eye">Vue d'ensemble</div>
-    <h2 class="s-title">Un système IoT <span>de bout en bout</span></h2>
-    <div class="prose"><p>Ce projet répond à un cahier des charges réaliste : concevoir une prise électrique connectée en Wi-Fi capable de contrôler des équipements à distance, avec programmation horaire, mesure de température et notifications en temps réel.</p><p>L'architecture combine électronique embarquée, infrastructure réseau et développement logiciel — couvrant l'ensemble du périmètre d'un système IoT professionnel, de la conception matérielle jusqu'à l'exploitation des données.</p></div>
-  </section>
-  <section class="section reveal">
-    <div class="s-eye">Architecture technique</div>
-    <h2 class="s-title">Comment <span>ça communique</span></h2>
-    <div class="diag">
-      <div class="diag-nodes">
-        <div class="diag-node"><div class="diag-box app"><span class="diag-icon">📱</span><span class="diag-name">App Android</span><span class="diag-sub">Interface mobile</span></div></div>
-        <div class="diag-arrow">⟶</div>
-        <div class="diag-node"><div class="diag-box app"><span class="diag-icon">🌐</span><span class="diag-name">Interface Web</span><span class="diag-sub">Contrôle distant</span></div></div>
-        <div class="diag-arrow">⟶</div>
-        <div class="diag-node"><div class="diag-box srv"><span class="diag-icon">🖥</span><span class="diag-name">Broker MQTT</span><span class="diag-sub">Raspberry Pi</span></div></div>
-        <div class="diag-arrow">⟶</div>
-        <div class="diag-node"><div class="diag-box hw"><span class="diag-icon">🔌</span><span class="diag-name">ESP8266</span><span class="diag-sub">Carte Wi-Fi</span></div></div>
-      </div>
-      <div class="diag-footer">Communication Wi-Fi · Protocole MQTT · Accès sécurisé</div>
-    </div>
-    <div class="feat-grid">
-      <div class="feat-card"><div class="feat-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="feat-t">Programmation horaire</div><div class="feat-d">Automatisation des prises selon des plages définies par l'utilisateur.</div></div>
-      <div class="feat-card"><div class="feat-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></div><div class="feat-t">Capteur température</div><div class="feat-d">Mesure en temps réel avec alerte automatique sur seuil dépassé.</div></div>
-      <div class="feat-card"><div class="feat-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div><div class="feat-t">Notifications push</div><div class="feat-d">Changements d'état et dépassements de seuil signalés en temps réel.</div></div>
-      <div class="feat-card"><div class="feat-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="feat-t">Sécurisation</div><div class="feat-d">Accès protégés et échanges réseau chiffrés.</div></div>
-    </div>
-  </section>
-  <section class="section reveal">
-    <div class="s-eye">Contribution personnelle</div>
-    <h2 class="s-title">Mon <span>rôle</span></h2>
-    <div class="role-card">
-      <div class="role-head"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Mes contributions</div>
-      <div class="role-items"><div class="role-item">Analyse du cahier des charges et conception de l'architecture</div><div class="role-item">Contribution au développement des interfaces web et mobile</div><div class="role-item">Tests et validation du système end-to-end</div><div class="role-item">Participation à la sécurisation et à la communication réseau</div></div>
-    </div>
-  </section>
-  <section class="section reveal">
-    <div class="s-eye">Déroulement</div>
-    <h2 class="s-title">Chronologie <span>du projet</span></h2>
-    <div class="tl">
-      <div class="tl-row"><div class="tl-col"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">01</div><div class="tl-c">Analyse du cahier des charges</div></div></div>
-      <div class="tl-row"><div class="tl-col"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">02</div><div class="tl-c">Conception de la carte électronique (ESP8266)</div></div></div>
-      <div class="tl-row"><div class="tl-col"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">03</div><div class="tl-c">Mise en place du serveur web sur Raspberry Pi</div></div></div>
-      <div class="tl-row"><div class="tl-col"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">04</div><div class="tl-c">Développement de l'interface web</div></div></div>
-      <div class="tl-row"><div class="tl-col"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">05</div><div class="tl-c">Développement de l'application Android</div></div></div>
-      <div class="tl-row"><div class="tl-col"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">06</div><div class="tl-c">Mise en place du broker MQTT</div></div></div>
-      <div class="tl-row"><div class="tl-col"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">07</div><div class="tl-c">Fonctionnalités avancées : capteur, notifications</div></div></div>
-      <div class="tl-row"><div class="tl-col"><div class="tl-dot"></div></div><div><div class="tl-n">08</div><div class="tl-c">Sécurisation, tests finaux et documentation</div></div></div>
-    </div>
-  </section>
-  <section class="section reveal">
-    <div class="s-eye">Retour d'expérience</div>
-    <h2 class="s-title">Ce que <span>j'en retiens</span></h2>
-    <div class="quote">Ce projet m'a permis de découvrir le fonctionnement d'un système IoT complet, en combinant électronique, réseau et développement. La diversité des compétences mobilisées et la complexité de la communication entre composants ont renforcé ma capacité à analyser un cahier des charges et proposer des solutions techniques adaptées.</div>
-  </section>
-  <section class="section reveal">
-    <div class="s-eye">Compétences développées</div>
-    <h2 class="s-title">Ce que j'ai <span>développé</span></h2>
-    <div class="sk-group"><div class="sk-label">Réseaux & IoT</div><div class="sk-wrap"><span class="sk g">Communication Wi-Fi</span><span class="sk g">Protocole MQTT</span><span class="sk g">Architecture IoT</span></div></div>
-    <div class="sk-group"><div class="sk-label">Développement</div><div class="sk-wrap"><span class="sk b">Interface Web</span><span class="sk b">Application Android</span><span class="sk b">Client / Serveur</span></div></div>
-    <div class="sk-group"><div class="sk-label">Cybersécurité</div><div class="sk-wrap"><span class="sk p">Sécurisation des accès</span><span class="sk p">Protection des échanges réseau</span></div></div>
-    <div class="sk-group"><div class="sk-label">Professionnel</div><div class="sk-wrap"><span class="sk o">Travail en équipe</span><span class="sk o">Analyse de cahier des charges</span></div></div>
-  </section>
-  <section class="section reveal">
-    <div class="s-eye">Référentiel BUT R&T</div>
-    <h2 class="s-title">Apprentissages <span>critiques</span></h2>
-    <div class="ac-grid">
-      <div class="ac"><span class="ac-code">AC22.01</span><span class="ac-txt">Déployer et caractériser des systèmes de transmissions complexes</span></div>
-      <div class="ac"><span class="ac-code">AC22.03</span><span class="ac-txt">Mettre en place une connexion multi-site via un réseau opérateur</span></div>
-      <div class="ac"><span class="ac-code">AC22.04</span><span class="ac-txt">Déployer des réseaux d'accès des opérateurs</span></div>
-      <div class="ac"><span class="ac-code">AC22.05</span><span class="ac-txt">Capacité à questionner un cahier des charges RT</span></div>
-    </div>
-  </section>
-  <section class="section reveal">
-    <div class="s-eye">Formation</div>
-    <h2 class="s-title">Ressources <span>mobilisées</span></h2>
-    <div class="res-list">
-      <div class="res-row"><span class="res-code">R3.05</span>Chaînes de transmissions numériques</div>
-      <div class="res-row"><span class="res-code">R3.06</span>Fibres optiques et propagation</div>
-      <div class="res-row"><span class="res-code">R3.07</span>Réseaux d'accès</div>
-      <div class="res-row"><span class="res-code">R3.11</span>Anglais professionnel 1</div>
-      <div class="res-row"><span class="res-code">R3.12</span>Expression-Culture-Communication professionnelles : Savoir collaborer</div>
-      <div class="res-row"><span class="res-code">R3.13</span>Projet Personnel et Professionnel</div>
-      <div class="res-row"><span class="res-code">R3.14</span>Analyse de Fourier</div>
-      <div class="res-row"><span class="res-code">R3.15</span>Gestion de projet 2 : Utiliser les méthodes de gestion de projet</div>
-    </div>
-  </section>
-  <section class="section reveal">
-    <div class="en-box"><div class="en-flag">// ENGLISH SUMMARY</div><div class="en-txt">This project involved designing and implementing a smart Wi-Fi connected power outlet. We developed a complete IoT system including a hardware device (ESP8266), a web server (Raspberry Pi), a web interface, and an Android application. The system allows remote control, scheduled operations, temperature monitoring, and push notifications. This project helped me understand how connected systems work, from hardware design to network communication and application development.</div></div>
-  </section>
-</main>
-<aside class="sidebar">
-  <div class="sc"><div class="sc-head"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span class="sc-title">Informations</span></div><div class="sc-body"><div class="inf-row"><span class="inf-lbl">Compétence</span><span class="inf-val">UE3.2 Connecter</span></div><div class="inf-row"><span class="inf-lbl">Semestre</span><span class="inf-val">S3</span></div><div class="inf-row"><span class="inf-lbl">Équipe</span><span class="inf-val">5 personnes</span></div><div class="inf-row"><span class="inf-lbl">Encadrant</span><span class="inf-val">MURA Laurent</span></div><div class="inf-row"><span class="inf-lbl">Statut</span><span class="inf-val" style="color:#5C8A3C">✓ Terminé</span></div></div></div>
-  <div class="sc"><div class="sc-head"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span class="sc-title">Équipe projet</span></div><div class="sc-body"><div class="tm-list"><div class="tm"><div class="av me">SR</div><span class="tm-name">Soumaya RABAH</span><span class="tm-me">moi</span></div><div class="tm"><div class="av peer">NH</div><span class="tm-name">Nolan HOARAU</span></div><div class="tm"><div class="av peer">CF</div><span class="tm-name">Chahinez FAHMI</span></div><div class="tm"><div class="av peer">EZ</div><span class="tm-name">Erin ZEQIRAJ</span></div><div class="tm"><div class="av peer">NM</div><span class="tm-name">Natthawut MATTADET</span></div></div></div></div>
-  <div class="sc"><div class="sc-head"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span class="sc-title">Preuves & Documents</span></div><div class="sc-body"><div class="proof-list"><a href="https://github.com/NolanHoarau/SAE_3.01" target="_blank" class="proof-a"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg><span>GitHub — SAE_3.01</span></a><a href="preuves/sae3-01_schema-structurel.pdf" class="proof-a"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Schéma structurel</span></a></div></div></div>
-</aside>
 </div>
-</body></html>
+
+<div class="page-body">
+  <div class="main-content">
+
+    <div class="s">
+      <div class="proj-img"><img src="image/image_transmission.jpg" alt="Système de transmission" onerror="this.parentElement.style.minHeight='200px'"/></div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Vue d'ensemble</div>
+      <h2 class="s-title">Un système IoT <span>de bout en bout</span></h2>
+      <div class="prose">
+        <p>Ce projet répond à un cahier des charges réaliste : concevoir et déployer une prise électrique connectée en Wi-Fi, capable de contrôler des équipements à distance. Au-delà du simple ON/OFF, le système intègre une programmation horaire, une mesure de température et un système de notifications.</p>
+        <p>L'architecture couvre l'ensemble du périmètre IoT professionnel, de la conception matérielle jusqu'à l'exploitation des données, en combinant électronique, réseau et développement logiciel.</p>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Architecture technique</div>
+      <h2 class="s-title">Comment ça <span>fonctionne</span></h2>
+      <div class="iot-diagram">
+        <div class="iot-flow">
+          <div class="iot-node">
+            <div class="iot-box hw">
+              <span class="iot-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg>
+              </span>
+              <span class="iot-name">ESP8266</span>
+              <span class="iot-sub">Carte Wi-Fi</span>
+            </div>
+          </div>
+          <span class="iot-arrow">⟶</span>
+          <div class="iot-node">
+            <div class="iot-box srv">
+              <span class="iot-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8DC050" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              </span>
+              <span class="iot-name">Raspberry Pi</span>
+              <span class="iot-sub">Serveur + Broker</span>
+            </div>
+          </div>
+          <span class="iot-arrow">⟶</span>
+          <div class="iot-node">
+            <div class="iot-box app">
+              <span class="iot-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </span>
+              <span class="iot-name">App Android</span>
+              <span class="iot-sub">Interface mobile</span>
+            </div>
+          </div>
+          <span class="iot-arrow">⟶</span>
+          <div class="iot-node">
+            <div class="iot-box sec">
+              <span class="iot-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FCA5A5" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <span class="iot-name">Sécurité</span>
+              <span class="iot-sub">Accès + échanges</span>
+            </div>
+          </div>
+        </div>
+        <div class="iot-legend">
+          <span class="iot-leg"><b>Transport :</b> Wi-Fi 802.11</span>
+          <span class="iot-leg"><b>Protocole :</b> MQTT (broker)</span>
+          <span class="iot-leg"><b>Données :</b> Capteur température</span>
+        </div>
+      </div>
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="feat-name">Programmation horaire</div>
+          <div class="feat-desc">Automatisation des prises selon des plages horaires définies.</div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></div>
+          <div class="feat-name">Capteur température</div>
+          <div class="feat-desc">Mesure en temps réel avec alertes sur seuil dépassé.</div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
+          <div class="feat-name">Notifications push</div>
+          <div class="feat-desc">Alertes sur changements d'état et dépassements de seuil.</div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+          <div class="feat-name">Sécurisation</div>
+          <div class="feat-desc">Accès protégés et échanges réseau chiffrés.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Contribution personnelle</div>
+      <h2 class="s-title">Mon <span>rôle</span></h2>
+      <div class="role-card">
+        <div class="role-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Mes contributions sur ce projet
+        </div>
+        <div class="contribs">
+          <div class="contrib">Analyse du cahier des charges et conception de l'architecture globale</div>
+          <div class="contrib">Participation au développement des interfaces web et mobile</div>
+          <div class="contrib">Contribution à la sécurisation et à la communication réseau</div>
+          <div class="contrib">Tests et validation du système end-to-end</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Déroulement</div>
+      <h2 class="s-title">Chronologie <span>du projet</span></h2>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">01</div><div class="tl-c">Analyse du cahier des charges</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">02</div><div class="tl-c">Conception de la carte électronique ESP8266</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">03</div><div class="tl-c">Mise en place du serveur web sur Raspberry Pi</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">04</div><div class="tl-c">Développement de l'interface web de contrôle</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">05</div><div class="tl-c">Développement de l'application Android</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">06</div><div class="tl-c">Mise en place du broker MQTT</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">07</div><div class="tl-c">Ajout des fonctionnalités avancées (capteur, notifications)</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-n">08</div><div class="tl-c">Sécurisation, tests finaux et documentation</div></div></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Retour d'expérience</div>
+      <h2 class="s-title">Ce que j'en <span>retiens</span></h2>
+      <div class="quote">Ce projet m'a permis de découvrir le fonctionnement d'un système IoT complet, en combinant électronique, réseau et développement. J'ai particulièrement apprécié la diversité des compétences mobilisées et le travail en équipe. La complexité de la communication entre les différents composants m'a permis de mieux comprendre les enjeux des systèmes connectés.</div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Compétences</div>
+      <h2 class="s-title">Ce que j'ai <span>développé</span></h2>
+      <div class="skill-groups">
+        <div><div class="sg-label">Réseaux & IoT</div><div class="tags"><span class="tag tag-g">Communication Wi-Fi</span><span class="tag tag-g">Protocole MQTT</span><span class="tag tag-g">Architecture IoT</span></div></div>
+        <div><div class="sg-label">Développement</div><div class="tags"><span class="tag tag-b">Interfaces web et mobile</span><span class="tag tag-b">Communication client/serveur</span></div></div>
+        <div><div class="sg-label">Cybersécurité</div><div class="tags"><span class="tag tag-p">Sécurisation des accès</span><span class="tag tag-p">Protection des échanges</span></div></div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="s">
+      <div class="s-eye">Référentiel</div>
+      <h2 class="s-title">Apprentissages <span>critiques</span></h2>
+      <div class="ac-grid">
+        <div class="ac"><span class="ac-code">AC22.01</span><span class="ac-txt">Déployer et caractériser des systèmes de transmissions complexes</span></div>
+        <div class="ac"><span class="ac-code">AC22.03</span><span class="ac-txt">Mettre en place une connexion multi-site via un réseau opérateur</span></div>
+        <div class="ac"><span class="ac-code">AC22.04</span><span class="ac-txt">Déployer des réseaux d'accès des opérateurs</span></div>
+        <div class="ac"><span class="ac-code">AC22.05</span><span class="ac-txt">Capacité à questionner un cahier des charges RT</span></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Formation</div>
+      <h2 class="s-title">Ressources <span>mobilisées</span></h2>
+      <div class="res-list">
+        <div class="res"><span class="res-code">R3.05</span>Chaînes de transmissions numériques</div>
+        <div class="res"><span class="res-code">R3.06</span>Fibres optiques et propagation</div>
+        <div class="res"><span class="res-code">R3.07</span>Réseaux d'accès</div>
+        <div class="res"><span class="res-code">R3.11</span>Anglais professionnel 1</div>
+        <div class="res"><span class="res-code">R3.12</span>Expression-Culture-Communication professionnelles : Savoir collaborer</div>
+        <div class="res"><span class="res-code">R3.13</span>Projet Personnel et Professionnel</div>
+        <div class="res"><span class="res-code">R3.14</span>Analyse de Fourier</div>
+        <div class="res"><span class="res-code">R3.15</span>Gestion de projet 2</div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="en-box">
+        <div class="en-label">// ENGLISH SUMMARY</div>
+        <div class="en-txt">This project involved designing and implementing a smart Wi-Fi connected power outlet. We developed a complete IoT system including a hardware device (ESP8266), a web server (Raspberry Pi), a web interface, and an Android application. The system allows users to control devices remotely, schedule operations, monitor temperature, and receive notifications. This project helped me understand how connected systems work, from hardware design to network communication and application development.</div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+
+  <aside class="sidebar">
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="scard-head-title">Informations</span>
+      </div>
+      <div class="scard-body">
+        <div class="scard-row"><span class="scard-label">Compétence</span><span class="scard-val">UE3.2 Connecter</span></div>
+        <div class="scard-row"><span class="scard-label">Semestre</span><span class="scard-val">S3</span></div>
+        <div class="scard-row"><span class="scard-label">Équipe</span><span class="scard-val">5 personnes</span></div>
+        <div class="scard-row"><span class="scard-label">Encadrant</span><span class="scard-val">MURA Laurent</span></div>
+        <div class="scard-row"><span class="scard-label">Statut</span><span class="scard-val ok">✓ Terminé</span></div>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span class="scard-head-title">Équipe projet</span>
+      </div>
+      <div class="scard-body">
+        <div class="member"><div class="avatar av-me">SR</div><span class="member-name">Soumaya RABAH</span><span class="member-me">moi</span></div>
+        <div class="member"><div class="avatar av-blue">NH</div><span class="member-name">Nolan HOARAU</span></div>
+        <div class="member"><div class="avatar av-teal">CF</div><span class="member-name">Chahinez FAHMI</span></div>
+        <div class="member"><div class="avatar av-rose">EZ</div><span class="member-name">Erin ZEQIRAJ</span></div>
+        <div class="member"><div class="avatar av-amber">NM</div><span class="member-name">Natthawut MATTADET</span></div>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        <span class="scard-head-title">Preuves & Documents</span>
+      </div>
+      <div class="scard-body">
+        <a href="https://github.com/NolanHoarau/SAE_3.01" target="_blank" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          <span>GitHub — SAE_3.01</span>
+        </a>
+        <a href="preuves/sae3-01-schema.pdf" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Schéma structurel</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+</div>
+</body>
+</html>

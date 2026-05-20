@@ -1,153 +1,462 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>SAE 3.Cyber.03 — Réseau sécurisé multi-sites | Soumaya RABAH</title>
-<link rel="stylesheet" href="projet.css"/>
-<style>:root{--project-color:#8C3A3A;}</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAE3.Cyber.03 — Réseau multi-sites · Soumaya RABAH</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap"/>
+  <style>
+    :root {
+      --bg:#F2EFE7; --bg2:#E8E4DA; --bg3:#D8D4C8;
+      --dark:#1E2318; --mid:#4A5240; --muted:#7A7A6A;
+      --olive:#4A5C2A; --olive-mid:#6B8040; --olive-light:#96B060; --olive-pale:#DCE8C4;
+      --terminal:#1E2A10; --term-green:#8DC050;
+      --accent:#DC2626; --accent-light:#FCA5A5; --accent-pale:#FEF2F2;
+      --font-display:'Syne',sans-serif; --font-body:'Instrument Sans',sans-serif; --font-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
+    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:5px}
+    .nav-logo-dot{width:6px;height:6px;background:#C8D9A8;border-radius:50%}
+    .nav-center{font-family:var(--font-mono);font-size:.72rem;color:#5a7030;letter-spacing:.04em}
+    .nav-center span{color:var(--term-green)}
+    .nav-back{display:flex;align-items:center;gap:.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:.35rem .9rem;border-radius:4px}
+    .nav-back:hover{color:#fff;border-color:var(--term-green)}
+    .nav-back svg{transition:transform .2s}
+    .nav-back:hover svg{transform:translateX(-3px)}
+
+    /* HERO rouge sombre */
+    .hero{background:linear-gradient(135deg,#1a0404 0%,#4a0d0d 45%,#1E2A10 100%);padding:4.5rem 3rem 3.5rem;position:relative;overflow:hidden}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(220,38,38,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(220,38,38,.04) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+    .hero-glow{position:absolute;left:-80px;bottom:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(220,38,38,.1) 0%,transparent 65%);pointer-events:none}
+    .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:.3rem .9rem;border-radius:20px;font-family:var(--font-mono);font-size:.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:.06em}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--term-green);animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.6rem}
+    .hero-title em{font-style:normal;color:#FCA5A5}
+    .hero-sub{color:rgba(255,255,255,.48);font-size:1rem;line-height:1.65;max-width:600px;margin-top:.8rem}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+    .chip{padding:.28rem .8rem;border-radius:20px;font-family:var(--font-mono);font-size:.68rem;font-weight:500}
+    .chip-r{background:rgba(220,38,38,.12);border:1px solid rgba(252,165,165,.3);color:#FCA5A5}
+    .chip-g{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);color:var(--term-green)}
+    .chip-w{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.55)}
+
+    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}
+    .main-content{min-width:0}
+    .sidebar{position:sticky;top:68px;display:flex;flex-direction:column;gap:1rem}
+    .scard{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .scard-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.5rem}
+    .scard-icon{color:var(--term-green);flex-shrink:0}
+    .scard-title{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.08em;text-transform:uppercase}
+    .scard-body{padding:1.1rem}
+    .srow{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
+    .srow:last-child{border-bottom:none}
+    .slabel{color:var(--muted);font-size:.75rem}
+    .sval{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--dark)}
+    .sval.ok{color:#5C8A3C}
+    .member{display:flex;align-items:center;gap:.65rem;padding:.4rem 0;border-bottom:1px solid var(--bg2)}
+    .member:last-child{border-bottom:none}
+    .av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
+    .av-me{background:linear-gradient(135deg,#4A5C2A,#6B8040)}
+    .av-r{background:linear-gradient(135deg,#7a0d0d,#DC2626)}
+    .av-o{background:linear-gradient(135deg,#7a3d0d,#EA8020)}
+    .mname{font-size:.8rem;font-weight:500;flex:1}
+    .mme{font-family:var(--font-mono);font-size:.62rem;color:var(--olive-mid);margin-left:auto;font-weight:600}
+    .mrole{font-family:var(--font-mono);font-size:.62rem;color:#DC2626;margin-left:auto}
+    .plink{display:flex;align-items:center;gap:.55rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px;text-decoration:none;color:var(--dark);font-size:.8rem;margin-bottom:.5rem;transition:all .2s}
+    .plink:last-child{margin-bottom:0}
+    .plink:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(4px)}
+    .plink svg{color:var(--olive-mid);flex-shrink:0}
+    .plink span{font-family:var(--font-mono);font-size:.72rem}
+
+    .s{margin-bottom:3rem;opacity:0;transform:translateY(22px);animation:up .55s forwards}
+    .s:nth-child(1){animation-delay:.08s}.s:nth-child(2){animation-delay:.16s}.s:nth-child(3){animation-delay:.24s}
+    .s:nth-child(4){animation-delay:.32s}.s:nth-child(5){animation-delay:.40s}.s:nth-child(6){animation-delay:.48s}
+    .s:nth-child(7){animation-delay:.56s}.s:nth-child(8){animation-delay:.64s}.s:nth-child(9){animation-delay:.72s}
+    .s:nth-child(10){animation-delay:.80s}.s:nth-child(11){animation-delay:.88s}
+    @keyframes up{to{opacity:1;transform:translateY(0)}}
+    .eye{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+    .stitle{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+    .stitle span{color:var(--accent)}
+    .prose{font-size:.93rem;line-height:1.78;color:var(--mid)}
+    .prose p{margin-bottom:.85rem}
+    .prose p:last-child{margin-bottom:0}
+
+    /* RÉSEAU DIAGRAMME */
+    .net-diag{background:#0d0404;border-radius:14px;padding:2rem;margin:1.5rem 0;position:relative;overflow:hidden}
+    .net-diag::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(220,38,38,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(220,38,38,.03) 1px,transparent 1px);background-size:26px 26px}
+    .net-levels{display:flex;flex-direction:column;gap:1.2rem;position:relative;z-index:2}
+    .net-level{display:flex;align-items:center;gap:.8rem}
+    .net-level-label{font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,.28);min-width:68px;text-align:right;text-transform:uppercase;letter-spacing:.05em}
+    .net-level-nodes{display:flex;gap:.6rem;flex:1;justify-content:center;flex-wrap:wrap}
+    .net-node{padding:.55rem .85rem;border-radius:8px;text-align:center;font-family:var(--font-mono);font-size:.62rem;min-width:78px;transition:transform .2s}
+    .net-node:hover{transform:translateY(-2px)}
+    .nn-pe{background:rgba(252,165,165,.1);border:1px solid rgba(252,165,165,.28);color:#FCA5A5}
+    .nn-p{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.28);color:var(--term-green)}
+    .nn-asbr{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.28);color:#FCD34D}
+    .nn-site{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4)}
+    .net-sep{height:1px;background:rgba(255,255,255,.04);margin:.1rem 0}
+    .net-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;position:relative;z-index:2}
+    .nl{display:flex;align-items:center;gap:.35rem;font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,.3)}
+    .nl-dot{width:7px;height:7px;border-radius:2px}
+
+    /* FAI GRID */
+    .fai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.9rem;margin:1.4rem 0}
+    .fai-card{padding:1.1rem;background:#fff;border:1px solid var(--bg3);border-radius:9px;border-top:3px solid var(--accent);transition:transform .2s,box-shadow .2s}
+    .fai-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.07)}
+    .fai-title{font-weight:700;font-size:.84rem;color:var(--accent);margin-bottom:.6rem}
+    .fai-items{display:flex;flex-direction:column;gap:.2rem}
+    .fai-item{font-size:.75rem;color:var(--mid);display:flex;gap:.35rem}
+    .fai-item::before{content:'·';color:var(--accent);font-weight:700;flex-shrink:0}
+
+    /* SPLIT */
+    .split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.4rem 0}
+    .split-card{padding:1.1rem;border-radius:10px}
+    .split-other{background:var(--bg2);border:1px solid var(--bg3)}
+    .split-me{background:linear-gradient(135deg,rgba(74,92,42,.07),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid)}
+    .split-name{font-weight:700;font-size:.85rem;margin-bottom:.2rem}
+    .split-role{font-family:var(--font-mono);font-size:.64rem;color:var(--muted);margin-bottom:.7rem}
+    .split-items{display:flex;flex-direction:column;gap:.3rem}
+    .split-item{font-size:.76rem;color:var(--mid);display:flex;gap:.35rem}
+    .split-item::before{content:'→';color:var(--olive-mid);font-family:var(--font-mono);flex-shrink:0}
+
+    .role-card{background:linear-gradient(135deg,rgba(74,92,42,.07),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid);border-radius:10px;padding:1.4rem;margin:1.4rem 0}
+    .role-title{font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--olive);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+    .contribs{display:flex;flex-direction:column;gap:.4rem}
+    .contrib{display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)}
+    .contrib::before{content:'→';color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0;margin-top:.1rem}
+
+    .tl{display:flex;flex-direction:column}
+    .tl-item{display:grid;grid-template-columns:36px 1fr;gap:0 .9rem;padding-bottom:1.4rem}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-l{display:flex;flex-direction:column;align-items:center}
+    .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent);margin-top:2px;flex-shrink:0}
+    .tl-line{flex:1;width:2px;background:linear-gradient(var(--accent-pale),transparent);margin-top:3px}
+    .tl-n{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-bottom:.15rem}
+    .tl-c{font-size:.86rem;color:var(--mid);line-height:1.5}
+
+    .skill-groups{display:flex;flex-direction:column;gap:1rem;margin-top:.8rem}
+    .sg-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+    .tag{padding:.25rem .7rem;border-radius:5px;font-size:.73rem;font-weight:500}
+    .tg{background:var(--olive-pale);color:#3D5226}
+    .tr{background:#FEE2E2;color:#991B1B}
+    .to{background:#FEF3C7;color:#92400E}
+
+    .ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.9rem}
+    @media(max-width:600px){.ac-grid{grid-template-columns:1fr}}
+    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px}
+    .ac-code{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);font-weight:700;flex-shrink:0;white-space:nowrap;padding-top:.05rem}
+    .ac-txt{font-size:.78rem;color:var(--mid);line-height:1.4}
+    .res-list{margin-top:.8rem;display:flex;flex-direction:column}
+    .res{display:flex;gap:.55rem;align-items:baseline;padding:.38rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem;color:var(--mid)}
+    .res:last-child{border-bottom:none}
+    .res-code{font-family:var(--font-mono);font-size:.65rem;color:var(--olive-mid);font-weight:700;flex-shrink:0}
+
+    .quote{border-left:3px solid #FCA5A5;padding:.9rem 1.3rem;background:rgba(220,38,38,.04);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
+    .en-box{background:var(--terminal);border-radius:12px;padding:1.4rem;margin:1.4rem 0}
+    .en-label{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.1em;margin-bottom:.65rem}
+    .en-txt{color:rgba(255,255,255,.6);font-size:.86rem;line-height:1.72}
+    .sep{height:1px;background:linear-gradient(90deg,transparent,var(--bg3),transparent);margin:2rem 0}
+
+    @media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{position:static}.top-nav{padding:.9rem 1.5rem}.hero{padding:3rem 1.5rem}.split{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
-  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">soumaya<div class="nav-logo-dot"></div></a>
+  <span class="nav-center">Projets / <span>SAE3.Cyber.03</span></span>
+  <a href="index.html" class="nav-back">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </a>
 </nav>
 
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-meta">
-      <span class="hero-badge">SAE 3.Cyber.03 · 2ème année</span>
-      <span class="hero-status">Terminé</span>
-    </div>
-    <div class="hero-num">C.03</div>
-    <h1>Réseau sécurisé <em>multi-sites</em></h1>
-    <p class="hero-desc">Infrastructure réseau multi-sites sécurisée pour deux entreprises — MPLS, BGP, VRF, OSPF/RIP et redondance. J'ai pris en charge la partie FAI complète : cœur réseau opérateur.</p>
-    <div class="chips">
-      <span class="chip chip-dark">MPLS</span>
-      <span class="chip chip-pale">BGP / MP-BGP</span>
-      <span class="chip chip-dark">VRF</span>
-      <span class="chip chip-pale">OSPF / RIP</span>
-      <span class="chip chip-dark">GNS3</span>
-      <span class="chip chip-pale">Sécurité réseau</span>
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">SAE3.Cyber.03 — Semestre 3 · BUT R&T · IUT Colmar</div>
+    <h1 class="hero-title">Réseau sécurisé<br><em>multi-sites</em></h1>
+    <p class="hero-sub">Infrastructure opérateur complète — MPLS, BGP, VRF pour deux entreprises sur plusieurs villes. Responsable de la partie FAI : cœur réseau, systèmes autonomes et isolation des flux.</p>
+    <div class="hero-chips">
+      <span class="chip chip-w">MPLS</span>
+      <span class="chip chip-w">BGP / MP-BGP</span>
+      <span class="chip chip-w">VRF</span>
+      <span class="chip chip-w">RIP / OSPF</span>
+      <span class="chip chip-w">GNS3</span>
+      <span class="chip chip-r">FAI · Opérateur</span>
+      <span class="chip chip-g">Sécurité réseau</span>
     </div>
   </div>
-  <div class="hero-right">
-    <div>
-      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T · UE Sécuriser</div><div class="hib-sub">Semestre 3 · 2024/2025</div></div>
-      <div class="hero-info-block"><div class="hib-label">Équipe</div>
-        <div class="team-list">
-          <div class="team-item"><div class="team-av" style="background:rgba(140,58,58,0.3);color:#E08080;">SR</div><div><div class="team-name">Soumaya RABAH</div><div class="team-role">Partie FAI complète</div></div></div>
-          <div class="team-item"><div class="team-av" style="background:rgba(140,58,58,0.2);color:#E08080;">CF</div><div><div class="team-name">Chahinez FAHMI</div><div class="team-role">Partie LAN</div></div></div>
-          <div class="team-item"><div class="team-av" style="background:rgba(140,58,58,0.2);color:#E08080;">MW</div><div><div class="team-name">Matéo WINLING</div><div class="team-role">Services réseaux</div></div></div>
+</div>
+
+<div class="page-body">
+  <div class="main-content">
+
+    <div class="s">
+      <div class="eye">Vue d'ensemble</div>
+      <h2 class="stitle">Infrastructure opérateur <span>réelle</span></h2>
+      <div class="prose">
+        <p>Ce projet reproduit l'architecture réseau d'un véritable FAI : deux entreprises (UC Exchange et ABC Conseil) réparties sur plusieurs villes, interconnectées via un réseau opérateur simulé sous GNS3. Chaque site dispose d'une architecture LAN hiérarchique reliée au cœur réseau.</p>
+        <p>Le travail est réparti en trois parties complémentaires. J'ai pris en charge la <strong style="color:var(--dark)">partie FAI</strong> — concevoir le cœur réseau opérateur avec les systèmes autonomes, le routage dynamique, MPLS, BGP et les VRF pour garantir isolation et tolérance aux pannes.</p>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Architecture</div>
+      <h2 class="stitle">Cœur réseau <span>opérateur</span></h2>
+      <div class="net-diag">
+        <div class="net-levels">
+          <div class="net-level">
+            <span class="net-level-label">Sites</span>
+            <div class="net-level-nodes">
+              <div class="net-node nn-site">ABC Conseil<br><span style="font-size:.52rem;opacity:.5">Paris / Lyon</span></div>
+              <div class="net-node nn-site">UC Exchange<br><span style="font-size:.52rem;opacity:.5">Bordeaux / Lille</span></div>
+            </div>
+          </div>
+          <div class="net-sep"></div>
+          <div class="net-level">
+            <span class="net-level-label">PE</span>
+            <div class="net-level-nodes">
+              <div class="net-node nn-pe">PE-1</div>
+              <div class="net-node nn-pe">PE-2</div>
+              <div class="net-node nn-pe">PE-3</div>
+            </div>
+          </div>
+          <div class="net-level">
+            <span class="net-level-label">P (cœur)</span>
+            <div class="net-level-nodes">
+              <div class="net-node nn-p">P-1</div>
+              <div class="net-node nn-p">P-2</div>
+              <div class="net-node nn-p">P-3</div>
+            </div>
+          </div>
+          <div class="net-level">
+            <span class="net-level-label">ASBR</span>
+            <div class="net-level-nodes">
+              <div class="net-node nn-asbr">ASBR-AS10</div>
+              <div class="net-node nn-asbr">ASBR-AS20</div>
+              <div class="net-node nn-asbr">ASBR-AS30</div>
+            </div>
+          </div>
+        </div>
+        <div class="net-legend">
+          <div class="nl"><div class="nl-dot" style="background:#FCA5A5"></div>PE — Accès client (VRF)</div>
+          <div class="nl"><div class="nl-dot" style="background:#8DC050"></div>P — Cœur MPLS</div>
+          <div class="nl"><div class="nl-dot" style="background:#FCD34D"></div>ASBR — Interconnexion inter-AS</div>
+        </div>
+      </div>
+
+      <div class="fai-grid">
+        <div class="fai-card"><div class="fai-title">Routage interne</div><div class="fai-items"><div class="fai-item">RIP (AS10, AS20)</div><div class="fai-item">OSPF (AS30)</div><div class="fai-item">Connectivité dynamique</div></div></div>
+        <div class="fai-card"><div class="fai-title">MPLS & VPN</div><div class="fai-items"><div class="fai-item">Transport par labels (LDP)</div><div class="fai-item">Isolation complète</div><div class="fai-item">Performance optimisée</div></div></div>
+        <div class="fai-card"><div class="fai-title">BGP & MP-BGP</div><div class="fai-items"><div class="fai-item">iBGP avec Route Reflector</div><div class="fai-item">eBGP inter-AS</div><div class="fai-item">MP-BGP pour VPNv4</div></div></div>
+        <div class="fai-card"><div class="fai-title">VRF & Isolation</div><div class="fai-items"><div class="fai-item">VRF ABC_Conseil</div><div class="fai-item">VRF UC_Exchange</div><div class="fai-item">Flux totalement isolés</div></div></div>
+        <div class="fai-card"><div class="fai-title">NAT</div><div class="fai-items"><div class="fai-item">Translation statique</div><div class="fai-item">Exposition serveur web</div><div class="fai-item">Accès externe simulé</div></div></div>
+        <div class="fai-card"><div class="fai-title">Redondance</div><div class="fai-items"><div class="fai-item">Tests de coupure</div><div class="fai-item">Bascule automatique</div><div class="fai-item">Tolérance aux pannes</div></div></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Collaboration</div>
+      <h2 class="stitle">Répartition <span>du travail</span></h2>
+      <div class="split">
+        <div class="split-card split-other">
+          <div class="split-name">Chahinez FAHMI</div>
+          <div class="split-role">// Partie LAN</div>
+          <div class="split-items">
+            <div class="split-item">Architecture hiérarchique</div>
+            <div class="split-item">VLAN + routage inter-VLAN</div>
+            <div class="split-item">Redondance (VRRP)</div>
+          </div>
+        </div>
+        <div class="split-card split-other">
+          <div class="split-name">Matéo WINLING</div>
+          <div class="split-role">// Services réseaux</div>
+          <div class="split-items">
+            <div class="split-item">Déploiement DNS</div>
+            <div class="split-item">Serveur web interne</div>
+            <div class="split-item">Services d'annuaires</div>
+          </div>
+        </div>
+        <div class="split-card split-me">
+          <div class="split-name">Soumaya RABAH <span style="font-size:.6rem;color:var(--olive-mid);font-family:var(--font-mono);font-weight:400"> — moi</span></div>
+          <div class="split-role">// Partie FAI</div>
+          <div class="split-items">
+            <div class="split-item">Cœur réseau opérateur</div>
+            <div class="split-item">MPLS + BGP/MP-BGP</div>
+            <div class="split-item">VRF + tests redondance</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="hero-stats-grid">
-      <div class="hsg-item"><div class="hsg-num">3 AS</div><div class="hsg-label">Autonomes</div></div>
-      <div class="hsg-item"><div class="hsg-num">2 VRF</div><div class="hsg-label">Isolation</div></div>
-      <div class="hsg-item"><div class="hsg-num">MPLS</div><div class="hsg-label">Transport</div></div>
-      <div class="hsg-item"><div class="hsg-num">BGP</div><div class="hsg-label">Routage</div></div>
-    </div>
-  </div>
-</section>
 
-<div class="page-body">
-  <div>
-    <div class="section">
-      <div class="s-eyebrow">Contexte</div>
-      <h2>Infrastructure réseau sécurisée pour deux entreprises</h2>
-      <p>Ce projet couvre l'ensemble d'un système d'information réparti sur plusieurs sites : LAN, services réseaux et interconnexion via réseau opérateur. Le tout pour deux entreprises fictives (<strong>UC Exchange</strong> et <strong>ABC Conseil</strong>).</p>
-      <div class="grid-2">
-        <div class="card"><h4>Architecture multi-sites</h4><p>Interconnexion de plusieurs sites distants avec continuité de service garantie</p></div>
-        <div class="card"><h4>Sécurité & isolation</h4><p>Séparation des flux entre clients avec VRF, VPN et isolation totale</p></div>
+    <div class="s">
+      <div class="eye">Contribution personnelle</div>
+      <h2 class="stitle">Ma partie : <span>le FAI</span></h2>
+      <div class="role-card">
+        <div class="role-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>
+          Mes contributions — Partie FAI complète
+        </div>
+        <div class="contribs">
+          <div class="contrib">Configuration des interfaces et loopbacks sur tous les routeurs</div>
+          <div class="contrib">Mise en place du routage dynamique RIP (AS10, AS20) et OSPF (AS30)</div>
+          <div class="contrib">Déploiement MPLS avec activation LDP sur tous les liens du cœur</div>
+          <div class="contrib">Configuration BGP iBGP/eBGP et MP-BGP pour le transport VPNv4</div>
+          <div class="contrib">Création et configuration des VRF ABC_Conseil et UC_Exchange</div>
+          <div class="contrib">Tests de connectivité end-to-end et validation des coupures (redondance)</div>
+        </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Mon rôle — Partie FAI</div>
-      <h2>Conception du cœur réseau opérateur</h2>
-      <p>J'ai pris en charge la conception et la configuration <strong>complète de la partie FAI</strong> — le cœur réseau permettant une connectivité sécurisée, performante et isolée entre les sites des deux entreprises.</p>
-      <p>L'infrastructure est basée sur <strong>trois systèmes autonomes</strong> (AS10, AS20, AS30), simulant un réseau opérateur réel avec routeurs P (cœur), PE (accès client) et ASBR (interconnexion inter-AS).</p>
-      <img src="image_maquette.webp" alt="Maquette GNS3 — réseau multi-sites" style="width:100%;border-radius:10px;border:1px solid #D8D4C8;margin:1rem 0;display:block;"/>
-      <div class="grid-2">
-        <div class="card-plain"><h4>🛣️ Routage interne</h4><p><strong>RIP</strong> sur AS10 et AS20 / <strong>OSPF</strong> sur AS30 — connectivité dynamique et stable</p></div>
-        <div class="card-plain"><h4>📦 MPLS & LDP</h4><p>Transport par labels, isolation des clients, performance optimisée</p></div>
-        <div class="card-plain"><h4>🌐 BGP & MP-BGP</h4><p>iBGP avec Route Reflector, eBGP inter-AS, MP-BGP pour VPNv4</p></div>
-        <div class="card-plain"><h4>🔒 VRF</h4><p>Deux VRF (ABC_Conseil et UC_Exchange) — isolation totale des flux</p></div>
-        <div class="card-plain"><h4>🌍 NAT</h4><p>Exposition publique d'un serveur web via translation d'adresse statique</p></div>
-        <div class="card-plain"><h4>♻️ Redondance</h4><p>Tests de coupure, bascule automatique, maintien de la connectivité</p></div>
+    <div class="s">
+      <div class="eye">Déroulement</div>
+      <h2 class="stitle">Chronologie <span>du projet</span></h2>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">01</div><div class="tl-c">Conception de l'architecture globale multi-sites</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">02</div><div class="tl-c">Configuration des interfaces et adressage IP</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">03</div><div class="tl-c">Mise en place du routage interne (RIP / OSPF)</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">04</div><div class="tl-c">Activation MPLS et déploiement LDP</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">05</div><div class="tl-c">Déploiement BGP iBGP/eBGP et MP-BGP</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">06</div><div class="tl-c">Configuration des VRF et isolation des clients</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">07</div><div class="tl-c">Tests de connectivité end-to-end</div></div></div>
+        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-n">08</div><div class="tl-c">Tests de redondance et rédaction du rapport FAI</div></div></div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Chronologie</div>
-      <h2>8 étapes — partie FAI</h2>
-      <div class="timeline">
-        <div class="tl"><div class="tl-dot">1</div><div class="tl-body"><h4>Conception de l'architecture globale</h4><p>Modélisation des AS et de la topologie opérateur</p></div></div>
-        <div class="tl"><div class="tl-dot">2</div><div class="tl-body"><h4>Configuration des interfaces & adressage</h4><p>Loopbacks, interfaces physiques et plan d'adressage IP</p></div></div>
-        <div class="tl"><div class="tl-dot">3</div><div class="tl-body"><h4>Routage interne</h4><p>RIP sur AS10/AS20, OSPF sur AS30</p></div></div>
-        <div class="tl"><div class="tl-dot">4</div><div class="tl-body"><h4>Activation MPLS</h4><p>Distribution des labels (LDP) et transport des données</p></div></div>
-        <div class="tl"><div class="tl-dot">5</div><div class="tl-body"><h4>Déploiement BGP / MP-BGP</h4><p>iBGP avec Route Reflector, eBGP inter-AS, VPNv4</p></div></div>
-        <div class="tl"><div class="tl-dot">6</div><div class="tl-body"><h4>Configuration VRF</h4><p>Isolation des flux ABC_Conseil et UC_Exchange</p></div></div>
-        <div class="tl"><div class="tl-dot">7</div><div class="tl-body"><h4>Tests de connectivité</h4><p>Validation de la communication inter-sites</p></div></div>
-        <div class="tl"><div class="tl-dot">8</div><div class="tl-body"><h4>Tests de redondance</h4><p>Coupures simulées et bascule automatique</p></div></div>
+    <div class="s">
+      <div class="eye">Retour d'expérience</div>
+      <h2 class="stitle">Ce que j'en <span>retiens</span></h2>
+      <div class="quote">Ce projet a été l'un des plus techniques que j'ai réalisés. La partie FAI m'a demandé une grande rigueur, notamment dans la configuration de BGP et la compréhension de MPLS. J'ai dû reprendre plusieurs configurations, ce qui m'a permis de développer une méthodologie efficace pour diagnostiquer et résoudre les problèmes réseau. Ce projet m'a apporté une vision concrète des architectures opérateurs.</div>
+    </div>
+
+    <div class="s">
+      <div class="eye">Compétences</div>
+      <h2 class="stitle">Ce que j'ai <span>développé</span></h2>
+      <div class="skill-groups">
+        <div><div class="sg-label">Réseaux avancés</div><div class="tags"><span class="tag tg">RIP / OSPF</span><span class="tag tg">BGP / MP-BGP</span><span class="tag tg">MPLS</span><span class="tag tg">Systèmes autonomes</span></div></div>
+        <div><div class="sg-label">Cybersécurité</div><div class="tags"><span class="tag tr">Isolation des flux (VRF)</span><span class="tag tr">NAT et exposition contrôlée</span><span class="tag tr">Analyse des flux réseau</span></div></div>
+        <div><div class="sg-label">Professionnel</div><div class="tags"><span class="tag to">Lecture documentation technique</span><span class="tag to">Résolution de problèmes complexes</span><span class="tag to">Travail en équipe</span></div></div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Ressenti</div>
-      <h2>Ce que j'en retiens</h2>
-      <div class="ressenti">
-        <p>Ce projet a été <strong>l'un des plus techniques</strong> que j'ai réalisés. La partie FAI m'a demandé une grande rigueur, notamment dans la configuration de BGP et la compréhension du fonctionnement MPLS. J'ai dû reprendre plusieurs configurations, ce qui m'a permis de développer une <strong>méthodologie efficace de diagnostic réseau</strong>. Ce projet m'a apporté une vision concrète des architectures opérateurs et a renforcé mon intérêt pour les réseaux avancés et la cybersécurité.</p>
-      </div>
-      <div class="skills-wrap" style="margin-top:1rem;">
-        <span class="skill-badge sb-g">MPLS</span><span class="skill-badge sb-g">BGP / MP-BGP</span><span class="skill-badge sb-g">VRF</span><span class="skill-badge sb-d">OSPF / RIP</span><span class="skill-badge sb-d">Isolation réseau</span><span class="skill-badge sb-g">NAT</span><span class="skill-badge sb-d">GNS3</span><span class="skill-badge sb-g">Diagnostic réseau</span>
+    <div class="sep"></div>
+
+    <div class="s">
+      <div class="eye">Référentiel</div>
+      <h2 class="stitle">Apprentissages <span>critiques</span></h2>
+      <div class="ac-grid">
+        <div class="ac"><span class="ac-code">AC21.01</span><span class="ac-txt">Configurer et dépanner le routage dynamique</span></div>
+        <div class="ac"><span class="ac-code">AC21.02</span><span class="ac-txt">Configurer une politique de QoS et sécurité réseau</span></div>
+        <div class="ac"><span class="ac-code">AC21.03</span><span class="ac-txt">Déployer des solutions virtualisées</span></div>
+        <div class="ac"><span class="ac-code">AC21.04</span><span class="ac-txt">Déployer des services réseaux avancés</span></div>
+        <div class="ac"><span class="ac-code">AC21.05</span><span class="ac-txt">Identifier les réseaux opérateurs</span></div>
+        <div class="ac"><span class="ac-code">AC21.06</span><span class="ac-txt">Travailler en équipe</span></div>
+        <div class="ac"><span class="ac-code">AC22.02</span><span class="ac-txt">Mettre en place un accès distant sécurisé</span></div>
+        <div class="ac"><span class="ac-code">AC22.03</span><span class="ac-txt">Connexion multi-site via réseau opérateur</span></div>
+        <div class="ac"><span class="ac-code">AC24.02Cyber</span><span class="ac-txt">Sécurisation d'infrastructure réseau</span></div>
+        <div class="ac"><span class="ac-code">AC24.03Cyber</span><span class="ac-txt">Sécurisation des services</span></div>
+        <div class="ac"><span class="ac-code">AC24.06Cyber</span><span class="ac-txt">Compréhension de documentation technique</span></div>
+        <div class="ac"><span class="ac-code">AC25.01Cyber</span><span class="ac-txt">Protection contre les malwares</span></div>
       </div>
     </div>
 
-    <div class="section">
+    <div class="s">
+      <div class="eye">Formation</div>
+      <h2 class="stitle">Ressources <span>mobilisées</span></h2>
+      <div class="res-list">
+        <div class="res"><span class="res-code">R3.01</span>Réseaux de campus</div>
+        <div class="res"><span class="res-code">R3.02</span>Réseaux opérateurs</div>
+        <div class="res"><span class="res-code">R3.03</span>Services réseaux avancés</div>
+        <div class="res"><span class="res-code">R3.04</span>Services d'annuaires</div>
+        <div class="res"><span class="res-code">R3.11</span>Anglais professionnel</div>
+        <div class="res"><span class="res-code">R3.12</span>Communication professionnelle</div>
+        <div class="res"><span class="res-code">R3.13</span>Projet personnel et professionnel</div>
+        <div class="res"><span class="res-code">R3.15</span>Gestion de projet</div>
+        <div class="res"><span class="res-code">R3.Cyber.16</span>Méthodologie du pentesting</div>
+      </div>
+    </div>
+
+    <div class="s">
       <div class="en-box">
-        <span class="en-flag">🇬🇧 English Summary</span>
-        <div class="en-title">Secure Multi-Site Network Infrastructure</div>
-        <p class="en-body">This project focused on designing a <em>secure multi-site network infrastructure</em> for two companies. I was responsible for the <em>ISP (FAI) part</em>, which involved building a core network using <em>MPLS, BGP, and VRF</em> technologies to ensure secure and isolated communication between sites. I configured routing protocols (RIP, OSPF), deployed MPLS, implemented MP-BGP, and validated redundancy mechanisms. This project strengthened my skills in advanced networking and gave me practical insight into real-world ISP infrastructures.</p>
+        <div class="en-label">// ENGLISH SUMMARY</div>
+        <div class="en-txt">This project focused on designing a secure multi-site network infrastructure for two companies. I was responsible for the ISP (FAI) part, which involved building a core network using MPLS, BGP, and VRF technologies to ensure secure and isolated communication between sites. I configured routing protocols (RIP, OSPF), deployed MPLS, implemented MP-BGP, and validated redundancy mechanisms. This project strengthened my skills in advanced networking and gave me practical insight into real-world ISP infrastructures.</div>
       </div>
     </div>
+
   </div>
 
   <aside class="sidebar">
-    <div class="sb">
-      <div class="sb-title">Informations</div>
-      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 3 · 2024/2025</span></div>
-      <div class="sb-line"><span class="sb-tick">👥</span><span>Équipe de 3</span></div>
-      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
-      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Sécuriser · UE Connecter</span></div>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="scard-title">Informations</span>
+      </div>
+      <div class="scard-body">
+        <div class="srow"><span class="slabel">Compétences</span><span class="sval" style="font-size:.68rem">UE3.1·3.2·Cyber.4·5</span></div>
+        <div class="srow"><span class="slabel">Semestre</span><span class="sval">S3</span></div>
+        <div class="srow"><span class="slabel">Équipe</span><span class="sval">3 personnes</span></div>
+        <div class="srow"><span class="slabel">Statut</span><span class="sval ok">✓ Terminé</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Technologies FAI</div>
-      <span class="sb-tag">MPLS</span><span class="sb-tag">BGP</span><span class="sb-tag">MP-BGP</span><span class="sb-tag">VRF</span><span class="sb-tag">OSPF</span><span class="sb-tag">RIP</span><span class="sb-tag">LDP</span><span class="sb-tag">NAT</span><span class="sb-tag">GNS3</span>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        <span class="scard-title">Encadrants</span>
+      </div>
+      <div class="scard-body">
+        <div class="srow" style="flex-direction:column;align-items:flex-start;gap:.1rem"><span class="sval">ABOUAISSA Abdelhafid</span></div>
+        <div class="srow" style="flex-direction:column;align-items:flex-start;gap:.1rem"><span class="sval">BENNIS Ismail</span></div>
+        <div class="srow" style="border:none;flex-direction:column;align-items:flex-start;gap:.1rem"><span class="sval">BINDEL Sébastien</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Compétences développées</div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Routage dynamique avancé</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Architecture MPLS-VPN</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Isolation des flux (VRF)</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Diagnostic réseau complexe</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Documentation technique</span></div>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span class="scard-title">Équipe projet</span>
+      </div>
+      <div class="scard-body">
+        <div class="member"><div class="av av-me">SR</div><span class="mname">Soumaya RABAH</span><span class="mme">moi</span></div>
+        <div class="member"><div class="av av-r">CF</div><span class="mname">Chahinez FAHMI</span><span class="mrole">LAN</span></div>
+        <div class="member"><div class="av av-o">MW</div><span class="mname">Matéo WINLING</span><span class="mrole">services</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Encadrants</div>
-      <div class="sb-line"><span>👨‍🏫</span><span>ABOUAISSA Abdelhafid</span></div>
-      <div class="sb-line"><span>👨‍🏫</span><span>BENNIS Ismail</span></div>
-      <div class="sb-line"><span>👨‍🏫</span><span>BINDEL Sébastien</span></div>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        <span class="scard-title">Preuves & Documents</span>
+      </div>
+      <div class="scard-body">
+        <a href="preuves/sae3-03-rapport-fai.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Rapport FAI</span>
+        </a>
+        <a href="preuves/sae3-03-rapport-services.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Rapport services réseaux</span>
+        </a>
+        <a href="preuves/sae3-03-rapport-lan.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Rapport LAN</span>
+        </a>
+        <a href="preuves/sae3-03-maquette-gns3.gns3" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>Maquette FAI (GNS3)</span>
+        </a>
+        <a href="preuves/sae3-03-sujet.pdf" class="plink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Sujet du projet</span>
+        </a>
+      </div>
     </div>
   </aside>
 </div>
-
-<footer>
-  <span class="foot-l">SAE 3.Cyber.03 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
-  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
-</footer>
-<script>
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
-document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
-</script>
-</body></html>
+</body>
+</html>
