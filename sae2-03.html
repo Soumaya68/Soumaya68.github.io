@@ -1,163 +1,407 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>SAE 2.03 — Trafic Aérien | Soumaya RABAH</title>
-<link rel="stylesheet" href="projet.css"/>
-<style>:root{--project-color:#4A5C2A;}</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAE2.03 — Trafic Aérien · Soumaya RABAH</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap"/>
+  <style>
+    :root{--bg:#F2EFE7;--bg2:#E8E4DA;--bg3:#D8D4C8;--dark:#1E2318;--mid:#4A5240;--muted:#7A7A6A;--olive:#4A5C2A;--olive-mid:#6B8040;--olive-light:#96B060;--olive-pale:#DCE8C4;--terminal:#1E2A10;--term-green:#8DC050;--accent:#1D4ED8;--accent-light:#93C5FD;--accent-pale:#DBEAFE;--font-display:'Syne',sans-serif;--font-body:'Instrument Sans',sans-serif;--font-mono:'DM Mono',monospace}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
+    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:5px}
+    .nav-logo-dot{width:6px;height:6px;background:#C8D9A8;border-radius:50%}
+    .nav-center{font-family:var(--font-mono);font-size:.72rem;color:#5a7030;letter-spacing:.04em}
+    .nav-center span{color:var(--term-green)}
+    .nav-back{display:flex;align-items:center;gap:.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:.35rem .9rem;border-radius:4px}
+    .nav-back:hover{color:#fff;border-color:var(--term-green)}
+    .nav-back svg{transition:transform .2s}
+    .nav-back:hover svg{transform:translateX(-3px)}
+    /* HERO bleu nuit */
+    .hero{background:linear-gradient(135deg,#050d1f 0%,#0f2550 45%,#1E2A10 100%);padding:4.5rem 3rem 3.5rem;position:relative;overflow:hidden}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(29,78,216,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(29,78,216,.06) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+    .hero-glow{position:absolute;left:-80px;top:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.12) 0%,transparent 65%);pointer-events:none}
+    /* Avion décoratif SVG */
+    .hero-plane{position:absolute;right:3rem;top:50%;transform:translateY(-50%);opacity:.07;pointer-events:none}
+    .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:.3rem .9rem;border-radius:20px;font-family:var(--font-mono);font-size:.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:.06em}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--term-green);animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.6rem}
+    .hero-title em{font-style:normal;color:#93C5FD}
+    .hero-sub{color:rgba(255,255,255,.5);font-size:1rem;line-height:1.65;max-width:620px;margin-top:.8rem}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+    .chip{padding:.28rem .8rem;border-radius:20px;font-family:var(--font-mono);font-size:.68rem;font-weight:500}
+    .chip-blue{background:rgba(29,78,216,.15);border:1px solid rgba(147,197,253,.35);color:#93C5FD}
+    .chip-green{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);color:var(--term-green)}
+    .chip-white{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
+    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start;position:relative}
+    .main-content{min-width:0}
+    .sidebar{position:sticky;top:76px;display:flex;flex-direction:column;gap:1rem}
+    .scard{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .scard-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.5rem}
+    .scard-head-icon{color:var(--term-green);flex-shrink:0}
+    .scard-head-title{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.08em;text-transform:uppercase}
+    .scard-body{padding:1.1rem}
+    .scard-row{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
+    .scard-row:last-child{border-bottom:none}
+    .scard-label{color:var(--muted);font-size:.75rem}
+    .scard-val{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--dark)}
+    .scard-val.ok{color:#5C8A3C}
+    .member{display:flex;align-items:center;gap:.65rem;padding:.4rem 0;border-bottom:1px solid var(--bg2)}
+    .member:last-child{border-bottom:none}
+    .avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
+    .av-me{background:linear-gradient(135deg,#4A5C2A,#6B8040)}
+    .av-b{background:linear-gradient(135deg,#0369A1,#0EA5E9)}
+    .av-p{background:linear-gradient(135deg,#4a1a7a,#8040C0)}
+    .member-name{font-size:.8rem;font-weight:500;flex:1}
+    .member-role{font-family:var(--font-mono);font-size:.62rem;color:#1D4ED8;margin-left:auto}
+    .member-me{font-family:var(--font-mono);font-size:.62rem;color:var(--olive-mid);margin-left:auto;font-weight:600}
+    .proof-link{display:flex;align-items:center;gap:.55rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px;text-decoration:none;color:var(--dark);font-size:.8rem;margin-bottom:.5rem;transition:all .2s}
+    .proof-link:last-child{margin-bottom:0}
+    .proof-link:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(4px)}
+    .proof-link svg{color:var(--olive-mid);flex-shrink:0}
+    .proof-link span{font-family:var(--font-mono);font-size:.72rem}
+    .s{margin-bottom:3rem;opacity:0;transform:translateY(22px);animation:up .55s forwards}
+    .s:nth-child(1){animation-delay:.06s}.s:nth-child(2){animation-delay:.12s}.s:nth-child(3){animation-delay:.18s}
+    .s:nth-child(4){animation-delay:.24s}.s:nth-child(5){animation-delay:.30s}.s:nth-child(6){animation-delay:.36s}
+    .s:nth-child(7){animation-delay:.42s}.s:nth-child(8){animation-delay:.48s}.s:nth-child(9){animation-delay:.54s}
+    .s:nth-child(10){animation-delay:.60s}.s:nth-child(11){animation-delay:.66s}
+    @keyframes up{to{opacity:1;transform:translateY(0)}}
+    /* COLORED SECTIONS */
+    .sc-blue{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-radius:14px;padding:1.8rem;border:1px solid #BFDBFE}
+    .sc-olive{background:linear-gradient(135deg,#F0F5E8,var(--olive-pale));border-radius:14px;padding:1.8rem;border:1px solid #C8DCA0}
+    .sc-sky{background:linear-gradient(135deg,#F0F9FF,#E0F2FE);border-radius:14px;padding:1.8rem;border:1px solid #BAE6FD}
+    .sc-dark{background:var(--terminal);border-radius:14px;padding:1.8rem}
+    .sc-dark .s-eye{color:var(--term-green)}.sc-dark .s-title{color:#fff}
+    .sc-dark .tl-n,.sc-dark .tl-c{color:rgba(255,255,255,.65)}.sc-dark .tl-line{background:linear-gradient(rgba(29,78,216,.4),transparent)}
+    .s-eye{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+    .s-title{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+    .s-title span{color:var(--accent)}
+    .prose{font-size:.93rem;line-height:1.78;color:var(--mid)}
+    .prose p{margin-bottom:.85rem}.prose p:last-child{margin-bottom:0}
+    /* STATS */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.4rem 0}
+    .stat-box{padding:1.2rem;background:#fff;border:1px solid #BFDBFE;border-radius:10px;text-align:center;transition:transform .2s,box-shadow .2s}
+    .stat-box:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(29,78,216,.1)}
+    .stat-num{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.3rem}
+    .stat-lbl{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    /* CARDS */
+    .cards4{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.4rem 0}
+    .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1.4rem 0}
+    .card-item{padding:1.1rem;background:rgba(255,255,255,.7);border:1px solid #BFDBFE;border-radius:9px;border-left:3px solid var(--accent);transition:transform .2s,box-shadow .2s}
+    .card-item:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(29,78,216,.1)}
+    .card-title{font-weight:700;font-size:.86rem;color:var(--accent);margin-bottom:.4rem}
+    .card-desc{font-size:.78rem;color:var(--mid);line-height:1.5}
+    /* ARCHITECTURE STACK */
+    .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.4rem 0}
+    .stack-item{padding:.9rem .8rem;background:rgba(255,255,255,.7);border:1px solid #BAE6FD;border-radius:8px;text-align:center;transition:transform .2s}
+    .stack-item:hover{transform:translateY(-3px)}
+    .stack-name{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:#0369A1;margin-bottom:.2rem}
+    .stack-role{font-size:.65rem;color:var(--muted)}
+    /* TIMELINE */
+    .tl{display:flex;flex-direction:column}
+    .tl-item{display:grid;grid-template-columns:36px 1fr;gap:0 .9rem;padding-bottom:1.4rem}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-l{display:flex;flex-direction:column;align-items:center}
+    .tl-dot{width:11px;height:11px;border-radius:50%;background:#93C5FD;border:2px solid var(--terminal);box-shadow:0 0 0 2px #93C5FD;margin-top:2px;flex-shrink:0}
+    .tl-line{flex:1;width:2px;background:linear-gradient(rgba(147,197,253,.35),transparent);margin-top:3px}
+    .tl-n{font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.4);margin-bottom:.15rem}
+    .tl-c{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.5}
+    .tl-c code{background:rgba(147,197,253,.15);color:#93C5FD;padding:.05rem .35rem;border-radius:3px;font-family:var(--font-mono);font-size:.78rem}
+    /* SPLIT */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0}
+    .split-other{padding:1.1rem;border-radius:10px;background:var(--bg2);border:1px solid var(--bg3)}
+    .split-me{padding:1.1rem;border-radius:10px;background:linear-gradient(135deg,rgba(74,92,42,.07),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid)}
+    .split-name{font-weight:700;font-size:.88rem;margin-bottom:.2rem}
+    .split-role{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);margin-bottom:.8rem}
+    .split-items{display:flex;flex-direction:column;gap:.3rem}
+    .split-item{font-size:.78rem;color:var(--mid);display:flex;gap:.4rem}
+    .split-item::before{content:'→';color:var(--olive-mid);font-family:var(--font-mono);flex-shrink:0}
+    /* SKILLS */
+    .skill-groups{display:flex;flex-direction:column;gap:1rem;margin-top:.8rem}
+    .sg-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+    .tag{padding:.25rem .7rem;border-radius:5px;font-size:.73rem;font-weight:500}
+    .tag-g{background:var(--olive-pale);color:#3D5226}
+    .tag-b{background:#DBEAFE;color:#1E3A8A}
+    .tag-p{background:#EDE9FE;color:#4C1D95}
+    /* QUOTE */
+    .quote{border-left:3px solid #93C5FD;padding:.9rem 1.3rem;background:rgba(29,78,216,.04);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
+    /* EN BOX */
+    .en-box{background:linear-gradient(135deg,#FAF7F0,#F5EDD8);border-radius:12px;padding:1.6rem;margin:1.4rem 0;border:1px solid #E8D9B0;border-left:4px solid #C8A040;position:relative}
+    .en-box::before{content:"EN";position:absolute;top:.9rem;right:1rem;font-family:var(--font-mono);font-size:.6rem;color:#C8A040;background:#FAF7F0;padding:.15rem .4rem;border-radius:3px;border:1px solid #E8D9B0;letter-spacing:.08em}
+    .en-label{font-family:var(--font-mono);font-size:.68rem;color:#9A7020;letter-spacing:.1em;margin-bottom:.65rem}
+    .en-txt{color:#5A4A28;font-size:.86rem;line-height:1.78;font-style:italic}
+    /* RES */
+    .ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.9rem}
+    @media(max-width:600px){.ac-grid{grid-template-columns:1fr}}
+    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:rgba(255,255,255,.7);border:1px solid #BFDBFE;border-radius:7px}
+    .ac-code{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);font-weight:700;flex-shrink:0;white-space:nowrap;padding-top:.05rem}
+    .ac-txt{font-size:.78rem;color:var(--mid);line-height:1.4}
+    .res-list{margin-top:.8rem;display:flex;flex-direction:column}
+    .res{display:flex;gap:.55rem;align-items:baseline;padding:.4rem .6rem;border-bottom:1px solid rgba(29,78,216,.12);font-size:.82rem;color:rgba(255,255,255,.65)}
+    .res:last-child{border-bottom:none}
+    .res-code{font-family:var(--font-mono);font-size:.65rem;color:var(--term-green);font-weight:700;flex-shrink:0}
+    /* ENTITIES */
+    .entities{display:flex;flex-direction:column;gap:.4rem;margin:1rem 0}
+    .entity{display:flex;align-items:center;gap:.8rem;padding:.7rem .9rem;background:rgba(255,255,255,.7);border:1px solid #BAE6FD;border-radius:8px;font-size:.84rem}
+    .entity-icon{font-size:1rem;flex-shrink:0}
+    .entity-name{font-weight:600;color:var(--dark)}
+    .entity-desc{font-size:.75rem;color:var(--muted);margin-left:auto;font-family:var(--font-mono)}
+    .proj-img{border-radius:12px;overflow:hidden;border:1px solid var(--bg3);margin:1.4rem 0;background:linear-gradient(135deg,#050d1f,#0f2550);display:flex;align-items:center;justify-content:center;aspect-ratio:16/7}
+    .proj-img img{width:100%;height:100%;object-fit:cover}
+    @media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{position:static;max-height:none}.top-nav{padding:.9rem 1.5rem}.hero{padding:3rem 1.5rem}.stats-row{grid-template-columns:1fr 1fr}.stack-grid{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
-  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">soumaya<div class="nav-logo-dot"></div></a>
+  <span class="nav-center">Projets / <span>SAE2.03</span></span>
+  <a href="index.html#projets" class="nav-back" onclick="sessionStorage.setItem('goProjects','1')">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </a>
 </nav>
 
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-meta">
-      <span class="hero-badge">SAE 2.03 · 1ère année</span>
-      <span class="hero-status">Terminé</span>
-    </div>
-    <div class="hero-num">2.03</div>
-    <h1>Gestion du <em>Trafic Aérien</em></h1>
-    <p class="hero-desc">Application web complète de supervision aéroportuaire — vols, pistes, avions, compagnies. Django + MariaDB déployé sur VM Linux en équipe de 3.</p>
-    <div class="chips">
-      <span class="chip chip-dark">Django 5.2</span>
-      <span class="chip chip-pale">MariaDB</span>
-      <span class="chip chip-dark">Nginx · Gunicorn</span>
-      <span class="chip chip-pale">VM Linux</span>
-      <span class="chip chip-dark">CRUD complet</span>
-      <span class="chip chip-pale">Python</span>
+<div class="hero">
+  <div class="hero-grid"></div><div class="hero-glow"></div>
+  <div class="hero-plane">
+    <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">SAE2.03 — 1ère année BUT R&T · IUT Colmar</div>
+    <h1 class="hero-title">Gestion du<br><em>trafic aérien</em></h1>
+    <p class="hero-sub">Application web complète de supervision aéroportuaire — vols, pistes, avions, compagnies. Django 5.2 + MariaDB déployé sur deux VM Linux en équipe de 3.</p>
+    <div class="hero-chips">
+      <span class="chip chip-white">Django 5.2</span>
+      <span class="chip chip-white">MariaDB</span>
+      <span class="chip chip-white">Nginx · Gunicorn</span>
+      <span class="chip chip-white">VM Linux</span>
+      <span class="chip chip-white">Python</span>
+      <span class="chip chip-blue">CRUD complet</span>
+      <span class="chip chip-green">Frontend · UX-UI</span>
     </div>
   </div>
-  <div class="hero-right">
-    <div>
-      <div class="hero-info-block"><div class="hib-label">Formation</div><div class="hib-value">BUT R&T</div><div class="hib-sub">IUT de Colmar · Promo 2025</div></div>
-      <div class="hero-info-block"><div class="hib-label">Équipe</div>
-        <div class="team-list">
-          <div class="team-item"><div class="team-av" style="background:rgba(141,192,80,0.2);color:#8DC050;">SR</div><div><div class="team-name">Soumaya RABAH</div><div class="team-role">Frontend · UX-UI</div></div></div>
-          <div class="team-item"><div class="team-av" style="background:rgba(155,138,196,0.2);color:#9B8AC4;">KL</div><div><div class="team-name">Kenzy LABOYRIE</div><div class="team-role">Architecte système</div></div></div>
-          <div class="team-item"><div class="team-av" style="background:rgba(124,163,199,0.2);color:#7CA3C7;">YM</div><div><div class="team-name">Yoann MULLER</div><div class="team-role">Backend · BDD</div></div></div>
+</div>
+
+<div class="page-body">
+  <div class="main-content">
+
+    <div class="s">
+      <div class="proj-img"><img src="image/image_avion.avif" alt="Trafic aérien" onerror="this.src='image/image_avion.jpeg';this.onerror=null"/></div>
+    </div>
+
+    <div class="s">
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-num">6</div><div class="stat-lbl">Phases</div></div>
+        <div class="stat-box"><div class="stat-num">2 VM</div><div class="stat-lbl">Infrastructure</div></div>
+        <div class="stat-box"><div class="stat-num">CRUD</div><div class="stat-lbl">Complet</div></div>
+        <div class="stat-box"><div class="stat-num">4</div><div class="stat-lbl">Entités gérées</div></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Vue d'ensemble</div>
+      <h2 class="s-title">Application web de <span>supervision aéroportuaire</span></h2>
+      <div class="prose">
+        <p>La SAE 2.03 nous a demandé de concevoir une application web complète de gestion du trafic aérien entre aéroports. Notre système permet aux gestionnaires de superviser vols, pistes, avions et compagnies, avec des vérifications métier intelligentes.</p>
+        <p>L'architecture repose sur deux VM Linux séparées — serveur web (Gunicorn + Nginx) et base de données MariaDB distante — proche d'un environnement professionnel réel.</p>
+      </div>
+      <div class="entities">
+        <div class="entity"><span class="entity-icon">✈️</span><span class="entity-name">Vols &amp; planification</span><span class="entity-desc">CRUD + contraintes temporelles</span></div>
+        <div class="entity"><span class="entity-icon">🛫</span><span class="entity-name">Aéroports &amp; pistes</span><span class="entity-desc">Compatibilité piste/avion</span></div>
+        <div class="entity"><span class="entity-icon">🛩️</span><span class="entity-name">Avions &amp; types</span><span class="entity-desc">Vérifications de disponibilité</span></div>
+        <div class="entity"><span class="entity-icon">🏢</span><span class="entity-name">Compagnies aériennes</span><span class="entity-desc">Import/export CSV</span></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-sky">
+        <div class="s-eye">Stack technique</div>
+        <h2 class="s-title">Architecture <span>& infrastructure</span></h2>
+        <div class="stack-grid">
+          <div class="stack-item"><div class="stack-name">Django 5.2</div><div class="stack-role">Backend MVT</div></div>
+          <div class="stack-item"><div class="stack-name">MariaDB</div><div class="stack-role">Base de données</div></div>
+          <div class="stack-item"><div class="stack-name">Nginx</div><div class="stack-role">Reverse proxy</div></div>
+          <div class="stack-item"><div class="stack-name">Gunicorn</div><div class="stack-role">Serveur WSGI</div></div>
+          <div class="stack-item"><div class="stack-name">Python</div><div class="stack-role">Logique métier</div></div>
+          <div class="stack-item"><div class="stack-name">ORM Django</div><div class="stack-role">Accès données</div></div>
+          <div class="stack-item"><div class="stack-name">HTML5/CSS3</div><div class="stack-role">Frontend</div></div>
+          <div class="stack-item"><div class="stack-name">VM Linux</div><div class="stack-role">Infrastructure</div></div>
+        </div>
+        <div class="cards4" style="margin-top:1.4rem">
+          <div class="card-item"><div class="card-title">CRUD intégral</div><div class="card-desc">Création, lecture, modification et suppression sur toutes les entités du système.</div></div>
+          <div class="card-item"><div class="card-title">Vérifications métier</div><div class="card-desc">Compatibilité piste/avion, disponibilité, contraintes temporelles automatiques.</div></div>
+          <div class="card-item"><div class="card-title">Import/Export CSV</div><div class="card-desc">Gestion de fichiers pour l'intégration de vols et données en masse.</div></div>
+          <div class="card-item"><div class="card-title">2 VM séparées</div><div class="card-desc">Serveur web et BDD sur machines distinctes — architecture professionnelle réelle.</div></div>
         </div>
       </div>
     </div>
-    <div class="hero-stats-grid">
-      <div class="hsg-item"><div class="hsg-num">6</div><div class="hsg-label">Phases</div></div>
-      <div class="hsg-item"><div class="hsg-num">2 VM</div><div class="hsg-label">Infrastructure</div></div>
-      <div class="hsg-item"><div class="hsg-num">CRUD</div><div class="hsg-label">Complet</div></div>
-      <div class="hsg-item"><div class="hsg-num">3</div><div class="hsg-label">Équipiers</div></div>
-    </div>
-  </div>
-</section>
 
-<div class="page-body">
-  <div>
-    <div class="section">
-      <div class="s-eyebrow">Contexte</div>
-      <h2>Mettre en place une solution informatique pour l'entreprise</h2>
-      <p>La SAE 2.03 nous a demandé de concevoir une <strong>application web complète de gestion du trafic aérien</strong> entre aéroports. Notre équipe a développé un système permettant aux gestionnaires de superviser vols, pistes, avions et compagnies, avec des vérifications métier intelligentes.</p>
-      <div class="grid-2">
-        <div class="card"><h4>Interface complète</h4><p>Gestion efficace des opérations aéroportuaires via une interface intuitive</p></div>
-        <div class="card"><h4>CRUD intégral</h4><p>Création, lecture, modification et suppression sur toutes les entités</p></div>
-        <div class="card"><h4>Vérifications métier</h4><p>Compatibilité piste/avion, disponibilité, contraintes temporelles</p></div>
-        <div class="card"><h4>Import/Export CSV</h4><p>Gestion de fichiers pour l'intégration de vols en masse</p></div>
+    <div class="s">
+      <div class="sc-olive">
+        <div class="s-eye" style="color:var(--olive-mid)">Collaboration</div>
+        <h2 class="s-title" style="color:var(--dark)">Répartition <span style="color:var(--olive-mid)">du travail</span></h2>
+        <div class="split">
+          <div class="split-other">
+            <div class="split-name">Kenzy LABOYRIE</div>
+            <div class="split-role">// Architecte système</div>
+            <div class="split-items">
+              <div class="split-item">Architecture globale</div>
+              <div class="split-item">Configuration serveurs</div>
+              <div class="split-item">Déploiement VM</div>
+            </div>
+          </div>
+          <div class="split-other">
+            <div class="split-name">Yoann MULLER</div>
+            <div class="split-role">// Backend &amp; BDD</div>
+            <div class="split-items">
+              <div class="split-item">Modèles Django &amp; ORM</div>
+              <div class="split-item">Structure MariaDB</div>
+              <div class="split-item">Logique métier</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(74,92,42,.08),rgba(107,128,64,.04));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid);border-radius:10px;padding:1.3rem;margin-top:1rem">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--olive);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Soumaya RABAH — Frontend &amp; UX-UI
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.4rem">
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Conception et développement de l'intégralité des interfaces HTML5/CSS3</div>
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Maquettes et charte graphique du projet</div>
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Templates Django avec logique dynamique</div>
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Formulaires CRUD avec validation côté client</div>
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Navigation intuitive, gestion des erreurs, accessibilité</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Chronologie</div>
-      <h2>6 phases du projet</h2>
-      <div class="timeline">
-        <div class="tl"><div class="tl-dot">1</div><div class="tl-body"><h4>Base de données</h4><p>Structure MariaDB et insertion des données de test</p></div></div>
-        <div class="tl"><div class="tl-dot">2</div><div class="tl-body"><h4>Intégration Django</h4><p>Génération automatique via <code>python manage.py inspectdb</code></p></div></div>
-        <div class="tl"><div class="tl-dot">3</div><div class="tl-body"><h4>Interface de consultation</h4><p>Pages d'affichage optimisées avec <code>select_related()</code></p></div></div>
-        <div class="tl"><div class="tl-dot">4</div><div class="tl-body"><h4>CRUD complet</h4><p>Modification, suppression et création pour toutes les entités</p></div></div>
-        <div class="tl"><div class="tl-dot">5</div><div class="tl-body"><h4>Fonctionnalités avancées</h4><p>Import CSV, vérifications techniques automatiques</p></div></div>
-        <div class="tl"><div class="tl-dot">6</div><div class="tl-body"><h4>Déploiement</h4><p>Configuration VM Linux, Nginx et Gunicorn en production</p></div></div>
+    <div class="s">
+      <div class="sc-dark">
+        <div class="s-eye">Déroulement</div>
+        <h2 class="s-title">6 phases <span style="color:var(--term-green)">du projet</span></h2>
+        <div class="tl">
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">Phase 01</div><div class="tl-c">Structure MariaDB et insertion des données de test</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">Phase 02</div><div class="tl-c">Intégration Django — génération automatique via <code>python manage.py inspectdb</code></div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">Phase 03</div><div class="tl-c">Interface de consultation — pages d'affichage optimisées avec <code>select_related()</code></div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">Phase 04</div><div class="tl-c">CRUD complet — modification, suppression et création pour toutes les entités</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">Phase 05</div><div class="tl-c">Fonctionnalités avancées — import CSV, vérifications techniques automatiques</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-n">Phase 06</div><div class="tl-c">Déploiement — configuration VM Linux, Nginx et Gunicorn en production</div></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Architecture</div>
-      <h2>Stack technique & infrastructure</h2>
-      <p>Deux VM Linux séparées : serveur web (Gunicorn + Nginx) et base de données MariaDB distante — architecture proche d'un environnement professionnel réel.</p>
-      <div class="grid-4">
-        <div class="card-plain"><h4>Django 5.2</h4><p>Backend MVT</p></div>
-        <div class="card-plain"><h4>MariaDB</h4><p>Base de données</p></div>
-        <div class="card-plain"><h4>Nginx</h4><p>Reverse proxy</p></div>
-        <div class="card-plain"><h4>Gunicorn</h4><p>Serveur WSGI</p></div>
-        <div class="card-plain"><h4>Python</h4><p>Logique métier</p></div>
-        <div class="card-plain"><h4>HTML5/CSS3</h4><p>Frontend</p></div>
-        <div class="card-plain"><h4>VM Linux</h4><p>Infrastructure</p></div>
-        <div class="card-plain"><h4>ORM Django</h4><p>Accès données</p></div>
+    <div class="s">
+      <div class="s-eye">Retour d'expérience</div>
+      <h2 class="s-title">Ce que j'en <span>retiens</span></h2>
+      <div class="quote">Ce projet m'a permis de comprendre le cycle complet de développement web métier : de la modélisation BDD au déploiement serveur, en passant par la logique Django et les relations complexes entre entités. J'ai découvert la satisfaction de voir une interface que j'ai conçue fonctionner sur une infrastructure réelle.</div>
+    </div>
+
+    <div class="s">
+      <div class="sc-blue">
+        <div class="s-eye">Compétences</div>
+        <h2 class="s-title">Ce que j'ai <span>développé</span></h2>
+        <div class="skill-groups">
+          <div><div class="sg-label">Développement</div><div class="tags"><span class="tag tag-b">Django 5.2</span><span class="tag tag-b">Python</span><span class="tag tag-b">HTML5/CSS3</span><span class="tag tag-b">Templates Django</span></div></div>
+          <div><div class="sg-label">Base de données &amp; infrastructure</div><div class="tags"><span class="tag tag-g">MariaDB</span><span class="tag tag-g">SQL</span><span class="tag tag-g">VM Linux</span><span class="tag tag-g">Nginx / Gunicorn</span></div></div>
+          <div><div class="sg-label">Design &amp; UX</div><div class="tags"><span class="tag tag-p">Conception d'interfaces</span><span class="tag tag-p">Maquettage</span><span class="tag tag-p">Expérience utilisateur</span></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Mon rôle</div>
-      <h2>Développeuse Frontend & UX-UI</h2>
-      <p>J'ai pris en charge la conception et le développement de l'intégralité des interfaces utilisateur — maquettes, HTML/CSS, templates Django et formulaires CRUD.</p>
-      <div class="grid-2">
-        <div class="card-plain"><h4>🎨 Design des interfaces</h4><p>Maquettes, charte graphique et développement HTML5/CSS3</p></div>
-        <div class="card-plain"><h4>⚙️ Templates Django</h4><p>Intégration dans le moteur de templates avec logique dynamique</p></div>
-        <div class="card-plain"><h4>📝 Formulaires CRUD</h4><p>Saisie avec validation côté client</p></div>
-        <div class="card-plain"><h4>🧭 Expérience utilisateur</h4><p>Navigation intuitive, gestion des erreurs, accessibilité</p></div>
+    <div class="s">
+      <div class="sc-blue">
+        <div class="s-eye">Référentiel</div>
+        <h2 class="s-title">Apprentissages <span>critiques</span></h2>
+        <div class="ac-grid">
+          <div class="ac"><span class="ac-code">AC21.01</span><span class="ac-txt">Analyser les besoins d'un utilisateur et son environnement</span></div>
+          <div class="ac"><span class="ac-code">AC21.02</span><span class="ac-txt">Mettre en place des outils de gestion de projet</span></div>
+          <div class="ac"><span class="ac-code">AC23.01</span><span class="ac-txt">Développer des applications informatiques simples</span></div>
+          <div class="ac"><span class="ac-code">AC23.02</span><span class="ac-txt">Développer une application à partir d'un cahier des charges donné</span></div>
+          <div class="ac"><span class="ac-code">AC23.03</span><span class="ac-txt">Utiliser un protocole réseau pour programmer une application client/serveur</span></div>
+          <div class="ac"><span class="ac-code">AC23.04</span><span class="ac-txt">Installer et administrer un système de gestion de données</span></div>
+          <div class="ac"><span class="ac-code">AC23.05</span><span class="ac-txt">Accéder à un ensemble de données depuis une application ou un site web</span></div>
+          <div class="ac"><span class="ac-code">AC21.06</span><span class="ac-txt">Travailler en équipe pour développer ses compétences professionnelles</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="s-eyebrow">Bilan</div>
-      <h2>Acquis & compétences</h2>
-      <p>Ce projet m'a permis de comprendre le cycle complet de développement web métier : de la modélisation BDD au déploiement serveur, en passant par la logique Django et les relations complexes entre entités.</p>
-      <div class="skills-wrap">
-        <span class="skill-badge sb-g">Django</span><span class="skill-badge sb-g">Python</span><span class="skill-badge sb-g">SQL</span><span class="skill-badge sb-d">MariaDB</span><span class="skill-badge sb-d">Nginx</span><span class="skill-badge sb-d">VM Linux</span><span class="skill-badge sb-g">UX-UI</span><span class="skill-badge sb-d">Architecture MVT</span>
+    <div class="s">
+      <div class="sc-dark">
+        <div class="s-eye">Formation</div>
+        <h2 class="s-title">Ressources <span style="color:var(--term-green)">mobilisées</span></h2>
+        <div class="res-list">
+          <div class="res"><span class="res-code">R2.08</span>Consolidation de la programmation</div>
+          <div class="res"><span class="res-code">R2.09</span>Développement web</div>
+          <div class="res"><span class="res-code">R2.10</span>Bases de données</div>
+          <div class="res"><span class="res-code">R2.01</span>Réseaux locaux</div>
+          <div class="res"><span class="res-code">R2.11</span>Anglais professionnel</div>
+          <div class="res"><span class="res-code">R2.12</span>Communication professionnelle</div>
+        </div>
       </div>
     </div>
 
-    <div class="section">
+    <div class="s">
       <div class="en-box">
-        <span class="en-flag">🇬🇧 English Summary</span>
-        <div class="en-title">Air Traffic Management Web Application</div>
-        <p class="en-body">This project involved building a <em>complete web application</em> for managing airport operations using <em>Django 5.2</em> and <em>MariaDB</em>, deployed on two Linux VMs (Nginx + Gunicorn). As Frontend Developer & UX-UI Expert, I designed all interfaces, CRUD forms and Django templates. The system manages airports, runways, aircraft and flights with intelligent business logic including compatibility checks and temporal constraints.</p>
+        <div class="en-label">// ENGLISH SUMMARY</div>
+        <div class="en-txt">This project involved building a complete web application for managing airport operations using Django 5.2 and MariaDB, deployed on two Linux VMs (Nginx + Gunicorn). As Frontend Developer & UX-UI Expert, I designed all interfaces, CRUD forms and Django templates. The system manages airports, runways, aircraft and flights with intelligent business logic including compatibility checks and temporal constraints.</div>
       </div>
     </div>
-  </div>
+
+  </div><!-- /main-content -->
 
   <aside class="sidebar">
-    <div class="sb">
-      <div class="sb-title">Informations</div>
-      <div class="sb-line"><span class="sb-tick">📅</span><span>Semestre 2 · 2024/2025</span></div>
-      <div class="sb-line"><span class="sb-tick">👥</span><span>Équipe de 3</span></div>
-      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
-      <div class="sb-line"><span class="sb-tick">🎯</span><span>UE Programmer</span></div>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="scard-head-title">Informations</span>
+      </div>
+      <div class="scard-body">
+        <div class="scard-row"><span class="scard-label">Formation</span><span class="scard-val">BUT R&T</span></div>
+        <div class="scard-row"><span class="scard-label">Semestre</span><span class="scard-val">S2 · 2024/2025</span></div>
+        <div class="scard-row"><span class="scard-label">Équipe</span><span class="scard-val">3 personnes</span></div>
+        <div class="scard-row"><span class="scard-label">Mon rôle</span><span class="scard-val" style="color:var(--accent)">Frontend · UX-UI</span></div>
+        <div class="scard-row"><span class="scard-label">Statut</span><span class="scard-val ok">✓ Terminé</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Technologies</div>
-      <span class="sb-tag">Django</span><span class="sb-tag">Python</span><span class="sb-tag">MariaDB</span><span class="sb-tag">HTML5</span><span class="sb-tag">CSS3</span><span class="sb-tag">Nginx</span><span class="sb-tag">Gunicorn</span><span class="sb-tag">Linux</span><span class="sb-tag">SQL</span><span class="sb-tag">ORM</span><span class="sb-tag">Git</span>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span class="scard-head-title">Équipe projet</span>
+      </div>
+      <div class="scard-body">
+        <div class="member"><div class="avatar av-me">SR</div><span class="member-name">Soumaya RABAH</span><span class="member-me">moi</span></div>
+        <div class="member"><div class="avatar av-b">KL</div><span class="member-name">Kenzy LABOYRIE</span><span class="member-role">architecture</span></div>
+        <div class="member"><div class="avatar av-p">YM</div><span class="member-name">Yoann MULLER</span><span class="member-role">backend</span></div>
+      </div>
     </div>
-    <div class="sb">
-      <div class="sb-title">Compétences BUT R&T</div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Administrer — déploiement VM</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Programmer — Django, Python, SQL</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Architecture client/serveur</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Travail en équipe</span></div>
-    </div>
-    <div class="sb">
-      <div class="sb-title">Entités gérées</div>
-      <div class="sb-line"><span>✈️</span><span>Vols & planification</span></div>
-      <div class="sb-line"><span>🛫</span><span>Aéroports & pistes</span></div>
-      <div class="sb-line"><span>🛩️</span><span>Avions & types</span></div>
-      <div class="sb-line"><span>🏢</span><span>Compagnies aériennes</span></div>
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        <span class="scard-head-title">Preuves &amp; Documents</span>
+      </div>
+      <div class="scard-body">
+        <a href="https://github.com/wipeey/gestion-trafic-aerien" target="_blank" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          <span>GitHub — gestion-trafic-aerien</span>
+        </a>
+        <a href="preuves/Présentation SAE2.03 Soumaya Kenzy et Yoann.pdf" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Présentation SAE2.03</span>
+        </a>
+        <a href="preuves/Gestion du trafic aérien entre des aéroports.gan" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Diagramme de Gantt</span>
+        </a>
+      </div>
     </div>
   </aside>
-</div>
 
-<footer>
-  <span class="foot-l">SAE 2.03 · Soumaya RABAH · IUT Colmar · 2024–2025</span>
-  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
-</footer>
-<script>
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
-document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
-</script>
-</body></html>
+</div>
+</body>
+</html>

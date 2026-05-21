@@ -6,35 +6,24 @@
   <title>SAE3.01 — Prise connectée Wi-Fi · Soumaya RABAH</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap"/>
   <style>
-    :root {
-      --bg:#F2EFE7; --bg2:#E8E4DA; --bg3:#D8D4C8;
-      --dark:#1E2318; --mid:#4A5240; --muted:#7A7A6A;
-      --olive:#4A5C2A; --olive-mid:#6B8040; --olive-light:#96B060; --olive-pale:#DCE8C4;
-      --terminal:#1E2A10; --term-green:#8DC050;
-      --accent:#7C3AED; --accent-light:#A78BFA; --accent-pale:#EDE9FE;
-      --font-display:'Syne',sans-serif; --font-body:'Instrument Sans',sans-serif; --font-mono:'DM Mono',monospace;
-    }
+    :root{--bg:#F2EFE7;--bg2:#E8E4DA;--bg3:#D8D4C8;--dark:#1E2318;--mid:#4A5240;--muted:#7A7A6A;--olive:#4A5C2A;--olive-mid:#6B8040;--olive-light:#96B060;--olive-pale:#DCE8C4;--terminal:#1E2A10;--term-green:#8DC050;--accent:#7C3AED;--accent-light:#A78BFA;--accent-pale:#EDE9FE;--font-display:'Syne',sans-serif;--font-body:'Instrument Sans',sans-serif;--font-mono:'DM Mono',monospace}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{font-family:var(--font-body);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
-
-    /* NAV */
-    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
-    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-0.02em;display:flex;align-items:center;gap:5px}
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
+    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:5px}
     .nav-logo-dot{width:6px;height:6px;background:#C8D9A8;border-radius:50%}
-    .nav-center{font-family:var(--font-mono);font-size:0.72rem;color:#5a7030;letter-spacing:0.04em}
+    .nav-center{font-family:var(--font-mono);font-size:.72rem;color:#5a7030;letter-spacing:.04em}
     .nav-center span{color:var(--term-green)}
-    .nav-back{display:flex;align-items:center;gap:0.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:0.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:0.35rem 0.9rem;border-radius:4px}
+    .nav-back{display:flex;align-items:center;gap:.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:.35rem .9rem;border-radius:4px}
     .nav-back:hover{color:#fff;border-color:var(--term-green)}
     .nav-back svg{transition:transform .2s}
     .nav-back:hover svg{transform:translateX(-3px)}
-
-    /* HERO */
     .hero{background:linear-gradient(135deg,#1a0a3a 0%,#2d1060 40%,#1E2A10 100%);padding:4.5rem 3rem 3.5rem;position:relative;overflow:hidden}
     .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.05) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
     .hero-glow{position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.18) 0%,transparent 65%);pointer-events:none}
     .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
-    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:0.3rem 0.9rem;border-radius:20px;font-family:var(--font-mono);font-size:0.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:0.06em}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:.3rem .9rem;border-radius:20px;font-family:var(--font-mono);font-size:.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:.06em}
     .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--term-green);animation:blink 2s infinite}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
     .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.6rem}
@@ -45,13 +34,9 @@
     .chip-green{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);color:var(--term-green)}
     .chip-purple{background:rgba(124,58,237,.15);border:1px solid rgba(196,181,253,.3);color:#C4B5FD}
     .chip-white{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
-
-    /* LAYOUT */
-    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}
+    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start;position:relative}
     .main-content{min-width:0}
-
-    /* STICKY SIDEBAR */
-    .sidebar{position:sticky;top:68px;display:flex;flex-direction:column;gap:1rem}
+    .sidebar{position:sticky;top:76px;max-height:calc(100vh - 100px);overflow-y:auto;display:flex;flex-direction:column;gap:1rem}
     .scard{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
     .scard-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.5rem}
     .scard-head-icon{color:var(--term-green);flex-shrink:0}
@@ -71,27 +56,36 @@
     .av-rose{background:linear-gradient(135deg,#801a40,#C06080)}
     .av-amber{background:linear-gradient(135deg,#604010,#A06020)}
     .member-name{font-size:.8rem;font-weight:500;flex:1}
-    .member-tag{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-left:auto}
     .member-me{font-family:var(--font-mono);font-size:.62rem;color:var(--olive-mid);margin-left:auto;font-weight:600}
     .proof-link{display:flex;align-items:center;gap:.55rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px;text-decoration:none;color:var(--dark);font-size:.8rem;margin-bottom:.5rem;transition:all .2s}
     .proof-link:last-child{margin-bottom:0}
     .proof-link:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(4px)}
     .proof-link svg{color:var(--olive-mid);flex-shrink:0}
     .proof-link span{font-family:var(--font-mono);font-size:.72rem}
-
     /* SECTIONS */
     .s{margin-bottom:3rem;opacity:0;transform:translateY(22px);animation:up .55s forwards}
     .s:nth-child(1){animation-delay:.08s}.s:nth-child(2){animation-delay:.16s}.s:nth-child(3){animation-delay:.24s}
     .s:nth-child(4){animation-delay:.32s}.s:nth-child(5){animation-delay:.40s}.s:nth-child(6){animation-delay:.48s}
     .s:nth-child(7){animation-delay:.56s}.s:nth-child(8){animation-delay:.64s}.s:nth-child(9){animation-delay:.72s}
+    .s:nth-child(10){animation-delay:.80s}.s:nth-child(11){animation-delay:.88s}
     @keyframes up{to{opacity:1;transform:translateY(0)}}
+    /* COLORED SECTION WRAPPERS */
+    .sc-purple{background:linear-gradient(135deg,#EDE9FE,#F5F3FF);border-radius:14px;padding:1.8rem;border:1px solid #DDD6FE}
+    .sc-olive{background:linear-gradient(135deg,#F0F5E8,var(--olive-pale));border-radius:14px;padding:1.8rem;border:1px solid #C8DCA0}
+    .sc-amber{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-radius:14px;padding:1.8rem;border:1px solid #FDE68A}
+    .sc-blue{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-radius:14px;padding:1.8rem;border:1px solid #BFDBFE}
+    .sc-dark{background:var(--terminal);border-radius:14px;padding:1.8rem}
+    .sc-dark .s-eye{color:var(--term-green)}
+    .sc-dark .s-title{color:#fff}
+    .sc-dark .prose{color:rgba(255,255,255,.65)}
+    .sc-dark .tl-n,.sc-dark .tl-c{color:rgba(255,255,255,.6)}
+    .sc-dark .tl-line{background:linear-gradient(rgba(140,192,80,.3),transparent)}
     .s-eye{font-family:var(--font-mono);font-size:.68rem;color:var(--olive-mid);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
     .s-title{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
     .s-title span{color:var(--accent)}
     .prose{font-size:.93rem;line-height:1.78;color:var(--mid)}
     .prose p{margin-bottom:.85rem}
     .prose p:last-child{margin-bottom:0}
-
     /* IOT DIAGRAM */
     .iot-diagram{background:#12082a;border-radius:14px;padding:2rem;margin:1.5rem 0;position:relative;overflow:hidden}
     .iot-diagram::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.04) 1px,transparent 1px);background-size:28px 28px}
@@ -103,43 +97,35 @@
     .iot-box.srv{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25)}
     .iot-box.app{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25)}
     .iot-box.sec{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2)}
-    .iot-icon{font-size:1.2rem;display:block;margin-bottom:.25rem}
     .iot-name{font-family:var(--font-mono);font-size:.62rem;display:block;font-weight:600}
-    .iot-box.hw .iot-name{color:#C4B5FD}
-    .iot-box.srv .iot-name{color:var(--term-green)}
-    .iot-box.app .iot-name{color:#FCD34D}
-    .iot-box.sec .iot-name{color:#FCA5A5}
+    .iot-box.hw .iot-name{color:#C4B5FD}.iot-box.srv .iot-name{color:var(--term-green)}.iot-box.app .iot-name{color:#FCD34D}.iot-box.sec .iot-name{color:#FCA5A5}
     .iot-sub{font-size:.54rem;display:block;opacity:.4;color:#fff;font-family:var(--font-mono);margin-top:.15rem}
     .iot-arrow{color:rgba(196,181,253,.35);font-family:var(--font-mono);font-size:1rem;padding:0 .25rem;align-self:center}
     .iot-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;justify-content:center;position:relative;z-index:2}
     .iot-leg{font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,.28)}
     .iot-leg b{color:rgba(255,255,255,.5)}
-
     /* FEATURE GRID */
     .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:.9rem;margin:1.4rem 0}
-    .feat{padding:1.1rem;background:#fff;border:1px solid var(--bg3);border-radius:10px;border-left:3px solid var(--accent);transition:transform .2s,box-shadow .2s}
-    .feat:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.07)}
+    .feat{padding:1.1rem;background:rgba(255,255,255,.7);border:1px solid rgba(124,58,237,.15);border-radius:10px;border-left:3px solid var(--accent);transition:transform .2s,box-shadow .2s}
+    .feat:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(124,58,237,.12)}
     .feat-icon{width:34px;height:34px;border-radius:8px;background:var(--accent-pale);display:flex;align-items:center;justify-content:center;margin-bottom:.7rem;color:var(--accent)}
     .feat-name{font-weight:600;font-size:.84rem;margin-bottom:.2rem}
     .feat-desc{font-size:.75rem;color:var(--muted);line-height:1.5}
-
-    /* TIMELINE */
+    /* TIMELINE dark */
     .tl{display:flex;flex-direction:column}
     .tl-item{display:grid;grid-template-columns:36px 1fr;gap:0 .9rem;padding-bottom:1.4rem}
     .tl-item:last-child{padding-bottom:0}
     .tl-l{display:flex;flex-direction:column;align-items:center}
-    .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent);margin-top:2px;flex-shrink:0}
-    .tl-line{flex:1;width:2px;background:linear-gradient(var(--accent-pale),transparent);margin-top:3px}
-    .tl-n{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-bottom:.15rem}
-    .tl-c{font-size:.86rem;color:var(--mid);line-height:1.5}
-
-    /* ROLE CARD */
+    .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--term-green);border:2px solid #1E2A10;box-shadow:0 0 0 2px var(--term-green);margin-top:2px;flex-shrink:0}
+    .tl-line{flex:1;width:2px;background:linear-gradient(rgba(140,192,80,.35),transparent);margin-top:3px}
+    .tl-n{font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.4);margin-bottom:.15rem}
+    .tl-c{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.5}
+    /* ROLE */
     .role-card{background:linear-gradient(135deg,rgba(74,92,42,.07),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid);border-radius:10px;padding:1.4rem;margin:1.4rem 0}
     .role-title{font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--olive);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
     .contribs{display:flex;flex-direction:column;gap:.4rem}
     .contrib{display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)}
     .contrib::before{content:'→';color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0;margin-top:.1rem}
-
     /* SKILLS */
     .skill-groups{display:flex;flex-direction:column;gap:1rem;margin-top:.8rem}
     .sg-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
@@ -148,63 +134,46 @@
     .tag-g{background:var(--olive-pale);color:#3D5226}
     .tag-p{background:var(--accent-pale);color:#4C1D95}
     .tag-b{background:#DBEAFE;color:#1E3A8A}
-
     /* AC */
     .ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.9rem}
     @media(max-width:600px){.ac-grid{grid-template-columns:1fr}}
-    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px}
+    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:rgba(255,255,255,.7);border:1px solid #DDD6FE;border-radius:7px}
     .ac-code{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);font-weight:700;flex-shrink:0;white-space:nowrap;padding-top:.05rem}
     .ac-txt{font-size:.78rem;color:var(--mid);line-height:1.4}
-
     /* RES */
     .res-list{margin-top:.8rem;display:flex;flex-direction:column}
-    .res{display:flex;gap:.55rem;align-items:baseline;padding:.38rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem;color:var(--mid)}
+    .res{display:flex;gap:.55rem;align-items:baseline;padding:.4rem .6rem;border-bottom:1px solid rgba(140,192,80,.15);font-size:.82rem;color:rgba(255,255,255,.65);border-radius:4px}
     .res:last-child{border-bottom:none}
-    .res-code{font-family:var(--font-mono);font-size:.65rem;color:var(--olive-mid);font-weight:700;flex-shrink:0}
-
-    /* QUOTE */
-    .quote{border-left:3px solid var(--accent-light);padding:.9rem 1.3rem;background:rgba(124,58,237,.04);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
-
-    /* EN BOX */
-    .en-box{background:var(--terminal);border-radius:12px;padding:1.4rem;margin:1.4rem 0}
-    .en-label{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.1em;margin-bottom:.65rem}
-    .en-txt{color:rgba(255,255,255,.6);font-size:.86rem;line-height:1.72}
-
-    /* IMG */
+    .res-code{font-family:var(--font-mono);font-size:.65rem;color:var(--term-green);font-weight:700;flex-shrink:0}
+    .quote{border-left:3px solid var(--accent-light);padding:.9rem 1.3rem;background:rgba(124,58,237,.06);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
+    .en-box{background:linear-gradient(135deg,#FAF7F0,#F5EDD8);border-radius:12px;padding:1.6rem;margin:1.4rem 0;border:1px solid #E8D9B0;border-left:4px solid #C8A040;position:relative}
+    .en-box::before{content:"EN";position:absolute;top:.9rem;right:1rem;font-family:var(--font-mono);font-size:.6rem;color:#C8A040;background:#FAF7F0;padding:.15rem .4rem;border-radius:3px;border:1px solid #E8D9B0;letter-spacing:.08em}
+    .en-label{font-family:var(--font-mono);font-size:.68rem;color:#9A7020;letter-spacing:.1em;margin-bottom:.65rem}
+    .en-txt{color:#5A4A28;font-size:.86rem;line-height:1.72}
     .proj-img{border-radius:12px;overflow:hidden;border:1px solid var(--bg3);margin:1.4rem 0;aspect-ratio:16/7;background:linear-gradient(135deg,#1a0a3a,#2d1060);display:flex;align-items:center;justify-content:center}
     .proj-img img{width:100%;height:100%;object-fit:cover}
-
-    /* SEPARATOR */
-    .sep{height:1px;background:linear-gradient(90deg,transparent,var(--bg3),transparent);margin:2rem 0}
-
     @media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{position:static}.top-nav{padding:.9rem 1.5rem}.hero{padding:3rem 1.5rem}}
   </style>
 </head>
 <body>
-
 <nav class="top-nav">
   <a href="index.html" class="nav-logo">soumaya<div class="nav-logo-dot"></div></a>
   <span class="nav-center">Projets / <span>SAE3.01</span></span>
-  <a href="index.html" class="nav-back">
+  <a href="index.html#projets" class="nav-back" onclick="sessionStorage.setItem('goProjects','1')">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
     Retour
   </a>
 </nav>
 
 <div class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-grid"></div><div class="hero-glow"></div>
   <div class="hero-inner">
     <div class="hero-badge">SAE3.01 — Semestre 3 · BUT R&T · IUT Colmar</div>
     <h1 class="hero-title">Prise connectée<br><em>intelligente Wi-Fi</em></h1>
     <p class="hero-sub">Conception et déploiement d'un système IoT complet — de l'ESP8266 jusqu'à l'application Android, via un broker MQTT sécurisé hébergé sur Raspberry Pi.</p>
     <div class="hero-chips">
-      <span class="chip chip-white">ESP8266</span>
-      <span class="chip chip-white">Raspberry Pi</span>
-      <span class="chip chip-white">MQTT</span>
-      <span class="chip chip-white">Android</span>
-      <span class="chip chip-green">Wi-Fi · IoT</span>
-      <span class="chip chip-purple">Cybersécurité</span>
+      <span class="chip chip-white">ESP8266</span><span class="chip chip-white">Raspberry Pi</span><span class="chip chip-white">MQTT</span><span class="chip chip-white">Android</span>
+      <span class="chip chip-green">Wi-Fi · IoT</span><span class="chip chip-purple">Cybersécurité</span>
     </div>
   </div>
 </div>
@@ -212,123 +181,78 @@
 <div class="page-body">
   <div class="main-content">
 
-    <div class="s">
-      <div class="proj-img"><img src="image/image_transmission.jpg" alt="Système de transmission" onerror="this.parentElement.style.minHeight='200px'"/></div>
-    </div>
+    <div class="s"><div class="proj-img"><img src="image/image_transmission.jpg" alt="Système de transmission" onerror="this.parentElement.style.minHeight='200px'"/></div></div>
 
     <div class="s">
       <div class="s-eye">Vue d'ensemble</div>
       <h2 class="s-title">Un système IoT <span>de bout en bout</span></h2>
       <div class="prose">
         <p>Ce projet répond à un cahier des charges réaliste : concevoir et déployer une prise électrique connectée en Wi-Fi, capable de contrôler des équipements à distance. Au-delà du simple ON/OFF, le système intègre une programmation horaire, une mesure de température et un système de notifications.</p>
-        <p>L'architecture couvre l'ensemble du périmètre IoT professionnel, de la conception matérielle jusqu'à l'exploitation des données, en combinant électronique, réseau et développement logiciel.</p>
+        <p>L'architecture couvre l'ensemble du périmètre IoT, de la conception matérielle jusqu'à l'exploitation des données, en combinant électronique, réseau et développement logiciel.</p>
       </div>
     </div>
 
     <div class="s">
-      <div class="s-eye">Architecture technique</div>
-      <h2 class="s-title">Comment ça <span>fonctionne</span></h2>
-      <div class="iot-diagram">
-        <div class="iot-flow">
-          <div class="iot-node">
-            <div class="iot-box hw">
-              <span class="iot-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg>
-              </span>
-              <span class="iot-name">ESP8266</span>
-              <span class="iot-sub">Carte Wi-Fi</span>
-            </div>
+      <div class="sc-purple">
+        <div class="s-eye">Architecture technique</div>
+        <h2 class="s-title">Comment ça <span>fonctionne</span></h2>
+        <div class="iot-diagram">
+          <div class="iot-flow">
+            <div class="iot-node"><div class="iot-box hw"><span class="iot-name">ESP8266</span><span class="iot-sub">Carte Wi-Fi</span></div></div>
+            <span class="iot-arrow">⟶</span>
+            <div class="iot-node"><div class="iot-box srv"><span class="iot-name">Raspberry Pi</span><span class="iot-sub">Serveur + Broker</span></div></div>
+            <span class="iot-arrow">⟶</span>
+            <div class="iot-node"><div class="iot-box app"><span class="iot-name">Interface Web</span><span class="iot-sub">Contrôle distant</span></div></div>
+            <span class="iot-arrow">⟶</span>
+            <div class="iot-node"><div class="iot-box app"><span class="iot-name">App Android</span><span class="iot-sub">Mobile</span></div></div>
+            <span class="iot-arrow">⟶</span>
+            <div class="iot-node"><div class="iot-box sec"><span class="iot-name">Sécurité</span><span class="iot-sub">Accès + échanges</span></div></div>
           </div>
-          <span class="iot-arrow">⟶</span>
-          <div class="iot-node">
-            <div class="iot-box srv">
-              <span class="iot-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8DC050" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-              </span>
-              <span class="iot-name">Raspberry Pi</span>
-              <span class="iot-sub">Serveur + Broker</span>
-            </div>
-          </div>
-          <span class="iot-arrow">⟶</span>
-          <div class="iot-node">
-            <div class="iot-box app">
-              <span class="iot-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              </span>
-              <span class="iot-name">App Android</span>
-              <span class="iot-sub">Interface mobile</span>
-            </div>
-          </div>
-          <span class="iot-arrow">⟶</span>
-          <div class="iot-node">
-            <div class="iot-box sec">
-              <span class="iot-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FCA5A5" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </span>
-              <span class="iot-name">Sécurité</span>
-              <span class="iot-sub">Accès + échanges</span>
-            </div>
+          <div class="iot-legend">
+            <span class="iot-leg"><b>Transport :</b> Wi-Fi 802.11</span>
+            <span class="iot-leg"><b>Protocole :</b> MQTT (broker)</span>
+            <span class="iot-leg"><b>Données :</b> Capteur température</span>
           </div>
         </div>
-        <div class="iot-legend">
-          <span class="iot-leg"><b>Transport :</b> Wi-Fi 802.11</span>
-          <span class="iot-leg"><b>Protocole :</b> MQTT (broker)</span>
-          <span class="iot-leg"><b>Données :</b> Capteur température</span>
-        </div>
-      </div>
-      <div class="feat-grid">
-        <div class="feat">
-          <div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div class="feat-name">Programmation horaire</div>
-          <div class="feat-desc">Automatisation des prises selon des plages horaires définies.</div>
-        </div>
-        <div class="feat">
-          <div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></div>
-          <div class="feat-name">Capteur température</div>
-          <div class="feat-desc">Mesure en temps réel avec alertes sur seuil dépassé.</div>
-        </div>
-        <div class="feat">
-          <div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
-          <div class="feat-name">Notifications push</div>
-          <div class="feat-desc">Alertes sur changements d'état et dépassements de seuil.</div>
-        </div>
-        <div class="feat">
-          <div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-          <div class="feat-name">Sécurisation</div>
-          <div class="feat-desc">Accès protégés et échanges réseau chiffrés.</div>
+        <div class="feat-grid">
+          <div class="feat"><div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="feat-name">Programmation horaire</div><div class="feat-desc">Automatisation des prises selon des plages horaires définies.</div></div>
+          <div class="feat"><div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></div><div class="feat-name">Capteur température</div><div class="feat-desc">Mesure en temps réel avec alertes sur seuil dépassé.</div></div>
+          <div class="feat"><div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div><div class="feat-name">Notifications push</div><div class="feat-desc">Alertes sur changements d'état et dépassements.</div></div>
+          <div class="feat"><div class="feat-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="feat-name">Sécurisation</div><div class="feat-desc">Accès protégés et échanges réseau chiffrés.</div></div>
         </div>
       </div>
     </div>
 
     <div class="s">
-      <div class="s-eye">Contribution personnelle</div>
-      <h2 class="s-title">Mon <span>rôle</span></h2>
-      <div class="role-card">
-        <div class="role-title">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Mes contributions sur ce projet
-        </div>
-        <div class="contribs">
-          <div class="contrib">Analyse du cahier des charges et conception de l'architecture globale</div>
-          <div class="contrib">Participation au développement des interfaces web et mobile</div>
-          <div class="contrib">Contribution à la sécurisation et à la communication réseau</div>
-          <div class="contrib">Tests et validation du système end-to-end</div>
+      <div class="sc-olive">
+        <div class="s-eye">Contribution personnelle</div>
+        <h2 class="s-title">Mon <span style="color:var(--olive-mid)">rôle</span></h2>
+        <div class="role-card">
+          <div class="role-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Mes contributions sur ce projet</div>
+          <div class="contribs">
+            <div class="contrib">Analyse du cahier des charges et conception de l'architecture globale</div>
+            <div class="contrib">Participation au développement des interfaces web et mobile</div>
+            <div class="contrib">Contribution à la sécurisation et à la communication réseau</div>
+            <div class="contrib">Tests et validation du système end-to-end</div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="s">
-      <div class="s-eye">Déroulement</div>
-      <h2 class="s-title">Chronologie <span>du projet</span></h2>
-      <div class="tl">
-        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">01</div><div class="tl-c">Analyse du cahier des charges</div></div></div>
-        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">02</div><div class="tl-c">Conception de la carte électronique ESP8266</div></div></div>
-        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">03</div><div class="tl-c">Mise en place du serveur web sur Raspberry Pi</div></div></div>
-        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">04</div><div class="tl-c">Développement de l'interface web de contrôle</div></div></div>
-        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">05</div><div class="tl-c">Développement de l'application Android</div></div></div>
-        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">06</div><div class="tl-c">Mise en place du broker MQTT</div></div></div>
-        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">07</div><div class="tl-c">Ajout des fonctionnalités avancées (capteur, notifications)</div></div></div>
-        <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-n">08</div><div class="tl-c">Sécurisation, tests finaux et documentation</div></div></div>
+      <div class="sc-dark">
+        <div class="s-eye">Déroulement</div>
+        <h2 class="s-title">Chronologie <span style="color:var(--term-green)">du projet</span></h2>
+        <div class="tl">
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">01</div><div class="tl-c">Analyse du cahier des charges</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">02</div><div class="tl-c">Conception de la carte électronique ESP8266</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">03</div><div class="tl-c">Mise en place du serveur web sur Raspberry Pi</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">04</div><div class="tl-c">Développement de l'interface web de contrôle</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">05</div><div class="tl-c">Développement de l'application Android</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">06</div><div class="tl-c">Mise en place du broker MQTT</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">07</div><div class="tl-c">Ajout des fonctionnalités avancées (capteur, notifications)</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-n">08</div><div class="tl-c">Sécurisation, tests finaux et documentation</div></div></div>
+        </div>
       </div>
     </div>
 
@@ -339,58 +263,54 @@
     </div>
 
     <div class="s">
-      <div class="s-eye">Compétences</div>
-      <h2 class="s-title">Ce que j'ai <span>développé</span></h2>
-      <div class="skill-groups">
-        <div><div class="sg-label">Réseaux & IoT</div><div class="tags"><span class="tag tag-g">Communication Wi-Fi</span><span class="tag tag-g">Protocole MQTT</span><span class="tag tag-g">Architecture IoT</span></div></div>
-        <div><div class="sg-label">Développement</div><div class="tags"><span class="tag tag-b">Interfaces web et mobile</span><span class="tag tag-b">Communication client/serveur</span></div></div>
-        <div><div class="sg-label">Cybersécurité</div><div class="tags"><span class="tag tag-p">Sécurisation des accès</span><span class="tag tag-p">Protection des échanges</span></div></div>
-      </div>
-    </div>
-
-    <div class="sep"></div>
-
-    <div class="s">
-      <div class="s-eye">Référentiel</div>
-      <h2 class="s-title">Apprentissages <span>critiques</span></h2>
-      <div class="ac-grid">
-        <div class="ac"><span class="ac-code">AC22.01</span><span class="ac-txt">Déployer et caractériser des systèmes de transmissions complexes</span></div>
-        <div class="ac"><span class="ac-code">AC22.03</span><span class="ac-txt">Mettre en place une connexion multi-site via un réseau opérateur</span></div>
-        <div class="ac"><span class="ac-code">AC22.04</span><span class="ac-txt">Déployer des réseaux d'accès des opérateurs</span></div>
-        <div class="ac"><span class="ac-code">AC22.05</span><span class="ac-txt">Capacité à questionner un cahier des charges RT</span></div>
+      <div class="sc-blue">
+        <div class="s-eye">Compétences</div>
+        <h2 class="s-title">Ce que j'ai <span style="color:#2563EB">développé</span></h2>
+        <div class="skill-groups">
+          <div><div class="sg-label">Réseaux & IoT</div><div class="tags"><span class="tag tag-g">Communication Wi-Fi</span><span class="tag tag-g">Protocole MQTT</span><span class="tag tag-g">Architecture IoT</span></div></div>
+          <div><div class="sg-label">Développement</div><div class="tags"><span class="tag tag-b">Interfaces web et mobile</span><span class="tag tag-b">Communication client/serveur</span></div></div>
+          <div><div class="sg-label">Cybersécurité</div><div class="tags"><span class="tag tag-p">Sécurisation des accès</span><span class="tag tag-p">Protection des échanges</span></div></div>
+        </div>
       </div>
     </div>
 
     <div class="s">
-      <div class="s-eye">Formation</div>
-      <h2 class="s-title">Ressources <span>mobilisées</span></h2>
-      <div class="res-list">
-        <div class="res"><span class="res-code">R3.05</span>Chaînes de transmissions numériques</div>
-        <div class="res"><span class="res-code">R3.06</span>Fibres optiques et propagation</div>
-        <div class="res"><span class="res-code">R3.07</span>Réseaux d'accès</div>
-        <div class="res"><span class="res-code">R3.11</span>Anglais professionnel 1</div>
-        <div class="res"><span class="res-code">R3.12</span>Expression-Culture-Communication professionnelles : Savoir collaborer</div>
-        <div class="res"><span class="res-code">R3.13</span>Projet Personnel et Professionnel</div>
-        <div class="res"><span class="res-code">R3.14</span>Analyse de Fourier</div>
-        <div class="res"><span class="res-code">R3.15</span>Gestion de projet 2</div>
+      <div class="sc-purple">
+        <div class="s-eye">Référentiel</div>
+        <h2 class="s-title">Apprentissages <span>critiques</span></h2>
+        <div class="ac-grid">
+          <div class="ac"><span class="ac-code">AC22.01</span><span class="ac-txt">Déployer et caractériser des systèmes de transmissions complexes</span></div>
+          <div class="ac"><span class="ac-code">AC22.03</span><span class="ac-txt">Mettre en place une connexion multi-site via un réseau opérateur</span></div>
+          <div class="ac"><span class="ac-code">AC22.04</span><span class="ac-txt">Déployer des réseaux d'accès des opérateurs</span></div>
+          <div class="ac"><span class="ac-code">AC22.05</span><span class="ac-txt">Capacité à questionner un cahier des charges RT</span></div>
+        </div>
       </div>
     </div>
 
     <div class="s">
-      <div class="en-box">
-        <div class="en-label">// ENGLISH SUMMARY</div>
-        <div class="en-txt">This project involved designing and implementing a smart Wi-Fi connected power outlet. We developed a complete IoT system including a hardware device (ESP8266), a web server (Raspberry Pi), a web interface, and an Android application. The system allows users to control devices remotely, schedule operations, monitor temperature, and receive notifications. This project helped me understand how connected systems work, from hardware design to network communication and application development.</div>
+      <div class="sc-dark">
+        <div class="s-eye">Formation</div>
+        <h2 class="s-title">Ressources <span style="color:var(--term-green)">mobilisées</span></h2>
+        <div class="res-list">
+          <div class="res"><span class="res-code">R3.05</span>Chaînes de transmissions numériques</div>
+          <div class="res"><span class="res-code">R3.06</span>Fibres optiques et propagation</div>
+          <div class="res"><span class="res-code">R3.07</span>Réseaux d'accès</div>
+          <div class="res"><span class="res-code">R3.11</span>Anglais professionnel 1</div>
+          <div class="res"><span class="res-code">R3.12</span>Expression-Culture-Communication professionnelles : Savoir collaborer</div>
+          <div class="res"><span class="res-code">R3.13</span>Projet Personnel et Professionnel</div>
+          <div class="res"><span class="res-code">R3.14</span>Analyse de Fourier</div>
+          <div class="res"><span class="res-code">R3.15</span>Gestion de projet 2</div>
+        </div>
       </div>
     </div>
+
+    <div class="s"><div class="en-box"><div class="en-label">// ENGLISH SUMMARY</div><div class="en-txt">This project involved designing and implementing a smart Wi-Fi connected power outlet. We developed a complete IoT system including a hardware device (ESP8266), a web server (Raspberry Pi), a web interface, and an Android application. The system allows users to control devices remotely, schedule operations, monitor temperature, and receive notifications. This project helped me understand how connected systems work, from hardware design to network communication and application development.</div></div></div>
 
   </div><!-- /main -->
 
   <aside class="sidebar">
     <div class="scard">
-      <div class="scard-head">
-        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span class="scard-head-title">Informations</span>
-      </div>
+      <div class="scard-head"><svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span class="scard-head-title">Informations</span></div>
       <div class="scard-body">
         <div class="scard-row"><span class="scard-label">Compétence</span><span class="scard-val">UE3.2 Connecter</span></div>
         <div class="scard-row"><span class="scard-label">Semestre</span><span class="scard-val">S3</span></div>
@@ -399,12 +319,8 @@
         <div class="scard-row"><span class="scard-label">Statut</span><span class="scard-val ok">✓ Terminé</span></div>
       </div>
     </div>
-
     <div class="scard">
-      <div class="scard-head">
-        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        <span class="scard-head-title">Équipe projet</span>
-      </div>
+      <div class="scard-head"><svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span class="scard-head-title">Équipe projet</span></div>
       <div class="scard-body">
         <div class="member"><div class="avatar av-me">SR</div><span class="member-name">Soumaya RABAH</span><span class="member-me">moi</span></div>
         <div class="member"><div class="avatar av-blue">NH</div><span class="member-name">Nolan HOARAU</span></div>
@@ -413,21 +329,11 @@
         <div class="member"><div class="avatar av-amber">NM</div><span class="member-name">Natthawut MATTADET</span></div>
       </div>
     </div>
-
     <div class="scard">
-      <div class="scard-head">
-        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-        <span class="scard-head-title">Preuves & Documents</span>
-      </div>
+      <div class="scard-head"><svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><span class="scard-head-title">Preuves & Documents</span></div>
       <div class="scard-body">
-        <a href="https://github.com/NolanHoarau/SAE_3.01" target="_blank" class="proof-link">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          <span>GitHub — SAE_3.01</span>
-        </a>
-        <a href="preuves/sae3-01-schema.pdf" class="proof-link">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span>Schéma structurel</span>
-        </a>
+        <a href="https://github.com/NolanHoarau/SAE_3.01" target="_blank" class="proof-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg><span>GitHub — SAE_3.01</span></a>
+        <a href="preuves/sae3-01-schema.pdf" class="proof-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Schéma structurel</span></a>
       </div>
     </div>
   </aside>

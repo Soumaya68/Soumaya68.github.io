@@ -2760,3 +2760,74 @@ footer {
   .xp-line { display: none; }
   .timeline { padding: 2rem 1.5rem; }
 }
+/* ============================================================
+   ERA-BLOCKS — PROJETS (scroll continu, sans onglets)
+   ============================================================ */
+
+/* Étiquette de période */
+.proj-count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--olive-mid);
+  background: var(--olive-pale);
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  border: 1px solid #C8DCA0;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.era-block {
+  padding: 2rem 3rem 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.era-block.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.era-block:last-child { padding-bottom: 3rem; }
+
+.era-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--bg3);
+}
+
+.era-line {
+  flex: 1;
+  height: 1px;
+  background: var(--bg3);
+}
+
+.era-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  padding: 0.2rem 0.75rem;
+  background: var(--bg2);
+  border-radius: 20px;
+  border: 1px solid var(--bg3);
+}
+
+/* Dans les era-blocks : cartes toujours visibles,
+   l'animation est portée par le bloc parent */
+.era-block .pcard-new {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.era-block .pcard-new:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
+  border-color: var(--olive-light) !important;
+}

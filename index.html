@@ -597,25 +597,20 @@
   <div id="page-projets" class="page">
     <div class="projects-page">
 
-      <!-- Header + onglets -->
+      <!-- Header tout afficher -->
       <div class="proj-header">
         <div class="proj-header-left">
           <p class="eyebrow">Réalisations</p>
           <h2>Mes <span>projets</span></h2>
         </div>
-        <div class="period-tabs">
-          <button class="ptab active" onclick="showPeriod('lycee', this)">Lycée</button>
-          <button class="ptab" onclick="showPeriod('but1', this)">1ère année</button>
-          <button class="ptab" onclick="showPeriod('but2', this)">2ème année</button>
-          <button class="ptab" onclick="showPeriod('but3', this)">3ème année</button>
-        </div>
+        <span class="proj-count-badge">7+ projets</span>
       </div>
 
-      <!-- Lycée -->
-      <div id="per-lycee" class="period-content active">
+      <!-- ERA Lycée -->
+      <div class="era-block proj-reveal" data-delay="0">
+        <div class="era-label"><div class="era-line"></div><span class="era-title">Lycée</span><div class="era-line"></div></div>
         <div class="proj-grid">
-
-          <div class="pcard-new proj-reveal" data-delay="0" onclick="window.location='course-en-cours.html'">
+          <div class="pcard-new" onclick="window.location='course-en-cours.html'" style="cursor:pointer">
             <div class="pcard-top" style="background:linear-gradient(135deg,#3D5226,#5C8A3C);">
               <div class="pcard-num-big">01</div>
               <div class="pcard-badge">Lycée</div>
@@ -637,11 +632,11 @@
         </div>
       </div>
 
-      <!-- 1ère année BUT -->
-      <div id="per-but1" class="period-content">
+      <!-- ERA 1ère année -->
+      <div class="era-block proj-reveal" data-delay="80">
+        <div class="era-label"><div class="era-line"></div><span class="era-title">1ère année BUT</span><div class="era-line"></div></div>
         <div class="proj-grid">
-
-          <div class="pcard-new proj-reveal" data-delay="0" onclick="window.location='sae2-03.html'" style="cursor:pointer;">
+          <div class="pcard-new" onclick="window.location='sae2-03.html'" style="cursor:pointer">
             <div class="pcard-top" style="background:linear-gradient(135deg,#3A5C8C,#6090C0);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">1ère année</div>
@@ -661,31 +656,22 @@
           </div>
 
         </div>
-
-        <div class="proj-coming-soon">
-          <div class="pcs-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <div class="pcs-title">D'autres projets à venir</div>
-            <div class="pcs-desc">Les autres SAE de 1ère année seront ajoutées progressivement.</div>
-          </div>
-        </div>
       </div>
 
-      <!-- 2ème année BUT -->
-      <div id="per-but2" class="period-content">
+      <!-- ERA 2ème année -->
+      <div class="era-block proj-reveal" data-delay="160">
+        <div class="era-label"><div class="era-line"></div><span class="era-title">2ème année BUT</span><div class="era-line"></div></div>
         <div class="proj-grid">
-
-          <div class="pcard-new proj-reveal" data-delay="0" onclick="window.location='sae3-01.html'" style="cursor:pointer;">
+          <div class="pcard-new" onclick="window.location='sae3-01.html'" style="cursor:pointer">
             <div class="pcard-top" style="background:linear-gradient(135deg,#5C3A8C,#9060C0);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">2ème année</div>
             </div>
             <div class="pcard-body">
               <div class="pcard-tags">
-                <span class="ptag" style="background:#EDE0F4;color:#5C3A8C;">Transmission</span>
-                <span class="ptag" style="background:#EDE0F4;color:#5C3A8C;">Signaux</span>
+                <span class="ptag" style="background:#EDE0F4;color:#5C3A8C;">IoT</span>
+                <span class="ptag" style="background:#EDE0F4;color:#5C3A8C;">MQTT</span>
+                <span class="ptag" style="background:#EDE0F4;color:#5C3A8C;">Android</span>
               </div>
               <div class="pcard-title-new">SAE3.01 — Système de transmission</div>
               <div class="pcard-desc-new">Prise connectée intelligente Wi-Fi — ESP8266, Raspberry Pi, MQTT, app Android et sécurisation des échanges.</div>
@@ -695,7 +681,7 @@
             </div>
           </div>
 
-          <div class="pcard-new proj-reveal" data-delay="100" onclick="window.location='sae3-02.html'" style="cursor:pointer;">
+          <div class="pcard-new" onclick="window.location='sae3-02.html'" style="cursor:pointer;">
             <div class="pcard-top" style="background:linear-gradient(135deg,#3A5C8C,#6090C0);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">2ème année</div>
@@ -714,16 +700,16 @@
             </div>
           </div>
 
-          <div class="pcard-new proj-reveal" data-delay="200" onclick="window.location='sae3-03.html'" style="cursor:pointer;">
-            <div class="pcard-top" style="background:linear-gradient(135deg,#8C3A3A,#C06060);">
+          <div class="pcard-new" onclick="window.location='sae3-03.html'" style="cursor:pointer;">
+            <div class="pcard-top" style="background:linear-gradient(135deg,#4a0d0d,#8C3A3A);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">2ème année</div>
             </div>
             <div class="pcard-body">
               <div class="pcard-tags">
-                <span class="ptag" style="background:#F4D8D8;color:#8C3A3A;">Sécurité</span>
-                <span class="ptag" style="background:#F4D8D8;color:#8C3A3A;">VLAN</span>
-                <span class="ptag" style="background:#F4D8D8;color:#8C3A3A;">Firewall</span>
+                <span class="ptag" style="background:#FEE2E2;color:#991B1B;">MPLS</span>
+                <span class="ptag" style="background:#FEE2E2;color:#991B1B;">BGP</span>
+                <span class="ptag" style="background:#FEE2E2;color:#991B1B;">FAI</span>
               </div>
               <div class="pcard-title-new">SAE3.Cyber.03 — Réseau sécurisé multi-sites</div>
               <div class="pcard-desc-new">Infrastructure multi-sites avec MPLS, BGP, VRF — j'ai conçu la partie FAI complète du cœur réseau opérateur.</div>
@@ -733,16 +719,16 @@
             </div>
           </div>
 
-          <div class="pcard-new proj-reveal" data-delay="300" onclick="window.location='sae3-04.html'" style="cursor:pointer;">
+          <div class="pcard-new" onclick="window.location='sae3-04.html'" style="cursor:pointer;">
             <div class="pcard-top" style="background:linear-gradient(135deg,#1E2A10,#3D5226);">
               <div class="pcard-num-big">SAE</div>
               <div class="pcard-badge">2ème année</div>
             </div>
             <div class="pcard-body">
               <div class="pcard-tags">
-                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Pentesting</span>
-                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Kali Linux</span>
+                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Root-Me</span>
                 <span class="ptag" style="background:#DCE8C4;color:#3D5226;">CTF</span>
+                <span class="ptag" style="background:#DCE8C4;color:#3D5226;">Pentesting</span>
               </div>
               <div class="pcard-title-new">SAE3.Cyber.04 — Pentesting</div>
               <div class="pcard-desc-new">Initiation au test d'intrusion via Root-Me — 92% du parcours complété, 69/75 challenges réussis, 8 240 points.</div>
@@ -755,12 +741,13 @@
         </div>
       </div>
 
-      <!-- 3ème année BUT -->
-      <div id="per-but3" class="period-content">
+      <!-- ERA 3ème année -->
+      <div class="era-block proj-reveal" data-delay="240">
+        <div class="era-label"><div class="era-line"></div><span class="era-title">3ème année BUT</span><div class="era-line"></div></div>
         <div class="empty-state">
-          <div class="empty-icon">📅</div>
-          <div class="empty-title">À venir — 3ème année</div>
-          <div class="empty-desc">Les projets de 3ème année seront ajoutés l'année prochaine.</div>
+          <div class="empty-icon" style="font-size:1.1rem;color:var(--muted)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="empty-title">À venir</div>
+          <div class="empty-desc">Les projets de 3ème année seront ajoutés prochainement.</div>
         </div>
       </div>
 
@@ -1529,8 +1516,12 @@
       fb.className = 'form-feedback success';
     });
 
-    // Déclencher l'animation typewriter au chargement initial initial i
-    showPage('accueil');
+    // Ouvrir directement l'onglet Projets si on revient d'une page projet
+    if (sessionStorage.getItem('goProjects')) {
+      showPage('projets');
+    } else {
+      showPage('accueil');
+    }
   </script>
 
 </body>

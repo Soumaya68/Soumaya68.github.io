@@ -1,124 +1,398 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Course en Cours | Soumaya RABAH</title>
-<link rel="stylesheet" href="projet.css"/>
-<style>:root{--project-color:#8C6A2A;}</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course en Cours — L'Equip'Mans · Soumaya RABAH</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap"/>
+  <style>
+    :root{--bg:#F2EFE7;--bg2:#E8E4DA;--bg3:#D8D4C8;--dark:#1E2318;--mid:#4A5240;--muted:#7A7A6A;--olive:#4A5C2A;--olive-mid:#6B8040;--olive-light:#96B060;--olive-pale:#DCE8C4;--terminal:#1E2A10;--term-green:#8DC050;--accent:#B45309;--accent-light:#FCD34D;--accent-pale:#FEF3C7;--font-display:'Syne',sans-serif;--font-body:'Instrument Sans',sans-serif;--font-mono:'DM Mono',monospace}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
+    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:5px}
+    .nav-logo-dot{width:6px;height:6px;background:#C8D9A8;border-radius:50%}
+    .nav-center{font-family:var(--font-mono);font-size:.72rem;color:#5a7030;letter-spacing:.04em}
+    .nav-center span{color:var(--term-green)}
+    .nav-back{display:flex;align-items:center;gap:.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:.35rem .9rem;border-radius:4px}
+    .nav-back:hover{color:#fff;border-color:var(--term-green)}
+    .nav-back svg{transition:transform .2s}
+    .nav-back:hover svg{transform:translateX(-3px)}
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#1C0E00 0%,#5C2E00 45%,#1E2A10 100%);padding:4.5rem 3rem 3.5rem;position:relative;overflow:hidden}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(180,83,9,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(180,83,9,.05) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+    .hero-glow{position:absolute;right:-80px;top:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(251,146,60,.14) 0%,transparent 65%);pointer-events:none}
+    /* Damier décoratif */
+    .hero-checker{position:absolute;bottom:0;right:0;width:280px;height:60px;background-image:repeating-conic-gradient(rgba(255,255,255,.04) 0% 25%,transparent 0% 50%);background-size:20px 20px;pointer-events:none}
+    .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:.3rem .9rem;border-radius:20px;font-family:var(--font-mono);font-size:.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:.06em}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--term-green);animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.6rem}
+    .hero-title em{font-style:normal;color:#FCD34D}
+    .hero-team{font-family:var(--font-mono);font-size:.88rem;color:rgba(252,211,77,.7);margin-top:.5rem;letter-spacing:.06em}
+    .hero-sub{color:rgba(255,255,255,.5);font-size:1rem;line-height:1.65;max-width:620px;margin-top:.8rem}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+    .chip{padding:.28rem .8rem;border-radius:20px;font-family:var(--font-mono);font-size:.68rem;font-weight:500}
+    .chip-amber{background:rgba(180,83,9,.18);border:1px solid rgba(252,211,77,.35);color:#FCD34D}
+    .chip-green{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);color:var(--term-green)}
+    .chip-white{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
+    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start;position:relative}
+    .main-content{min-width:0}
+    .sidebar{position:sticky;top:76px;display:flex;flex-direction:column;gap:1rem}
+    .scard{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .scard-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.5rem}
+    .scard-head-icon{color:var(--term-green);flex-shrink:0}
+    .scard-head-title{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.08em;text-transform:uppercase}
+    .scard-body{padding:1.1rem}
+    .scard-row{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
+    .scard-row:last-child{border-bottom:none}
+    .scard-label{color:var(--muted);font-size:.75rem}
+    .scard-val{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--dark)}
+    .scard-val.ok{color:#5C8A3C}
+    .member{display:flex;align-items:center;gap:.65rem;padding:.4rem 0;border-bottom:1px solid var(--bg2)}
+    .member:last-child{border-bottom:none}
+    .avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
+    .av-me{background:linear-gradient(135deg,#4A5C2A,#6B8040)}
+    .av-a{background:linear-gradient(135deg,#5C3A00,#B45309)}
+    .av-b{background:linear-gradient(135deg,#1a4080,#3060B0)}
+    .av-c{background:linear-gradient(135deg,#4a1a7a,#8040C0)}
+    .av-d{background:linear-gradient(135deg,#7a1a1a,#C04040)}
+    .av-e{background:linear-gradient(135deg,#1a6050,#309080)}
+    .member-name{font-size:.8rem;font-weight:500;flex:1}
+    .member-role{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);margin-left:auto}
+    .member-me{font-family:var(--font-mono);font-size:.62rem;color:var(--olive-mid);margin-left:auto;font-weight:600}
+    .proof-link{display:flex;align-items:center;gap:.55rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px;text-decoration:none;color:var(--dark);font-size:.8rem;margin-bottom:.5rem;transition:all .2s}
+    .proof-link:last-child{margin-bottom:0}
+    .proof-link:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(4px)}
+    .proof-link svg{color:var(--olive-mid);flex-shrink:0}
+    .proof-link span{font-family:var(--font-mono);font-size:.72rem}
+    .s{margin-bottom:3rem;opacity:0;transform:translateY(22px);animation:up .55s forwards}
+    .s:nth-child(1){animation-delay:.06s}.s:nth-child(2){animation-delay:.12s}.s:nth-child(3){animation-delay:.18s}
+    .s:nth-child(4){animation-delay:.24s}.s:nth-child(5){animation-delay:.30s}.s:nth-child(6){animation-delay:.36s}
+    .s:nth-child(7){animation-delay:.42s}.s:nth-child(8){animation-delay:.48s}.s:nth-child(9){animation-delay:.54s}
+    .s:nth-child(10){animation-delay:.60s}.s:nth-child(11){animation-delay:.66s}.s:nth-child(12){animation-delay:.72s}
+    @keyframes up{to{opacity:1;transform:translateY(0)}}
+    /* COLORED SECTIONS */
+    .sc-amber{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-radius:14px;padding:1.8rem;border:1px solid #FDE68A}
+    .sc-olive{background:linear-gradient(135deg,#F0F5E8,var(--olive-pale));border-radius:14px;padding:1.8rem;border:1px solid #C8DCA0}
+    .sc-orange{background:linear-gradient(135deg,#FFF7ED,#FFEDD5);border-radius:14px;padding:1.8rem;border:1px solid #FED7AA}
+    .sc-dark{background:var(--terminal);border-radius:14px;padding:1.8rem}
+    .sc-dark .s-eye{color:var(--term-green)}.sc-dark .s-title{color:#fff}
+    .sc-dark .tl-n,.sc-dark .tl-c{color:rgba(255,255,255,.65)}.sc-dark .tl-line{background:linear-gradient(rgba(180,83,9,.4),transparent)}
+    .sc-racing{background:linear-gradient(135deg,#1C0E00,#2A1400);border-radius:14px;padding:1.8rem;border:1px solid rgba(252,211,77,.15);position:relative;overflow:hidden}
+    .sc-racing::before{content:'';position:absolute;bottom:0;right:0;width:160px;height:40px;background-image:repeating-conic-gradient(rgba(255,255,255,.05) 0% 25%,transparent 0% 50%);background-size:16px 16px}
+    .s-eye{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+    .s-title{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+    .s-title span{color:var(--accent)}
+    .prose{font-size:.93rem;line-height:1.78;color:var(--mid)}
+    .prose p{margin-bottom:.85rem}.prose p:last-child{margin-bottom:0}
+    /* STATS */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.4rem 0}
+    .stat-box{padding:1.2rem;background:#fff;border:1px solid #FDE68A;border-radius:10px;text-align:center;transition:transform .2s,box-shadow .2s}
+    .stat-box:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(180,83,9,.1)}
+    .stat-num{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.3rem}
+    .stat-lbl{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    /* CARDS */
+    .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin:1.4rem 0}
+    .cards2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.4rem 0}
+    .card-item{padding:1.1rem;background:rgba(255,255,255,.7);border:1px solid #FDE68A;border-radius:9px;border-left:3px solid var(--accent);transition:transform .2s,box-shadow .2s}
+    .card-item:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(180,83,9,.1)}
+    .card-title{font-weight:700;font-size:.86rem;color:var(--accent);margin-bottom:.4rem}
+    .card-desc{font-size:.78rem;color:var(--mid);line-height:1.5}
+    /* TIMELINE dark */
+    .tl{display:flex;flex-direction:column}
+    .tl-item{display:grid;grid-template-columns:36px 1fr;gap:0 .9rem;padding-bottom:1.4rem}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-l{display:flex;flex-direction:column;align-items:center}
+    .tl-dot{width:11px;height:11px;border-radius:50%;background:#FCD34D;border:2px solid var(--terminal);box-shadow:0 0 0 2px #FCD34D;margin-top:2px;flex-shrink:0}
+    .tl-line{flex:1;width:2px;background:linear-gradient(rgba(252,211,77,.35),transparent);margin-top:3px}
+    .tl-n{font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.4);margin-bottom:.15rem}
+    .tl-c{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.5}
+    /* ROLE */
+    .role-card{background:linear-gradient(135deg,rgba(74,92,42,.07),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid);border-radius:10px;padding:1.4rem;margin:1.4rem 0}
+    .role-title{font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--olive);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+    .contribs{display:flex;flex-direction:column;gap:.4rem}
+    .contrib{display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)}
+    .contrib::before{content:'→';color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0;margin-top:.1rem}
+    /* SPONSOR BAR */
+    .sponsor-bar{display:flex;gap:1rem;flex-wrap:wrap;margin:1.4rem 0}
+    .sponsor-badge{padding:.5rem 1.1rem;border-radius:8px;font-family:var(--font-mono);font-size:.75rem;font-weight:600;border:1px solid}
+    .sp-brico{background:#F5EDD8;color:#8B4513;border-color:#D4A050}
+    .sp-other{background:#EDE9FE;color:#4C1D95;border-color:#C4B5FD}
+    .sp-total{background:#DCFCE7;color:#14532D;border-color:#86EFAC}
+    /* RESULT HIGHLIGHT */
+    .result-card{padding:1.4rem 1.8rem;border-radius:12px;margin:1rem 0;display:flex;gap:1.2rem;align-items:flex-start;border:1px solid}
+    .result-card.win{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-color:#FDE68A}
+    .result-card.dis{background:linear-gradient(135deg,#FFF5F5,#FEE2E2);border-color:#FECACA}
+    .result-card.part{background:linear-gradient(135deg,#F0F5E8,var(--olive-pale));border-color:#C8DCA0}
+    .result-icon{font-size:1.6rem;flex-shrink:0;margin-top:.1rem}
+    .result-title{font-weight:700;font-size:.92rem;margin-bottom:.25rem}
+    .result-desc{font-size:.8rem;color:var(--mid);line-height:1.6}
+    /* SKILLS */
+    .skill-groups{display:flex;flex-direction:column;gap:1rem;margin-top:.8rem}
+    .sg-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+    .tag{padding:.25rem .7rem;border-radius:5px;font-size:.73rem;font-weight:500}
+    .tag-g{background:var(--olive-pale);color:#3D5226}
+    .tag-a{background:#FEF3C7;color:#92400E}
+    .tag-o{background:#FFEDD5;color:#7C2D12}
+    /* QUOTE */
+    .quote{border-left:3px solid #FCD34D;padding:.9rem 1.3rem;background:rgba(180,83,9,.04);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
+    /* EN BOX */
+    .en-box{background:linear-gradient(135deg,#FAF7F0,#F5EDD8);border-radius:12px;padding:1.6rem;margin:1.4rem 0;border:1px solid #E8D9B0;border-left:4px solid #C8A040;position:relative}
+    .en-box::before{content:"EN";position:absolute;top:.9rem;right:1rem;font-family:var(--font-mono);font-size:.6rem;color:#C8A040;background:#FAF7F0;padding:.15rem .4rem;border-radius:3px;border:1px solid #E8D9B0;letter-spacing:.08em}
+    .en-label{font-family:var(--font-mono);font-size:.68rem;color:#9A7020;letter-spacing:.1em;margin-bottom:.65rem}
+    .en-txt{color:#5A4A28;font-size:.86rem;line-height:1.78;font-style:italic}
+    /* IMAGE */
+    .proj-img{border-radius:12px;overflow:hidden;border:1px solid var(--bg3);margin:1.4rem 0;background:linear-gradient(135deg,#1C0E00,#5C2E00);display:flex;align-items:center;justify-content:center;aspect-ratio:16/7}
+    .proj-img img{width:100%;height:100%;object-fit:cover}
+    /* FILM REF */
+    .film-card{background:var(--terminal);border-radius:12px;padding:1.4rem;margin:1.4rem 0;border-left:4px solid #FCD34D}
+    .film-tag{font-family:var(--font-mono);font-size:.65rem;color:#FCD34D;letter-spacing:.08em;margin-bottom:.5rem}
+    .film-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+    .film-desc{font-size:.84rem;color:rgba(255,255,255,.6);line-height:1.7}
+    @media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{position:static;max-height:none}.top-nav{padding:.9rem 1.5rem}.hero{padding:3rem 1.5rem}.stats-row{grid-template-columns:1fr 1fr}.cards3{grid-template-columns:1fr 1fr}}
+  </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">soumaya<span class="nav-logo-dot"></span></a>
-  <a href="index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour</a>
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">soumaya<div class="nav-logo-dot"></div></a>
+  <span class="nav-center">Projets / <span>Course en Cours</span></span>
+  <a href="index.html#projets" class="nav-back" onclick="sessionStorage.setItem('goProjects','1')">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </a>
 </nav>
 
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-meta">
-      <span class="hero-badge">Lycée · Projet pluridisciplinaire</span>
-      <span class="hero-status">Terminé</span>
-    </div>
-    <div class="hero-num">CEC</div>
-    <h1>Course en <em>Cours</em></h1>
-    <p class="hero-desc">Conception d'une mini-voiture de course électrique en équipe — modélisation 3D, optimisation des performances aérodynamiques et présentation nationale. Projet pluridisciplinaire au lycée.</p>
-    <div class="chips">
-      <span class="chip chip-dark">Mécanique</span>
-      <span class="chip chip-pale">Modélisation 3D</span>
-      <span class="chip chip-dark">Électronique</span>
-      <span class="chip chip-pale">Travail en équipe</span>
-      <span class="chip chip-dark">SolidWorks</span>
-      <span class="chip chip-pale">Présentation</span>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div>
-      <div class="hero-info-block"><div class="hib-label">Cadre</div><div class="hib-value">Course en Cours</div><div class="hib-sub">Compétition nationale lycéens</div></div>
-      <div class="hero-info-block"><div class="hib-label">Niveau</div><div class="hib-value">Lycée</div><div class="hib-sub">Projet pluridisciplinaire</div></div>
-      <div class="hero-info-block"><div class="hib-label">Discipline</div>
-        <div class="hib-value">Mécanique · Électronique</div>
-        <div class="hib-sub">Design · Communication</div>
-      </div>
-    </div>
-    <div class="hero-stats-grid">
-      <div class="hsg-item"><div class="hsg-num">3D</div><div class="hsg-label">Modélisation</div></div>
-      <div class="hsg-item"><div class="hsg-num">🏎️</div><div class="hsg-label">Mini-voiture</div></div>
-      <div class="hsg-item"><div class="hsg-num">⚡</div><div class="hsg-label">Électrique</div></div>
-      <div class="hsg-item"><div class="hsg-num">🏆</div><div class="hsg-label">National</div></div>
+<div class="hero">
+  <div class="hero-grid"></div><div class="hero-glow"></div>
+  <div class="hero-checker"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Lycée · STI2D · Parcours PArI · Compétition nationale</div>
+    <h1 class="hero-title">Course<br>en <em>Cours</em></h1>
+    <div class="hero-team">// L'Equip'Mans — inspiré du Mans 66</div>
+    <p class="hero-sub">Mini-voiture de course électrique 1/10e — modélisation 3D SolidWorks, sponsoring, stand, présentation jury. Chef d'équipe d'une team qui partait sans espoir… et qui a gagné le 3e prix aux olympiades.</p>
+    <div class="hero-chips">
+      <span class="chip chip-white">SolidWorks</span>
+      <span class="chip chip-white">Impression 3D</span>
+      <span class="chip chip-white">SketchUp</span>
+      <span class="chip chip-white">Électronique</span>
+      <span class="chip chip-amber">Compétition nationale</span>
+      <span class="chip chip-green">Chef d'équipe</span>
     </div>
   </div>
-</section>
-
-<div class="page-body">
-  <div>
-    <div class="section">
-      <div class="s-eyebrow">Contexte</div>
-      <h2>Concevoir une mini-voiture de course électrique</h2>
-      <p><strong>Course en Cours</strong> est un dispositif national d'éducation par la technologie qui mobilise des équipes de lycéens autour de la conception, la fabrication et la course d'une mini-voiture propulsée par un moteur électrique.</p>
-      <p>Le projet est résolument pluridisciplinaire : il mobilise des compétences en <strong>sciences de l'ingénieur, mathématiques, physique</strong>, mais aussi en communication, gestion de projet et présentation orale.</p>
-      <div class="grid-3">
-        <div class="card"><h4>Conception</h4><p>Modélisation 3D de la carrosserie et des pièces mécaniques</p></div>
-        <div class="card"><h4>Optimisation</h4><p>Amélioration des performances aérodynamiques et mécaniques</p></div>
-        <div class="card"><h4>Présentation</h4><p>Défense du projet devant un jury lors des épreuves nationales</p></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="s-eyebrow">Le projet</div>
-      <h2>Mini-voiture électrique de A à Z</h2>
-      <div class="grid-2">
-        <div class="card-plain"><h4>🔧 Conception mécanique</h4><p>Modélisation 3D de la carrosserie sous SolidWorks, optimisation de la forme pour l'aérodynamisme</p></div>
-        <div class="card-plain"><h4>⚡ Motorisation électrique</h4><p>Intégration d'un moteur électrique, câblage et gestion de l'alimentation</p></div>
-        <div class="card-plain"><h4>🏁 Tests & itérations</h4><p>Essais sur piste, mesures de performance et ajustements successifs</p></div>
-        <div class="card-plain"><h4>🎤 Communication</h4><p>Présentation du projet, du processus de conception et des résultats devant un jury</p></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="s-eyebrow">Compétences</div>
-      <h2>Ce que ce projet m'a apporté</h2>
-      <p>Course en Cours m'a permis de développer des compétences transversales essentielles, bien au-delà des connaissances techniques : <strong>gestion de projet, travail en équipe, communication</strong> et <strong>résolution de problèmes concrets</strong>.</p>
-      <div class="skills-wrap">
-        <span class="skill-badge sb-g">Modélisation 3D</span><span class="skill-badge sb-g">SolidWorks</span><span class="skill-badge sb-d">Électronique</span><span class="skill-badge sb-d">Mécanique</span><span class="skill-badge sb-g">Travail en équipe</span><span class="skill-badge sb-g">Présentation orale</span><span class="skill-badge sb-d">Gestion de projet</span>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="en-box">
-        <span class="en-flag">🇬🇧 English Summary</span>
-        <div class="en-title">Course en Cours — Electric Mini-Racing Car</div>
-        <p class="en-body">This national educational project challenged high school students to <em>design, build and race a 1:10 scale electric car</em>. Working as a team, we modeled the body in 3D, optimized aerodynamics, integrated an electric motor, and presented our project to a national jury. This project developed my skills in <em>mechanical design, teamwork, project management</em> and public speaking.</p>
-      </div>
-    </div>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sb">
-      <div class="sb-title">Informations</div>
-      <div class="sb-line"><span class="sb-tick">🏫</span><span>Projet lycée</span></div>
-      <div class="sb-line"><span class="sb-tick">👥</span><span>Travail en équipe</span></div>
-      <div class="sb-line"><span class="sb-tick">✅</span><span>Projet terminé</span></div>
-      <div class="sb-line"><span class="sb-tick">🏆</span><span>Compétition nationale</span></div>
-    </div>
-    <div class="sb">
-      <div class="sb-title">Outils utilisés</div>
-      <span class="sb-tag">SolidWorks</span><span class="sb-tag">Impression 3D</span><span class="sb-tag">Électronique</span><span class="sb-tag">Motorisation</span>
-    </div>
-    <div class="sb">
-      <div class="sb-title">Compétences clés</div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Modélisation 3D</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Travail en équipe</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Présentation orale</span></div>
-      <div class="sb-line"><span class="sb-tick">✓</span><span>Gestion de projet</span></div>
-    </div>
-  </aside>
 </div>
 
-<footer>
-  <span class="foot-l">Course en Cours · Soumaya RABAH · Lycée</span>
-  <a href="index.html" class="foot-r"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Retour au portfolio</a>
-</footer>
-<script>
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:0.08});
-document.querySelectorAll('.section,.sb').forEach(el=>obs.observe(el));
-</script>
-</body></html>
+<div class="page-body">
+  <div class="main-content">
+
+    <div class="s">
+      <div class="proj-img"><img src="image/image_course.jpg" alt="Course en Cours" onerror="this.src='image/image_course.jpeg';this.onerror=null"/></div>
+    </div>
+
+    <div class="s">
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-num" style="font-size:1.2rem">1 000€</div><div class="stat-lbl">Sponsoring levé</div></div>
+        <div class="stat-box"><div class="stat-num">18/20</div><div class="stat-lbl">Note stand</div></div>
+        <div class="stat-box"><div class="stat-num">3e</div><div class="stat-lbl">Prix olympiades</div></div>
+        <div class="stat-box"><div class="stat-num">20m</div><div class="stat-lbl">Piste de course</div></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Contexte</div>
+      <h2 class="s-title">Concevoir une mini-voiture de <span>A à Z</span></h2>
+      <div class="prose">
+        <p>Course en Cours est un dispositif national d'éducation par la technologie : des équipes de lycéens conçoivent, fabriquent et font courir une mini-voiture propulsée par un moteur électrique, en utilisant les mêmes outils et processus que les professionnels de la F1.</p>
+        <p>Ce projet s'inscrivait dans mon parcours <strong style="color:var(--dark)">PArI (Pousses d'Architectes et d'Ingénieurs)</strong>, un parcours d'excellence parrainé par l'INSA de Strasbourg. Il mobilisait des compétences en mécanique, électronique, programmation, marketing et communication.</p>
+      </div>
+      <div class="cards3">
+        <div class="card-item"><div class="card-title">Conception</div><div class="card-desc">Modélisation 3D de la coque inspirée de la Ford GT40, impression 3D chez un professionnel.</div></div>
+        <div class="card-item"><div class="card-title">Sponsoring</div><div class="card-desc">Démarchage d'entreprises, lettres de motivation, négociation de partenariats matériels et financiers.</div></div>
+        <div class="card-item"><div class="card-title">Compétition</div><div class="card-desc">Présentation devant jury, montage du stand, épreuves techniques et courses sur piste de 20m.</div></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-racing">
+        <div class="s-eye" style="color:#FCD34D">L'identité de l'équipe</div>
+        <h2 class="s-title" style="color:#fff">L'Equip'Mans — <span style="color:#FCD34D">le pari Ford</span></h2>
+        <div class="film-card" style="background:rgba(255,255,255,.04);border:1px solid rgba(252,211,77,.2);margin-top:1rem">
+          <div class="film-tag">// INSPIRÉ DU FILM · Le Mans 66</div>
+          <div class="film-title">Ford vs Ferrari · Les 24h du Mans 1966</div>
+          <div class="film-desc">Comme Ford, que Ferrari considérait incapable de rivaliser avec elle, nous étions l'équipe "sans espoir" de la classe — des nouveaux élèves que personne n'attendait. Pourtant, grâce au travail acharné et à la détermination, Ford a remporté la victoire. Ce parallèle nous a donné notre identité : <strong style="color:#FCD34D">L'Equip'Mans</strong>, et notre design s'est inspiré de la légendaire Ford GT40.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-olive">
+        <div class="s-eye" style="color:var(--olive-mid)">Mon rôle</div>
+        <h2 class="s-title" style="color:var(--dark)">Chef d'équipe — <span style="color:var(--olive-mid)">mes contributions</span></h2>
+        <div class="role-card">
+          <div class="role-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Ce que j'ai pris en charge
+          </div>
+          <div class="contribs">
+            <div class="contrib">Chef d'équipe — coordination globale, communication interne et externe</div>
+            <div class="contrib">Sponsoring : lettres de motivation, mails, démarchage direct en entreprise — 600€ obtenus + don matériel Brico Dépôt (300€)</div>
+            <div class="contrib">Co-responsable du stand — modélisation sous SketchUp, conception inspirée d'une écurie automobile, tenue de pilote</div>
+            <div class="contrib">Gestion du financement : avances, factures, remboursements, trésorerie lycée</div>
+            <div class="contrib">Négociation avec un professionnel pour l'impression 3D finale de la coque</div>
+            <div class="contrib">Coordination avec l'imprimerie pour la grande affiche sponsors</div>
+          </div>
+        </div>
+        <div class="sponsor-bar">
+          <div class="sponsor-badge sp-brico">Brico Dépôt · 300€ matériel</div>
+          <div class="sponsor-badge sp-other">2 entreprises · 600€</div>
+          <div class="sponsor-badge sp-total">Total équipe · 1 000€</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-dark">
+        <div class="s-eye">Déroulement</div>
+        <h2 class="s-title">Chronologie <span style="color:var(--term-green)">du projet</span></h2>
+        <div class="tl">
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">01</div><div class="tl-c">Formation de l'équipe et attribution des rôles — Soumaya chef d'équipe</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">02</div><div class="tl-c">Choix du thème L'Equip'Mans — inspiration Ford GT40 et Le Mans 66</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">03</div><div class="tl-c">Apprentissage de SolidWorks et début de la modélisation 3D de la coque</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">04</div><div class="tl-c">Campagne de sponsoring — démarchage, négociations, 1 000€ récoltés</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">05</div><div class="tl-c">Conception du stand sous SketchUp — design écurie automobile</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">06</div><div class="tl-c">Présélections internes — sélectionnés parmi 6 équipes malgré la coque inachevée</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">07</div><div class="tl-c">Olympiades à Sélestat — 3e prix avec le prototype</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-n">08</div><div class="tl-c">Compétition officielle à l'IUT de Mulhouse — stand 18/20, improvisation finale</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Résultats</div>
+      <h2 class="s-title">Ce qu'on a <span>accompli</span></h2>
+      <div class="result-card win">
+        <div class="result-icon">🥉</div>
+        <div><div class="result-title" style="color:var(--accent)">3e prix aux Olympiades — Sélestat</div><div class="result-desc">Avec seulement le prototype, sans coque finale. Un résultat inattendu qui nous a encouragés à continuer à nous battre.</div></div>
+      </div>
+      <div class="result-card win">
+        <div class="result-icon">18/20</div>
+        <div><div class="result-title" style="color:var(--accent)">Note stand excellente — IUT de Mulhouse</div><div class="result-desc">Toutes les épreuves passées avec succès : oral, explications techniques, montage du stand. Notre stand a obtenu 18/20.</div></div>
+      </div>
+      <div class="result-card dis">
+        <div class="result-icon">📏</div>
+        <div><div class="result-title" style="color:#DC2626">Disqualification au contrôle — 1 cm de trop</div><div class="result-desc">La voiture dépassait de 1 cm la largeur autorisée. Décision : on découpe la voiture en deux et on recolle. Avec les parrains BUT Génie Mécanique, on l'a fait rouler.</div></div>
+      </div>
+      <div class="result-card part">
+        <div class="result-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5C8A3C" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M7.5 12l3 3 6-6"/></svg>
+        </div>
+        <div><div class="result-title" style="color:var(--olive)">Prix participatif & fierté collective</div><div class="result-desc">Malgré la disqualification, la capacité à improviser a été reconnue. L'équipe de classe a obtenu d'excellentes places — une belle réussite collective.</div></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--bg3);margin:1.4rem 0;aspect-ratio:16/7;background:linear-gradient(135deg,#1C0E00,#5C2E00);display:flex;align-items:center;justify-content:center">
+        <img src="image/image_ford.jpg" alt="Ford GT40 — L'Equip'Mans" style="width:100%;height:100%;object-fit:cover" onerror="this.src='image/image_ford.jpeg';this.onerror=null"/>
+      </div>
+      <p style="font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-align:center;margin-top:.4rem">Ford GT40 — inspiration de notre design L'Equip'Mans</p>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Retour d'expérience</div>
+      <h2 class="s-title">Ce que j'en <span>retiens</span></h2>
+      <div class="quote">Même sans avoir remporté le meilleur prix, je considère cette aventure comme une réussite. Chaque difficulté a été une occasion d'apprentissage. La pression, la prise de décision, la gestion du stress et de la cohésion d'équipe m'ont appris des leçons précieuses. Ce sont justement ces défis qui ont fait la valeur de cette expérience.</div>
+    </div>
+
+    <div class="s">
+      <div class="sc-amber">
+        <div class="s-eye" style="color:var(--accent)">Compétences</div>
+        <h2 class="s-title" style="color:var(--dark)">Ce que j'ai <span>développé</span></h2>
+        <div class="skill-groups">
+          <div><div class="sg-label">Technique</div><div class="tags"><span class="tag tag-a">Modélisation 3D SolidWorks</span><span class="tag tag-a">SketchUp</span><span class="tag tag-a">Impression 3D</span><span class="tag tag-a">Électronique</span></div></div>
+          <div><div class="sg-label">Leadership & projet</div><div class="tags"><span class="tag tag-g">Chef d'équipe</span><span class="tag tag-g">Gestion de projet</span><span class="tag tag-g">Communication</span><span class="tag tag-g">Sponsoring</span></div></div>
+          <div><div class="sg-label">Personnel</div><div class="tags"><span class="tag tag-o">Gestion du stress</span><span class="tag tag-o">Prise de décision</span><span class="tag tag-o">Présentation orale</span><span class="tag tag-o">Résilience</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="en-box">
+        <div class="en-label">// ENGLISH SUMMARY</div>
+        <div class="en-txt">Course en Cours is a national educational challenge where high school teams design, build and race a 1:10 scale electric car using professional F1 tools and processes. As team leader of L'Equip'Mans — inspired by the Ford vs Ferrari Le Mans 66 rivalry — I managed sponsorship (raising €1,000), designed the team stand (rated 18/20), coordinated external communications and led the team through regional competitions. Despite a 1cm disqualification at the final, our team won 3rd prize at the engineering olympiads and demonstrated remarkable resilience throughout the project.</div>
+      </div>
+    </div>
+
+  </div><!-- /main-content -->
+
+  <aside class="sidebar">
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="scard-head-title">Informations</span>
+      </div>
+      <div class="scard-body">
+        <div class="scard-row"><span class="scard-label">Niveau</span><span class="scard-val">Lycée · 1ère STI2D</span></div>
+        <div class="scard-row"><span class="scard-label">Parcours</span><span class="scard-val">PArI · INSA Strasbourg</span></div>
+        <div class="scard-row"><span class="scard-label">Équipe</span><span class="scard-val">6 personnes</span></div>
+        <div class="scard-row"><span class="scard-label">Rôle</span><span class="scard-val" style="color:var(--accent)">Chef d'équipe</span></div>
+        <div class="scard-row" style="flex-direction:column;align-items:flex-start;gap:.2rem;padding:.5rem 0">
+          <span class="scard-label">Encadrants</span>
+          <span class="scard-val" style="font-size:.76rem">Antonio DE CARVALHO</span>
+          <span class="scard-val" style="font-size:.76rem">Frédéric BACHSCHMIDT</span>
+          <span class="scard-val" style="font-size:.76rem">Élise REICH</span>
+        </div>
+        <div class="scard-row"><span class="scard-label">Statut</span><span class="scard-val ok">✓ Terminé</span></div>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span class="scard-head-title">L'Equip'Mans</span>
+      </div>
+      <div class="scard-body">
+        <div class="member"><div class="avatar av-me">SR</div><span class="member-name">Soumaya RABAH</span><span class="member-me">moi</span></div>
+        <div class="member"><div class="avatar av-a">NB</div><span class="member-name">Nail</span><span class="member-role">conception</span></div>
+        <div class="member"><div class="avatar av-b">RO</div><span class="member-name">Romain</span><span class="member-role">mécanique</span></div>
+        <div class="member"><div class="avatar av-c">AU</div><span class="member-name">Aurélien</span><span class="member-role">numérique</span></div>
+        <div class="member"><div class="avatar av-d">EW</div><span class="member-name">Erwan</span><span class="member-role">stand</span></div>
+        <div class="member"><div class="avatar av-e">QU</div><span class="member-name">Quentin</span><span class="member-role">en cours</span></div>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        <span class="scard-head-title">Preuves &amp; Documents</span>
+      </div>
+      <div class="scard-body">
+        <a href="https://trello.com/invite/b/6780e5ca1e30de217f3ac082/ATTIc9cdbf092276e33f0a4cf847cb97e53d37CADEE7/g4-lequipmans-erwan-nail-romain-aurelien-quentin-soumaya" target="_blank" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="3" height="9"/><rect x="14" y="7" width="3" height="5"/></svg>
+          <span>Tableau Trello</span>
+        </a>
+        <a href="preuves/presentation course en cours.pdf" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Présentation (PDF)</span>
+        </a>
+        <a href="preuves/portfolio course en cours.pdf" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Dossier preuve (portfolio)</span>
+        </a>
+        <a href="preuves/Poster Portfolio.pdf" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          <span>Poster portfolio</span>
+        </a>
+        <a href="preuves/cec-photos/" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Album photos</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+</div>
+</body>
+</html>
