@@ -252,7 +252,7 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #253314;
+  background: var(--terminal);
   color: var(--term-green);
   font-family: var(--font-mono);
   font-size: 0.78rem;
@@ -376,7 +376,7 @@ nav {
 
 /* Terminal window */
 .term-win {
-  background: #253314;
+  background: var(--terminal);
   border-radius: var(--radius-lg);
   overflow: hidden;
   flex: 1;
@@ -768,7 +768,7 @@ nav {
 
 /* Mini terminal */
 .mini-term {
-  background: #253314;
+  background: var(--terminal);
   border-radius: var(--radius-lg);
   overflow: hidden;
   font-family: var(--font-mono);
@@ -2761,6 +2761,77 @@ footer {
   .timeline { padding: 2rem 1.5rem; }
 }
 /* ============================================================
+   ERA-BLOCKS — PROJETS (scroll continu, sans onglets)
+   ============================================================ */
+
+/* Étiquette de période */
+.proj-count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--olive-mid);
+  background: var(--olive-pale);
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  border: 1px solid #C8DCA0;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.era-block {
+  padding: 2rem 3rem 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.era-block.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.era-block:last-child { padding-bottom: 3rem; }
+
+.era-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--bg3);
+}
+
+.era-line {
+  flex: 1;
+  height: 1px;
+  background: var(--bg3);
+}
+
+.era-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  padding: 0.2rem 0.75rem;
+  background: var(--bg2);
+  border-radius: 20px;
+  border: 1px solid var(--bg3);
+}
+
+/* Dans les era-blocks : cartes toujours visibles,
+   l'animation est portée par le bloc parent */
+.era-block .pcard-new {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.era-block .pcard-new:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
+  border-color: var(--olive-light) !important;
+}
+/* ============================================================
    ERA-BLOCKS — legacy compat
    ============================================================ */
 .era-block .pcard-new { opacity: 1 !important; transform: none !important; }
@@ -2777,7 +2848,6 @@ footer {
   position: relative;
 }
 
-/* Halos colorés en fond */
 .ptl-page::after {
   content: '';
   position: fixed;
@@ -2791,7 +2861,6 @@ footer {
   z-index: 0;
 }
 
-/* HEADER */
 .ptl-header {
   display: flex;
   align-items: center;
@@ -2802,7 +2871,7 @@ footer {
   flex-wrap: wrap;
   position: relative;
   z-index: 2;
-  background: #253314;
+  background: #2E3E18;
 }
 .ptl-header-left .eyebrow { color: var(--term-green); opacity: 0.8; }
 .ptl-header-left h2 {
@@ -2835,7 +2904,6 @@ footer {
 }
 .ptl-leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-/* CORPS */
 .ptl-body {
   position: relative;
   padding: 1.5rem 3.5rem 4rem;
@@ -2844,22 +2912,20 @@ footer {
   z-index: 2;
 }
 
-/* Axe vertical — plus visible */
 .ptl-axis {
   position: absolute;
   left: 45%;
   top: 0; bottom: 0;
   width: 2px;
   background: linear-gradient(to bottom,
-    rgba(255,255,255,0.0) 0%,
-    rgba(255,255,255,0.18) 5%,
-    rgba(255,255,255,0.18) 90%,
+    transparent 0%,
+    #D4C9B0 4%,
+    #D4C9B0 92%,
     transparent 100%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Marqueur d'année */
 .ptl-year {
   display: flex;
   align-items: center;
@@ -2890,7 +2956,6 @@ footer {
   backdrop-filter: none;
 }
 
-/* Ligne : visuel gauche (45%) | axe (10%) | info droite (45%) */
 .ptl-row {
   display: grid;
   grid-template-columns: 45fr 10fr 45fr;
@@ -2920,7 +2985,6 @@ footer {
 }
 .ptl-row:hover .ptl-node { transform: scale(1.5); }
 
-/* Visuel coloré */
 .ptl-visual {
   position: relative;
   overflow: hidden;
@@ -2959,7 +3023,6 @@ footer {
 .ptl-ring.r3 { width: 200px; height: 200px; animation-delay: 1.4s; border-color: rgba(14,165,233,0.05); }
 @keyframes ptlring { 0%,100%{opacity:0.5}50%{opacity:1} }
 
-/* Bloc info — fond blanc avec bordure gauche colorée */
 .ptl-info {
   background: #fff;
   border: 1px solid rgba(0,0,0,0.07);
@@ -2973,7 +3036,6 @@ footer {
   position: relative;
   overflow: hidden;
 }
-/* Teinture de fond subtile */
 .ptl-info::before {
   content: '';
   position: absolute;
@@ -3003,15 +3065,12 @@ footer {
 .ptl-cta { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--ptl-color, var(--olive-mid)); transition: color 0.2s, transform 0.2s; display: inline-block; }
 .ptl-row:hover .ptl-cta { transform: translateX(3px); }
 
-/* À venir */
 .ptl-soon { display: flex; justify-content: flex-start; padding-left: calc(45% - 7px); margin: 0.5rem 0 1rem; position: relative; z-index: 5; }
-.ptl-soon-inner { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.4); padding: 0.4rem 1.1rem; background: rgba(255,255,255,0.06); border: 1px dashed rgba(255,255,255,0.15); border-radius: 20px; }
+.ptl-soon-inner { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); padding: 0.4rem 1.1rem; background: rgba(255,255,255,0.6); border: 1px dashed var(--bg3); border-radius: 20px; }
 
-/* Animation */
 .ptl-era { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s ease; }
 .ptl-era.ptl-vis { opacity: 1; transform: translateY(0); }
 
-/* Responsive */
 @media (max-width: 960px) {
   .ptl-body   { padding: 1.2rem 1.5rem 3rem; }
   .ptl-header { padding: 1.8rem 1.5rem 1.5rem; }
