@@ -595,249 +595,167 @@
        PAGE — PROJETS
   ══════════════════════════════════════════ -->
   <div id="page-projets" class="page">
-    <div class="ptl-page">
+    <div class="pgrid-page">
 
-      <div class="ptl-header">
-        <div class="ptl-header-left">
+      <div class="pgrid-header">
+        <div>
           <p class="eyebrow">Réalisations</p>
           <h2>Mes <span>projets</span></h2>
         </div>
-        <div class="ptl-header-right">
-          <div class="ptl-counter">
-            <span class="ptl-counter-num">7</span>
-            <span class="ptl-counter-lbl">projets réalisés</span>
-          </div>
-          <div class="ptl-legend">
-            <span class="ptl-leg-dot" style="background:#B45309"></span><span>Lycée</span>
-            <span class="ptl-leg-dot" style="background:#1D4ED8"></span><span>1ère année</span>
-            <span class="ptl-leg-dot" style="background:#5C3A8C"></span><span>2ème année</span>
+        <div class="pgrid-header-meta">
+          <span class="pgrid-count">7 projets</span>
+          <div class="pgrid-filters">
+            <span class="pgrid-filter pgrid-active" data-filter="all">Tous</span>
+            <span class="pgrid-filter" data-filter="lycee">Lycée</span>
+            <span class="pgrid-filter" data-filter="s2">S2</span>
+            <span class="pgrid-filter" data-filter="s3">S3</span>
           </div>
         </div>
       </div>
 
-      <div class="ptl-body">
-        <div class="ptl-axis"></div>
+      <div class="pgrid-bento">
 
-        <!-- ─── LYCÉE ─── -->
-        <div class="ptl-year ptl-era" data-delay="0">
-          <div class="ptl-year-dot" style="background:#B45309;color:#B45309"></div>
-          <span class="ptl-year-label" style="color:#B45309;border-color:#B45309">Lycée</span>
-        </div>
-
-        <div class="ptl-row ptl-era" data-delay="80" style="--ptl-color:#B45309;--ptl-tint:rgba(180,83,9,0.04)" onclick="window.location='course-en-cours.html'">
-          <div class="ptl-side ptl-side-visual">
-            <div class="ptl-visual" style="background:linear-gradient(135deg,#1C0E00,#5C2E00)">
-              <div class="ptl-checker"></div>
-              <span class="ptl-ghost">CEC</span>
-              <div class="ptl-vtext">
-                <div class="ptl-vmeta">Lycée · STI2D · PArI</div>
-                <div class="ptl-vtitle">Course en <em>Cours</em></div>
-                <div class="ptl-vteam">L'Equip'Mans · Ford GT40</div>
+        <!-- CEC — Featured 2x2 -->
+        <div class="pgrid-card pgrid-featured ptl-era" data-delay="0" data-filter="lycee" onclick="window.location='course-en-cours.html'" style="--pc:#B45309">
+          <div class="pgrid-bg" style="background:linear-gradient(135deg,#1C0E00,#5C2E00)">
+            <div class="pgrid-checker"></div>
+            <div class="pgrid-rd" style="width:320px;height:320px;top:50%;left:60%;border-color:rgba(180,83,9,0.2)"></div>
+            <div class="pgrid-rd" style="width:200px;height:200px;top:50%;left:60%;border-color:rgba(180,83,9,0.3)"></div>
+          </div>
+          <div class="pgrid-inner">
+            <div class="pgrid-top">
+              <span class="pgrid-etag" style="background:rgba(252,211,77,0.15);color:#FCD34D;border-color:rgba(252,211,77,0.3)">Lycée · STI2D · PArI</span>
+              <span class="pgrid-featured-pill">★ Featured</span>
+            </div>
+            <div class="pgrid-body">
+              <div class="pgrid-ghost">CEC</div>
+              <h3 class="pgrid-title">Course en <em>Cours</em></h3>
+              <p class="pgrid-sub">L'Equip'Mans — Ford GT40</p>
+            </div>
+            <div class="pgrid-foot">
+              <div class="pgrid-tagrow">
+                <span class="pgrid-tag" style="background:rgba(252,211,77,0.2);color:#FCD34D">Chef d'équipe</span>
+                <span class="pgrid-tag" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8)">SolidWorks</span>
+                <span class="pgrid-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">National</span>
+              </div>
+              <div class="pgrid-stats">
+                <span>🏆 3e prix Olympiades</span>
+                <span>18/20 Stand</span>
+                <span>1 000€</span>
               </div>
             </div>
           </div>
-          <div class="ptl-center-col">
-            <div class="ptl-node" style="background:#B45309"></div>
-          </div>
-          <div class="ptl-side ptl-side-info">
-            <div class="ptl-info">
-              <div class="ptl-tags">
-                <span class="ptl-tag" style="background:#FEF3C7;color:#92400E">Chef d'équipe</span>
-                <span class="ptl-tag" style="background:#FFEDD5;color:#7C2D12">SolidWorks</span>
-                <span class="ptl-tag" style="background:#FEF9C3;color:#713F12">Compétition nationale</span>
-              </div>
-              <p class="ptl-desc">Mini-voiture électrique 1/10e — modélisation 3D, sponsoring <strong>1 000€</strong>, stand <strong>18/20</strong>, 3e prix olympiades de Sélestat.</p>
-              <div class="ptl-foot">
-                <span class="ptl-facts">6 équipiers · Compétition IUT Mulhouse</span>
-                <span class="ptl-cta">Voir le projet →</span>
+          <div class="pgrid-cta">Voir le projet →</div>
+        </div>
+
+        <!-- SAE3.01 — Carré -->
+        <div class="pgrid-card pgrid-sq ptl-era" data-delay="120" data-filter="s3" onclick="window.location='sae3-01.html'" style="--pc:#7C3AED">
+          <div class="pgrid-bg" style="background:linear-gradient(135deg,#1a0a3a,#2d1060)"></div>
+          <div class="pgrid-inner">
+            <div class="pgrid-top"><span class="pgrid-etag" style="background:rgba(124,58,237,0.3);color:#C4B5FD;border-color:rgba(196,181,253,0.3)">SAE3.01</span></div>
+            <div class="pgrid-body">
+              <div class="pgrid-ghost">3.01</div>
+              <h3 class="pgrid-title">Prise<br><em>Wi-Fi</em></h3>
+            </div>
+            <div class="pgrid-foot">
+              <div class="pgrid-tagrow">
+                <span class="pgrid-tag" style="background:rgba(196,181,253,0.2);color:#C4B5FD">ESP8266</span>
+                <span class="pgrid-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">MQTT</span>
               </div>
             </div>
           </div>
+          <div class="pgrid-cta">Voir →</div>
         </div>
 
-        <!-- ─── 1ÈRE ANNÉE ─── -->
-        <div class="ptl-year ptl-era" data-delay="200">
-          <div class="ptl-year-dot" style="background:#1D4ED8;color:#1D4ED8"></div>
-          <span class="ptl-year-label" style="color:#1D4ED8;border-color:#1D4ED8">1ère année BUT</span>
-        </div>
-
-        <div class="ptl-row ptl-era" data-delay="280" style="--ptl-color:#1D4ED8;--ptl-tint:rgba(29,78,216,0.04)" onclick="window.location='sae2-03.html'">
-          <div class="ptl-side ptl-side-visual">
-            <div class="ptl-visual" style="background:linear-gradient(135deg,#050d1f,#0f2550)">
-              <span class="ptl-vis-plane">✈</span>
-              <span class="ptl-ghost">2.03</span>
-              <div class="ptl-vtext">
-                <div class="ptl-vmeta">SAE2.03 · Semestre 2</div>
-                <div class="ptl-vtitle">Gestion du <em>trafic aérien</em></div>
-                <div class="ptl-vteam">Django · MariaDB · VM Linux</div>
+        <!-- SAE3.02 — Carré -->
+        <div class="pgrid-card pgrid-sq ptl-era" data-delay="180" data-filter="s3" onclick="window.location='sae3-02.html'" style="--pc:#0EA5E9">
+          <div class="pgrid-bg" style="background:linear-gradient(135deg,#060d1a,#0c2040)">
+            <div class="pgrid-rd" style="width:150px;height:150px;top:50%;left:50%;border-color:rgba(14,165,233,0.25)"></div>
+            <div class="pgrid-rd" style="width:90px;height:90px;top:50%;left:50%;border-color:rgba(14,165,233,0.4)"></div>
+          </div>
+          <div class="pgrid-inner" style="position:relative;z-index:2">
+            <div class="pgrid-top"><span class="pgrid-etag" style="background:rgba(14,165,233,0.3);color:#7DD3FC;border-color:rgba(125,211,252,0.3)">SAE3.02</span></div>
+            <div class="pgrid-body">
+              <div class="pgrid-ghost">3.02</div>
+              <h3 class="pgrid-title">App<br><em>distribuée</em></h3>
+            </div>
+            <div class="pgrid-foot">
+              <div class="pgrid-tagrow">
+                <span class="pgrid-tag" style="background:rgba(125,211,252,0.2);color:#7DD3FC">Onion</span>
+                <span class="pgrid-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">RSA</span>
               </div>
             </div>
           </div>
-          <div class="ptl-center-col">
-            <div class="ptl-node" style="background:#1D4ED8"></div>
-          </div>
-          <div class="ptl-side ptl-side-info">
-            <div class="ptl-info">
-              <div class="ptl-tags">
-                <span class="ptl-tag" style="background:#DBEAFE;color:#1E3A8A">Django 5.2</span>
-                <span class="ptl-tag" style="background:#EFF6FF;color:#1D4ED8">MariaDB</span>
-                <span class="ptl-tag" style="background:#EDE9FE;color:#4C1D95">Frontend · UX-UI</span>
-              </div>
-              <p class="ptl-desc">Application web de supervision aéroportuaire sur <strong>2 VM Linux</strong> (Nginx + Gunicorn). Responsable de l'intégralité des interfaces, templates Django et CRUD complet.</p>
-              <div class="ptl-foot">
-                <span class="ptl-facts">3 équipiers · 6 phases</span>
-                <span class="ptl-cta">Voir le projet →</span>
-              </div>
-            </div>
-          </div>
+          <div class="pgrid-cta">Voir →</div>
         </div>
 
-        <!-- ─── 2ÈME ANNÉE ─── -->
-        <div class="ptl-year ptl-era" data-delay="380">
-          <div class="ptl-year-dot" style="background:#5C3A8C;color:#5C3A8C"></div>
-          <span class="ptl-year-label" style="color:#5C3A8C;border-color:#5C3A8C">2ème année BUT</span>
-        </div>
-
-        <!-- SAE3.01 -->
-        <div class="ptl-row ptl-era" data-delay="460" style="--ptl-color:#7C3AED;--ptl-tint:rgba(124,58,237,0.04)" onclick="window.location='sae3-01.html'">
-          <div class="ptl-side ptl-side-visual">
-            <div class="ptl-visual" style="background:linear-gradient(135deg,#1a0a3a,#2d1060)">
-              <span class="ptl-ghost">3.01</span>
-              <div class="ptl-vtext">
-                <div class="ptl-vmeta">SAE3.01 · UE3.2 Connecter</div>
-                <div class="ptl-vtitle">Prise connectée <em>Wi-Fi</em></div>
-                <div class="ptl-vteam">ESP8266 · MQTT · Android</div>
-              </div>
+        <!-- SAE2.03 — Wide horizontal -->
+        <div class="pgrid-card pgrid-wide ptl-era" data-delay="260" data-filter="s2" onclick="window.location='sae2-03.html'" style="--pc:#1D4ED8">
+          <div class="pgrid-bg" style="background:linear-gradient(135deg,#050d1f,#0f2550)">
+            <div class="pgrid-plane">✈</div>
+          </div>
+          <div class="pgrid-inner pgrid-wide-inner">
+            <div class="pgrid-wide-l">
+              <span class="pgrid-etag" style="background:rgba(29,78,216,0.3);color:#93C5FD;border-color:rgba(147,197,253,0.3)">SAE2.03 · S2</span>
+              <div class="pgrid-ghost" style="font-size:2.5rem">2.03</div>
+              <h3 class="pgrid-title">Gestion du <em>trafic aérien</em></h3>
             </div>
-          </div>
-          <div class="ptl-center-col">
-            <div class="ptl-node" style="background:#7C3AED"></div>
-          </div>
-          <div class="ptl-side ptl-side-info">
-            <div class="ptl-info">
-              <div class="ptl-tags">
-                <span class="ptl-tag" style="background:#EDE9FE;color:#4C1D95">ESP8266</span>
-                <span class="ptl-tag" style="background:#F3E8FF;color:#6B21A8">MQTT</span>
-                <span class="ptl-tag" style="background:#DBEAFE;color:#1E3A8A">Android</span>
-                <span class="ptl-tag" style="background:#FEF3C7;color:#92400E">IoT</span>
+            <div class="pgrid-wide-r">
+              <p class="pgrid-wide-desc">Application Django + MariaDB sur 2 VM Linux. Interfaces, templates, CRUD complet.</p>
+              <div class="pgrid-tagrow" style="margin-top:0.6rem">
+                <span class="pgrid-tag" style="background:rgba(147,197,253,0.2);color:#93C5FD">Django 5.2</span>
+                <span class="pgrid-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">MariaDB</span>
+                <span class="pgrid-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">2 VM</span>
               </div>
-              <p class="ptl-desc">Système IoT complet — ESP8266, Raspberry Pi broker MQTT, app Android, programmation horaire, capteur température et sécurisation des échanges.</p>
-              <div class="ptl-foot">
-                <span class="ptl-facts">5 équipiers</span>
-                <span class="ptl-cta">Voir le projet →</span>
-              </div>
+              <span class="pgrid-cta-inline">Voir le projet →</span>
             </div>
           </div>
         </div>
 
-        <!-- SAE3.02 -->
-        <div class="ptl-row ptl-era" data-delay="530" style="--ptl-color:#0369A1;--ptl-tint:rgba(3,105,161,0.04)" onclick="window.location='sae3-02.html'">
-          <div class="ptl-side ptl-side-visual">
-            <div class="ptl-visual" style="background:linear-gradient(135deg,#060d1a,#0c2040)">
-              <div class="ptl-rings"><div class="ptl-ring r1"></div><div class="ptl-ring r2"></div><div class="ptl-ring r3"></div></div>
-              <span class="ptl-ghost" style="position:relative;z-index:2">3.02</span>
-              <div class="ptl-vtext" style="position:relative;z-index:2">
-                <div class="ptl-vmeta">SAE3.02 · UE3.1 + UE3.3</div>
-                <div class="ptl-vtitle">Application <em>distribuée</em></div>
-                <div class="ptl-vteam">Python · Sockets TCP · RSA</div>
+        <!-- SAE3.Cyber.03 — Carré -->
+        <div class="pgrid-card pgrid-sq ptl-era" data-delay="340" data-filter="s3" onclick="window.location='sae3-03.html'" style="--pc:#DC2626">
+          <div class="pgrid-bg" style="background:linear-gradient(135deg,#1a0404,#4a0d0d)"></div>
+          <div class="pgrid-inner">
+            <div class="pgrid-top"><span class="pgrid-etag" style="background:rgba(220,38,38,0.3);color:#FCA5A5;border-color:rgba(252,165,165,0.3)">Cyber.03</span></div>
+            <div class="pgrid-body">
+              <div class="pgrid-ghost">3.03</div>
+              <h3 class="pgrid-title">Réseau<br><em>multi-sites</em></h3>
+            </div>
+            <div class="pgrid-foot">
+              <div class="pgrid-tagrow">
+                <span class="pgrid-tag" style="background:rgba(252,165,165,0.2);color:#FCA5A5">MPLS</span>
+                <span class="pgrid-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">BGP</span>
               </div>
             </div>
           </div>
-          <div class="ptl-center-col">
-            <div class="ptl-node" style="background:#0EA5E9"></div>
-          </div>
-          <div class="ptl-side ptl-side-info">
-            <div class="ptl-info">
-              <div class="ptl-tags">
-                <span class="ptl-tag" style="background:#E0F2FE;color:#0369A1">Onion Routing</span>
-                <span class="ptl-tag" style="background:#CFFAFE;color:#155E75">RSA</span>
-                <span class="ptl-tag" style="background:#F0F9FF;color:#0C4A6E">PyQt6</span>
-                <span class="ptl-tag" style="background:#DCE8C4;color:#3D5226">MariaDB</span>
-              </div>
-              <p class="ptl-desc">Messagerie anonyme distribuée — chiffrement RSA multi-couches, architecture Master/Routeurs/Clients, interfaces PyQt6 et base MariaDB.</p>
-              <div class="ptl-foot">
-                <span class="ptl-facts">2 équipiers</span>
-                <span class="ptl-cta">Voir le projet →</span>
-              </div>
-            </div>
-          </div>
+          <div class="pgrid-cta">Voir →</div>
         </div>
 
-        <!-- SAE3.Cyber.03 -->
-        <div class="ptl-row ptl-era" data-delay="600" style="--ptl-color:#DC2626;--ptl-tint:rgba(220,38,38,0.04)" onclick="window.location='sae3-03.html'">
-          <div class="ptl-side ptl-side-visual">
-            <div class="ptl-visual" style="background:linear-gradient(135deg,#1a0404,#4a0d0d)">
-              <span class="ptl-ghost">3.03</span>
-              <div class="ptl-vtext">
-                <div class="ptl-vmeta">SAE3.Cyber.03 · Partie FAI</div>
-                <div class="ptl-vtitle">Réseau <em>multi-sites</em></div>
-                <div class="ptl-vteam">MPLS · BGP · VRF · GNS3</div>
+        <!-- SAE3.Cyber.04 — Carré avec barre score -->
+        <div class="pgrid-card pgrid-sq ptl-era" data-delay="400" data-filter="s3" onclick="window.location='sae3-04.html'" style="--pc:#16A34A">
+          <div class="pgrid-bg" style="background:linear-gradient(135deg,#040e04,#0d2e0d)">
+            <div class="pgrid-ascii">PRNT</div>
+          </div>
+          <div class="pgrid-inner" style="position:relative;z-index:2">
+            <div class="pgrid-top"><span class="pgrid-etag" style="background:rgba(22,163,74,0.3);color:#86EFAC;border-color:rgba(134,239,172,0.3)">Cyber.04</span></div>
+            <div class="pgrid-body">
+              <div class="pgrid-ghost">3.04</div>
+              <h3 class="pgrid-title"><em>Pentest</em><br>Root-Me</h3>
+            </div>
+            <div class="pgrid-foot">
+              <div class="pgrid-bar-wrap">
+                <div class="pgrid-bar-fill" style="width:92%;background:linear-gradient(90deg,#16A34A,#86EFAC)"></div>
               </div>
+              <span style="font-family:var(--font-mono);font-size:0.6rem;color:rgba(255,255,255,0.5)">92% · 69/75</span>
             </div>
           </div>
-          <div class="ptl-center-col">
-            <div class="ptl-node" style="background:#DC2626"></div>
-          </div>
-          <div class="ptl-side ptl-side-info">
-            <div class="ptl-info">
-              <div class="ptl-tags">
-                <span class="ptl-tag" style="background:#FEE2E2;color:#991B1B">MPLS</span>
-                <span class="ptl-tag" style="background:#FECACA;color:#7F1D1D">BGP</span>
-                <span class="ptl-tag" style="background:#FEF3C7;color:#92400E">FAI</span>
-                <span class="ptl-tag" style="background:#FEE2E2;color:#991B1B">GNS3</span>
-              </div>
-              <p class="ptl-desc">Infrastructure opérateur 3 systèmes autonomes — MPLS, MP-BGP, VRF. Responsable du cœur réseau FAI complet avec redondance et isolation des flux.</p>
-              <div class="ptl-foot">
-                <span class="ptl-facts">3 équipiers</span>
-                <span class="ptl-cta">Voir le projet →</span>
-              </div>
-            </div>
-          </div>
+          <div class="pgrid-cta">Voir →</div>
         </div>
 
-        <!-- SAE3.Cyber.04 -->
-        <div class="ptl-row ptl-era" data-delay="670" style="--ptl-color:#16A34A;--ptl-tint:rgba(22,163,74,0.04)" onclick="window.location='sae3-04.html'">
-          <div class="ptl-side ptl-side-visual">
-            <div class="ptl-visual" style="background:linear-gradient(135deg,#040e04,#0d2e0d)">
-              <span class="ptl-vis-ascii">PRNT</span>
-              <span class="ptl-ghost" style="position:relative;z-index:2">3.04</span>
-              <div class="ptl-vtext" style="position:relative;z-index:2">
-                <div class="ptl-vmeta">SAE3.Cyber.04 · Individuel</div>
-                <div class="ptl-vtitle">Découvrir le <em>pentesting</em></div>
-                <div class="ptl-vteam">Root-Me · CTF · Kali Linux</div>
-              </div>
-            </div>
-          </div>
-          <div class="ptl-center-col">
-            <div class="ptl-node" style="background:#16A34A"></div>
-          </div>
-          <div class="ptl-side ptl-side-info">
-            <div class="ptl-info">
-              <div class="ptl-tags">
-                <span class="ptl-tag" style="background:#DCFCE7;color:#14532D">Root-Me</span>
-                <span class="ptl-tag" style="background:#BBF7D0;color:#065F46">CTF</span>
-                <span class="ptl-tag" style="background:#D1FAE5;color:#064E3B">92%</span>
-                <span class="ptl-tag" style="background:#FEF3C7;color:#92400E">8 240 pts</span>
-              </div>
-              <p class="ptl-desc">69/75 challenges réussis — vulnérabilités web, analyse réseau, Linux, OSINT. Analyse détaillée d'un challenge soumise en évaluation finale.</p>
-              <div class="ptl-foot">
-                <span class="ptl-facts">Individuel · 15/18 modules</span>
-                <span class="ptl-cta">Voir le projet →</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── 3ÈME ANNÉE ─── -->
-        <div class="ptl-year ptl-era" data-delay="740">
-          <div class="ptl-year-dot" style="background:var(--bg4);color:var(--bg4)"></div>
-          <span class="ptl-year-label" style="color:var(--muted);border-color:var(--bg3);border-style:dashed">3ème année BUT</span>
-        </div>
-        <div class="ptl-soon ptl-era" data-delay="780">
-          <div class="ptl-soon-inner">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Projets à venir — 3ème année
-          </div>
+        <!-- À venir -->
+        <div class="pgrid-card pgrid-soon ptl-era" data-delay="460">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>3ème année<br><strong>à venir</strong></span>
         </div>
 
       </div>
@@ -1585,6 +1503,29 @@
           });
         }, 60);
         if (sessionStorage.getItem('goProjects')) sessionStorage.removeItem('goProjects');
+      }
+
+      if (id === 'projets') {
+        const items = document.querySelectorAll('#page-projets .ptl-era');
+        items.forEach(el => el.classList.remove('ptl-vis'));
+        setTimeout(() => {
+          items.forEach(el => {
+            const d = parseInt(el.dataset.delay || 0);
+            setTimeout(() => el.classList.add('ptl-vis'), d);
+          });
+        }, 60);
+        if (sessionStorage.getItem('goProjects')) sessionStorage.removeItem('goProjects');
+        // Filters
+        document.querySelectorAll('.pgrid-filter').forEach(btn => {
+          btn.onclick = () => {
+            document.querySelectorAll('.pgrid-filter').forEach(b => b.classList.remove('pgrid-active'));
+            btn.classList.add('pgrid-active');
+            const f = btn.dataset.filter;
+            document.querySelectorAll('#page-projets .pgrid-card[data-filter]').forEach(c => {
+              c.style.display = (f === 'all' || c.dataset.filter === f) ? '' : 'none';
+            });
+          };
+        });
       }
     }
 
