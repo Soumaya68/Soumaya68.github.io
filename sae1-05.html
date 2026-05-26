@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAE1.05 — Traiter des données · Soumaya RABAH</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap"/>
+  <style>
+    :root{--bg:#F2EFE7;--bg2:#E8E4DA;--bg3:#D8D4C8;--dark:#1E2318;--mid:#4A5240;--muted:#7A7A6A;--olive:#4A5C2A;--olive-mid:#6B8040;--olive-light:#96B060;--olive-pale:#DCE8C4;--terminal:#1E2A10;--term-green:#8DC050;--accent:#0D9488;--accent-light:#5EEAD4;--accent-pale:#CCFBF1;--font-display:'Syne',sans-serif;--font-body:'Instrument Sans',sans-serif;--font-mono:'DM Mono',monospace}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:var(--terminal);position:sticky;top:0;z-index:300}
+    .nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:5px}
+    .nav-logo-dot{width:6px;height:6px;background:#C8D9A8;border-radius:50%}
+    .nav-center{font-family:var(--font-mono);font-size:.72rem;color:#5a7030;letter-spacing:.04em}
+    .nav-center span{color:var(--term-green)}
+    .nav-back{display:flex;align-items:center;gap:.4rem;color:var(--olive-light);font-family:var(--font-mono);font-size:.78rem;text-decoration:none;transition:color .2s;border:1px solid #3a5020;padding:.35rem .9rem;border-radius:4px}
+    .nav-back:hover{color:#fff;border-color:var(--term-green)}
+    .nav-back svg{transition:transform .2s}
+    .nav-back:hover svg{transform:translateX(-3px)}
+    /* HERO — teal/émeraude */
+    .hero{background:linear-gradient(135deg,#020d0c 0%,#0a2e2a 45%,#1E2A10 100%);padding:4.5rem 3rem 3.5rem;position:relative;overflow:hidden}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(13,148,136,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(13,148,136,.05) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+    .hero-glow{position:absolute;right:-80px;top:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(13,148,136,.18) 0%,transparent 65%);pointer-events:none}
+    /* Données décoratives */
+    .hero-data{position:absolute;right:2.5rem;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:.6rem;line-height:1.9;color:rgba(94,234,212,.07);pointer-events:none;white-space:pre}
+    .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);padding:.3rem .9rem;border-radius:20px;font-family:var(--font-mono);font-size:.7rem;color:var(--term-green);margin-bottom:1.2rem;letter-spacing:.06em}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--term-green);animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:.6rem}
+    .hero-title em{font-style:normal;color:#5EEAD4}
+    .hero-sub{color:rgba(255,255,255,.5);font-size:1rem;line-height:1.65;max-width:580px;margin-top:.8rem}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+    .chip{padding:.28rem .8rem;border-radius:20px;font-family:var(--font-mono);font-size:.68rem;font-weight:500}
+    .chip-teal{background:rgba(13,148,136,.15);border:1px solid rgba(94,234,212,.3);color:#5EEAD4}
+    .chip-green{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.25);color:var(--term-green)}
+    .chip-white{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
+    .page-body{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start;position:relative}
+    .main-content{min-width:0}
+    .sidebar{position:sticky;top:76px;display:flex;flex-direction:column;gap:1rem}
+    .scard{background:#fff;border:1px solid var(--bg3);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .scard-head{padding:.8rem 1.1rem;background:var(--terminal);display:flex;align-items:center;gap:.5rem}
+    .scard-head-icon{color:var(--term-green);flex-shrink:0}
+    .scard-head-title{font-family:var(--font-mono);font-size:.68rem;color:var(--term-green);letter-spacing:.08em;text-transform:uppercase}
+    .scard-body{padding:1.1rem}
+    .scard-row{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--bg2);font-size:.82rem}
+    .scard-row:last-child{border-bottom:none}
+    .scard-label{color:var(--muted);font-size:.75rem}
+    .scard-val{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--dark)}
+    .scard-val.ok{color:#5C8A3C}
+    .member{display:flex;align-items:center;gap:.65rem;padding:.4rem 0;border-bottom:1px solid var(--bg2)}
+    .member:last-child{border-bottom:none}
+    .avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
+    .av-me{background:linear-gradient(135deg,#4A5C2A,#6B8040)}
+    .av-teal{background:linear-gradient(135deg,#0a2e2a,#0D9488)}
+    .member-name{font-size:.8rem;font-weight:500;flex:1}
+    .member-me{font-family:var(--font-mono);font-size:.62rem;color:var(--olive-mid);margin-left:auto;font-weight:600}
+    .proof-link{display:flex;align-items:center;gap:.55rem;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--bg3);border-radius:7px;text-decoration:none;color:var(--dark);font-size:.8rem;margin-bottom:.5rem;transition:all .2s}
+    .proof-link:last-child{margin-bottom:0}
+    .proof-link:hover{border-color:var(--olive-mid);background:var(--olive-pale);transform:translateX(4px)}
+    .proof-link svg{color:var(--olive-mid);flex-shrink:0}
+    .proof-link span{font-family:var(--font-mono);font-size:.72rem}
+    .s{margin-bottom:3rem;opacity:0;transform:translateY(22px);animation:up .55s forwards}
+    .s:nth-child(1){animation-delay:.08s}.s:nth-child(2){animation-delay:.16s}.s:nth-child(3){animation-delay:.24s}
+    .s:nth-child(4){animation-delay:.32s}.s:nth-child(5){animation-delay:.40s}.s:nth-child(6){animation-delay:.48s}
+    .s:nth-child(7){animation-delay:.56s}.s:nth-child(8){animation-delay:.64s}.s:nth-child(9){animation-delay:.72s}
+    .s:nth-child(10){animation-delay:.80s}.s:nth-child(11){animation-delay:.88s}
+    @keyframes up{to{opacity:1;transform:translateY(0)}}
+    .sc-teal{background:linear-gradient(135deg,#F0FDFA,#CCFBF1);border-radius:14px;padding:1.8rem;border:1px solid #99F6E4}
+    .sc-olive{background:linear-gradient(135deg,#F0F5E8,var(--olive-pale));border-radius:14px;padding:1.8rem;border:1px solid #C8DCA0}
+    .sc-slate{background:linear-gradient(135deg,#F8FAFC,#F1F5F9);border-radius:14px;padding:1.8rem;border:1px solid #CBD5E1}
+    .sc-dark{background:var(--terminal);border-radius:14px;padding:1.8rem}
+    .sc-dark .s-eye{color:var(--term-green)}.sc-dark .s-title{color:#fff}
+    .sc-dark .tl-n,.sc-dark .tl-c{color:rgba(255,255,255,.65)}.sc-dark .tl-line{background:linear-gradient(rgba(13,148,136,.3),transparent)}
+    .s-eye{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+    .s-title{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+    .s-title span{color:var(--accent)}
+    .prose{font-size:.93rem;line-height:1.78;color:var(--mid)}
+    .prose p{margin-bottom:.85rem}.prose p:last-child{margin-bottom:0}
+    /* ARCHI DIAGRAM */
+    .arch-diag{background:#020d0c;border-radius:14px;padding:2rem;margin:1.4rem 0;position:relative;overflow:hidden}
+    .arch-diag::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(13,148,136,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(13,148,136,.04) 1px,transparent 1px);background-size:26px 26px}
+    .arch-flow{display:flex;align-items:center;justify-content:center;gap:.4rem;flex-wrap:wrap;position:relative;z-index:2}
+    .arch-node{display:flex;flex-direction:column;align-items:center}
+    .arch-box{padding:.65rem .9rem;border-radius:9px;text-align:center;min-width:90px;transition:transform .2s}
+    .arch-box:hover{transform:translateY(-3px)}
+    .ab-ps{background:rgba(94,234,212,.1);border:1px solid rgba(94,234,212,.28)}
+    .ab-py{background:rgba(140,192,80,.1);border:1px solid rgba(140,192,80,.28)}
+    .ab-json{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.28)}
+    .ab-gui{background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.28)}
+    .arch-name{font-family:var(--font-mono);font-size:.62rem;display:block;font-weight:600}
+    .ab-ps .arch-name{color:#5EEAD4}.ab-py .arch-name{color:var(--term-green)}.ab-json .arch-name{color:#FCD34D}.ab-gui .arch-name{color:#A78BFA}
+    .arch-sub{font-size:.52rem;color:rgba(255,255,255,.3);font-family:var(--font-mono);display:block;margin-top:.15rem}
+    .arch-arr{color:rgba(94,234,212,.3);font-family:var(--font-mono);font-size:.9rem;align-self:center}
+    /* TECH GRID */
+    .tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.8rem;margin:1.4rem 0}
+    .tech{padding:1rem;background:rgba(255,255,255,.7);border:1px solid #99F6E4;border-radius:9px;display:flex;flex-direction:column;gap:.35rem;transition:transform .2s,box-shadow .2s}
+    .tech:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(13,148,136,.1)}
+    .tech-top{display:flex;align-items:center;gap:.4rem}
+    .tech-dot{width:7px;height:7px;border-radius:50%}
+    .td-t{background:#0D9488}.td-g{background:var(--olive-mid)}.td-p{background:#7C3AED}.td-y{background:#D97706}
+    .tech-name{font-weight:600;font-size:.82rem}
+    .tech-desc{font-size:.72rem;color:var(--muted);line-height:1.45}
+    /* TIMELINE */
+    .tl{display:flex;flex-direction:column}
+    .tl-item{display:grid;grid-template-columns:36px 1fr;gap:0 .9rem;padding-bottom:1.4rem}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-l{display:flex;flex-direction:column;align-items:center}
+    .tl-dot{width:11px;height:11px;border-radius:50%;background:#5EEAD4;border:2px solid var(--terminal);box-shadow:0 0 0 2px #5EEAD4;margin-top:2px;flex-shrink:0}
+    .tl-line{flex:1;width:2px;background:linear-gradient(rgba(94,234,212,.35),transparent);margin-top:3px}
+    .tl-n{font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.4);margin-bottom:.15rem}
+    .tl-c{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.5}
+    .tl-c code{background:rgba(94,234,212,.12);color:#5EEAD4;padding:.05rem .35rem;border-radius:3px;font-family:var(--font-mono);font-size:.78rem}
+    /* SCORE */
+    .score-banner{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;background:#fff;border:1px solid var(--bg3);border-radius:14px;padding:1.5rem 2rem;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:1.4rem 0}
+    .score-item{text-align:center}
+    .score-val{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--accent);line-height:1}
+    .score-label{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
+    /* SKILLS */
+    .skill-groups{display:flex;flex-direction:column;gap:1rem;margin-top:.8rem}
+    .sg-label{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+    .tag{padding:.25rem .7rem;border-radius:5px;font-size:.73rem;font-weight:500}
+    .tag-t{background:#CCFBF1;color:#134E4A}
+    .tag-g{background:var(--olive-pale);color:#3D5226}
+    .tag-p{background:#EDE9FE;color:#4C1D95}
+    /* AC */
+    .ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.9rem}
+    @media(max-width:600px){.ac-grid{grid-template-columns:1fr}}
+    .ac{display:flex;gap:.55rem;padding:.65rem .85rem;background:rgba(255,255,255,.7);border:1px solid #99F6E4;border-radius:7px}
+    .ac-code{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);font-weight:700;flex-shrink:0;white-space:nowrap;padding-top:.05rem}
+    .ac-txt{font-size:.78rem;color:var(--mid);line-height:1.4}
+    /* RES */
+    .res-list{margin-top:.8rem;display:flex;flex-direction:column}
+    .res{display:flex;gap:.55rem;align-items:baseline;padding:.4rem .6rem;border-bottom:1px solid rgba(13,148,136,.12);font-size:.82rem;color:rgba(255,255,255,.65)}
+    .res:last-child{border-bottom:none}
+    .res-code{font-family:var(--font-mono);font-size:.65rem;color:var(--term-green);font-weight:700;flex-shrink:0}
+    /* QUOTE */
+    .quote{border-left:3px solid #5EEAD4;padding:.9rem 1.3rem;background:rgba(13,148,136,.04);border-radius:0 8px 8px 0;margin:1.3rem 0;font-size:.9rem;color:var(--mid);line-height:1.72;font-style:italic}
+    /* EN BOX */
+    .en-box{background:linear-gradient(135deg,#FAF7F0,#F5EDD8);border-radius:12px;padding:1.6rem;margin:1.4rem 0;border:1px solid #E8D9B0;border-left:4px solid #C8A040;position:relative}
+    .en-box::before{content:"EN";position:absolute;top:.9rem;right:1rem;font-family:var(--font-mono);font-size:.6rem;color:#C8A040;background:#FAF7F0;padding:.15rem .4rem;border-radius:3px;border:1px solid #E8D9B0;letter-spacing:.08em}
+    .en-label{font-family:var(--font-mono);font-size:.68rem;color:#9A7020;letter-spacing:.1em;margin-bottom:.65rem}
+    .en-txt{color:#5A4A28;font-size:.86rem;line-height:1.78;font-style:italic}
+    .proj-img{border-radius:12px;overflow:hidden;border:1px solid var(--bg3);margin:1.4rem 0;background:linear-gradient(135deg,#020d0c,#0a2e2a);display:flex;align-items:center;justify-content:center;aspect-ratio:16/7}
+    .proj-img img{width:100%;height:100%;object-fit:cover}
+    @media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{position:static}.top-nav{padding:.9rem 1.5rem}.hero{padding:3rem 1.5rem}}
+  </style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">soumaya<div class="nav-logo-dot"></div></a>
+  <span class="nav-center">Projets / <span>SAE1.05</span></span>
+  <a href="index.html#projets" class="nav-back" onclick="sessionStorage.setItem('goProjects','1')">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="hero-grid"></div><div class="hero-glow"></div>
+  <div class="hero-data">[ "fichier_1.log", 45678912 ]
+[ "backup.zip",   12340000 ]
+[ "install.exe",   9203712 ]
+sorted(liste, key=lambda x: x[1])
+rglob("*") → 847 fichiers
+JSON → resultats.json</div>
+  <div class="hero-inner">
+    <div class="hero-badge">SAE1.05 — Semestre 1 · BUT R&T · IUT Colmar</div>
+    <h1 class="hero-title">Traiter des <em>données</em></h1>
+    <p class="hero-sub">Outil de reporting Python pour localiser les gros fichiers d'un disque — analyse récursive d'arborescence, tri, export JSON, interface graphique PyQt5 avec camembert et PowerShell.</p>
+    <div class="hero-chips">
+      <span class="chip chip-white">Python</span>
+      <span class="chip chip-white">PyQt5</span>
+      <span class="chip chip-white">PowerShell</span>
+      <span class="chip chip-white">pathlib</span>
+      <span class="chip chip-white">JSON</span>
+      <span class="chip chip-teal">Reporting</span>
+      <span class="chip chip-green">15/20</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="main-content">
+
+    <div class="s">
+      <div class="proj-img">
+        <img src="image/image_donnes.avif" alt="Traiter des données" onerror="this.src='image/image_donnes.jpg';this.onerror=null"/>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="score-banner">
+        <div class="score-item"><div class="score-val">15/20</div><div class="score-label">Note obtenue</div></div>
+        <div class="score-item"><div class="score-val">100%</div><div class="score-label">Code réalisé</div></div>
+        <div class="score-item"><div class="score-val">3</div><div class="score-label">Scripts Python</div></div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Vue d'ensemble</div>
+      <h2 class="s-title">Un outil de <span>reporting</span> complet</h2>
+      <div class="prose">
+        <p>Ce projet consistait à concevoir un outil capable d'analyser toute l'arborescence d'un disque dur, de localiser les fichiers dépassant un seuil de taille donné, et de présenter les résultats dans une interface graphique interactive. J'ai réalisé l'intégralité du code de manière autonome.</p>
+        <p>L'outil est orchestré par un script <strong style="color:var(--dark)">PowerShell</strong> qui enchaîne trois scripts Python : sélection du répertoire, analyse et export JSON, puis affichage graphique.</p>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-teal">
+        <div class="s-eye">Architecture</div>
+        <h2 class="s-title">Pipeline <span>3 scripts</span></h2>
+        <div class="arch-diag">
+          <div class="arch-flow">
+            <div class="arch-node">
+              <div class="arch-box ab-ps"><span class="arch-name">PowerShell</span><span class="arch-sub">Orchestrateur</span></div>
+            </div>
+            <span class="arch-arr">→</span>
+            <div class="arch-node">
+              <div class="arch-box ab-py"><span class="arch-name">Script 1</span><span class="arch-sub">QFileDialog</span></div>
+            </div>
+            <span class="arch-arr">→</span>
+            <div class="arch-node">
+              <div class="arch-box ab-py"><span class="arch-name">Script 2</span><span class="arch-sub">analyse_fichiers</span></div>
+            </div>
+            <span class="arch-arr">→</span>
+            <div class="arch-node">
+              <div class="arch-box ab-json"><span class="arch-name">resultats.json</span><span class="arch-sub">Top 100 fichiers</span></div>
+            </div>
+            <span class="arch-arr">→</span>
+            <div class="arch-node">
+              <div class="arch-box ab-gui"><span class="arch-name">Script 3</span><span class="arch-sub">PyQt5 UI</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tech-grid">
+          <div class="tech"><div class="tech-top"><div class="tech-dot td-g"></div><span class="tech-name">pathlib</span></div><div class="tech-desc">Parcours récursif multiplateforme avec <code style="font-family:var(--font-mono);font-size:.7rem">rglob("*")</code>.</div></div>
+          <div class="tech"><div class="tech-top"><div class="tech-dot td-y"></div><span class="tech-name">JSON</span></div><div class="tech-desc">Export structuré des 100 plus gros fichiers triés.</div></div>
+          <div class="tech"><div class="tech-top"><div class="tech-dot td-t"></div><span class="tech-name">PyQt5</span></div><div class="tech-desc">Interface graphique avec onglets, camembert et cases à cocher.</div></div>
+          <div class="tech"><div class="tech-top"><div class="tech-dot td-p"></div><span class="tech-name">QPieSeries</span></div><div class="tech-desc">Graphique camembert dynamique avec couleurs aléatoires.</div></div>
+          <div class="tech"><div class="tech-top"><div class="tech-dot td-t"></div><span class="tech-name">QFileDialog</span></div><div class="tech-desc">Sélecteur de répertoire graphique multiplateforme.</div></div>
+          <div class="tech"><div class="tech-top"><div class="tech-dot td-g"></div><span class="tech-name">PowerShell</span></div><div class="tech-desc">Orchestration et génération du script de suppression.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-olive">
+        <div class="s-eye" style="color:var(--olive-mid)">Mon rôle</div>
+        <h2 class="s-title" style="color:var(--dark)">Développement <span style="color:var(--olive-mid)">autonome</span></h2>
+        <div style="background:linear-gradient(135deg,rgba(74,92,42,.07),rgba(107,128,64,.03));border:1px solid var(--olive-pale);border-left:4px solid var(--olive-mid);border-radius:10px;padding:1.4rem;margin-top:1rem">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--olive);margin-bottom:.9rem">J'ai codé l'intégralité du projet</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem">
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Script PowerShell orchestrateur complet</div>
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Script 1 Python — sélecteur de répertoire QFileDialog</div>
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Script 2 Python — analyse récursive, tri lambda, export JSON</div>
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Script 3 Python — interface PyQt5, camembert, légendes, IHM</div>
+            <div style="display:flex;gap:.55rem;font-size:.84rem;color:var(--mid)"><span style="color:var(--olive-mid);font-family:var(--font-mono);font-size:.72rem;flex-shrink:0">→</span>Génération dynamique du script PowerShell de suppression</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-dark">
+        <div class="s-eye">Déroulement</div>
+        <h2 class="s-title">Chronologie <span style="color:var(--term-green)">du projet</span></h2>
+        <div class="tl">
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">01</div><div class="tl-c">Prise en main de <code>pathlib</code> et analyse récursive d'arborescence</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">02</div><div class="tl-c">Codage des fonctions d'inventaire, de tri <code>lambda</code> et de filtrage par seuil</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">03</div><div class="tl-c">Export JSON avec gestion des antislashs Windows</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">04</div><div class="tl-c">Script PowerShell orchestrateur — passage du répertoire en argument</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-n">05</div><div class="tl-c">Développement de l'interface PyQt5 — onglets, camembert, légendes avec cases à cocher</div></div></div>
+          <div class="tl-item"><div class="tl-l"><div class="tl-dot"></div></div><div><div class="tl-n">06</div><div class="tl-c">Génération automatique du script PowerShell de suppression des fichiers cochés</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="s-eye">Retour d'expérience</div>
+      <h2 class="s-title">Ce que j'en <span>retiens</span></h2>
+      <div class="quote">J'ai beaucoup apprécié réaliser ce projet. C'est l'un des premiers projets où j'ai dû concevoir une architecture multi-scripts et faire communiquer Python avec PowerShell. La gestion de l'interface PyQt5 — notamment le camembert dynamique et les cases à cocher — m'a donné le goût du développement d'interfaces graphiques, que j'ai ensuite approfondi en SAE3.02.</div>
+    </div>
+
+    <div class="s">
+      <div class="sc-teal">
+        <div class="s-eye">Compétences</div>
+        <h2 class="s-title">Ce que j'ai <span>développé</span></h2>
+        <div class="skill-groups">
+          <div><div class="sg-label">Programmation Python</div><div class="tags"><span class="tag tag-t">pathlib · rglob</span><span class="tag tag-t">Tri lambda</span><span class="tag tag-t">JSON</span><span class="tag tag-t">PyQt5</span></div></div>
+          <div><div class="sg-label">Interface graphique</div><div class="tags"><span class="tag tag-p">QPieSeries · QChart</span><span class="tag tag-p">QTabWidget</span><span class="tag tag-p">QCheckBox</span><span class="tag tag-p">QFileDialog</span></div></div>
+          <div><div class="sg-label">Système & scripting</div><div class="tags"><span class="tag tag-g">PowerShell</span><span class="tag tag-g">Multiplateforme</span><span class="tag tag-g">Gestion de fichiers</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-teal">
+        <div class="s-eye">Référentiel</div>
+        <h2 class="s-title">Apprentissages <span>critiques</span></h2>
+        <div class="ac-grid">
+          <div class="ac"><span class="ac-code">AC13.01</span><span class="ac-txt">Utiliser un système informatique et ses outils</span></div>
+          <div class="ac"><span class="ac-code">AC13.02</span><span class="ac-txt">Lire, exécuter, corriger et modifier un programme</span></div>
+          <div class="ac"><span class="ac-code">AC13.03</span><span class="ac-txt">Traduire un algorithme dans un langage et pour un environnement donné</span></div>
+          <div class="ac"><span class="ac-code">AC13.04</span><span class="ac-txt">Connaître l'architecture et les technologies d'un site Web</span></div>
+          <div class="ac"><span class="ac-code">AC13.05</span><span class="ac-txt">Choisir les mécanismes de gestion de données adaptés au développement de l'outil</span></div>
+          <div class="ac"><span class="ac-code">AC13.06</span><span class="ac-txt">S'intégrer dans un environnement propice au développement et au travail collaboratif</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="sc-dark">
+        <div class="s-eye">Formation</div>
+        <h2 class="s-title">Ressources <span style="color:var(--term-green)">mobilisées</span></h2>
+        <div class="res-list">
+          <div class="res"><span class="res-code">R1.07</span>Fondamentaux de la programmation</div>
+          <div class="res"><span class="res-code">R1.08</span>Bases des systèmes d'exploitation</div>
+          <div class="res"><span class="res-code">R1.10</span>Anglais technique 1</div>
+          <div class="res"><span class="res-code">R1.11</span>Expression-Culture-Communication Professionnelles</div>
+          <div class="res"><span class="res-code">R1.12</span>Projet Personnel et Professionnel</div>
+          <div class="res"><span class="res-code">R1.15</span>Gestion de projet 1 : Maîtriser les bases de l'organisation du travail</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s">
+      <div class="en-box">
+        <div class="en-label">// ENGLISH SUMMARY</div>
+        <div class="en-txt">This project involved building a complete Python reporting tool to locate large files on a disk. Using pathlib for recursive directory traversal, files are sorted by size, filtered by threshold, and exported to JSON. A PyQt5 graphical interface displays the results as a pie chart with colored legends, checkboxes for file selection, and a button to auto-generate a PowerShell deletion script. The entire pipeline is orchestrated by a PowerShell script.</div>
+      </div>
+    </div>
+
+  </div><!-- /main-content -->
+
+  <aside class="sidebar">
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="scard-head-title">Informations</span>
+      </div>
+      <div class="scard-body">
+        <div class="scard-row"><span class="scard-label">Compétence</span><span class="scard-val">UE1.3 Programmer</span></div>
+        <div class="scard-row"><span class="scard-label">Semestre</span><span class="scard-val">S1</span></div>
+        <div class="scard-row"><span class="scard-label">Équipe</span><span class="scard-val">2 personnes</span></div>
+        <div class="scard-row"><span class="scard-label">Encadrant</span><span class="scard-val">Olivier ECKLE</span></div>
+        <div class="scard-row"><span class="scard-label">Note</span><span class="scard-val ok">15 / 20</span></div>
+        <div class="scard-row"><span class="scard-label">Statut</span><span class="scard-val ok">✓ Terminé</span></div>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span class="scard-head-title">Équipe projet</span>
+      </div>
+      <div class="scard-body">
+        <div class="member"><div class="avatar av-me">SR</div><span class="member-name">Soumaya RABAH</span><span class="member-me">moi</span></div>
+        <div class="member"><div class="avatar av-teal">CS</div><span class="member-name">Chloé SONDAG</span></div>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="scard-head">
+        <svg class="scard-head-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        <span class="scard-head-title">Preuves &amp; Documents</span>
+      </div>
+      <div class="scard-body">
+        <a href="https://github.com/Soumaya68/SAE-Traiter-des-donn-s" target="_blank" class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          <span>GitHub — SAE-Traiter-des-données</span>
+        </a>
+        <a href="preuves/sujet-sae1.05.pdf" download class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Sujet SAE1.05</span>
+        </a>
+        <a href="preuves/presentation-sae1.05.pdf" download class="proof-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Présentation (PDF)</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+</div>
+</body>
+</html>
