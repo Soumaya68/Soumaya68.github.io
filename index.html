@@ -28,7 +28,11 @@
       <a onclick="showPage('contact')"      id="nav-contact">Contact</a>
     </div>
     <span class="nav-badge">Ouverte aux opportunités</span>
-    <button class="nav-mobile-btn" id="mobile-btn" aria-label="Menu">&#9776;</button>
+    <button class="nav-mobile-btn" id="mobile-btn" aria-label="Menu">
+      <span class="hb-bar"></span>
+      <span class="hb-bar"></span>
+      <span class="hb-bar"></span>
+    </button>
   </nav>
 
 
@@ -465,12 +469,12 @@
           </div>
         </div>
         <div class="qlegend">
-          <div class="qleg-row"><span class="qleg-dot" style="background:#5C8A3C;"></span><span class="qleg-txt">Curiosité</span></div>
-          <div class="qleg-row"><span class="qleg-dot" style="background:#3A7A8C;"></span><span class="qleg-txt">Adaptabilité</span></div>
-          <div class="qleg-row"><span class="qleg-dot" style="background:#8C6A3A;"></span><span class="qleg-txt">Relations</span></div>
-          <div class="qleg-row"><span class="qleg-dot" style="background:#7A3A8C;"></span><span class="qleg-txt">Rigueur</span></div>
-          <div class="qleg-row"><span class="qleg-dot" style="background:#3A5C8C;"></span><span class="qleg-txt">Communication</span></div>
-          <div class="qleg-row"><span class="qleg-dot" style="background:#8C3A5C;"></span><span class="qleg-txt">Détermination</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#A8D85C;"></span><span class="qleg-txt">Curiosité</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#3DD6E8;"></span><span class="qleg-txt">Adaptabilité</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#F5A843;"></span><span class="qleg-txt">Relations</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#C07EF0;"></span><span class="qleg-txt">Rigueur</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#5AA0F5;"></span><span class="qleg-txt">Communication</span></div>
+          <div class="qleg-row"><span class="qleg-dot" style="background:#F0607A;"></span><span class="qleg-txt">Détermination</span></div>
         </div>
       </div>
 
@@ -493,21 +497,34 @@
 
       </svg>
 
-      <!-- LIGNE 1 : 2 cercles en haut -->
-      <!-- Bulles flottantes décoratives -->
-      <div class="q-bubble qb1" style="width:55px;height:55px;background:#DCE8C4;top:6%;left:38%;"></div>
-      <div class="q-bubble qb2" style="width:30px;height:30px;background:#C8D9A8;top:10%;left:75%;"></div>
-      <div class="q-bubble qb3" style="width:45px;height:45px;background:#E8D4C5;top:50%;left:35%;"></div>
-      <div class="q-bubble qb4" style="width:20px;height:20px;background:#D4C5E8;top:55%;left:88%;"></div>
-      <div class="q-bubble qb5" style="width:38px;height:38px;background:#C5D8E8;bottom:7%;left:44%;"></div>
-      <div class="q-bubble qb6" style="width:24px;height:24px;background:#DCE8C4;bottom:12%;left:80%;"></div>
-      <div class="q-bubble qb7" style="width:18px;height:18px;background:#F9E5DC;top:28%;left:90%;"></div>
-      <div class="q-bubble qb8" style="width:40px;height:40px;background:#D8E4F4;top:75%;left:62%;"></div>
-      <div class="q-bubble qb1" style="width:16px;height:16px;background:#C8D9A8;top:20%;left:52%;animation-delay:1s;"></div>
-      <div class="q-bubble qb3" style="width:28px;height:28px;background:#EDF4DC;bottom:25%;left:50%;animation-delay:2s;"></div>
+      <!-- ── Halos de couleur en fond (grands cercles très flous) ── -->
+      <div class="q-halo" style="width:420px;height:420px;background:radial-gradient(circle,rgba(168,216,92,0.13) 0%,transparent 70%);top:-8%;left:32%;"></div>
+      <div class="q-halo" style="width:380px;height:380px;background:radial-gradient(circle,rgba(61,214,232,0.11) 0%,transparent 70%);top:0%;left:62%;"></div>
+      <div class="q-halo" style="width:460px;height:460px;background:radial-gradient(circle,rgba(245,168,67,0.10) 0%,transparent 70%);top:28%;left:38%;"></div>
+      <div class="q-halo" style="width:350px;height:350px;background:radial-gradient(circle,rgba(192,126,240,0.12) 0%,transparent 70%);top:20%;left:76%;"></div>
+      <div class="q-halo" style="width:400px;height:400px;background:radial-gradient(circle,rgba(90,160,245,0.11) 0%,transparent 70%);bottom:-5%;left:32%;"></div>
+      <div class="q-halo" style="width:340px;height:340px;background:radial-gradient(circle,rgba(240,96,122,0.10) 0%,transparent 70%);bottom:0%;left:60%;"></div>
+
+      <!-- ── Petites bulles flottantes ── -->
+      <div class="q-bubble qb1" style="width:55px;height:55px;background:rgba(168,216,92,0.22);top:6%;left:38%;"></div>
+      <div class="q-bubble qb2" style="width:30px;height:30px;background:rgba(61,214,232,0.20);top:10%;left:75%;"></div>
+      <div class="q-bubble qb3" style="width:45px;height:45px;background:rgba(245,168,67,0.20);top:50%;left:35%;"></div>
+      <div class="q-bubble qb4" style="width:20px;height:20px;background:rgba(192,126,240,0.22);top:55%;left:88%;"></div>
+      <div class="q-bubble qb5" style="width:38px;height:38px;background:rgba(90,160,245,0.20);bottom:7%;left:44%;"></div>
+      <div class="q-bubble qb6" style="width:24px;height:24px;background:rgba(240,96,122,0.20);bottom:12%;left:80%;"></div>
+      <div class="q-bubble qb7" style="width:18px;height:18px;background:rgba(61,214,232,0.18);top:28%;left:90%;"></div>
+      <div class="q-bubble qb8" style="width:40px;height:40px;background:rgba(90,160,245,0.18);top:75%;left:62%;"></div>
+      <div class="q-bubble qb1" style="width:16px;height:16px;background:rgba(168,216,92,0.18);top:20%;left:52%;animation-delay:1s;"></div>
+      <div class="q-bubble qb3" style="width:28px;height:28px;background:rgba(240,96,122,0.17);bottom:25%;left:50%;animation-delay:2s;"></div>
+      <div class="q-bubble qb2" style="width:12px;height:12px;background:rgba(192,126,240,0.20);top:15%;left:85%;animation-delay:0.5s;"></div>
+      <div class="q-bubble qb4" style="width:22px;height:22px;background:rgba(245,168,67,0.18);top:42%;left:95%;animation-delay:1.5s;"></div>
+      <div class="q-bubble qb5" style="width:14px;height:14px;background:rgba(240,96,122,0.18);top:68%;left:34%;animation-delay:2.5s;"></div>
+      <div class="q-bubble qb6" style="width:32px;height:32px;background:rgba(168,216,92,0.16);top:82%;left:88%;animation-delay:1.2s;"></div>
+      <div class="q-bubble qb7" style="width:10px;height:10px;background:rgba(61,214,232,0.20);bottom:18%;left:70%;animation-delay:0.8s;"></div>
+      <div class="q-bubble qb8" style="width:48px;height:48px;background:rgba(192,126,240,0.14);top:3%;left:58%;animation-delay:3s;"></div>
 
       <div class="qnode qfloat1" id="qn0" data-delay="100" style="top:4%; left:40%;">
-        <div class="qcimg" style="width:168px;height:168px;border-color:#5C8A3C;">
+        <div class="qcimg" style="width:168px;height:168px;border-color:#A8D85C;">
           <img src="image/image_curieux.avif" alt="Esprit curieux"/>
         </div>
         <div class="qclabel">
@@ -517,7 +534,7 @@
       </div>
 
       <div class="qnode qfloat2" id="qn1" data-delay="160" style="top:4%; left:68%;">
-        <div class="qcimg" style="width:168px;height:168px;border-color:#3A7A8C;">
+        <div class="qcimg" style="width:168px;height:168px;border-color:#3DD6E8;">
           <img src="image/image_adaptabilite.avif" alt="Adaptabilité"/>
         </div>
         <div class="qclabel">
@@ -528,7 +545,7 @@
 
       <!-- LIGNE 2 : 1 cercle centré -->
       <div class="qnode qfloat3" id="qn2" data-delay="240" style="top:35%; left:54%;">
-        <div class="qcimg" style="width:175px;height:175px;border-color:#8C6A3A;">
+        <div class="qcimg" style="width:175px;height:175px;border-color:#F5A843;">
           <img src="image/image_relation.avif" alt="Aisance relationnelle"/>
         </div>
         <div class="qclabel">
@@ -539,7 +556,7 @@
 
       <!-- LIGNE 3 : 2 cercles en bas -->
       <div class="qnode qfloat4" id="qn3" data-delay="320" style="bottom:4%; left:40%;">
-        <div class="qcimg" style="width:165px;height:165px;border-color:#3A5C8C;">
+        <div class="qcimg" style="width:165px;height:165px;border-color:#5AA0F5;">
           <img src="image/image_communication.avif" alt="Communication"/>
         </div>
         <div class="qclabel">
@@ -549,7 +566,7 @@
       </div>
 
       <div class="qnode qfloat5" id="qn4" data-delay="380" style="bottom:4%; left:68%;">
-        <div class="qcimg" style="width:165px;height:165px;border-color:#8C3A5C;">
+        <div class="qcimg" style="width:165px;height:165px;border-color:#F0607A;">
           <img src="image/image_determination.avif" alt="Détermination"/>
         </div>
         <div class="qclabel">
@@ -560,7 +577,7 @@
 
       <!-- Rigueur — grand, milieu droit -->
       <div class="qnode qfloat6" id="qn5" data-delay="280" style="top:33%; left:82%;">
-        <div class="qcimg" style="width:175px;height:175px;border-color:#7A3A8C;">
+        <div class="qcimg" style="width:175px;height:175px;border-color:#C07EF0;">
           <img src="image/image_realiste.avif" alt="Rigueur"/>
         </div>
         <div class="qclabel">
@@ -1257,16 +1274,6 @@
         }, 500);
       }
 
-      if (id === 'qualites') {
-        document.querySelectorAll('.qual-reveal').forEach(el => el.classList.remove('visible'));
-        setTimeout(() => {
-          document.querySelectorAll('.qual-reveal').forEach(el => {
-            const delay = parseInt(el.dataset.delay || 0);
-            setTimeout(() => el.classList.add('visible'), delay);
-          });
-        }, 80);
-      }
-
       if (id === 'experiences') {
         document.querySelectorAll('.xp-reveal').forEach(el => el.classList.remove('vis'));
         const termBody = document.getElementById('xp-term-body');
@@ -1364,8 +1371,8 @@
               labels: ['Curiosité','Adaptabilité','Relations','Rigueur','Communication','Détermination'],
               datasets: [{
                 data: [92,88,85,90,82,95],
-                backgroundColor: ['#5C8A3C','#3A7A8C','#8C6A3A','#7A3A8C','#3A5C8C','#8C3A5C'],
-                borderWidth: 4,
+                backgroundColor: ['#A8D85C','#3DD6E8','#F5A843','#C07EF0','#5AA0F5','#F0607A'],
+                borderWidth: 3,
                 borderColor: '#3D5226',
                 hoverBorderWidth: 4
               }]
@@ -1373,7 +1380,7 @@
             options: {
               responsive: false,
               cutout: '58%',
-              animation: { animateRotate: true, duration: 1200, easing: 'easeInOutQuart' },
+              animation: { animateRotate: true, duration: 2000, easing: 'easeInOutQuart' },
               plugins: {
                 legend: { display: false },
                 tooltip: { callbacks: { label: c => ' ' + c.label } }
@@ -1401,7 +1408,7 @@
             path.style.strokeDasharray = `0 ${totalLen}`;
             path.style.strokeDashoffset = '0';
 
-            const duration = 9000;
+            const duration = 6500;
             const start = performance.now();
 
             function step(now) {
@@ -1476,16 +1483,20 @@
               iconSize: [14, 14], iconAnchor: [7, 7], className: ''
             });
 
-            // Animation progressive zoom vers Colmar
-            setTimeout(() => map.flyTo([48.0794, 7.3589], 5,  { duration: 0.8, easeLinearity: 0.5 }), 300);
-            setTimeout(() => map.flyTo([48.0794, 7.3589], 9,  { duration: 0.9, easeLinearity: 0.4 }), 1200);
-            setTimeout(() => map.flyTo([48.0794, 7.3589], 13, { duration: 1.0, easeLinearity: 0.3 }), 2200);
-            setTimeout(() => {
-              L.marker([48.0794, 7.3589], { icon })
-                .addTo(map)
-                .bindPopup('<b>Colmar</b><br>Alsace, France')
-                .openPopup();
-            }, 3300);
+            // Zoom fluide unique vers Colmar (évite les saccades d'enchaînement)
+            map.whenReady(() => {
+              // recalcule la taille du conteneur (corrige tuiles grises/décalées)
+              setTimeout(() => map.invalidateSize(), 60);
+              setTimeout(() => {
+                map.flyTo([48.0794, 7.3589], 13, { duration: 2.4, easeLinearity: 0.25 });
+                map.once('moveend', () => {
+                  L.marker([48.0794, 7.3589], { icon })
+                    .addTo(map)
+                    .bindPopup('<b>Colmar</b><br>Alsace, France')
+                    .openPopup();
+                });
+              }, 250);
+            });
           }, 300);
         }, 80);
       }
@@ -1590,22 +1601,29 @@
       }, 50);
     }
 
-    document.getElementById('mobile-btn').addEventListener('click', function () {
-      const nav = document.getElementById('nav-links');
-      const isOpen = nav.classList.contains('mobile-open');
-      if (isOpen) {
-        nav.classList.remove('mobile-open');
-        nav.removeAttribute('style');
-      } else {
-        nav.classList.add('mobile-open');
-        Object.assign(nav.style, {
-          display: 'flex', flexDirection: 'column',
-          position: 'absolute', top: '54px', left: '0', right: '0',
-          background: 'var(--bg)', padding: '1.2rem 1.5rem',
-          borderBottom: '1px solid var(--bg3)', zIndex: '199', gap: '1rem'
-        });
+    (function(){
+      const btn  = document.getElementById('mobile-btn');
+      const menu = document.getElementById('nav-links');
+      function openMenu(){
+        menu.classList.add('mobile-open');
+        btn.classList.add('is-open');
+        document.addEventListener('click', outside, true);
       }
-    });
+      function closeMenu(){
+        menu.classList.remove('mobile-open');
+        btn.classList.remove('is-open');
+        document.removeEventListener('click', outside, true);
+      }
+      function outside(e){
+        if(!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        menu.classList.contains('mobile-open') ? closeMenu() : openMenu();
+      });
+      // fermer quand on clique un lien du menu
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    })();
 
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();

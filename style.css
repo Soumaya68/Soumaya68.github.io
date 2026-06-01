@@ -129,15 +129,32 @@ nav {
   white-space: nowrap;
 }
 
-/* Mobile menu */
+/* ── Hamburger button ── */
 .nav-mobile-btn {
   display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--dark);
-  font-size: 1.3rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  background: none; border: none;
+  cursor: pointer; padding: 4px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  flex-shrink: 0;
 }
+.nav-mobile-btn:hover { background: rgba(200,217,168,0.12); }
+.hb-bar {
+  display: block;
+  width: 22px; height: 2px;
+  background: rgba(220,232,196,0.85);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+/* Croix quand ouvert */
+.nav-mobile-btn.is-open .hb-bar:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.nav-mobile-btn.is-open .hb-bar:nth-child(2){ opacity: 0; transform: scaleX(0); }
+.nav-mobile-btn.is-open .hb-bar:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 
 /* ============================================================
    PAGE SYSTEM (SPA)
@@ -2064,11 +2081,11 @@ nav {
 .ct-reveal {
   opacity: 0;
   transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 .ct-reveal.vis {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
 /* ── Colonne gauche ── */
@@ -2499,8 +2516,10 @@ footer {
   display: flex; flex-direction: column; align-items: center;
   cursor: default; z-index: 30;
   opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.qnode.vis { opacity: 1; }
+.qnode.vis { opacity: 1; transform: translateY(0); }
 
 .qcimg {
   border-radius: 50%; overflow: hidden;
@@ -2533,18 +2552,18 @@ footer {
 
 /* Animations flottantes */
 @keyframes qfl1 { 0%,100%{transform:translateY(0)}    50%{transform:translateY(-12px)} }
-@keyframes qfl2 { 0%,100%{transform:translateY(-6px)} 50%{transform:translateY(8px)} }
+@keyframes qfl2 { 0%,100%{transform:translateY(0)}    50%{transform:translateY(10px)} }
 @keyframes qfl3 { 0%,100%{transform:translateY(0)}    40%{transform:translateY(-10px)} 70%{transform:translateY(5px)} }
-@keyframes qfl4 { 0%,100%{transform:translateY(-4px)} 50%{transform:translateY(9px)} }
+@keyframes qfl4 { 0%,100%{transform:translateY(0)}    50%{transform:translateY(9px)} }
 @keyframes qfl5 { 0%,100%{transform:translateY(0)}    50%{transform:translateY(-9px)} }
 @keyframes qfl6 { 0%,100%{transform:translateY(0)}    30%{transform:translateY(8px)} 70%{transform:translateY(-8px)} }
 
-.qnode.vis.qfloat1 { animation: qfl1 5.2s ease-in-out infinite; }
-.qnode.vis.qfloat2 { animation: qfl2 6.4s ease-in-out infinite; }
-.qnode.vis.qfloat3 { animation: qfl3 7.1s ease-in-out infinite; }
-.qnode.vis.qfloat4 { animation: qfl4 5.8s ease-in-out infinite; }
-.qnode.vis.qfloat5 { animation: qfl5 6.8s ease-in-out infinite; }
-.qnode.vis.qfloat6 { animation: qfl6 4.9s ease-in-out infinite; }
+.qnode.vis.qfloat1 .qcimg { animation: qfl1 5.2s ease-in-out infinite; }
+.qnode.vis.qfloat2 .qcimg { animation: qfl2 6.4s ease-in-out infinite; }
+.qnode.vis.qfloat3 .qcimg { animation: qfl3 7.1s ease-in-out infinite; }
+.qnode.vis.qfloat4 .qcimg { animation: qfl4 5.8s ease-in-out infinite; }
+.qnode.vis.qfloat5 .qcimg { animation: qfl5 6.8s ease-in-out infinite; }
+.qnode.vis.qfloat6 .qcimg { animation: qfl6 4.9s ease-in-out infinite; }
 
 /* Chemin pointillé animé */
 #qpath-svg { opacity: 0; transition: opacity 0.3s ease; }
@@ -2552,6 +2571,14 @@ footer {
 #qpath { stroke-dasharray: 6 10; }
 
 /* Bulles flottantes décoratives zone droite */
+.q-halo {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(40px);
+}
+
 .q-bubble {
   position: absolute;
   border-radius: 50%;
@@ -2732,11 +2759,36 @@ footer {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
+  /* ── Nav ── */
+  nav { padding: 0.85rem 1.5rem; position: relative; }
+  .nav-mobile-btn { display: flex; }
   .nav-badge { display: none; }
-  .nav-mobile-btn { display: block; }
 
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: #1E2A10;
+    border-top: 1px solid rgba(200,217,168,0.12);
+    border-bottom: 1px solid rgba(200,217,168,0.12);
+    padding: 0.8rem 0;
+    z-index: 199;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    gap: 0;
+  }
+  .nav-links.mobile-open { display: flex; }
+  .nav-links a {
+    padding: 0.75rem 1.6rem;
+    font-size: 0.9rem;
+    border-radius: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(200,217,168,0.07);
+  }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-links a:hover { background: rgba(200,217,168,0.08); }
+
+  /* ── Layout pages ── */
   .hero { grid-template-columns: 1fr; }
   .hero-right { min-height: 50vh; }
   .hero-left { padding: 2.5rem 1.5rem; }
@@ -2759,6 +2811,30 @@ footer {
   .xp-date { text-align: left; }
   .xp-line { display: none; }
   .timeline { padding: 2rem 1.5rem; }
+
+  /* ── Page qualités ── */
+  .qualites-page {
+    height: auto; min-height: calc(100vh - 54px);
+    overflow: auto;
+    grid-template-columns: 1fr;
+  }
+  .qbg-zone { position: relative; width: 100%; height: auto; }
+  .qbg-accent1 { position: relative; left: 0; width: 100%; }
+  .qdonut-block {
+    position: relative; width: 100%; height: auto;
+    padding: 3rem 1.5rem 2rem;
+  }
+  .qdonut-inner { width: 200px; height: 200px; }
+  .qdonut-inner canvas { width: 200px !important; height: 200px !important; }
+  #qpath-svg { left: 0; width: 100%; }
+}
+
+/* ── Petits écrans ── */
+@media (max-width: 600px) {
+  .hero-left h1 { font-size: 2rem; }
+  .hero-left { padding: 2rem 1.2rem; }
+  .soft-grid { grid-template-columns: repeat(2, 1fr); }
+  .skill-cards-wrap { grid-template-columns: 1fr; }
 }
 /* ============================================================
    ERA-BLOCKS — PROJETS (scroll continu, sans onglets)
