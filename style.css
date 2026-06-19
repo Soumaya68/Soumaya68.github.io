@@ -989,6 +989,17 @@ nav {
   animation: certPulse 2.5s ease-in-out infinite;
 }
 
+.prg-cert {
+  background: #2A1F0E;
+  color: #D4A86A;
+  border: 1px solid #5C4520;
+  animation: certPulseAmber 2.5s ease-in-out infinite;
+}
+@keyframes certPulseAmber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,106,0); }
+  50%       { box-shadow: 0 0 10px 2px rgba(212,168,106,0.3); }
+}
+
 .con-cert {
   background: #101E28;
   color: #50B0C0;
@@ -3173,4 +3184,412 @@ footer {
 @media (max-width: 600px) {
   .pgrid-row-4 { grid-template-columns: 1fr; }
   .pgrid-hero, .pgrid-sq { height: 200px; }
+}
+
+/* Sécuriser — vert */
+.comp-sec { border-left: 4px solid #5C8A3C; }
+.comp-block-reverse.comp-sec { border-left: none; border-right: 4px solid #5C8A3C; }
+.comp-sec .comp-block-tag { color: #5C8A3C; }
+.comp-sec .scan-check { color: #5C8A3C; }
+.comp-sec .comp-block-color-bar { background: linear-gradient(90deg, #5C8A3C, #8ABF5A); }
+
+.sec-cert {
+  background: #14281A;
+  color: #8DC050;
+  border: 1px solid #2D5F1A;
+  animation: certPulseGreen 2.5s ease-in-out infinite;
+}
+@keyframes certPulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(141,192,80,0); }
+  50%       { box-shadow: 0 0 10px 2px rgba(141,192,80,0.3); }
+}
+
+/* Surveiller — bleu marine */
+.comp-sur { border-left: 4px solid #1A237E; }
+.comp-block-reverse.comp-sur { border-left: none; border-right: 4px solid #1A237E; }
+.comp-sur .comp-block-tag { color: #1A237E; }
+.comp-sur .scan-check { color: #1A237E; }
+.comp-sur .comp-block-color-bar { background: linear-gradient(90deg, #1A237E, #3F51B5); }
+
+.sur-cert {
+  background: #0A0E2A;
+  color: #7C93E5;
+  border: 1px solid #2C3F8C;
+  animation: certPulseNavy 2.5s ease-in-out infinite;
+}
+@keyframes certPulseNavy {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124,147,229,0); }
+  50%       { box-shadow: 0 0 10px 2px rgba(124,147,229,0.3); }
+}
+
+
+/* Intro vulgarisée des compétences */
+.comp-block-intro {
+  font-size: 0.86rem;
+  color: var(--mid);
+  line-height: 1.65;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  background: rgba(0,0,0,0.025);
+  border-radius: 6px;
+  border-left: 3px solid currentColor;
+  opacity: 0.85;
+}
+.comp-adm .comp-block-intro { color: #6B9E40; border-left-color: #6B9E40; background: rgba(107,158,64,0.07); }
+.comp-con .comp-block-intro { color: #3A7A8C; border-left-color: #3A7A8C; background: rgba(58,122,140,0.07); }
+.comp-prg .comp-block-intro { color: #8C6A3A; border-left-color: #8C6A3A; background: rgba(140,106,58,0.07); }
+.comp-sec .comp-block-intro { color: #2D5F1A; border-left-color: #5C8A3C; background: rgba(92,138,60,0.08); }
+.comp-sur .comp-block-intro { color: #1A237E; border-left-color: #1A237E; background: rgba(26,35,126,0.06); }
+
+.comp-block-intro strong { color: inherit; font-weight: 700; font-style: normal; }
+
+
+
+
+/* ════════════════════════════════════════════
+   CARTE STAGE ENRICHIE — design coloré + schémas
+   ════════════════════════════════════════════ */
+
+.xp-card-featured .xp-card-body {
+  background: #fff;
+}
+
+.xp-stage-body {
+  padding: 0 1.4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid var(--bg2);
+  padding-top: 1.1rem;
+  margin-top: 0.2rem;
+}
+
+/* === Section générique colorée === */
+.xp-sec {
+  padding: 1.1rem 1.2rem 1.2rem;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.xp-sec-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.xp-sec-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+.xp-sec-title-block { display: flex; flex-direction: column; gap: 2px; }
+
+.xp-sec-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.xp-sec-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+}
+
+.xp-sec-desc {
+  font-size: 0.83rem;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 0.85rem;
+}
+
+/* === Variantes colorées === */
+.xp-sec-blue   { background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border: 1px solid #BFDBFE; }
+.xp-sec-blue   .xp-sec-num     { background: #1D4ED8; }
+.xp-sec-blue   .xp-sec-eyebrow { color: #1D4ED8; }
+
+.xp-sec-purple { background: linear-gradient(135deg, #FAF5FF 0%, #EDE9FE 100%); border: 1px solid #DDD6FE; }
+.xp-sec-purple .xp-sec-num     { background: #7C3AED; }
+.xp-sec-purple .xp-sec-eyebrow { color: #7C3AED; }
+
+.xp-sec-amber  { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 1px solid #FDE68A; }
+.xp-sec-amber  .xp-sec-num     { background: #D97706; }
+.xp-sec-amber  .xp-sec-eyebrow { color: #D97706; }
+
+.xp-sec-pink   { background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%); border: 1px solid #FBCFE8; }
+.xp-sec-pink   .xp-sec-num     { background: #EC4899; }
+.xp-sec-pink   .xp-sec-eyebrow { color: #EC4899; }
+
+/* === Schéma du LAB === */
+.xp-lab-schema {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  margin: 0.6rem 0 0.9rem;
+  border: 1px solid #BFDBFE;
+}
+.xp-lab-schema svg { width: 100%; height: auto; display: block; }
+
+/* === Pills colorées === */
+.xp-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+.xp-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  background: #fff;
+  color: var(--pc);
+  border: 1.5px solid var(--pc);
+  letter-spacing: 0.02em;
+  transition: transform 0.2s;
+  cursor: default;
+}
+.xp-pill:hover {
+  transform: translateY(-2px);
+  background: var(--pc);
+  color: #fff;
+}
+
+/* === Téléphonie : comparatif 3 cartes === */
+.xp-tel-compare {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.xp-tel-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  border: 1.5px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.xp-tel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.xp-tel-ipbx    { border-color: #7C3AED; }
+.xp-tel-pabx    { border-color: #92400E; }
+.xp-tel-centrex { border-color: #0D9488; }
+
+.xp-tel-badge {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  align-self: flex-start;
+  text-transform: uppercase;
+}
+.xp-tel-ipbx    .xp-tel-badge { background: #EDE9FE; color: #7C3AED; }
+.xp-tel-pabx    .xp-tel-badge { background: #FEF3C7; color: #92400E; }
+.xp-tel-centrex .xp-tel-badge { background: #CCFBF1; color: #0D9488; }
+
+.xp-tel-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.xp-tel-ipbx    .xp-tel-name { color: #7C3AED; }
+.xp-tel-pabx    .xp-tel-name { color: #92400E; }
+.xp-tel-centrex .xp-tel-name { color: #0D9488; }
+
+.xp-tel-desc {
+  font-size: 0.72rem;
+  color: var(--mid);
+  line-height: 1.55;
+}
+
+/* === Téléphonie : mini cards Cordless + Handover === */
+.xp-tel-extra {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+.xp-tel-mini {
+  background: #fff;
+  border-radius: 10px;
+  border-left: 4px solid var(--pc);
+  padding: 0.65rem 0.85rem;
+}
+.xp-tel-mini-name {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--pc);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.01em;
+}
+.xp-tel-mini-desc {
+  font-size: 0.74rem;
+  color: var(--mid);
+  line-height: 1.55;
+}
+
+/* === Logiciels : grille colorée === */
+.xp-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+.xp-tool-c {
+  background: var(--pcb);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  border-left: 4px solid var(--pc);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.xp-tool-c:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+.xp-tool-name {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--pc);
+  letter-spacing: -0.01em;
+}
+.xp-tool-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--mid);
+  letter-spacing: 0.02em;
+}
+
+.xp-partner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #FDE68A;
+}
+.xp-partner-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.xp-partner-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #D97706;
+  letter-spacing: -0.01em;
+}
+
+/* === Missions : grille colorée === */
+.xp-missions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+.xp-mission-c {
+  background: var(--pcb);
+  border-radius: 10px;
+  padding: 0.85rem 0.95rem;
+  border-top: 3px solid var(--pc);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.xp-mission-c:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.xp-mission-c-num {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--pc);
+  opacity: 0.18;
+  line-height: 1;
+}
+.xp-mission-c-title {
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--pc);
+  letter-spacing: -0.01em;
+  padding-right: 1.5rem;
+}
+.xp-mission-c-desc {
+  font-size: 0.75rem;
+  color: var(--mid);
+  line-height: 1.6;
+}
+
+/* === Quote finale === */
+.xp-stage-quote {
+  position: relative;
+  padding: 1.1rem 1.3rem 1.1rem 2.8rem;
+  background: linear-gradient(135deg, #3D5226 0%, #2D3E1A 100%);
+  border-radius: 12px;
+  color: rgba(255,255,255,0.94);
+}
+.xp-stage-quote-mark {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--term-green);
+  line-height: 1;
+  opacity: 0.6;
+}
+.xp-stage-quote p {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* === Responsive === */
+@media (max-width: 800px) {
+  .xp-tel-compare    { grid-template-columns: 1fr; }
+  .xp-tel-extra      { grid-template-columns: 1fr; }
+  .xp-tools-grid     { grid-template-columns: repeat(2, 1fr); }
+  .xp-missions-grid  { grid-template-columns: 1fr; }
 }
