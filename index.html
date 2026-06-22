@@ -914,7 +914,7 @@
           <div class="xp-timeline-list">
 
             <!-- Stage ATScom -->
-            <div class="xp-card-new xp-reveal xp-card-featured" data-delay="0">
+            <div class="xp-card-new xp-reveal stage-card" data-delay="0">
               <div class="xp-meta">
                 <div class="xp-year">2026</div>
                 <div class="xp-duration">2 mois</div>
@@ -924,270 +924,321 @@
                 <div class="xp-tl-dot"></div>
                 <div class="xp-tl-line"></div>
               </div>
-              <div class="xp-card-body">
-                <div class="xp-card-accent" style="background:linear-gradient(135deg,#5C8A3C,#96B060);"></div>
-                <div class="xp-card-top">
-                  <div class="xp-card-img">
-                    <img src="image/image_stage.jpg" alt="ATScom" />
-                  </div>
-                  <div class="xp-card-text">
-                    <div class="xp-card-company">ATScom · Équipe d'une dizaine de personnes</div>
-                    <div class="xp-card-title">Stage Technicienne Réseau &amp; Téléphonie</div>
-                    <div class="xp-card-desc">Stage de 2 mois dans une PME spécialisée en téléphonie d'entreprise et réseaux. J'ai pu toucher à l'ensemble du métier : du lab d'apprentissage aux interventions clients, en passant par l'administration à distance des centraux téléphoniques, le support N1 et un projet Active Directory.</div>
-                  </div>
-                </div>
 
-                <!-- Stage enrichi -->
-                <div class="xp-stage-body">
+              <article class="stage-content">
 
-                  <!-- Section LAB avec schéma -->
-                  <div class="xp-sec xp-sec-blue">
-                    <div class="xp-sec-head">
-                      <div class="xp-sec-num">01</div>
-                      <div class="xp-sec-title-block">
-                        <div class="xp-sec-eyebrow">Semaines d'intégration</div>
-                        <div class="xp-sec-title">Lab d'apprentissage réseau</div>
-                      </div>
+                <!-- ═══ HERO HEADER ═══ -->
+                <header class="stage-hero">
+                  <div class="stage-hero-bg">
+                    <svg viewBox="0 0 500 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="stagebg" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stop-color="#3D5226"/>
+                          <stop offset="100%" stop-color="#5C7041"/>
+                        </linearGradient>
+                      </defs>
+                      <rect width="500" height="160" fill="url(#stagebg)"/>
+                      <circle cx="430" cy="40" r="65" fill="#87A06B" opacity="0.18"/>
+                      <circle cx="460" cy="120" r="35" fill="#C9A876" opacity="0.22"/>
+                      <circle cx="50" cy="140" r="50" fill="#5E768C" opacity="0.15"/>
+                      <path d="M 0 130 Q 125 100 250 120 T 500 110" stroke="#C8D9A8" stroke-width="1.5" fill="none" opacity="0.35"/>
+                    </svg>
+                  </div>
+                  <div class="stage-hero-content">
+                    <div class="stage-hero-eyebrow">Stage de fin de 2e année · 2 mois</div>
+                    <h3 class="stage-hero-title">ATScom</h3>
+                    <p class="stage-hero-sub">Technicienne Réseau &amp; Téléphonie d'entreprise</p>
+                  </div>
+                  <div class="stage-hero-stats">
+                    <div class="stage-stat"><strong>10</strong><span>collègues</span></div>
+                    <div class="stage-stat"><strong>7</strong><span>missions</span></div>
+                    <div class="stage-stat"><strong>6</strong><span>logiciels</span></div>
+                    <div class="stage-stat"><strong>1</strong><span>projet AD</span></div>
+                  </div>
+                </header>
+
+                <!-- ═══ SECTION A : LAB ═══ -->
+                <section class="stage-block sb-lab">
+                  <div class="sb-head">
+                    <span class="sb-letter">A</span>
+                    <div>
+                      <div class="sb-kicker">Semaines d'intégration</div>
+                      <h4 class="sb-title">Mon poste de travail — le lab</h4>
                     </div>
-                    <p class="xp-sec-desc">Mon tuteur m'a construit un laboratoire complet pour me faire pratiquer les fondamentaux du métier : configuration de VLAN, ports trunk, ACL, adressage IP, division en sous-réseaux, ainsi que tout le câblage, l'alimentation et le diagnostic de pannes.</p>
+                  </div>
+                  <div class="sb-lab-stack">
+                    <div class="sb-lab-text">
+                      <p>Mon tuteur m'a construit dès le premier jour un <strong>laboratoire complet</strong> pour pratiquer les fondamentaux du métier. Cinq équipements interconnectés, des dizaines de manipulations.</p>
+                      <ul class="sb-list">
+                        <li><span class="sb-marker"></span>Configuration de <strong>VLAN</strong> et ports <strong>Trunk 802.1Q</strong></li>
+                        <li><span class="sb-marker"></span>Mise en place d'<strong>ACL</strong> et règles de filtrage</li>
+                        <li><span class="sb-marker"></span>Adressage IP et division en sous-réseaux</li>
+                        <li><span class="sb-marker"></span>Câblage, alimentation, diagnostic de pannes</li>
+                      </ul>
+                    </div>
+                    <div class="sb-lab-schema sb-lab-schema-h">
+                      <svg viewBox="0 0 740 220" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Lignes animées horizontales -->
+                        <g class="sb-flow">
+                          <path d="M 130 110 L 195 110" stroke="#3D5226" stroke-width="2.5" stroke-dasharray="4 3"/>
+                          <path d="M 320 110 L 390 110" stroke="#3D5226" stroke-width="2.5" stroke-dasharray="4 3"/>
+                          <path d="M 505 110 L 580 50"  stroke="#3D5226" stroke-width="2.5" stroke-dasharray="4 3"/>
+                          <path d="M 505 110 L 580 170" stroke="#3D5226" stroke-width="2.5" stroke-dasharray="4 3"/>
+                        </g>
 
-                    <!-- Schéma du lab -->
-                    <div class="xp-lab-schema">
-                      <svg viewBox="0 0 560 130" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Lignes de connexion -->
-                        <path d="M 80 65 L 170 65" stroke="#3A7A8C" stroke-width="2" stroke-dasharray="4 3"/>
-                        <path d="M 220 65 L 310 65" stroke="#3A7A8C" stroke-width="2" stroke-dasharray="4 3"/>
-                        <path d="M 360 65 L 450 35" stroke="#3A7A8C" stroke-width="2" stroke-dasharray="4 3"/>
-                        <path d="M 360 65 L 450 95" stroke="#3A7A8C" stroke-width="2" stroke-dasharray="4 3"/>
+                        <!-- Modem 4G — une seule ligne -->
+                        <g class="sb-node sb-node-a">
+                          <rect x="20" y="80" width="110" height="60" rx="10" fill="#5E768C"/>
+                          <text x="75" y="115" text-anchor="middle" font-family="DM Mono,monospace" font-size="11" font-weight="700" fill="#fff">MODEM 4G</text>
+                        </g>
 
-                        <!-- Modem 4G -->
-                        <rect x="20" y="40" width="60" height="50" rx="6" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="1.5"/>
-                        <text x="50" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" font-weight="700" fill="#1E3A8A">MODEM</text>
-                        <text x="50" y="76" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" font-weight="700" fill="#1E3A8A">4G</text>
-
-                        <!-- Firewall -->
-                        <rect x="170" y="40" width="50" height="50" rx="6" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
-                        <text x="195" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" font-weight="700" fill="#991B1B">FIRE</text>
-                        <text x="195" y="76" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" font-weight="700" fill="#991B1B">WALL</text>
+                        <!-- Firewall — une seule ligne -->
+                        <g class="sb-node sb-node-b">
+                          <rect x="200" y="80" width="120" height="60" rx="10" fill="#8C4A4A"/>
+                          <text x="260" y="115" text-anchor="middle" font-family="DM Mono,monospace" font-size="11" font-weight="700" fill="#fff">FIREWALL</text>
+                        </g>
 
                         <!-- Switch -->
-                        <rect x="310" y="40" width="50" height="50" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
-                        <text x="335" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" font-weight="700" fill="#92400E">SWI</text>
-                        <text x="335" y="76" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" font-weight="700" fill="#92400E">TCH</text>
+                        <g class="sb-node sb-node-c">
+                          <rect x="395" y="80" width="110" height="60" rx="10" fill="#C9A876"/>
+                          <text x="450" y="115" text-anchor="middle" font-family="DM Mono,monospace" font-size="11" font-weight="700" fill="#5A4419">SWITCH</text>
+                        </g>
 
-                        <!-- Poste -->
-                        <rect x="450" y="10" width="60" height="50" rx="6" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/>
-                        <text x="480" y="32" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" font-weight="700" fill="#14532D">POSTE</text>
-                        <text x="480" y="46" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" font-weight="700" fill="#14532D">CLIENT</text>
+                        <!-- Poste Client — une seule ligne -->
+                        <g class="sb-node sb-node-d">
+                          <rect x="580" y="20" width="145" height="60" rx="10" fill="#5C7041"/>
+                          <text x="652" y="55" text-anchor="middle" font-family="DM Mono,monospace" font-size="11" font-weight="700" fill="#fff">POSTE CLIENT</text>
+                        </g>
 
-                        <!-- Téléphone -->
-                        <rect x="450" y="70" width="60" height="50" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
-                        <text x="480" y="92" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" font-weight="700" fill="#4C1D95">TÉLÉ</text>
-                        <text x="480" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" font-weight="700" fill="#4C1D95">PHONE</text>
+                        <!-- Téléphone — une seule ligne -->
+                        <g class="sb-node sb-node-e">
+                          <rect x="580" y="140" width="145" height="60" rx="10" fill="#87A06B"/>
+                          <text x="652" y="175" text-anchor="middle" font-family="DM Mono,monospace" font-size="11" font-weight="700" fill="#3D5226">TÉLÉPHONE</text>
+                        </g>
 
-                        <!-- Labels VLAN -->
-                        <text x="125" y="58" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#3A7A8C">WAN</text>
-                        <text x="265" y="58" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#3A7A8C">TRUNK</text>
-                        <text x="408" y="40" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#3A7A8C">VLAN 10</text>
-                        <text x="408" y="92" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#3A7A8C">VLAN 20</text>
+                        <!-- Labels -->
+                        <text x="162" y="100" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" font-weight="700" fill="#3D5226">WAN</text>
+                        <text x="355" y="100" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" font-weight="700" fill="#3D5226">TRUNK</text>
+                        <text x="540" y="68"  text-anchor="middle" font-family="DM Mono,monospace" font-size="8" font-weight="700" fill="#3D5226">VLAN 10</text>
+                        <text x="540" y="155" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" font-weight="700" fill="#3D5226">VLAN 20</text>
                       </svg>
                     </div>
+                  </div>
+                </section>
 
-                    <div class="xp-pills">
-                      <span class="xp-pill" style="--pc:#1D4ED8">VLAN</span>
-                      <span class="xp-pill" style="--pc:#DC2626">ACL</span>
-                      <span class="xp-pill" style="--pc:#D97706">Trunk 802.1Q</span>
-                      <span class="xp-pill" style="--pc:#16A34A">Subnet</span>
-                      <span class="xp-pill" style="--pc:#7C3AED">Câblage</span>
+                <!-- ═══ SECTION B : TÉLÉPHONIE ═══ -->
+                <section class="stage-block sb-tel">
+                  <div class="sb-head">
+                    <span class="sb-letter sb-letter-tel">B</span>
+                    <div>
+                      <div class="sb-kicker sb-kicker-tel">Concepts métier</div>
+                      <h4 class="sb-title">Les trois mondes de la téléphonie</h4>
                     </div>
                   </div>
+                  <div class="sb-tel-grid">
 
-                  <!-- Section TÉLÉPHONIE — schéma comparatif -->
-                  <div class="xp-sec xp-sec-purple">
-                    <div class="xp-sec-head">
-                      <div class="xp-sec-num">02</div>
-                      <div class="xp-sec-title-block">
-                        <div class="xp-sec-eyebrow">Téléphonie d'entreprise</div>
-                        <div class="xp-sec-title">5 concepts métier décodés</div>
-                      </div>
-                    </div>
-
-                    <!-- Schéma comparatif IPBX vs PABX vs Centrex -->
-                    <div class="xp-tel-compare">
-                      <div class="xp-tel-card xp-tel-ipbx">
-                        <div class="xp-tel-badge">MODERNE</div>
-                        <div class="xp-tel-name">IPBX</div>
-                        <svg width="100%" height="40" viewBox="0 0 140 40">
-                          <rect x="5" y="14" width="30" height="14" rx="2" fill="#7C3AED"/>
-                          <text x="20" y="25" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#fff" font-weight="700">SITE</text>
-                          <path d="M 38 21 L 98 21" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="3 2"/>
-                          <text x="68" y="17" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#7C3AED">SIP/IP</text>
-                          <circle cx="115" cy="21" r="14" fill="none" stroke="#7C3AED" stroke-width="1.5"/>
-                          <text x="115" y="25" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7C3AED" font-weight="700">NET</text>
+                    <div class="sb-tel-card sb-tel-ipbx">
+                      <div class="sb-tel-tag">Moderne</div>
+                      <div class="sb-tel-icon">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <circle cx="30" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+                          <circle cx="30" cy="30" r="5" fill="currentColor"/>
+                          <text x="30" y="56" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" font-weight="700" fill="currentColor">IP</text>
                         </svg>
-                        <div class="xp-tel-desc">Standard via Internet (trunk SIP) — l'évolution moderne, plus flexible.</div>
                       </div>
+                      <div class="sb-tel-name">IPBX</div>
+                      <p class="sb-tel-desc">Standard téléphonique via Internet (trunk SIP) — l'évolution moderne, flexible.</p>
+                    </div>
 
-                      <div class="xp-tel-card xp-tel-pabx">
-                        <div class="xp-tel-badge">HÉRITAGE</div>
-                        <div class="xp-tel-name">PABX</div>
-                        <svg width="100%" height="40" viewBox="0 0 140 40">
-                          <rect x="5" y="14" width="30" height="14" rx="2" fill="#92400E"/>
-                          <text x="20" y="25" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#fff" font-weight="700">SITE</text>
-                          <path d="M 38 21 L 98 21" stroke="#92400E" stroke-width="2"/>
-                          <text x="68" y="17" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#92400E">CUIVRE</text>
-                          <rect x="98" y="14" width="30" height="14" rx="2" fill="#92400E"/>
-                          <text x="113" y="25" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#fff" font-weight="700">PSTN</text>
+                    <div class="sb-tel-card sb-tel-pabx">
+                      <div class="sb-tel-tag">Héritage</div>
+                      <div class="sb-tel-icon">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="10" y="22" width="40" height="20" rx="3" fill="currentColor" opacity="0.2"/>
+                          <line x1="10" y1="32" x2="50" y2="32" stroke="currentColor" stroke-width="2"/>
+                          <line x1="20" y1="28" x2="20" y2="36" stroke="currentColor" stroke-width="1.5"/>
+                          <line x1="30" y1="28" x2="30" y2="36" stroke="currentColor" stroke-width="1.5"/>
+                          <line x1="40" y1="28" x2="40" y2="36" stroke="currentColor" stroke-width="1.5"/>
+                          <text x="30" y="56" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" font-weight="700" fill="currentColor">CUIVRE</text>
                         </svg>
-                        <div class="xp-tel-desc">Ancien autocommutateur sur lignes cuivre, encore présent chez certains clients.</div>
                       </div>
+                      <div class="sb-tel-name">PABX</div>
+                      <p class="sb-tel-desc">Ancien autocommutateur sur lignes cuivre, encore présent chez certains clients.</p>
+                    </div>
 
-                      <div class="xp-tel-card xp-tel-centrex">
-                        <div class="xp-tel-badge">CLOUD</div>
-                        <div class="xp-tel-name">Centrex</div>
-                        <svg width="100%" height="40" viewBox="0 0 140 40">
-                          <rect x="5" y="14" width="30" height="14" rx="2" fill="#0D9488"/>
-                          <text x="20" y="25" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#fff" font-weight="700">SITE</text>
-                          <path d="M 38 21 L 98 21" stroke="#0D9488" stroke-width="1.5" stroke-dasharray="3 2"/>
-                          <text x="68" y="17" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#0D9488">IP</text>
-                          <path d="M 100 21 Q 115 5, 130 21" stroke="#0D9488" stroke-width="1.5" fill="none"/>
-                          <path d="M 130 21 Q 115 37, 100 21" stroke="#0D9488" stroke-width="1.5" fill="none"/>
-                          <text x="115" y="25" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#0D9488" font-weight="700">☁</text>
+                    <div class="sb-tel-card sb-tel-centrex">
+                      <div class="sb-tel-tag">Cloud</div>
+                      <div class="sb-tel-icon">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M 15 35 Q 12 27 20 25 Q 22 18 30 20 Q 38 17 42 25 Q 50 26 48 35 Z" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5"/>
+                          <line x1="30" y1="40" x2="30" y2="48" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/>
+                          <text x="30" y="56" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" font-weight="700" fill="currentColor">CLOUD</text>
                         </svg>
-                        <div class="xp-tel-desc">Téléphonie hébergée — le standard est dans le cloud de l'opérateur, pas chez le client.</div>
                       </div>
+                      <div class="sb-tel-name">Centrex</div>
+                      <p class="sb-tel-desc">Téléphonie hébergée — le standard est dans le cloud de l'opérateur.</p>
                     </div>
 
-                    <div class="xp-tel-extra">
-                      <div class="xp-tel-mini" style="--pc:#EC4899">
-                        <div class="xp-tel-mini-name">Cordless</div>
-                        <div class="xp-tel-mini-desc">Téléphones sans fil DECT, pour la mobilité interne en entreprise.</div>
+                  </div>
+
+                  <div class="sb-tel-mini-grid">
+                    <div class="sb-tel-mini sb-tel-mini-cord">
+                      <div class="sb-tel-mini-name">Cordless</div>
+                      <p>Téléphones sans fil <strong>DECT</strong>, pour la mobilité interne en entreprise.</p>
+                    </div>
+                    <div class="sb-tel-mini sb-tel-mini-hand">
+                      <div class="sb-tel-mini-name">Handover</div>
+                      <p>Transfert automatique d'un appel actif d'une borne DECT à une autre, sans coupure.</p>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- ═══ SECTION C : LOGICIELS ═══ -->
+                <section class="stage-block sb-tools">
+                  <div class="sb-head">
+                    <span class="sb-letter sb-letter-tools">C</span>
+                    <div>
+                      <div class="sb-kicker sb-kicker-tools">Stack métier</div>
+                      <h4 class="sb-title">L'écosystème logiciel découvert</h4>
+                    </div>
+                  </div>
+                  <div class="sb-tools-grid">
+                    <div class="sb-tool" style="--accent:#5C7041">
+                      <div class="sb-tool-glyph">S</div>
+                      <div class="sb-tool-info">
+                        <strong>Sophia</strong>
+                        <span>Gestion interne</span>
                       </div>
-                      <div class="xp-tel-mini" style="--pc:#F59E0B">
-                        <div class="xp-tel-mini-name">Handover</div>
-                        <div class="xp-tel-mini-desc">Transfert automatique d'un appel actif d'une borne DECT à une autre, sans coupure.</div>
+                    </div>
+                    <div class="sb-tool" style="--accent:#5E768C">
+                      <div class="sb-tool-glyph">D</div>
+                      <div class="sb-tool-info">
+                        <strong>Dolibarr</strong>
+                        <span>ERP &middot; Facturation</span>
+                      </div>
+                    </div>
+                    <div class="sb-tool" style="--accent:#8C4A4A">
+                      <div class="sb-tool-glyph">G</div>
+                      <div class="sb-tool-info">
+                        <strong>GEO-SAV</strong>
+                        <span>Cartographie SAV</span>
+                      </div>
+                    </div>
+                    <div class="sb-tool" style="--accent:#7A4A6E">
+                      <div class="sb-tool-glyph">O</div>
+                      <div class="sb-tool-info">
+                        <strong>Omada</strong>
+                        <span>Maintenance réseau</span>
+                      </div>
+                    </div>
+                    <div class="sb-tool" style="--accent:#C9A876">
+                      <div class="sb-tool-glyph">E</div>
+                      <div class="sb-tool-info">
+                        <strong>Manager E</strong>
+                        <span>Central téléphonique</span>
+                      </div>
+                    </div>
+                    <div class="sb-tool" style="--accent:#87A06B">
+                      <div class="sb-tool-glyph">W</div>
+                      <div class="sb-tool-info">
+                        <strong>Manager Web</strong>
+                        <span>Admin distante PABX</span>
                       </div>
                     </div>
                   </div>
+                  <div class="sb-partner">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Partenaire technique principal : <strong>Seewan</strong></span>
+                  </div>
+                </section>
 
-                  <!-- Section LOGICIELS -->
-                  <div class="xp-sec xp-sec-amber">
-                    <div class="xp-sec-head">
-                      <div class="xp-sec-num">03</div>
-                      <div class="xp-sec-title-block">
-                        <div class="xp-sec-eyebrow">Stack logicielle</div>
-                        <div class="xp-sec-title">6 outils métiers découverts</div>
-                      </div>
-                    </div>
-                    <div class="xp-tools-grid">
-                      <div class="xp-tool-c" style="--pc:#0D9488;--pcb:#CCFBF1">
-                        <div class="xp-tool-name">Sophia</div>
-                        <div class="xp-tool-tag">Gestion interne</div>
-                      </div>
-                      <div class="xp-tool-c" style="--pc:#1D4ED8;--pcb:#DBEAFE">
-                        <div class="xp-tool-name">Dolibarr</div>
-                        <div class="xp-tool-tag">ERP / Facturation</div>
-                      </div>
-                      <div class="xp-tool-c" style="--pc:#DC2626;--pcb:#FEE2E2">
-                        <div class="xp-tool-name">GEO-SAV</div>
-                        <div class="xp-tool-tag">Cartographie SAV</div>
-                      </div>
-                      <div class="xp-tool-c" style="--pc:#7C3AED;--pcb:#EDE9FE">
-                        <div class="xp-tool-name">Omada</div>
-                        <div class="xp-tool-tag">Maintenance réseau</div>
-                      </div>
-                      <div class="xp-tool-c" style="--pc:#D97706;--pcb:#FEF3C7">
-                        <div class="xp-tool-name">Manager E</div>
-                        <div class="xp-tool-tag">Central téléphonique</div>
-                      </div>
-                      <div class="xp-tool-c" style="--pc:#16A34A;--pcb:#DCFCE7">
-                        <div class="xp-tool-name">Manager Web</div>
-                        <div class="xp-tool-tag">Admin distante PABX</div>
-                      </div>
-                    </div>
-                    <div class="xp-partner">
-                      <span class="xp-partner-label">Partenaire technique principal</span>
-                      <span class="xp-partner-name">Seewan</span>
+                <!-- ═══ SECTION D : MISSIONS ═══ -->
+                <section class="stage-block sb-missions">
+                  <div class="sb-head">
+                    <span class="sb-letter sb-letter-miss">D</span>
+                    <div>
+                      <div class="sb-kicker sb-kicker-miss">Au quotidien</div>
+                      <h4 class="sb-title">Sept missions clés réalisées</h4>
                     </div>
                   </div>
 
-                  <!-- Section MISSIONS — timeline colorée -->
-                  <div class="xp-sec xp-sec-pink">
-                    <div class="xp-sec-head">
-                      <div class="xp-sec-num">04</div>
-                      <div class="xp-sec-title-block">
-                        <div class="xp-sec-eyebrow">Au quotidien</div>
-                        <div class="xp-sec-title">7 missions clés réalisées</div>
+                  <ol class="sb-miss-timeline">
+                    <li class="sb-miss">
+                      <div class="sb-miss-marker"></div>
+                      <div class="sb-miss-content">
+                        <h5>Gestion des packs messages</h5>
+                        <p>Chargement à distance des messages audio (musique d'attente, pré-décroché, répondeur). Création de messages ponctuels — fermetures exceptionnelles, jours fériés — et programmation des plages horaires d'activation.</p>
                       </div>
-                    </div>
-                    <div class="xp-missions-grid">
-
-                      <div class="xp-mission-c" style="--pc:#EC4899;--pcb:#FCE7F3">
-                        <div class="xp-mission-c-num">01</div>
-                        <div class="xp-mission-c-title">Gestion des packs messages</div>
-                        <div class="xp-mission-c-desc">Chargement à distance des messages audio (musique d'attente, pré-décroché, répondeur). Création de messages ponctuels (fermetures, jours fériés) et programmation des plages horaires.</div>
+                    </li>
+                    <li class="sb-miss">
+                      <div class="sb-miss-marker"></div>
+                      <div class="sb-miss-content">
+                        <h5>Relation client — support de niveau&nbsp;1</h5>
+                        <p>Appels sortants pour prévenir d'une coupure programmée, réception et analyse des demandes entrantes, orientation vers le bon service.</p>
                       </div>
-
-                      <div class="xp-mission-c" style="--pc:#0D9488;--pcb:#CCFBF1">
-                        <div class="xp-mission-c-num">02</div>
-                        <div class="xp-mission-c-title">Relation client — support N1</div>
-                        <div class="xp-mission-c-desc">Appels sortants pour prévenir d'une coupure programmée, réception et analyse des demandes entrantes, orientation vers le bon service.</div>
+                    </li>
+                    <li class="sb-miss">
+                      <div class="sb-miss-marker"></div>
+                      <div class="sb-miss-content">
+                        <h5>Cartographie SAV sur GEO-SAV</h5>
+                        <p>Répertorisation des clients ayant des soucis de routeurs 4G, pour optimiser les tournées et les secteurs d'intervention des techniciens.</p>
                       </div>
-
-                      <div class="xp-mission-c" style="--pc:#DC2626;--pcb:#FEE2E2">
-                        <div class="xp-mission-c-num">03</div>
-                        <div class="xp-mission-c-title">Cartographie SAV</div>
-                        <div class="xp-mission-c-desc">Répertorisation sur GEO-SAV des clients ayant des soucis de routeurs 4G, pour optimiser les tournées et secteurs d'intervention des techniciens.</div>
+                    </li>
+                    <li class="sb-miss">
+                      <div class="sb-miss-marker"></div>
+                      <div class="sb-miss-content">
+                        <h5>Projet Active Directory</h5>
+                        <p>Création d'utilisateurs et de groupes, définition de GPO, gestion des permissions et règles d'accès — première vraie immersion dans l'administration d'un domaine Windows.</p>
                       </div>
-
-                      <div class="xp-mission-c" style="--pc:#7C3AED;--pcb:#EDE9FE">
-                        <div class="xp-mission-c-num">04</div>
-                        <div class="xp-mission-c-title">Projet Active Directory</div>
-                        <div class="xp-mission-c-desc">Création d'utilisateurs et de groupes, définition de GPO, gestion des permissions et règles d'accès — première immersion dans l'administration d'un domaine Windows.</div>
+                    </li>
+                    <li class="sb-miss">
+                      <div class="sb-miss-marker"></div>
+                      <div class="sb-miss-content">
+                        <h5>Interventions sur site client</h5>
+                        <p>Remplacement de cartes SIM de routeurs 4G, diagnostic d'un problème de batterie sur des téléphones cordless avec prise de mesures de couverture DECT.</p>
                       </div>
-
-                      <div class="xp-mission-c" style="--pc:#D97706;--pcb:#FEF3C7">
-                        <div class="xp-mission-c-num">05</div>
-                        <div class="xp-mission-c-title">Interventions sur site</div>
-                        <div class="xp-mission-c-desc">Remplacement de cartes SIM de routeurs 4G chez les clients, diagnostic d'un problème de batterie sur téléphones cordless avec mesures de couverture DECT.</div>
+                    </li>
+                    <li class="sb-miss">
+                      <div class="sb-miss-marker"></div>
+                      <div class="sb-miss-content">
+                        <h5>Lab téléphonie complet</h5>
+                        <p>Câblage complet : dégainage, connexion, respect des codes couleurs. Un même câble fait passer simultanément la téléphonie, l'alimentation et le réseau de données.</p>
                       </div>
-
-                      <div class="xp-mission-c" style="--pc:#16A34A;--pcb:#DCFCE7">
-                        <div class="xp-mission-c-num">06</div>
-                        <div class="xp-mission-c-title">Lab téléphonie complet</div>
-                        <div class="xp-mission-c-desc">Câblage complet de téléphonie : dégainage, connexion, respect des codes couleurs. Un même câble fait passer simultanément téléphonie, alimentation et réseau de données.</div>
+                    </li>
+                    <li class="sb-miss">
+                      <div class="sb-miss-marker"></div>
+                      <div class="sb-miss-content">
+                        <h5>Codage de mon e-portfolio</h5>
+                        <p>Développement intégral de ce site web pendant le stage, avec des retours réguliers de mon tuteur sur la mise en page et l'ergonomie.</p>
                       </div>
+                    </li>
+                  </ol>
+                </section>
 
-                      <div class="xp-mission-c" style="--pc:#1D4ED8;--pcb:#DBEAFE">
-                        <div class="xp-mission-c-num">07</div>
-                        <div class="xp-mission-c-title">Codage du e-portfolio</div>
-                        <div class="xp-mission-c-desc">Développement intégral de ce site web pendant le stage, avec des retours réguliers de mon tuteur sur la mise en page et l'ergonomie.</div>
-                      </div>
+                <!-- ═══ QUOTE FINALE ═══ -->
+                <aside class="stage-quote">
+                  <svg class="stage-quote-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="55" font-family="Syne,sans-serif" font-size="80" font-weight="800" fill="#C8D9A8" opacity="0.4">"</text>
+                  </svg>
+                  <p>Ce stage m'a profondément marquée. J'y ai appris le sens de la procédure, du travail propre et bien organisé, l'importance de toujours noter, répertorier, documenter. Chez ATScom, les collègues sont extrêmement soudés — pas de concurrence interne, l'un pense toujours à l'autre. Si une personne est absente, n'importe qui peut reprendre son dossier sans difficulté car tout est tracé.</p>
+                  <div class="stage-quote-sign">— Soumaya, juin 2026</div>
+                </aside>
 
-                    </div>
-                  </div>
-
-                  <!-- Quote finale -->
-                  <div class="xp-stage-quote">
-                    <span class="xp-stage-quote-mark">"</span>
-                    <p>Ce stage m'a profondément marquée. J'y ai appris le sens de la procédure, du travail propre et bien organisé, l'importance de toujours noter, répertorier, documenter. Chez ATScom, les collègues sont extrêmement soudés — pas de concurrence interne, l'un pense toujours à l'autre. Si une personne est absente, n'importe qui peut reprendre son dossier sans difficulté car tout est tracé. Cette culture du travail collectif renforce énormément leur crédibilité face aux clients.</p>
-                  </div>
-
-                </div><!-- /xp-stage-body -->
-
-                <div class="xp-card-chips">
-                  <span class="xp-chip">VLAN · Trunk · ACL</span>
-                  <span class="xp-chip">IPBX / PABX</span>
-                  <span class="xp-chip">DECT · Centrex</span>
-                  <span class="xp-chip">Active Directory</span>
-                  <span class="xp-chip">Câblage cuivre</span>
-                  <span class="xp-chip">Manager E · Web</span>
-                  <span class="xp-chip">GEO-SAV · Omada</span>
-                  <span class="xp-chip">Sophia · Dolibarr</span>
-                  <span class="xp-chip">Support client</span>
-                  <span class="xp-chip">Routeurs 4G</span>
+                <!-- Chips finales -->
+                <div class="stage-chips">
+                  <span>VLAN · Trunk · ACL</span>
+                  <span>IPBX / PABX</span>
+                  <span>DECT · Centrex</span>
+                  <span>Active Directory</span>
+                  <span>Câblage cuivre</span>
+                  <span>Manager E · Web</span>
+                  <span>GEO-SAV · Omada</span>
+                  <span>Support client</span>
+                  <span>Routeurs 4G</span>
                 </div>
-              </div>
+
+              </article>
             </div>
 
             <!-- Airbnb -->
